@@ -1,0 +1,385 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ECE 445 SENIOR DESIGN TEMPLATE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[openbib,letterpaper,10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The preamble starts here.
+% You can add other packages that you want to use by using
+% \usepackage command in the preamble.
+% However, DO NOT change the settings that are already placed
+% below unless you really know what you are doing.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% some commonly used packages
+\usepackage{graphicx}
+\usepackage{color,soul}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}% set the page margins to 1 inch
+
+% use the fancyhdr package to maintain the format of the page numbers,
+% which is useful when the text color is changed
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\textcolor{black}{\thepage}}
+\fancyhead[L]{\includegraphics[width=2cm]{University-of-Illinois-logo.jpg}}
+\fancyhead[R]{\small{Infantry I.F.F. Proposal - Meyers \& Prince}}
+
+% paralist provides extended list environments
+\usepackage{paralist}
+\setlength{\plitemsep}{0pt}
+
+% define the color for section and subsection titles
+\usepackage{xcolor}
+\definecolor{titlecolor}{RGB}{31,73,125}
+\definecolor{subtitlecolor}{RGB}{79,129,189}
+
+% tikz/pgf environment for making graphs
+\usepackage{tikz}
+\usepackage{tikz-timing}[2009/12/09]
+\usetikzlibrary{shapes,arrows}
+\usetikztiminglibrary[new={char=Q,reset char=R}]{counters}
+
+% change the style of the abstract environment
+\usepackage{abstract}
+\setlength{\absparsep}{6pt}
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+\setlength{\abstitleskip}{-18pt}
+\renewcommand{\absnamepos}{flushleft}
+\renewcommand{\abstractnamefont}{\normalfont\Large\singlespacing\bfseries}
+\renewcommand{\abstractname}{\textcolor{titlecolor}{Abstract}}
+
+% change the style of the section and subsection titles
+\usepackage{titlesec}
+\titleformat{\section}{\color{titlecolor}\Large\bf}{\color{titlecolor}\thesection}{0.8em}{}
+\titleformat{\subsection}{\color{subtitlecolor}\large\bf}{\color{subtitlecolor}\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{subtitlecolor}\normalsize\bf}{\color{subtitlecolor}\thesubsubsection}{1.2em}{}
+\titlespacing{\section}{0pt}{0em}{0em}
+\titlespacing{\subsection}{0pt}{0em}{0em}
+\titlespacing{\subsubsection}{0pt}{0em}{0em}
+
+% change the style of the table of contents
+\usepackage{titletoc}
+\titlecontents{section}[1.5em]{}{\contentslabel{1.5em}}{\hspace*{-1.5em}}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[3em]{}{\contentslabel{2.1em}}{\hspace*{-2.1em}}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[5.1em]{}{\contentslabel{2.7em}}{\hspace*{-2.7em}}{\titlerule*[0.5pc]{.}\contentspage}
+
+% command for centering texts in a fixed width table cell
+\newcommand{\centpcol}{\leftskip\fill \rightskip\fill}
+
+% command for setting the style of the appendix titles
+\newcommand{\setappenstyle}{
+	\titleformat{\section}{\color{titlecolor}\Large\bf}{\color{titlecolor}Appendix \Alph{section}}{0.8em}{}
+	\titlecontents{section}[0em]{}{Appendix \thecontentslabel \hspace{1em}}{}{\titlerule*[0.5pc]{.}\contentspage}
+}
+
+% define the style of the title of the paper
+\newcommand{\thetitle}[1]{\title{\begin{huge}{\bf #1}\end{huge} \color{subtitlecolor}\rule[25pt]{\textwidth}{1pt}}}
+
+% define the style of the author
+\newcommand{\theauthor}[3]{
+	\author{\vspace{.4in}\\
+	\textcolor{black}{By}\\
+	#1
+	\vspace{1in}\\
+	\textcolor{black}{ECE 445 Proposal -} #2\\
+	\textcolor{black}{TA:} #3
+	\vspace{1in}}
+}
+
+% define the style of figure's caption
+\newcommand{\figcap}[1]{
+	\captionsetup{format=plain,font={small,color=subtitlecolor,singlespacing},margin={0pt,0pt}}
+	\caption{\textcolor{subtitlecolor}{#1}}
+	\vspace{-5pt}
+}
+
+% define the style of table's caption
+\newcommand{\tablecap}[1]{
+	\captionsetup{format=plain,font={bf,normalsize,singlespacing,color=black},margin={0pt,0pt}}
+	\caption{\textcolor{black}{#1}}
+	\vspace{-5pt}
+}
+
+% define the style of the abstract's page number
+\newcommand{\abstractsetting}{
+	\pagenumbering{roman}
+	\thispagestyle{fancy}
+}
+
+\newcommand{\buildtoc}{
+	\clearpage
+	\singlespacing
+	\tableofcontents
+	\onehalfspacing
+}
+
+% set indentations and the space between paragraghs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PREAMBLE ENDS HERE, DOCUMENT STARTS BELOW
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% don't change these
+\pagestyle{empty}
+\doublespacing
+
+% put the title of your project here. DO NOT include the brackets.
+\thetitle{{I.F.F. (Identification Friend or Foe) System}}
+
+% put your names here. seperate by \\. DO NOT include the brackets.
+\theauthor{
+	{Eric Meyers (emeyer7)}\\
+	{Noah Prince (nprince2)}\\
+}
+{ % put the semester info here. DO NOT include the brackets.
+	{Spring 2016}
+}
+{ % put your TA's name here. DO NOT include the brackets.
+	{Braedon Salz}
+}
+
+% put the date and project number here. DO NOT include the brackets.
+\date{
+{February 10th, 2016}\\
+Project No. 11
+\clearpage
+}
+
+% don't change these
+\maketitle
+\pagestyle{fancy}
+\begin{spacing}{1.15}
+
+
+% build the table of contents. 
+\color{black}
+\buildtoc
+\pagenumbering{gobble}
+\section*{Acronyms \& Pre-Requisite Information}
+\begin{itemize}
+	\item Infantry - branch of a military force that fights on foot.
+	\item I.F.F. - Identification Friend or Foe
+	\item PWM - Pulse Width Modulation
+	\item PCB - Printed Circuit Board
+	\item R.F. - Radio Frequency
+	\item RTC - Real Time Clock
+\end{itemize}
+\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%SECTION - Introduction
+\section{Introduction}
+There have been several friendly fire incidents in recorded military history, accounting for an estimated 2\% to 20\% of all casualties in battle\textsuperscript{\cite{USArmy}}. Using attire to identify friend vs enemy is problematic in situations when both sides are clad in the same camouflage pattern, or are obscured by obstacles.
+
+In order to reduce the amount of friendly fire accidents in modern combat, a Infantry I.F.F. (Identification Friend or Foe) will be designed and constructed which will notify a soldier bearing a weapon whether or not their target is friendly.
+
+Several I.F.F. systems exist for aircraft, however not many reliable systems have been constructed to suit infantry.
+
+The system will mount to the side of any weapon, send out queries, ask if a target is friendly, and upon receiving a successful (friendly) reply, will notify the operator.
+
+This will be accomplished through a laser transmission system mounted to the rail (weaver mount) of a weapon. If the friendly personnel receives any of this signal (via phototransistors), it will respond with "acknowledgement" that it is friendly. Once the interrogator receives notice that the target is friendly, the dot sight will turn to a different color.
+
+Encryption plays a large role in a system like this, and for this reason must be emphasized heavily in the design process. Pulse Width Modulation will be used to transmit a unique I.D. of the interrogator pointing their sights at a friendly target, and upon receiving this laser transmission, the target will respond with an RF signal. This RF Isotropic Signal will be encrypted with a passphrase that is generated using a method similar to a "Time-based one-time password" algorithm.
+
+The benefit of a system like this are the following:
+\begin{itemize}
+	\item Reduce number of friendly fire accidents during combat \textsuperscript{\cite{Garrison}}
+	\item Reduce number of misfires accidents during combat \textsuperscript{\cite{Garrison}}
+	\item Notify friendly personnel location of particular friendly target when aiming
+	\item Other applications including but not limited to:
+	\begin{itemize}
+		\item Paintball or Airsoft
+		\item Arcade Laser Tag
+	\end{itemize}
+\end{itemize}
+
+The cost of a system like this will be heavily emphasized throughout the design phase. The team has proposed a schedule dating from February 8th - May 2nd of this semester. This gives the team $\approx$ 3 weeks for design, $\approx$ 7 weeks to assemble, test, and refine, and $\approx$ 3 weeks to document. The cost and schedule are both expanded upon in Section 5 in this document.\\
+
+\clearpage
+
+%SECTION - Design
+\section{Design}
+\subsection{Block Diagram}
+The design of a system like this is very flexible and can be implemented in several ways. The team decided to break this up into two subsystems with individual sub-components. These will be referred to the "friendly interrogator system" and the "friendly target system". 
+\begin{enumerate}
+	\item Friendly Interrogator System
+	\begin{itemize}
+		\item Laser Transmission (Transmit Query)
+		\item RF Receiver (Receive Acknowledgement)
+	\end{itemize}
+	\item Friendly Target System
+	\begin{itemize}
+		\item Photoreceiver (Receive Query)
+		\item RF Transmitter (Transmit Acknowledgement)
+	\end{itemize}
+\end{enumerate}
+
+Below is a block diagram containing all subsystems that will be designed and constructed this semester. The red dotted line is referring to the Laser Subsystem which is essentially a adjustable laser that will reach the desired distance along with a photodetector to detect these signals. The blue dotted line is the R.F. Subsystem which will serve as the "acknowledgement" to the laser signal to notify the interrogator that the target they are pointing their weapon at is friendly. The green dotted line is referring to the Friendly Interrogator and the Friendly Target Subsystem which will be expanded upon in the following pages.
+
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{System_Diagram.png}
+	\label{fig:system-diagram}
+	\caption{I.F.F. Subsystem Diagram}
+\end{figure}
+\clearpage
+
+\subsection{Block Descriptions}
+\subsection*{Friendly Interrogator System}
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.35]{Interrogator_Diagram.png}
+	\label{fig:system-diagram}
+	\vspace{-10mm}
+	\caption{Interrogator System Diagram}
+\end{figure}
+
+\subsection*{{\normalsize Laser Transmission}}
+\begin{itemize}
+	\item Optical adjustment to achieve:
+	\begin{itemize}
+		\item Short Range (Close Quarters) : 0 - 50 m
+		\item Medium Range (Urban Setting) : 50 - 150 m
+		\item Long Range : 150 - 300 m
+	\end{itemize}
+	\item P.W.M Signal to transmit signal attached with a unique I.D. of interrogator.
+		\begin{itemize}
+			\item Ability to adjust duty cycle to transmit information 
+			\item Preamble followed by unique I.D. of transmitter
+		\end{itemize}
+\end{itemize}
+
+ \subsection*{{\normalsize  R.F. Receiver}}
+\begin{itemize}
+	\item Receives "acknowledgement" signal from friendly target
+	\item Must have ability to verify passphrase with common clock (Real Time Clock - RTC)
+	\item If successful (i.e. system identifies target as friendly), then indicator (LED) will change color from red to green.
+\end{itemize}
+ 
+ \subsection*{Friendly Target System}
+ 
+ \begin{figure} [H]
+ 	\centering
+ 	\includegraphics[scale=0.35]{Target_Diagram.png}
+ 	\label{fig:system-diagram}
+ 	\vspace{-10mm}
+ 	\caption{Target System Diagram}
+ \end{figure}
+ 
+\subsection*{{\normalsize Laser Photodetector}}
+
+\begin{itemize}
+	\item Couse staff and resources provided on Wiki will help narrow down options to 
+	\begin{itemize}
+		\item https://courses.engr.illinois.edu/ece445/wiki/?n=Topics.LaserDiodeAndPhotodiodeIntroduction
+	\end{itemize}
+	\item \hl{NOAH - ADD MORE HERE}
+\end{itemize}
+ 
+ \subsection*{{\normalsize  R.F. Transmitter}}
+  \begin{itemize}
+  	\item Isotropic R.F. Radiator to acknowledge query sent by laser on interrogator
+  	\item Ability to reach up to 300 m 
+  	\item Encrypted Passphrase
+  	\begin{itemize}
+  		\item Password generated based off of common clock (RTC)
+  		\item Clocks will need to be synced with a common clock source periodically
+  	\end{itemize}
+  \end{itemize}
+ 
+
+  \clearpage
+
+\subsection{Flow Chart}
+The below block diagram demonstrates the basic functionality of a system like this. First the 
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{Block_Diagram.png}
+	\label{fig:block-diagram}
+	\caption{Block Diagram}
+\end{figure}
+
+
+%SECTION - Requirements and Verification
+\section{Requirements and Verification}
+The requirements for this semester are as follows: 
+\begin{enumerate}
+	\item Power Module - must maintain a constant DC power source of  5.0V $\pm$ 2.0V.
+	\item Laser transmitter must transmit a PWM signal with a duty cycle of less than \_\_<insert numerical value here>\_\_ to transmit a unique integer I.D. of the interrogator.
+	\item Laser transmitter must be able to span a range that is equivelent to the width of a human chest (2-3 ft) at the following distances:
+		\begin{itemize}
+			\item Long Range (0 - 50 m)
+			\item Medium Range (50 - 150 m)
+			\item Long Range (150 - 300 m)
+		\end{itemize}
+	\item Photoreceiver with the ability to detect a 800 - 1400 nm (\hl{IR? - verify??}) PWM signal up to $\approx$300 m.
+		\begin{itemize}
+			\item 90\% $\pm$ 5\% of packets must be detected by photodetector properly
+		\end{itemize}
+	\item Microcontroller Unit with ability to generate PWM signals through laser transmission and receive R.F. Acknowledgement and process the signal.
+	\item Isotropic R.F. signal with a range of $\leq$ 300 m (operating frequency to be determined later).
+	\item R.F. receiver with the ability to detect an R.F. signal of $\leq$ 300 m
+	\item Encryption - An R.F. signal being transmitted from a friendly target back to the interrogator must contain a clock that is within $\pm$ 10 seconds of the clock that is onboard the interrogator.
+\end{enumerate}
+
+%SECTION - Tolerance Analysis
+\section{Tolerance Analysis}
+The signal transmission from the friendly interrogator to the friendly target will be a critical aspect of this project. The team must transmit a signal over a distance of 300 meters that has the ability to be accurately received by a photodetector and processed by an MCU. This will need to be reliable and quick. \hl{ADD MORE HERE}
+
+
+%SECTION - Cost and Schedule
+\section{Cost \& Schedule}
+The schedule and budget of this project will be analyzed in the sections below.
+
+\subsection{Schedule}
+Please refer to Figure \ref{fig:timeline} for the brief timeline of this project highlighting the milestones and approximate duration of each phase. Refer to Figure \ref{fig:schedule} for an extended week-to-week description of what the team wishes to accomplish over the duration of the semester.
+
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{Timeline.png}
+	\label{fig:timeline}
+	\caption{Timeline with Milestones\label{fig:timeline}xx}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.95]{Schedule_Extended.png}
+	\caption{Extended Schedule Week-by-Week\label{fig:schedule}}
+\end{figure}
+
+
+\subsection{Cost}
+\hl{COST ANALYSIS - NOAH}
+
+\subsection{Labor}
+\hl{LABOR ANALYSIS - NOAH}
+
+
+\bibliographystyle{IEEE_ECE}
+% include the BibTex file here to build reference
+\bibliography{Citations}\addcontentsline{toc}{section}{Reference}
+
+\clearpage
+\end{spacing}
+\end{document}
+

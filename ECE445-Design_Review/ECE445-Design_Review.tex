@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ECE 445 SENIOR DESIGN TEMPLATE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[openbib,letterpaper,10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The preamble starts here.
+% You can add other packages that you want to use by using
+% \usepackage command in the preamble.
+% However, DO NOT change the settings that are already placed
+% below unless you really know what you are doing.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% some commonly used packages
+\usepackage{graphicx}
+\usepackage{color,soul}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}% set the page margins to 1 inch
+
+% use the fancyhdr package to maintain the format of the page numbers,
+% which is useful when the text color is changed
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\textcolor{black}{\thepage}}
+\fancyhead[L]{\includegraphics[width=2cm]{University-of-Illinois-logo.jpg}}
+\fancyhead[R]{\small{Infantry I.F.F. Proposal - Meyers \& Prince}}
+
+% paralist provides extended list environments
+\usepackage{paralist}
+\setlength{\plitemsep}{0pt}
+
+% define the color for section and subsection titles
+\usepackage{xcolor}
+\definecolor{titlecolor}{RGB}{31,73,125}
+\definecolor{subtitlecolor}{RGB}{79,129,189}
+
+% tikz/pgf environment for making graphs
+\usepackage{tikz}
+\usepackage{tikz-timing}[2009/12/09]
+\usetikzlibrary{shapes,arrows}
+\usetikztiminglibrary[new={char=Q,reset char=R}]{counters}
+
+% change the style of the abstract environment
+\usepackage{abstract}
+\setlength{\absparsep}{6pt}
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+\setlength{\abstitleskip}{-18pt}
+\renewcommand{\absnamepos}{flushleft}
+\renewcommand{\abstractnamefont}{\normalfont\Large\singlespacing\bfseries}
+\renewcommand{\abstractname}{\textcolor{titlecolor}{Abstract}}
+
+% change the style of the section and subsection titles
+\usepackage{titlesec}
+\titleformat{\section}{\color{titlecolor}\Large\bf}{\color{titlecolor}\thesection}{0.8em}{}
+\titleformat{\subsection}{\color{subtitlecolor}\large\bf}{\color{subtitlecolor}\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{subtitlecolor}\normalsize\bf}{\color{subtitlecolor}\thesubsubsection}{1.2em}{}
+\titlespacing{\section}{0pt}{0em}{0em}
+\titlespacing{\subsection}{0pt}{0em}{0em}
+\titlespacing{\subsubsection}{0pt}{0em}{0em}
+
+% change the style of the table of contents
+\usepackage{titletoc}
+\titlecontents{section}[1.5em]{}{\contentslabel{1.5em}}{\hspace*{-1.5em}}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsection}[3em]{}{\contentslabel{2.1em}}{\hspace*{-2.1em}}{\titlerule*[0.5pc]{.}\contentspage}
+\titlecontents{subsubsection}[5.1em]{}{\contentslabel{2.7em}}{\hspace*{-2.7em}}{\titlerule*[0.5pc]{.}\contentspage}
+
+% command for centering texts in a fixed width table cell
+\newcommand{\centpcol}{\leftskip\fill \rightskip\fill}
+
+% command for setting the style of the appendix titles
+\newcommand{\setappenstyle}{
+	\titleformat{\section}{\color{titlecolor}\Large\bf}{\color{titlecolor}Appendix \Alph{section}}{0.8em}{}
+	\titlecontents{section}[0em]{}{Appendix \thecontentslabel \hspace{1em}}{}{\titlerule*[0.5pc]{.}\contentspage}
+}
+
+% define the style of the title of the paper
+\newcommand{\thetitle}[1]{\title{\begin{huge}{\bf #1}\end{huge} \color{subtitlecolor}\rule[25pt]{\textwidth}{1pt}}}
+
+% define the style of the author
+\newcommand{\theauthor}[3]{
+	\author{\vspace{.4in}\\
+	\textcolor{black}{By}\\
+	#1
+	\vspace{1in}\\
+	\textcolor{black}{ECE 445 Design Review -} #2\\
+	\textcolor{black}{TA:} #3
+	\vspace{1in}}
+}
+
+% define the style of figure's caption
+\newcommand{\figcap}[1]{
+	\captionsetup{format=plain,font={small,color=subtitlecolor,singlespacing},margin={0pt,0pt}}
+	\caption{\textcolor{subtitlecolor}{#1}}
+	\vspace{-5pt}
+}
+
+% define the style of table's caption
+\newcommand{\tablecap}[1]{
+	\captionsetup{format=plain,font={bf,normalsize,singlespacing,color=black},margin={0pt,0pt}}
+	\caption{\textcolor{black}{#1}}
+	\vspace{-5pt}
+}
+
+% define the style of the abstract's page number
+\newcommand{\abstractsetting}{
+	\pagenumbering{roman}
+	\thispagestyle{fancy}
+}
+
+\newcommand{\buildtoc}{
+	\clearpage
+	\singlespacing
+	\tableofcontents
+	\onehalfspacing
+}
+
+% set indentations and the space between paragraghs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PREAMBLE ENDS HERE, DOCUMENT STARTS BELOW
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% don't change these
+\pagestyle{empty}
+\doublespacing
+
+% put the title of your project here. DO NOT include the brackets.
+\thetitle{{I.F.F. (Identification Friend or Foe) System}}
+
+% put your names here. seperate by \\. DO NOT include the brackets.
+\theauthor{
+	{Eric Meyers (emeyer7)}\\
+	{Noah Prince (nprince2)}\\
+}
+{ % put the semester info here. DO NOT include the brackets.
+	{Spring 2016}
+}
+{ % put your TA's name here. DO NOT include the brackets.
+	{Braedon Salz}
+}
+
+% put the date and project number here. DO NOT include the brackets.
+\date{
+{February 29th, 2016}\\
+Project No. 11
+\clearpage
+}
+
+% don't change these
+\maketitle
+\pagestyle{fancy}
+\begin{spacing}{1.15}
+
+
+% build the table of contents. 
+\color{black}
+\buildtoc
+\pagenumbering{gobble}
+\section*{Acronyms \& Pre-Requisite Information}
+\begin{itemize}
+	\item \hl{INCLUDE MORE ABBREVIATIONS HERE}
+\end{itemize}
+\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%SECTION - Introduction
+\section{Introduction}
+
+%SECTION - Design
+\section{Design}
+
+\subsection{Overview}
+
+\subsection*{Friendly Interrogator System}
+
+\subsection*{Friendly Target System}
+
+\subsection{Simulations and Calculations}
+
+
+%SECTION - Requirements and Verification
+\section{Requirements and Verification}
+\subsection{Functional Requirements}
+\subsection{Testing \& Verification}
+
+%SECTION - Tolerance Analysis
+\section{Tolerance Analysis}
+
+%SECTION - Cost and Schedule
+\section{Cost \& Schedule}
+
+
+\subsection{Schedule}
+
+\subsection{Cost}
+
+\subsection{Labor}
+
+\section{Safety \& Ethical Considerations}
+
+\section{Conclusion}
+
+
+\bibliographystyle{IEEE_ECE}
+% include the BibTex file here to build reference
+\bibliography{Citations}\addcontentsline{toc}{section}{Reference}
+
+\clearpage
+\end{spacing}
+\end{document}
+
