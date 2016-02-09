@@ -5,9 +5,9 @@
 \contentsline {subsection}{\numberline {2.3}Flow Chart}{5}{subsection.2.3}
 \contentsline {section}{\numberline {3}Requirements and Verification}{5}{section.3}
 \contentsline {section}{\numberline {4}Tolerance Analysis}{6}{section.4}
-\contentsline {section}{\numberline {5}Cost \& Schedule}{6}{section.5}
-\contentsline {subsection}{\numberline {5.1}Schedule}{6}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Cost}{7}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Labor}{7}{subsection.5.3}
-\contentsline {section}{Reference}{8}{subsection.5.3}
+\contentsline {section}{\numberline {5}Cost \& Schedule}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Schedule}{7}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Cost}{8}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Labor}{9}{subsection.5.3}
+\contentsline {section}{Reference}{9}{subsection.5.3}
 \contentsfinish 

@@ -287,11 +287,12 @@ Below is a block diagram containing all subsystems that will be designed and con
 \subsection*{{\normalsize Laser Photodetector}}
 
 \begin{itemize}
-	\item Couse staff and resources provided on Wiki will help narrow down options to 
+	\item Couse staff and resources provided on Wiki will help narrow down options in the design phase.
 	\begin{itemize}
 		\item https://courses.engr.illinois.edu/ece445/wiki/?n=Topics.LaserDiodeAndPhotodiodeIntroduction
 	\end{itemize}
-	\item \hl{NOAH - ADD MORE HERE}
+	\item Photodiode that must be engineered to receive the wavelength and intensity of the laser transmission at maximum range. 
+	\item Photodiodes will be mounted on the wearer's helmet, gun, and/or chest to detect incoming transmissions.
 \end{itemize}
  
  \subsection*{{\normalsize  R.F. Transmitter}}
@@ -327,11 +328,11 @@ The requirements for this semester are as follows:
 	\item Laser transmitter must transmit a PWM signal with a duty cycle of less than \_\_<insert numerical value here>\_\_ to transmit a unique integer I.D. of the interrogator.
 	\item Laser transmitter must be able to span a range that is equivelent to the width of a human chest (2-3 ft) at the following distances:
 		\begin{itemize}
-			\item Long Range (0 - 50 m)
+			\item Short Range (0 - 50 m)
 			\item Medium Range (50 - 150 m)
 			\item Long Range (150 - 300 m)
 		\end{itemize}
-	\item Photoreceiver with the ability to detect a 800 - 1400 nm (\hl{IR? - verify??}) PWM signal up to $\approx$300 m.
+	\item Photoreceiver with the ability to detect a PWM signal up to $\approx$300 m of the same wavelength as the laser transmitter. 
 		\begin{itemize}
 			\item 90\% $\pm$ 5\% of packets must be detected by photodetector properly
 		\end{itemize}
@@ -339,11 +340,36 @@ The requirements for this semester are as follows:
 	\item Isotropic R.F. signal with a range of $\leq$ 300 m (operating frequency to be determined later).
 	\item R.F. receiver with the ability to detect an R.F. signal of $\leq$ 300 m
 	\item Encryption - An R.F. signal being transmitted from a friendly target back to the interrogator must contain a clock that is within $\pm$ 10 seconds of the clock that is onboard the interrogator.
+	\item Speed - The average human reaction time for visual stimulii is 190 milliseconds [3]. A friendly target at 300 m should be marked friendly within 190 milliseconds so that, to a human user, it seems nearly instantaneous. 
+	\item Laser transmitter accuracy - at 300 m, the beam makes contact with the aiming point of the rifle. 
 \end{enumerate}
 
 %SECTION - Tolerance Analysis
 \section{Tolerance Analysis}
-The signal transmission from the friendly interrogator to the friendly target will be a critical aspect of this project. The team must transmit a signal over a distance of 300 meters that has the ability to be accurately received by a photodetector and processed by an MCU. This will need to be reliable and quick. \hl{ADD MORE HERE}
+The signal transmission from the friendly interrogator to the friendly target will be a critical aspect of this project. The extremes of this transmission must be tested; ensuring that it has bot the range and signal span required. 
+
+Capturing these requirements, the team must transmit a signal to a photo-detector at the following ranges:
+		\begin{itemize}
+			\item Short Range (0 - 50 m)
+			\item Medium Range (50 - 150 m)
+			\item Long Range (150 - 300 m)
+		\end{itemize}
+
+The team should then verify that the signal was received and processed by the MCU. Furthermore, the team should verify that the signal spans the width of a human chest. More concretely, that a sighted-in laser transmitter can be aimed at any point within 1-1.5 feet of the receiver and still register friendly. 
+
+The team must transmit a signal over a distance of 300 meters that has the ability to be accurately received by a photo-detector and processed by an MCU. 
+
+Test Procedure:
+ 
+\begin{itemize}
+	\item Mount the receiver 300 m downrange of the transmitter
+	\item Aim the laser transmitter directly at the receiver, using a mount (like a vice grip) to keep it stable. 
+	\item Verify the signal is received.
+	\item Aim and verify the signal is also received when aiming 1.5ft to the right, top, and bottom of the receiver. 
+	\item Repeat these steps for 50 m and 150 m. 
+\end{itemize}
+
+\hl{Accuracy can be captured by the likelihood of Type I and Type II errors for the system. That is, we can define a Type I error as incorrectly identifying something as friendly, when in fact it was either an inanimate object (or worse) an enemy. A Type II error, then, would mean that the system failed to mark a friendly target as friendly. Type I errors should be greatly mitigated by the encryption system; that is, if an acknowledgment is received and valid, it is impossible that the acknowledgment occurred due to chance. The sources of Type II errors, then, would be a glitches in either the interrogator circuit or the acknowledgment broadcasting circuit. A Type II error, however, could happen for a number reasons; including the laser being interrupted before its identification could be transmitted to the photo-receiver. } I don't know where this belongs but might be useful
 
 
 %SECTION - Cost and Schedule
@@ -369,10 +395,22 @@ Please refer to Figure \ref{fig:timeline} for the brief timeline of this project
 
 
 \subsection{Cost}
-\hl{COST ANALYSIS - NOAH}
+The following is a rough cost analysis of the project: 
+
+\hl{Eric, I'm gonna need help making a good table!}
+
+Industrial IR Laser - \$13.26 http://www.ebay.com/itm/Industrial-Focusable-50mW-780nm-Infrared-IR-Laser-DOT-Diode-Module-Lazer-/110887862755?hash=item19d16e81e3:g:4akAAOSwxH1ULBEs
+
+8-bit PIC MCU, x2 - Free, from lab? 
+
+PCB - At least 2 at \$33 each 
+
+\hl { should we include estimates for photodiodes or just one big estimate for all sorts of parts like LEDs and stuff?}
 
 \subsection{Labor}
-\hl{LABOR ANALYSIS - NOAH}
+This appears to be a fairly demanding Senior Design project. The team has approximately 12 weeks to design, implement, and fabricate this project. Each member of the team will likely work at least 10 hours a week on the project. This means 120 hours per team member. 
+
+\hl{ we need another chart. Each person worth\$31 an hour, with 120 hours invested makes 120*\$31*2.5 = \$9300per person, makes \$18600 in labor for the project. }
 
 
 \bibliographystyle{IEEE_ECE}
