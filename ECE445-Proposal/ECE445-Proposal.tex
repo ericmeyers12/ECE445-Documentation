@@ -13,6 +13,10 @@
 
 % some commonly used packages
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\usepackage{multirow}% http://ctan.org/pkg/multirow
 \usepackage{color,soul}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -85,7 +89,7 @@
 }
 
 % define the style of the title of the paper
-\newcommand{\thetitle}[1]{\title{\begin{huge}{\bf #1}\end{huge} \color{subtitlecolor}\rule[25pt]{\textwidth}{1pt}}}
+\newcommand{\thetitle}[1]{\title{\begin{LARGE}{\bf #1}\end{LARGE} \color{subtitlecolor}\rule[25pt]{\textwidth}{1pt}}}
 
 % define the style of the author
 \newcommand{\theauthor}[3]{
@@ -140,7 +144,7 @@
 \doublespacing
 
 % put the title of your project here. DO NOT include the brackets.
-\thetitle{{I.F.F. (Identification Friend or Foe) System}}
+\thetitle{{Infantry I.F.F. (Identification Friend or Foe) System}}
 
 % put your names here. seperate by \\. DO NOT include the brackets.
 \theauthor{
@@ -190,7 +194,7 @@ There have been several friendly fire incidents in recorded military history, ac
 
 In order to reduce the amount of friendly fire accidents in modern combat, a Infantry I.F.F. (Identification Friend or Foe) will be designed and constructed which will notify a soldier bearing a weapon whether or not their target is friendly.
 
-Several I.F.F. systems exist for aircraft, however not many reliable systems have been constructed to suit infantry.
+Several I.F.F. systems exist for aircraft, however not many reliable systems have been constructed to suit infantry that incorporate fast response times and LEDs for indication.
 
 The system will mount to the side of any weapon, send out queries, ask if a target is friendly, and upon receiving a successful (friendly) reply, will notify the operator.
 
@@ -292,7 +296,7 @@ Below is a block diagram containing all subsystems that will be designed and con
 		\item https://courses.engr.illinois.edu/ece445/wiki/?n=Topics.LaserDiodeAndPhotodiodeIntroduction
 	\end{itemize}
 	\item Photodiode that must be engineered to receive the wavelength and intensity of the laser transmission at maximum range. 
-	\item Photodiodes will be mounted on the wearer's helmet, gun, and/or chest to detect incoming transmissions.
+	\item Photodiodes will be mounted on the wearer's helmet, weapon, and/or chest to detect incoming transmissions.
 \end{itemize}
  
  \subsection*{{\normalsize  R.F. Transmitter}}
@@ -309,40 +313,18 @@ Below is a block diagram containing all subsystems that will be designed and con
 
   \clearpage
 
-\subsection{Flow Chart}
-The below block diagram demonstrates the basic functionality of a system like this. First the 
-
-\begin{figure} [H]
-	\centering
-	\includegraphics[scale=0.5]{Block_Diagram.png}
-	\label{fig:block-diagram}
-	\caption{Block Diagram}
-\end{figure}
-
 
 %SECTION - Requirements and Verification
 \section{Requirements and Verification}
+
+
 The requirements for this semester are as follows: 
-\begin{enumerate}
-	\item Power Module - must maintain a constant DC power source of  5.0V $\pm$ 2.0V.
-	\item Laser transmitter must transmit a PWM signal with a duty cycle of less than \_\_<insert numerical value here>\_\_ to transmit a unique integer I.D. of the interrogator.
-	\item Laser transmitter must be able to span a range that is equivelent to the width of a human chest (2-3 ft) at the following distances:
-		\begin{itemize}
-			\item Short Range (0 - 50 m)
-			\item Medium Range (50 - 150 m)
-			\item Long Range (150 - 300 m)
-		\end{itemize}
-	\item Photoreceiver with the ability to detect a PWM signal up to $\approx$300 m of the same wavelength as the laser transmitter. 
-		\begin{itemize}
-			\item 90\% $\pm$ 5\% of packets must be detected by photodetector properly
-		\end{itemize}
-	\item Microcontroller Unit with ability to generate PWM signals through laser transmission and receive R.F. Acknowledgement and process the signal.
-	\item Isotropic R.F. signal with a range of $\leq$ 300 m (operating frequency to be determined later).
-	\item R.F. receiver with the ability to detect an R.F. signal of $\leq$ 300 m
-	\item Encryption - An R.F. signal being transmitted from a friendly target back to the interrogator must contain a clock that is within $\pm$ 10 seconds of the clock that is onboard the interrogator.
-	\item Speed - The average human reaction time for visual stimulii is 190 milliseconds [3]. A friendly target at 300 m should be marked friendly within 190 milliseconds so that, to a human user, it seems nearly instantaneous. 
-	\item Laser transmitter accuracy - at 300 m, the beam makes contact with the aiming point of the rifle. 
-\end{enumerate}
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{Requirements-Verification-Table.png}
+	\label{fig:brequirements-table}
+	\caption{Requirements and Verfication Table}
+\end{figure}
 
 %SECTION - Tolerance Analysis
 \section{Tolerance Analysis}
@@ -369,7 +351,7 @@ Test Procedure:
 	\item Repeat these steps for 50 m and 150 m. 
 \end{itemize}
 
-\hl{Accuracy can be captured by the likelihood of Type I and Type II errors for the system. That is, we can define a Type I error as incorrectly identifying something as friendly, when in fact it was either an inanimate object (or worse) an enemy. A Type II error, then, would mean that the system failed to mark a friendly target as friendly. Type I errors should be greatly mitigated by the encryption system; that is, if an acknowledgment is received and valid, it is impossible that the acknowledgment occurred due to chance. The sources of Type II errors, then, would be a glitches in either the interrogator circuit or the acknowledgment broadcasting circuit. A Type II error, however, could happen for a number reasons; including the laser being interrupted before its identification could be transmitted to the photo-receiver. } I don't know where this belongs but might be useful
+Please note that the work being performed in the tolerance analysis sections takes up a total of 30 points in the requirements/verification table. 
 
 
 %SECTION - Cost and Schedule
@@ -389,29 +371,29 @@ Please refer to Figure \ref{fig:timeline} for the brief timeline of this project
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.95]{Schedule_Extended.png}
+	\includegraphics[scale=0.65]{Schedule_Extended.png}
 	\caption{Extended Schedule Week-by-Week\label{fig:schedule}}
 \end{figure}
 
 
-\subsection{Cost}
+\subsection{Cost \& Labor}
+This appears to be a fairly demanding Senior Design project. The team has approximately 12 weeks to design, implement, and fabricate this project. Each member of the team will likely work at least 15-20 hours/week on the project. This means $\approx$ 200 hours per team member for the semester. 
+
 The following is a rough cost analysis of the project: 
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.4]{cost-labor-table.png}
+	\label{fig:brequirements-table}
+	\caption{Labor and Cost Analysis Table}
+\end{figure}
+\vspace{-5mm}
+The labor cost was calculated as follows:
 
-\hl{Eric, I'm gonna need help making a good table!}
+\begin{center}
+	Labor Cost = Worker Salary (\$/hour) x 2.5 x Time (Hours) Invested In Project
+\end{center}
 
-Industrial IR Laser - \$13.26 http://www.ebay.com/itm/Industrial-Focusable-50mW-780nm-Infrared-IR-Laser-DOT-Diode-Module-Lazer-/110887862755?hash=item19d16e81e3:g:4akAAOSwxH1ULBEs
-
-8-bit PIC MCU, x2 - Free, from lab? 
-
-PCB - At least 2 at \$33 each 
-
-\hl { should we include estimates for photodiodes or just one big estimate for all sorts of parts like LEDs and stuff?}
-
-\subsection{Labor}
-This appears to be a fairly demanding Senior Design project. The team has approximately 12 weeks to design, implement, and fabricate this project. Each member of the team will likely work at least 10 hours a week on the project. This means 120 hours per team member. 
-
-\hl{ we need another chart. Each person worth\$31 an hour, with 120 hours invested makes 120*\$31*2.5 = \$9300per person, makes \$18600 in labor for the project. }
-
+The parts estimate is not final by any means, this is just a rough estimate of what the team can expect during the design review.  
 
 \bibliographystyle{IEEE_ECE}
 % include the BibTex file here to build reference
