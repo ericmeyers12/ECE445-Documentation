@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 FEB 2016 20:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 FEB 2016 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1038,20 +1038,16 @@ File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 314
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [4 <./Target_Diagram.png>] <Requirements-Verification-Table.png, id=116, 944.5
-2875pt x 729.72626pt>
+ [4 <./Target_Diagram.png>] <Requirements-Verification-Table.png, id=116, 1038.
+88126pt x 800.9925pt>
 File: Requirements-Verification-Table.png Graphic file (type png)
 
 <use Requirements-Verification-Table.png>
 Package pdftex.def Info: Requirements-Verification-Table.png used on input line
  324.
-(pdftex.def)             Requested size: 472.26321pt x 364.86224pt.
-
-Overfull \hbox (2.5082pt too wide) in paragraph at lines 324--326
- [][] 
- []
-
+(pdftex.def)             Requested size: 467.49225pt x 360.4433pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+
 <use University-of-Illinois-logo.jpg>
 Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 341
 .
@@ -1128,7 +1124,7 @@ r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ECE445-Proposal.pdf (10 pages, 2089201 bytes).
+Output written on ECE445-Proposal.pdf (10 pages, 2147099 bytes).
 PDF statistics:
  185 PDF objects out of 1000 (max. 8388607)
  138 compressed objects within 2 object streams
