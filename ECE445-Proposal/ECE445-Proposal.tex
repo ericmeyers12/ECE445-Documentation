@@ -261,22 +261,22 @@ Below is a block diagram containing all subsystems that will be designed and con
 \begin{itemize}
 	\item Optical adjustment to achieve:
 	\begin{itemize}
-		\item Short Range (Close Quarters) : 0 - 50 m
-		\item Medium Range (Urban Setting) : 50 - 150 m
-		\item Long Range : 150 - 300 m
+		\item Short Range (Close Quarters) : 0 - 50 meters
+		\item Medium Range (Urban Setting) : 50 - 150 meters
+		\item Long Range : 150 - 300 meters
 	\end{itemize}
 	\item At the extreme of each range, the diameter of the light spot from the laser should be 5-6ft; around the size of a person. 
 	\item P.W.M Signal to transmit signal attached with a unique I.D. of interrogator.
 		\begin{itemize}
-			\item Ability to adjust duty cycle to transmit information 
-			\item Preamble followed by unique I.D. of transmitter
+			\item Ability to adjust state of laser to transmit information.
+			\item Preamble followed by unique I.D. of transmitter (in 2 byte packets).
 		\end{itemize}
 \end{itemize}
 
  \subsection*{{\normalsize  R.F. Receiver}}
 \begin{itemize}
-	\item Receives "acknowledgement" signal from friendly target
-	\item Must have ability to verify passphrase with common clock (Real Time Clock - RTC)
+	\item Receives "acknowledgement" signal from friendly target.
+	\item Must have ability to verify passphrase with common clock (Real Time Clock - RTC).
 	\item If successful (i.e. system identifies target as friendly), then indicator (LED) will change color from red to green.
 \end{itemize}
  
@@ -303,12 +303,12 @@ Below is a block diagram containing all subsystems that will be designed and con
  
  \subsection*{{\normalsize  R.F. Transmitter}}
   \begin{itemize}
-  	\item Isotropic R.F. Radiator to acknowledge query sent by laser on interrogator
-  	\item Ability to reach up to 300 m 
+  	\item Isotropic R.F. Radiator to acknowledge query sent by laser on interrogator.
+  	\item Ability to reach up to 300 meters.
   	\item Encrypted Passphrase
   	\begin{itemize}
-  		\item Password generated based off of common clock (RTC)
-  		\item Clocks will need to be synced with a common clock source periodically
+  		\item Password generated based off of common clock (RTC).
+  		\item Clocks will need to be synced with a common clock source periodically.
   	\end{itemize}
   \end{itemize}
  
@@ -323,7 +323,7 @@ Below is a block diagram containing all subsystems that will be designed and con
 The requirements for this semester are as follows: 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.45]{Requirements-Verification-Table.png}
+	\includegraphics[scale=0.54]{Requirements-Verification-Table.png}
 	\label{fig:brequirements-table}
 	\caption{Requirements and Verfication Table}
 \end{figure}
@@ -370,7 +370,7 @@ Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges o
 
 The equation to get the NEP from the detectivity is $\frac{A^{1/2}}{NEP}$. The NEP, then, for a 5mm photodiode is $\frac{\sqrt{.0025^2 * \pi}}{10^{12}} = 4.431 * 10^{-15} \frac{W}{Hz^{1/2}}$. Assuming we are operating in the IR wavelength, lets say the frequency is $4*10^{14} Hz$. This means the amount of power incident on the photodiode to cancel noise is $\sqrt{4*10^{14}Hz} * 4.431 * 10^{-15} \frac{W}{Hz^{1/2}} = 8.862*10^{-8} W$. 
 
-Taking the power to include the area of the photodiode, it takes $\frac{8.862*10^{-8}}{.0025^2 * \pi} \approx 0.0045 \frac{W}{m^2}$ for a signal to cancel out the noise. Broadcasting a PWM signal means producing a signal that registers as more than noise. As such, we will up the theoretical required energy by $100\%$. Assume $0.009 \frac{W}{m^2}$ is necessary to broadcast a PWM signal. \\
+Taking the power to include the area of the photodiode, it takes $\frac{8.862*10^{-8}}{.0025^2 * \pi} \approx 0.0045 \frac{W}{m^2}$ for a signal to cancel out the noise. Broadcasting a PWM signal means producing a signal that registers as more than noise. As such, we will up the theoretical required energy by $100\%$. Assume $0.009 \frac{W}{m^2}$ is necessary to broadcast a PWM signal. 
 
 Now, assume the laser comes out of a diverging lens in the form of a cone. Neglecting dissipation from light reflecting off of air, we can assume that the loss in power per unit area of the laser happens with respect to the area of the light spot. That is, a 5mW laser diverged to a 5 ft diameter will have much less power per area than a concentrated 5mW laser with an inch diameter.
 
@@ -391,7 +391,7 @@ Please refer to Figure \ref{fig:timeline} for the brief timeline of this project
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.5]{Timeline.png}
+	\includegraphics[scale=0.45]{Timeline.png}
 	\label{fig:timeline}
 	\caption{Timeline with Milestones\label{fig:timeline}}
 \end{figure}
