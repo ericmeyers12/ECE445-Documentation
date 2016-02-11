@@ -367,15 +367,15 @@ With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident powe
 
 Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the infrared range; therefore, the matching photodiode is of type InGaAs. Using this type of photodiode, the detectivity is between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. 
 
-The equation to get the NEP from the detectivity is $\frac{A^{1/2}}{NEP}$. The NEP, then, for a 5mm photodiode is $\frac{\sqrt{.0025^2 * \pi}}{10^{12}} = 4.431 * 10^{-15} \frac{W}{Hz^{1/2}}$. Assuming we are operating in the IR wavelength, lets say the frequency is $4*10^{14} Hz$. This means the amount of power incident on the photodiode to cancel noise is $\sqrt{4*10^{14}Hz} * 4.431 * 10^{-15} \frac{W}{Hz^{1/2}} = 8.5234*10^{-9} W$. 
+The equation to get the NEP from the detectivity is $\frac{A^{1/2}}{NEP}$. The NEP, then, for a 5mm photodiode is $\frac{\sqrt{.0025^2 * \pi}}{10^{12}} = 4.431 * 10^{-15} \frac{W}{Hz^{1/2}}$. Assuming we are operating in the IR wavelength, lets say the frequency is $4*10^{14} Hz$. This means the amount of power incident on the photodiode to cancel noise is $\sqrt{4*10^{14}Hz} * 4.431 * 10^{-15} \frac{W}{Hz^{1/2}} = 8.862*10^{-8} W$. 
 
-Taking the power to include the area of the photodiode, it takes $\frac{8.5234*10^{-9}}{.0025^2 * \pi} \approx 0.0005 \frac{W}{m^2}$ for a signal to cancel out the noise. Broadcasting a PWM signal means producing a signal that registers as more than noise. As such, we will up the theoretical required energy by an order of magnitude. Assume $0.005 \frac{w}{m^2}$ is necessary to broadcast a PWM signal. 
+Taking the power to include the area of the photodiode, it takes $\frac{8.862*10^{-8}}{.0025^2 * \pi} \approx 0.0045 \frac{W}{m^2}$ for a signal to cancel out the noise. Broadcasting a PWM signal means producing a signal that registers as more than noise. As such, we will up the theoretical required energy by $100%$. Assume $0.009 \frac{W}{m^2}$ is necessary to broadcast a PWM signal. 
 
 Now, assume the laser comes out of a diverging lens in the form of a cone. Neglecting dissipation from light reflecting off of air, we can assume that the loss in power per unit area of the laser happens with respect to the area of the light spot. That is, a 5mW laser diverged to a 5 ft diameter will have much less power per area than a concentrated 5mW laser with an inch diameter.
 
-The laser must cover a diameter of 5.5ft (1.6764 m) at 300 m. Let $P$ be the laser power needed. $\frac{P}{0.8382^2} * \pi = .005  \frac{w}{m^2}$
+The laser must cover a diameter of 5.5ft (1.6764 m) at 300 m. Let $P$ be the laser power needed. $\frac{P}{0.8382^2* \pi} = .009  \frac{w}{m^2}$
 
-This means the required power, $P$, is 11 milliwatts. 
+This means the required power, $P$, is 18 milliwatts. 
 
 Please note that the work being performed in the tolerance analysis sections takes up a total of 30 points in the requirements/verification table. 
 
