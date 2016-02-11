@@ -200,6 +200,8 @@ The system will mount to the side of any weapon, send out queries, ask if a targ
 
 This will be accomplished through a laser transmission system mounted to the rail (weaver mount) of a weapon. If the friendly personnel receives any of this signal (via phototransistors), it will respond with "acknowledgement" that it is friendly. Once the interrogator receives notice that the target is friendly, the dot sight will turn to a different color.
 
+It is important to note that, in order to have a laser communicate "friendly" for a swath the size of a person, there either need to be multiple photodetectors or a large beam from the laser. Because hundreds of photodetectors is not feasible, our design will use optical adjustment to create a large beam. 
+
 Encryption plays a large role in a system like this, and for this reason must be emphasized heavily in the design process. Pulse Width Modulation will be used to transmit a unique I.D. of the interrogator pointing their sights at a friendly target, and upon receiving this laser transmission, the target will respond with an RF signal. This RF Isotropic Signal will be encrypted with a passphrase that is generated using a method similar to a "Time-based one-time password" algorithm.
 
 The benefit of a system like this are the following:
@@ -236,8 +238,6 @@ The design of a system like this is very flexible and can be implemented in seve
 \end{enumerate}
 
 Below is a block diagram containing all subsystems that will be designed and constructed this semester. The red dotted line is referring to the Laser Subsystem which is essentially a adjustable laser that will reach the desired distance along with a photodetector to detect these signals. The blue dotted line is the R.F. Subsystem which will serve as the "acknowledgement" to the laser signal to notify the interrogator that the target they are pointing their weapon at is friendly. The green dotted line is referring to the Friendly Interrogator and the Friendly Target Subsystem which will be expanded upon in the following pages.
-
-
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.5]{System_Diagram.png}
@@ -264,6 +264,7 @@ Below is a block diagram containing all subsystems that will be designed and con
 		\item Medium Range (Urban Setting) : 50 - 150 m
 		\item Long Range : 150 - 300 m
 	\end{itemize}
+	\item At the extreme of each range, the diameter of the light spot from the laser should be 5-6ft; around the size of a person. 
 	\item P.W.M Signal to transmit signal attached with a unique I.D. of interrogator.
 		\begin{itemize}
 			\item Ability to adjust duty cycle to transmit information 
@@ -337,7 +338,7 @@ Capturing these requirements, the team must transmit a signal to a photo-detecto
 			\item Long Range (150 - 300 m)
 		\end{itemize}
 
-The team should then verify that the signal was received and processed by the MCU. Furthermore, the team should verify that the signal spans the width of a human chest. More concretely, that a sighted-in laser transmitter can be aimed at any point within 1-1.5 feet of the receiver and still register friendly. 
+The team should then verify that the signal was received and processed by the MCU. Furthermore, the team should verify that the signal spans the width of a human chest. More concretely, that a sighted-in laser transmitter can be aimed at any point within 2.5 - 3 feet of the receiver and still register friendly. 
 
 The team must transmit a signal over a distance of 300 meters that has the ability to be accurately received by a photo-detector and processed by an MCU. 
 
@@ -347,9 +348,34 @@ Test Procedure:
 	\item Mount the receiver 300 m downrange of the transmitter
 	\item Aim the laser transmitter directly at the receiver, using a mount (like a vice grip) to keep it stable. 
 	\item Verify the signal is received.
-	\item Aim and verify the signal is also received when aiming 1.5ft to the right, top, and bottom of the receiver. 
+	\item Aim and verify the signal is also received when aiming 2.5ft to the right, top, and bottom of the receiver. 
 	\item Repeat these steps for 50 m and 150 m. 
 \end{itemize}
+
+Ensuring that the laser can broadcast over this distance, with divergence, requires a careful selection of parts; including a sensitive photodiode and a powerful laser. 
+
+Because photodiodes are generally cheaper and consume less power than lasers, our starting point for selection criteria was to choose a sensitive photodiode. As such, we have selected the PIN photodiode. 
+
+With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, will have the highest detectivity for the infrared wavelength.  
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.4]{detectivity-table.png}
+	\label{fig:detectivity-table}
+	\caption{Specific Detectivity for Photodetector Materials \textsuperscript{\cite{Optical}} \label{fig:detectivity-table}}
+\end{figure}
+
+Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the infrared range; therefore, the matching photodiode is of type InGaAs. Using this type of photodiode, the detectivity is between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. 
+
+The equation to get the NEP from the detectivity is $\frac{A^{1/2}}{NEP}$. The NEP, then, for a 5mm photodiode is $\frac{\sqrt{.0025^2 * \pi}}{10^{12}} = 4.431 * 10^{-15} \frac{W}{Hz^{1/2}}$. Assuming we are operating in the IR wavelength, lets say the frequency is $4*10^{14} Hz$. This means the amount of power incident on the photodiode to cancel noise is $\sqrt{4*10^{14}Hz} * 4.431 * 10^{-15} \frac{W}{Hz^{1/2}} = 8.862*10^{-8} W$. 
+
+Taking the power to include the area of the photodiode, it takes $\frac{8.862*10^{-8}}{.0025^2 * \pi} \approx 0.0045 \frac{W}{m^2}$ for a signal to cancel out the noise. Broadcasting a PWM signal means producing a signal that registers as more than noise. As such, we will up the theoretical required energy by $100\%$. Assume $0.009 \frac{W}{m^2}$ is necessary to broadcast a PWM signal. \\
+
+Now, assume the laser comes out of a diverging lens in the form of a cone. Neglecting dissipation from light reflecting off of air, we can assume that the loss in power per unit area of the laser happens with respect to the area of the light spot. That is, a 5mW laser diverged to a 5 ft diameter will have much less power per area than a concentrated 5mW laser with an inch diameter.
+
+The laser must cover a diameter of 5.5ft (1.6764 m) at 300 m. Let $P$ be the laser power needed. $\frac{P}{0.8382^2* \pi} = .009  \frac{w}{m^2}$
+
+This means the required power, $P$, is 18 milliwatts. 
 
 Please note that the work being performed in the tolerance analysis sections takes up a total of 30 points in the requirements/verification table. 
 
@@ -366,7 +392,7 @@ Please refer to Figure \ref{fig:timeline} for the brief timeline of this project
 	\centering
 	\includegraphics[scale=0.5]{Timeline.png}
 	\label{fig:timeline}
-	\caption{Timeline with Milestones\label{fig:timeline}xx}
+	\caption{Timeline with Milestones\label{fig:timeline}}
 \end{figure}
 
 \begin{figure} [H]
