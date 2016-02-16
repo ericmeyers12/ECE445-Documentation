@@ -12,5 +12,5 @@
 \contentsline {subsection}{\numberline {5.3}Labor}{1}{subsection.5.3}
 \contentsline {section}{\numberline {6}Safety \& Ethical Considerations}{1}{section.6}
 \contentsline {section}{\numberline {7}Conclusion}{1}{section.7}
-\contentsline {section}{Reference}{1}{section.7}
+\contentsline {section}{Reference}{2}{section.7}
 \contentsfinish 

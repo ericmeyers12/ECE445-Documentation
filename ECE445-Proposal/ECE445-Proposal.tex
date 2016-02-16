@@ -355,7 +355,7 @@ Test Procedure:
 
 Ensuring that the laser can broadcast over this distance, with divergence, requires a careful selection of parts; including a sensitive photodiode and a powerful laser. 
 
-Because photodiodes are generally cheaper and consume less power than lasers, our starting point for selection criteria was to choose a sensitive photodiode. As such, we have selected the PIN photodiode. 
+Because photodiodes are generally cheaper and consume less power than lasers, our starting point for selection criteria was to choose a sensitive photodiode. As such, the team has selected the PIN photodiode. 
 
 With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, will have the highest detectivity for the infrared wavelength.  
 
@@ -368,7 +368,7 @@ With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident powe
 
 Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the infrared range; therefore, the matching photodiode is of type InGaAs. Using this type of photodiode, the detectivity is between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. 
 
-The equation to get the NEP from the detectivity is $\frac{A^{1/2}}{NEP}$. The NEP, then, for a 5mm photodiode is $\frac{\sqrt{.0025^2 * \pi}}{10^{12}} = 4.431 * 10^{-15} \frac{W}{Hz^{1/2}}$. Assuming we are operating in the IR wavelength, lets say the frequency is $4*10^{14} Hz$. This means the amount of power incident on the photodiode to cancel noise is $\sqrt{4*10^{14}Hz} * 4.431 * 10^{-15} \frac{W}{Hz^{1/2}} = 8.862*10^{-8} W$. 
+The equation to get the NEP from the detectivity is $\frac{A^{1/2}}{NEP}$. The NEP, then, for a 5mm photodiode is $\frac{\sqrt{.0025^2 * \pi}}{10^{12}} = 4.431 * 10^{-15} \frac{W}{Hz^{1/2}}$. Assuming the laser is operating in the IR wavelength, lets say the frequency is $4*10^{14} Hz$. This means the amount of power incident on the photodiode to cancel noise is $\sqrt{4*10^{14}Hz} * 4.431 * 10^{-15} \frac{W}{Hz^{1/2}} = 8.862*10^{-8} W$. 
 
 Taking the power to include the area of the photodiode, it takes $\frac{8.862*10^{-8}}{.0025^2 * \pi} \approx 0.0045 \frac{W}{m^2}$ for a signal to cancel out the noise. Broadcasting a PWM signal means producing a signal that registers as more than noise. As such, we will up the theoretical required energy by $100\%$. Assume $0.009 \frac{W}{m^2}$ is necessary to broadcast a PWM signal. 
 

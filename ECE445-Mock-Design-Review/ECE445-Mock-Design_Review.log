@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  14 FEB 2016 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 FEB 2016 12:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ECE445-Design_Review.tex
-(./ECE445-Design_Review.tex
+**ECE445-Mock-Design_Review.tex
+(./ECE445-Mock-Design_Review.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -798,8 +798,8 @@ Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 Package: titletoc 2011/12/15 v1.6 TOC entries
 \ttl@leftsep=\dimen196
 )
-(./ECE445-Design_Review.aux)
-\openout1 = `ECE445-Design_Review.aux'.
+(./ECE445-Mock-Design_Review.aux)
+\openout1 = `ECE445-Mock-Design_Review.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
 LaTeX Font Info:    ... okay on input line 136.
@@ -862,9 +862,9 @@ LaTeX Info: Redefining \ref on input line 136.
 LaTeX Info: Redefining \pageref on input line 136.
 LaTeX Info: Redefining \nameref on input line 136.
 
-(./ECE445-Design_Review.out) (./ECE445-Design_Review.out)
+(./ECE445-Mock-Design_Review.out) (./ECE445-Mock-Design_Review.out)
 \@outlinefile=\write4
-\openout4 = `ECE445-Design_Review.out'.
+\openout4 = `ECE445-Mock-Design_Review.out'.
 
 
 *geometry* driver: auto-detecting
@@ -914,9 +914,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./ECE445-Design_Review.toc)
+(./ECE445-Mock-Design_Review.toc)
 \tf@toc=\write5
-\openout5 = `ECE445-Design_Review.toc'.
+\openout5 = `ECE445-Mock-Design_Review.toc'.
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 176.
 
@@ -930,11 +930,11 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 
 
 ]
-<University-of-Illinois-logo.jpg, id=109, 395.4775pt x 156.585pt>
+<University-of-Illinois-logo.jpg, id=68, 395.4775pt x 156.585pt>
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 221
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 210
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -948,49 +948,48 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.221 \clearpage
+l.210 \clearpage
                  [1
 
  <./University-of-Illinois-logo.jpg>]
-(./ECE445-Design_Review.bbl
+No file ECE445-Mock-Design_Review.bbl.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
+(./ECE445-Mock-Design_Review.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
 
-LaTeX Warning: Empty `thebibliography' environment on input line 24.
 
-)
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 226
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [2
+Package rerunfilecheck Warning: File `ECE445-Mock-Design_Review.out' has change
+d.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
- (./ECE445-Design_Review.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 228.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
-Package rerunfilecheck Info: File `ECE445-Design_Review.out' has not changed.
-(rerunfilecheck)             Checksum: ECE517A28D69F6C05D7E764628C0F24A;866.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 228.
+Package rerunfilecheck Info: Checksums for `ECE445-Mock-Design_Review.out':
+(rerunfilecheck)             Before: 1728E17019D5B82E6071C7DF4B840B97;416
+(rerunfilecheck)             After:  98B3622D027FA26E8E828CEC8D8935A5;371.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 217.
  ) 
 Here is how much of TeX's memory you used:
- 21920 strings out of 493089
- 443412 string characters out of 6134842
- 590942 words of memory out of 5000000
- 24986 multiletter control sequences out of 15000+600000
- 10714 words of font info for 40 fonts, out of 8000000 for 9000
+ 21893 strings out of 493089
+ 443022 string characters out of 6134842
+ 571947 words of memory out of 5000000
+ 24968 multiletter control sequences out of 15000+600000
+ 10407 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,15n,67p,929b,801s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ECE445-Design_Review.pdf (4 pages, 100343 bytes).
+ 55i,15n,67p,442b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{section.8} has been referenced but does not exist
+, replaced by a fixed one
+
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on ECE445-Mock-Design_Review.pdf (3 pages, 92249 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 95 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 
