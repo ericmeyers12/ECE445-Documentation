@@ -206,32 +206,23 @@ The subsystem of the Laser Transmitter will be broken down into 5 primary module
 \end{enumerate}
 
 \subsection*{Power Module}
-The Power Module will consist of a standard 9V battery. The type of battery is at the discretion of the operator due to the availability on the market. However, at battery with least 250 mAh of use time must be selected to supply the circuit with 9V over a period of 8 hours. The team will chose to use a 9V 300 mAh NiMH Rechargable Battery for testing purposes.
+The Power Module will consist of a standard 9V battery. The type of 9-volt battery is at the discretion of the operator due to the availability on the market (i.e. either rechargable or disposable). However, a battery with least 250 mAh of use time must be selected to supply the circuit with 9V over a period of 8 hours. The team will chose to use a 9V 300 mAh NiMH Rechargable Battery for testing purposes.
 
-The team decided to use a 9 V battery instead of four double-A batteries due to the need of maintaining a constant 3.3V over time as well as...
-
-ADD MORE
+The team decided to use a 9 V battery instead of four double-A batteries due to the need of maintaining a constant 3.3V over time as well as simplicity (having one battery with a regulator is much simpler than having 4 double A batteries).
 
 \subsection*{Voltage Step Down Regulator}
-The voltage step-down regulator will take the 9V supply input and step it down to 3.3V to supply the MSP430 MCU
-
-ADD MORE
+The LD1117V33 voltage step-down regulator will take the 9V supply input and step it down to 3.3V to supply the MSP430 MCU. The voltage regulator will supply a maximum of 900 mA of current which will be significantly less than this circuit draws.
 
 \subsection*{Microcontroller}
-This design choice was by far the most difficult. 
-
-ADD MORE
+This design choice was by far the most difficult. The team chose to work with an T.I. MSP430F2274 Microcontroller Unit due to its simplicity, its availability in the ECE445 Senior Design Labs (inventory) and the number of GPIO Pins on board. The 
 
 \subsection*{Real Time Clock}
-The Real Time Clock is not entirely neccessary for the operation of the Laser Transmitter Subsystem, however it will be neccessary for the operation of the R.F. Receiver and thus must be included in the MCU circuit.
-
-ADD MORE
+The Real Time Clock is not entirely neccessary for the operation of the Laser Transmitter Subsystem, however it will be neccessary for the operation of the R.F. Receiver and thus must be included in the MCU circuit. It will operate using a 32.768 kHz Crystal Oscillator (as reccomended by T.I.)
 
 \subsection*{Laser Diode}
-The laser diode...
+The 5mW laser diode will operate on 3.3V at 25mA so a 1.3l$\omega$ resistor is neccessary to drop the current being supplied to the diode down to this threshold. This laser diode will prode a beam width of \_\_\_
 
-ADD MORE
-
+NOAH MAYBE ADD MORE TECHINCAL DETAIL FOR LASER DIODE SECTION
 
 \clearpage
 
