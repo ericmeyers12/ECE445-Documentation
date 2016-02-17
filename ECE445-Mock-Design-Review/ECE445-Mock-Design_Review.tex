@@ -33,7 +33,7 @@
 \renewcommand{\footrulewidth}{0pt}
 \fancyfoot[C]{\textcolor{black}{\thepage}}
 \fancyhead[L]{\includegraphics[width=2cm]{University-of-Illinois-logo.jpg}}
-\fancyhead[R]{\small{Infantry I.F.F. Proposal - Meyers \& Prince}}
+\fancyhead[R]{\small{Infantry I.F.F. Mock Design Review - Meyers \& Prince}}
 
 % paralist provides extended list environments
 \usepackage{paralist}
@@ -173,7 +173,10 @@ Project No. 11
 \pagenumbering{gobble}
 \section*{Acronyms \& Pre-Requisite Information}
 \begin{itemize}
-	\item \hl{INCLUDE MORE ABBREVIATIONS HERE}
+	\item MCU - Microcontroller Unit
+	\item R.F. - Radio Frequency
+	\item T.I. - Texas Instruments
+	\item 
 \end{itemize}
 \clearpage
 \setcounter{page}{1}
@@ -181,29 +184,74 @@ Project No. 11
 
 %SECTION 1 - Introduction - Eric
 \section{Introduction}
-ERIC SECTION
+This document is a "Mock Design Review" in preparation for the Design Review occuring during the week of February 29th, 2016. This will better prepare the team for documentation of the design and construction of the Infantry I.F.F. System.
 
 %SECTION 2 - Design - Eric
 \section{Block Diagram}
-ERIC SECTION
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.50]{Block_Diagram.png}
+	\caption{Block Diagram of Laser Transmitter\label{fig:circuit-schematic}}
+\end{figure}
+
+%SECTION 5 - Block Description - Eric
+\section{Block Description}
+The subsystem of the Laser Transmitter will be broken down into 5 primary modules:
+\begin{enumerate}
+	\item Power Module
+	\item Voltage Step Down Regulator
+	\item Microcontroller 
+	\item Real Time Clock
+	\item Laser Diode
+\end{enumerate}
+
+\subsection*{Power Module}
+The Power Module will consist of a standard 9V battery. The type of battery is at the discretion of the operator due to the availability on the market. However, at battery with least 250 mAh of use time must be selected to supply the circuit with 9V over a period of 8 hours. The team will chose to use a 9V 300 mAh NiMH Rechargable Battery for testing purposes.
+
+The team decided to use a 9 V battery instead of four double-A batteries due to the need of maintaining a constant 3.3V over time as well as...
+
+ADD MORE
+
+\subsection*{Voltage Step Down Regulator}
+The voltage step-down regulator will take the 9V supply input and step it down to 3.3V to supply the MSP430 MCU
+
+ADD MORE
+
+\subsection*{Microcontroller}
+This design choice was by far the most difficult. 
+
+ADD MORE
+
+\subsection*{Real Time Clock}
+The Real Time Clock is not entirely neccessary for the operation of the Laser Transmitter Subsystem, however it will be neccessary for the operation of the R.F. Receiver and thus must be included in the MCU circuit.
+
+ADD MORE
+
+\subsection*{Laser Diode}
+The laser diode...
+
+ADD MORE
+
+
+\clearpage
 
 %SECTION 3 - Circuit Schematic - Eric
 \section{Circuit Schematic}
-ERIC SECTION
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.38]{Circuit_Schematic.png}
+	\caption{Circuit Schematic of Laser Transmitter\label{fig:circuit-schematic}}
+\end{figure}
 
 %SECTION 4 - Plot/Experiment - Noah
 \section{Plot}
 NOAH SECTION
 
-%SECTION 5 - Block Description - Eric
-\section{Block Description}
-ERIC SECTION
-
-%SECTION 6 - Requirements and Verification - Both 
+%SECTION 5 - Requirements and Verification - Both 
 \section{Requirements and Verification}
 FILL OUT TOGETHER
 
-%SECTION 7 - Safety - Noah
+%SECTION 6 - Safety - Noah
 \section{Safety \& Ethical Considerations}
 NOAH SECTION
 
