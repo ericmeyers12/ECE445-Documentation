@@ -3,6 +3,8 @@
 \contentsline {section}{\numberline {3}Block Description}{1}{section.3}
 \contentsline {section}{\numberline {4}Circuit Schematic}{3}{section.4}
 \contentsline {section}{\numberline {5}Plot}{3}{section.5}
-\contentsline {section}{\numberline {6}Requirements and Verification}{3}{section.6}
-\contentsline {section}{\numberline {7}Safety \& Ethical Considerations}{4}{section.7}
+\contentsline {section}{\numberline {6}Calculation}{4}{section.6}
+\contentsline {section}{\numberline {7}Requirements and Verification}{4}{section.7}
+\contentsline {section}{\numberline {8}Safety \& Ethical Considerations}{4}{section.8}
+\contentsline {section}{Reference}{6}{Item.8}
 \contentsfinish 

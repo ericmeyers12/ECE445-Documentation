@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ECE 445 SENIOR DESIGN TEMPLATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[openbib,letterpaper,10pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The preamble starts here.
@@ -43,22 +43,6 @@
 \usepackage{xcolor}
 \definecolor{titlecolor}{RGB}{31,73,125}
 \definecolor{subtitlecolor}{RGB}{79,129,189}
-
-% tikz/pgf environment for making graphs
-\usepackage{tikz}
-\usepackage{tikz-timing}[2009/12/09]
-\usetikzlibrary{shapes,arrows}
-\usetikztiminglibrary[new={char=Q,reset char=R}]{counters}
-
-% change the style of the abstract environment
-\usepackage{abstract}
-\setlength{\absparsep}{6pt}
-\setlength{\absleftindent}{0pt}
-\setlength{\absrightindent}{0pt}
-\setlength{\abstitleskip}{-18pt}
-\renewcommand{\absnamepos}{flushleft}
-\renewcommand{\abstractnamefont}{\normalfont\Large\singlespacing\bfseries}
-\renewcommand{\abstractname}{\textcolor{titlecolor}{Abstract}}
 
 % change the style of the section and subsection titles
 \usepackage{titlesec}
@@ -112,11 +96,6 @@
 	\vspace{-5pt}
 }
 
-% define the style of the abstract's page number
-\newcommand{\abstractsetting}{
-	\pagenumbering{roman}
-	\thispagestyle{fancy}
-}
 
 \newcommand{\buildtoc}{
 	\clearpage
@@ -176,7 +155,7 @@ Project No. 11
 	\item MCU - Microcontroller Unit
 	\item R.F. - Radio Frequency
 	\item T.I. - Texas Instruments
-	\item 
+	\item PPM - Parts Per Million - used to designate accuracy of crystal oscillator 
 \end{itemize}
 \clearpage
 \setcounter{page}{1}
@@ -184,7 +163,7 @@ Project No. 11
 
 %SECTION 1 - Introduction - Eric
 \section{Introduction}
-This document is a "Mock Design Review" in preparation for the Design Review occuring during the week of February 29th, 2016. This will better prepare the team for documentation of the design and construction of the Infantry I.F.F. System.
+This document is a "Mock Design Review" in preparation for the Design Review occuring during the week of February 29th, 2016. This will outline the preliminary design for one block of the entire system. The system the team decided upon was the Laser Transmission Subsystem on board the Friendly Interrogator Unit.
 
 %SECTION 2 - Design - Eric
 \section{Block Diagram}
@@ -206,21 +185,21 @@ The subsystem of the Laser Transmitter will be broken down into 5 primary module
 \end{enumerate}
 
 \subsection*{Power Module}
-The Power Module will consist of a standard 9V battery. The type of 9-volt battery is at the discretion of the operator due to the availability on the market (i.e. either rechargable or disposable). However, a battery with least 250 mAh of use time must be selected to supply the circuit with 9V over a period of 8 hours. The team will chose to use a 9V 300 mAh NiMH Rechargable Battery for testing purposes.
+The Power Module will consist of four standard rechargable 1.2V AA NiMH batteries. This will provide an output voltage of 4.8V when placed in series in a battery pack. Depending on the manufacture chosen and the battery model, the batteries will hold a capacity of 1000 mAh to 3000mAh. For budgetary purposes the team will choose the ladder (a battery with a smaller capacity) because this will easily satisfy the requirements of powering the module for minimum of 8 hours. The friendly interrogator unit will not be drawing much current however thre are restraints placed on the current drawn from this battery in order to satisfy the time requirement. A 1000mAh battery will supply a circuit with 125 mA for 8 hours, therefore this unit must not draw more than 125 mA, which will be achievable.
 
-The team decided to use a 9 V battery instead of four double-A batteries due to the need of maintaining a constant 3.3V over time as well as simplicity (having one battery with a regulator is much simpler than having 4 double A batteries).
+The team decided to use four standard AA 1.2V NiMH rechargable batteries instead of any other standard batteries (such as disposable AAA or AA or a 9V battery) for several reasons. For one, the laser diode (as disccussed later on) operates on a voltage from 4.5 - 5.5 voltage and this will satisfy this requirement. Also, the capacity is much higher for AA rechargable batteries than 9V batteries so therefore the team went with the obvious option of choosing the AA batteries.  
 
 \subsection*{Voltage Step Down Regulator}
-The LD1117V33 voltage step-down regulator will take the 9V supply input and step it down to 3.3V to supply the MSP430 MCU. The voltage regulator will supply a maximum of 900 mA of current which will be significantly less than this circuit draws.
+The LD1117V33 Voltage Step-Down Regulator\textsuperscript{\cite{LD1117-Voltage-Regulator}} will take the 4.8V supply input and step it down to 3.3V to supply the MSP430 MCU. The voltage regulator will supply a maximum of 900 mA of current which will be significantly less than this circuit draws.
 
 \subsection*{Microcontroller}
-This design choice was by far the most difficult. The team chose to work with an T.I. MSP430F2274 Microcontroller Unit due to its simplicity, its availability in the ECE445 Senior Design Labs (inventory) and the number of GPIO Pins on board. The 
+This design choice was by far the most difficult. The team chose to work with an T.I. MSP430F2274 Microcontroller Unit \textsuperscript{\cite{MSP430F2274}} due to its compiler simplicity, its availability in the ECE445 Senior Design Labs (inventory) and the number of GPIO Pins on board (compared to other options, this model had several I/O pins and was the most inexpensive). Compared to many other MCUs on the market, the MSP430 is relatively well documented and there exist several support forums on the internet to assist the team throughtout the duration of the project.
 
 \subsection*{Real Time Clock}
-The Real Time Clock is not entirely neccessary for the operation of the Laser Transmitter Subsystem, however it will be neccessary for the operation of the R.F. Receiver and thus must be included in the MCU circuit. It will operate using a 32.768 kHz Crystal Oscillator (as reccomended by T.I.)
+The Real Time Clock is not entirely neccessary for the operation of the Laser Transmitter Subsystem, however it will be neccessary for the operation of the R.F. Receiver and thus must be included in the MCU circuit. It will operate using a 32.768 kHz Crystal Oscillator (as reccomended by T.I. \textsuperscript{\cite{RTC-Implementation}}) with an accuracy of +/- 20 PPM (deviates between 32.7673 kHz and 32.7687 kHz).
 
 \subsection*{Laser Diode}
-The 5mW laser diode will operate on 3.3V at 25mA so a 1.3l$\omega$ resistor is neccessary to drop the current being supplied to the diode down to this threshold. This laser diode will prode a beam width of \_\_\_
+The 5mW laser diode will operate on 3.3V at 25mA so a 1.3k$\Omega$ resistor is neccessary to drop the current being supplied to the diode down to this threshold. This laser diode will prode a beam width of \_\_\_
 
 Due to safety and ethical considerations, the requirements have changed for the divergence of the beam. The proposal stated a requirement of a 5-6 ft diameter beam at 50, 150, and 300 m (with optical adjustments allowed). 
 
@@ -232,10 +211,10 @@ For a diameter equal to the one stated in the proposal ($\approx 1.6764 m$), a $
 
 The radius achieved using a $5 mW$ laser is given by $\sqrt{\frac{P}{E_{req} \pi}} = 0.420522 m$. This is approximately a $2.75 ft$ diameter beam, which is still the size of a person's chest. 
 
-\clearpage
 
 %SECTION 3 - Circuit Schematic - Eric
 \section{Circuit Schematic}
+The circuit schematic is for the Laser Transmission Subsystem on the Friendly Interrogator Unit.
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.38]{Circuit_Schematic.png}
@@ -251,15 +230,19 @@ Figure \ref{fig:nohdplot} depicts the Nominal Ocular Hazard Distance (NOHD) vs t
 	\caption{NOHD vs Power for Laser Diode\label{fig:nohdplot}}
 \end{figure}
 
-%SECTION 5 - Requirements and Verification - Both 
+%SECTION 5 - Calculations - Both
+\section{Calculation}
+Please reference Section \ref{section-safety-ethics} for calculations regarding the safety of the laser transmitter. 
+
+%SECTION 6 - Requirements and Verification - Both 
 \section{Requirements and Verification}
 FILL OUT TOGETHER
 
-%SECTION 6 - Safety - Noah
-\section{Safety \& Ethical Considerations}
-The proposal requirements would have required a $20mW$ IR laser. \hl{Eric, can you put more information about registering the laser and shit at 20mW?}. 
+%SECTION 7 - Safety - Noah
+\section{Safety \& Ethical Considerations} \label{section-safety-ethics}
+The proposal requirements would have required a $20mW$ IR laser. However, in the State of Illinois, a 20mW laser is considered a Class 3B laser and must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. This would have required the team to file the correct paperwork and pay a registration fee of \$50. This paperwork would have likely caused delays in receiving parts and construction of this project. A 20 mW laser would have also needed much more pre-caution and safety mitigations than a much less powerful laser.
 
-The team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
+For the reasons stated above, the team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
 
 The following is a calculation for the nominal ocular hazard distance (NOHD) of our laser, as defined by the ANSI Standard \cite{ANSI}.
 
@@ -302,6 +285,7 @@ Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the 
 The team will avoid eye damage by not working with their eyes inside of 8 cm from the laser. If it is necessary to get this close to the laser, the team will wear eye protection or simply power off the laser. 
 
 \clearpage
+
 \bibliographystyle{IEEE_ECE}
 % include the BibTex file here to build reference
 \bibliography{Citations}\addcontentsline{toc}{section}{Reference}
