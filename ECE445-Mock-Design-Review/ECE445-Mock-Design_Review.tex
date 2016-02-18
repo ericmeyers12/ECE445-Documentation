@@ -222,7 +222,15 @@ The Real Time Clock is not entirely neccessary for the operation of the Laser Tr
 \subsection*{Laser Diode}
 The 5mW laser diode will operate on 3.3V at 25mA so a 1.3l$\omega$ resistor is neccessary to drop the current being supplied to the diode down to this threshold. This laser diode will prode a beam width of \_\_\_
 
-NOAH MAYBE ADD MORE TECHINCAL DETAIL FOR LASER DIODE SECTION
+Due to safety and ethical considerations, the requirements have changed for the divergence of the beam. The proposal stated a requirement of a 5-6 ft diameter beam at 50, 150, and 300 m (with optical adjustments allowed). 
+
+With some tolerance, the PIN photodiode can register an irradiance of 9 $\frac{W}{m^2}$. The laser required to achieve this irradiance is a function of the laser power and the radius of the beam. With relatively short distances of 0-300 m, atmospheric deflection of light is negligible. 
+
+Using trigonometry, the power as a function of radius is given by $P = \pi r^2  E_{req} $, where $r$ is the radius (in meters) and $E_{req}$ is the required irradiance of 9 $\frac{W}{m^2}$. 
+
+For a diameter equal to the one stated in the proposal ($\approx 1.6764 m$), a $\pi (0.8382)^2(9) \approx 20 mW$ laser is needed. A $20 mW$ laser is a Class 3B laser, and is considered dangerous. For the scope of this senior design project, a $5mW$ laser will be used instead. 
+
+The radius achieved using a $5 mW$ laser is given by $\sqrt{\frac{P}{E_{req} \pi}} = 0.420522 m$. This is approximately a $2.75 ft$ diameter beam, which is still the size of a person's chest. 
 
 \clearpage
 
@@ -244,7 +252,49 @@ FILL OUT TOGETHER
 
 %SECTION 6 - Safety - Noah
 \section{Safety \& Ethical Considerations}
-NOAH SECTION
+The proposal requirements would have required a $20mW$ IR laser. \hl{Eric, can you put more information about registering the laser and shit at 20mW?}. 
+
+The team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
+
+The following is a calculation for the nominal ocular hazard distance (NOHD) of our laser, as defined by the ANSI Standard \cite{ANSI}.
+
+The maximum permissible exposure (MPE), as defined by the ANSI Standard \cite{ANSI} is the highest power or energy density of a light source that is considered safe, i.e. that has a negligible probability for creating damage. This MPE for a pulsing laser is calculated as the minimum of the following three rules:
+
+\begin{enumerate}
+	\item Any single pulse in the train must not exceed the MPE for the pulse exposure time.
+	\item The exposure from any group of pulses delivered in time T must not exceed the MPE for
+	time T, where T is 0.25 seconds (from the blinking reflex), for a visible laser. 
+	\item For thermal injury, the exposure for any single pulse within a group of pulses must not
+	exceed the single-pulse MPE multiplied by a multiple-pulse correction factor
+\end{enumerate}
+
+The laser will pulse at a rate of 40 kHz. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $300m$. The divergence of the beam for 300m is 2.79 mrad and the beam waist is approximately $4 mm$. \\
+
+Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
+
+{\large $5*10^{-3}*(\frac{2.79}{1.5})  = 0.0093 \frac{J}{m^2}$ }\\
+
+The Rule 2 calculation is
+
+{\large $\frac{18(.25^{0.75})(\frac{2.79}{1.5})}{.25*40000} = 0.0011837 \frac{J}{m^2}$ }\\
+
+The Rule 3 calculation is
+
+{\large $(.25*40000)^{0.25} * 5*10^{-3}*(\frac{2.79}{1.5}) = 0.093 \frac{J}{m^2}$ }\\
+
+The most restrictive of all the rules is Rule 2, which gives us an MPE of $0.0011837 \frac{J}{m^2}$.
+
+At $5mW$ with a pulse width of $1.25*10^{-5}$, the power of the laser is $6.25*10^{-8} J$. 
+
+The NOHD is defined as
+
+{\LARGE $ \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}$}
+
+Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam ($1mm$). This gives an NOHD of 
+
+{\Large$ \frac{\sqrt{\frac{4 * 6.25*10^{-8}}{\pi * 0.0011837}} - 2(0.004)}{0.00279} = 0.0713 m \approx 3 in $}
+	
+The team will avoid eye damage by not working with their eyes inside of 3 inches from the laser. If it is necessary to get this close to the laser, the team will wear eye protection or simply power off the laser. 
 
 \clearpage
 \bibliographystyle{IEEE_ECE}

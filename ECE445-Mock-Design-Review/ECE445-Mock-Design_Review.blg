@@ -2,21 +2,20 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ECE445-Mock-Design_Review.aux
 I couldn't open style file IEEE_ECE.bst
----line 31 of file ECE445-Mock-Design_Review.aux
+---line 33 of file ECE445-Mock-Design_Review.aux
  : \bibstyle{IEEE_ECE
  :                   }
 I'm skipping whatever remains of this command
 I couldn't open database file Citations.bib
----line 32 of file ECE445-Mock-Design_Review.aux
+---line 34 of file ECE445-Mock-Design_Review.aux
  : \bibdata{Citations
  :                   }
 I'm skipping whatever remains of this command
-I found no \citation commands---while reading file ECE445-Mock-Design_Review.aux
 I found no database files---while reading file ECE445-Mock-Design_Review.aux
 I found no style file---while reading file ECE445-Mock-Design_Review.aux
-You've used 0 entries,
+You've used 1 entry,
             0 wiz_defined-function locations,
-            85 strings with 541 characters,
+            87 strings with 549 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
@@ -55,4 +54,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 0
-(There were 5 error messages)
+(There were 4 error messages)
