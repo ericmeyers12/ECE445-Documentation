@@ -1,8 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: ECE445-Proposal.aux
+The top-level auxiliary file: ECE445_Design_Review_Project_11.aux
 The style file: IEEE_ECE.bst
-I found no \citation commands---while reading file ECE445-Proposal.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -14,45 +13,44 @@ Database file #1: Citations.bib
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 0 entries,
+You've used 4 entries,
             4031 wiz_defined-function locations,
-            809 strings with 7229 characters,
-and the built_in function-call counts, 103 in all, are:
-= -- 0
-> -- 0
+            829 strings with 7825 characters,
+and the built_in function-call counts, 1502 in all, are:
+= -- 121
+> -- 4
 < -- 0
-+ -- 0
++ -- 4
 - -- 0
-* -- 19
-:= -- 26
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+* -- 73
+:= -- 283
+add.period$ -- 8
+call.type$ -- 4
+change.case$ -- 7
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
+cite$ -- 4
+duplicate$ -- 124
+empty$ -- 143
 format.name$ -- 0
-if$ -- 3
+if$ -- 308
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 23
+int.to.str$ -- 4
+missing$ -- 27
+newline$ -- 41
 num.names$ -- 0
-pop$ -- 0
+pop$ -- 78
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1
+skip$ -- 115
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 10
+swap$ -- 66
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 0
+type$ -- 4
 warning$ -- 0
 while$ -- 0
-width$ -- 0
-write$ -- 22
-(There was 1 error message)
+width$ -- 5
+write$ -- 61

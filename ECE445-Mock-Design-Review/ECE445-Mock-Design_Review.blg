@@ -8,51 +8,49 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Citations.bib
-Warning--I didn't find a database entry for "ANSI"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 3 entries,
+You've used 4 entries,
             4031 wiz_defined-function locations,
-            827 strings with 7734 characters,
-and the built_in function-call counts, 1239 in all, are:
-= -- 105
-> -- 3
+            829 strings with 7813 characters,
+and the built_in function-call counts, 1502 in all, are:
+= -- 121
+> -- 4
 < -- 0
-+ -- 3
++ -- 4
 - -- 0
-* -- 67
-:= -- 244
-add.period$ -- 6
-call.type$ -- 3
-change.case$ -- 6
+* -- 73
+:= -- 283
+add.period$ -- 8
+call.type$ -- 4
+change.case$ -- 7
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 96
-empty$ -- 109
+cite$ -- 4
+duplicate$ -- 124
+empty$ -- 143
 format.name$ -- 0
-if$ -- 249
+if$ -- 308
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 21
-newline$ -- 38
+int.to.str$ -- 4
+missing$ -- 27
+newline$ -- 41
 num.names$ -- 0
-pop$ -- 60
+pop$ -- 78
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 90
+skip$ -- 115
 stack$ -- 0
-substring$ -- 9
-swap$ -- 54
+substring$ -- 10
+swap$ -- 66
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 3
+type$ -- 4
 warning$ -- 0
 while$ -- 0
-width$ -- 4
-write$ -- 55
-(There was 1 warning)
+width$ -- 5
+write$ -- 61
