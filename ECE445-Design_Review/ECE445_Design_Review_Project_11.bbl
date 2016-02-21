@@ -21,13 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{LD1117-Voltage-Regulator}
-\BIBentryALTinterwordspacing
-``Adjustable and fixed low drop positive voltage regulator,'' Web, {S}{T}
-  {L}ife {A}ugmented, accessed February 2016. [Online]. Available:
-  \url{https://www.adafruit.com/images/product-files/2165/LD1117.pdf}
-\BIBentrySTDinterwordspacing
-
 \bibitem{MSP430F2274}
 \BIBentryALTinterwordspacing
 ``{M}ixed {S}ignal {M}icrocontroller {MSP430F22x4},'' Web, {T}exas
