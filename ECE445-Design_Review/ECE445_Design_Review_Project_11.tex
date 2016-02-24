@@ -148,7 +148,7 @@
 
 % put the date and project number here. DO NOT include the brackets.
 \date{
-{February 29th, 2016}\\
+{March 2nd, 2016}\\
 Project No. 11
 \clearpage
 }
@@ -212,39 +212,35 @@ The following figure represents the system as a whole, including both the friend
 \end{figure}
 
 %DESIGN - FRIENDLY INTERROGATOR UNIT
-\subsubsection{Friendly Interrogator Unit}
+\subsubsection{Friendly Interrogator Unit} \label{section-friendly-interrogator-design}
 The following diagram shows the friendly interrogator unit \textit{only}. The interconnections in red represent power, interconnections in blue represent input to a block and interconnections in green represent output to a block. These inputs and outputs are described below under each block description.
 \begin{figure} [H]
 \centering
-\includegraphics[scale=0.50]{Friendly_Interrogator_Block_Diagram.png}
+\includegraphics[scale=0.48]{Friendly_Interrogator_Block_Diagram.png}
 \caption{Block Diagram of Friendly Interrogator Unit\label{fig:friendly-interrogator-block}}
 \end{figure}
 
-\normalsize\textbf{Power Module} \\ 
-Power-In: N/A \\
-Power-Out: Microcontroller Unit (3.3V), Laser Diode (4.8V), R.F. Receiver (4.8V) \\
-Input(s): N/A \\
-Output(s): N/A
+\normalsize\textbf{Power Module} \\
+Power-In, ,  N/A \\
+Power-Out: MSP430 Microcontroller Unit (Pin \_\_\_), Laser Diode, R.F. Receiver (Pin \_\_\_\_), LED Indicator \\
+Input(s): N/A\\
+Output(s): N/A\\
 
-The Power Module will consist of four standard rechargable 1.2V AA NiMH batteries which will provide a voltage of 4.8 when placed in series in a battery pack. This will then feed into a LD1117V33 Voltage Step-Down Regulator to bring the voltage to 3.3V. This 3.3V is necessary to provide the Microcontroller the correct voltage. The voltage regulator will provide a maximum of 900 mA of current which is well sufficient for this project. The schematic for the voltage regulator is depicted in Figure \ref{fig:ld1117-voltage-regulator-circuit}.
+The power module will consist of a single standard alkaline AA battery (no specific brand/part name is necessary) which will lead into a Skyworks AAT1217 DC-DC step-up voltage converter. This will step the voltage up to 3.3V with a maximum current output of 100 mA which is sufficient enough to power the MCU, laser transmitter, and the R.F. receiver. Please refer to  Section \ref{section-simulations-calculations} for these calculations regarding power delivery to this unit. 
 
-Depending on the manufacture chosen and the battery model, the batteries will hold a capacity of 1000 mAh to 3000mAh. For budgetary purposes the team will choose the ladder (a battery with a smaller capacity) because this will easily satisfy the requirements of powering the module for minimum of 8 hours. \hl{maybe show calculation???} The friendly interrogator unit will not be drawing much current however there are restraints placed on the current drawn from this battery in order to satisfy the time requirement. A 1000mAh battery will supply a circuit with 125 mA for 8 hours, therefore this unit must not draw more than 125 mA, which will be achievable.
+As noted on the block diagram, in between the power module and the R.F. receiver/laser transmitter, there is a switch to control the power given to these two modules. This switch exists for two reasons: (1) to decrease power consumption and (2) to limit the amount of time the laser transmitter is sending data. This design choice will be expanded upon in Section \_\_\_.
 
-The team decided to use four standard AA 1.2V NiMH rechargable batteries instead of any other standard batteries (such as disposable AAA or AA or a 9V battery) for several reasons. For one, the laser diode (as discussed later on) operates on a voltage from 4.5 - 5.5 voltage and this will satisfy this requirement. Also, the capacity is much higher for AA rechargeable batteries than 9V batteries so therefore the team went with the obvious option of choosing the AA batteries.
+The circuit to operate the DC-DC step-up converter is shown in Figure \ref{fig:aat1217-voltage-converter-circuit}. \\
 
-\hl{discuss case and mount???} \\
-\hl{discuss switch and power-on process? 
-	-the friendly target should on at all times once the operator turns it o
-	-the friendly interrogator unit should only should turn on when the operator triggers it (i.e. the laser should not be constantly pulsing, it should only be when the interrogator wants to check the target status) - switch would solve this\\
-	im not really sure how to word/organize all of this?}
+The battery will be mounted to the PCB through a standard mount shown in Figure \_\_\_. 
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.45]{LD1117_Voltage_Regulator_Circuit.png}
-	\caption{System Block Diagram\label{fig:ld1117-voltage-regulator-circuit}}
+	\includegraphics[scale=0.5]{AAT1217_Voltage_Converter_Schematic.png}
+	\caption{AAT1217 Circuit Schematic\label{fig:aat1217-voltage-converter-circuit}}
 \end{figure}
 
-\normalsize\textbf{Microcontroller} \\
+\normalsize\textbf{MSP430 Microcontroller} \\
 Power-In: 3.3V (from Power Module) \\
 Power-Out: ?? \\
 Input(s): Received R.F. Signal, Real Time Clock (32.768kHz Crystal Oscillator) \\
@@ -265,17 +261,18 @@ Please refer to Section \ref{section-functionality} to view in-depth discussion 
 \end{figure}
 
 \normalsize\textbf{Real Time Clock}\\
+Part Name: 
 Power-In: N/A \\
 Power-Out: N/A \\
 Input(s): N/A \\
-Output(s): Microcontroller
+Output(s): MSP430 Microcontroller Pins 5 \& 6 (X \textsubscript{in} and X\textsubscript{out})
 
 The Real Time Clock is not entirely necessary for the operation of the Laser Transmitter Subsystem, however it will be necessary for the operation of the R.F. Receiver and thus must be included in the MCU circuit. It will operate using a 32.768 kHz Crystal Oscillator (as recommended by T.I. \textsuperscript{\cite{RTC-Implementation}}) with an accuracy of +/- 20 PPM (deviates between 32.7673 kHz and 32.7687 kHz).
 
 \normalsize\textbf{Laser Diode}\\
 Power-In: \\
 Power-Out: \\
-Input(s): Microcontroller TTL Input /hl{change}\\
+Input(s): MSP430 Microcontroller Pins \_\_ \& \_\_ (List Pin Labels Here)\hl{change} \\
 Output(s): 5mW Laser Beam 
 
 The 5mW laser diode will operate on 3.3V at 25mA so a 1.3k$\Omega$ (confirm?) resistor is necessary to drop the current being supplied to the diode down to this threshold. 
@@ -411,6 +408,47 @@ The operator will trigger the power of the friendly interrogator unit which will
 \subsection{Numerical Analysis and Simulations/Plots} \label{section-simulations-calculations}
 
 \subsubsection{Calculations}
+\normalsize\textbf{Power Module (Friendly Interrogator Unit)} \\
+The following section is intended to backup the design choices made for the power module on the friendly interrogator first shown in section \ref{section-friendly-interrogator-design}.
+
+The team placed a strict requirement (shown in section \_\_\_) regarding the operation time of the friendly interrogator unit (at 8 hours of operation time $\pm$ 5\% \hl{verify}).
+
+In order to select parts that satisfied this requirement, the active current consumption on the entire unit must first be calculated. The main power consumption modules on board the friendly interrogator unit are the MSP430F2274, the 5mW 635nm TTL laser transmitter, and the Linx KH3 R.F. receiver. These values were received from each of the respective datasheets. The following table displays the active current consumption of each unit. 
+
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|c|c}	% ccccccc indicates 7 center aligned columns
+		\toprule	% top separator
+		Module & Active Current Consumption & Standby Current Consumption\\
+		\midrule
+		MSP430 & 270 $\mu$A & 0.1 - 0.7 $\mu$A\\ 
+		Linx KH3 R.F. Receiver & 5.9 mA & 0 mA\\
+		5 mW Laser & 25 mA (max) & 0 mA \\
+	\bottomrule	% bottom separator
+	\end{tabular}%
+	\caption{Notable Datasheet Values for Linx 315 MHz LR R.F. Receiver}
+	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+\end{table}%
+
+Because the R.F. receiver and the 5mW laser will only be powered when the operator designates, the standby current consumption of these units will be 0.
+
+Therefore, with this information, the maximum possible active current consumption will be:
+\begin{center}{I\textsubscript{Total} = $270 \mu A + 25 mA + 5.9 mA + 0.7 \mu A$}\end{center}
+
+Assuming the team uses a standard Alkaline AA 1.5V Battery, these typically produce anywhere from 1800mAh to 2500 mAh \hl{insert reference here}. Therefore, the average of these two values will be used as the capacity of the battery: 2150 mAh. Since all of the components being used requires 3.3V, this battery must be fed into a voltage step-up converter as stated previously. The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \hl{insert reference here}.
+
+Using energy conservation laws, the equivalent capacity can be determined after stepping this voltage up from 1.5V to 3.3V. Since Energy = Power * time, we can use a ratio of the energy produced per hour of the standard alkaline battery to the output voltage of the converter. This calculation can be shown below:
+
+\begin{center} 
+$Total Capacity = \frac{P_\textrm{battery}* time *  V_\textrm{battery}} {V_\textrm{converter-output}} * Converter Efficiency$
+
+$ Total Capacity = \frac{2150 mAh *  1.5V} {3.3V} * 75\% = 732.95 mAh * 0.75 =$ \textbf{14.95 hr active use} 
+\end{center}
+
+This result shows that a single standard alkaline AA 1.5V disposable battery will be more than sufficient enough to satisfy the requirements of 8 hours of active use time.
+
+\normalsize\textbf{Power Module (Friendly Target Unit)} \\
 
 \normalsize\textbf{Laser Diode} \\
 With some tolerance, the PIN photodiode used in the friendly target system can register an irradiance of 9 $\frac{W}{m^2}$. The laser required to achieve this irradiance is a function of the laser power and the radius of the beam. With relatively short distances of 0-300 m, atmospheric deflection of light is negligible. 
