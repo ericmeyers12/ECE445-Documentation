@@ -7141,7 +7141,7 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <instance part="R1" gate="G$1" x="104.14" y="109.22" rot="R180"/>
 <instance part="LED" gate="G$1" x="129.54" y="109.22" rot="R90"/>
 <instance part="Q1" gate="G$1" x="162.56" y="104.14" rot="MR0"/>
-<instance part="IC1" gate="G$1" x="50.8" y="63.5"/>
+<instance part="IC1" gate="G$1" x="48.26" y="63.5"/>
 <instance part="Y1" gate="G$1" x="-38.1" y="58.42" rot="R180"/>
 <instance part="C3" gate="G$1" x="-50.8" y="66.04" rot="R180"/>
 <instance part="C5" gate="G$1" x="-22.86" y="66.04" rot="R180"/>
@@ -7167,7 +7167,7 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <net name="N$4" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="XIN/P2.6"/>
-<wire x1="-22.86" y1="73.66" x2="2.54" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="73.66" x2="0" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="-22.86" y1="73.66" x2="-22.86" y2="71.12" width="0.1524" layer="91"/>
 </segment>
@@ -7177,7 +7177,7 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="-50.8" y1="71.12" x2="-50.8" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="XOUT/P2.7"/>
-<wire x1="-50.8" y1="76.2" x2="2.54" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="76.2" x2="0" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -7207,7 +7207,7 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <segment>
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="IC1" gate="G$1" pin="P4.0/TB0"/>
-<wire x1="2.54" y1="45.72" x2="-5.08" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="0" y1="45.72" x2="-5.08" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="45.72" x2="-5.08" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="30.48" x2="172.72" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="172.72" y1="30.48" x2="172.72" y2="66.04" width="0.1524" layer="91"/>
@@ -7240,9 +7240,9 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <junction x="-5.08" y="96.52"/>
 <wire x1="106.68" y1="73.66" x2="111.76" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="AVCC"/>
-<wire x1="-5.08" y1="48.26" x2="2.54" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="48.26" x2="0" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="DVCC"/>
-<wire x1="-5.08" y1="83.82" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="83.82" x2="0" y2="83.82" width="0.1524" layer="91"/>
 <junction x="-5.08" y="83.82"/>
 </segment>
 </net>
@@ -7259,7 +7259,7 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="101.6" y1="78.74" x2="101.6" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="17.78" x2="-72.39" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="P1.4/SMCLK/TCK"/>
-<wire x1="101.6" y1="78.74" x2="99.06" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="78.74" x2="96.52" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -7267,13 +7267,13 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="104.14" y1="81.28" x2="104.14" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="15.24" x2="-73.66" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="P1.5/TA0/TMS"/>
-<wire x1="99.06" y1="81.28" x2="104.14" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="81.28" x2="104.14" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="!RST!/NMI/SBWTDIO"/>
-<wire x1="2.54" y1="71.12" x2="-17.78" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="0" y1="71.12" x2="-17.78" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="-17.78" y1="71.12" x2="-17.78" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="GND"/>
 <wire x1="-17.78" y1="99.06" x2="-22.86" y2="99.06" width="0.1524" layer="91"/>
@@ -7296,8 +7296,11 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 </net>
 <net name="N$13" class="0">
 <segment>
-<wire x1="111.76" y1="71.12" x2="93.98" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="71.12" x2="96.52" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="71.12" x2="93.98" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="71.12" x2="93.98" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="P1.1/TA0"/>
+<junction x="96.52" y="71.12"/>
 </segment>
 </net>
 <net name="N$17" class="0">
@@ -7332,9 +7335,9 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="109.22" y1="76.2" x2="109.22" y2="93.98" width="0.1524" layer="91"/>
 <junction x="109.22" y="93.98"/>
 <pinref part="IC1" gate="G$1" pin="AVSS"/>
-<wire x1="-12.7" y1="50.8" x2="2.54" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="50.8" x2="0" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="DVSS"/>
-<wire x1="-12.7" y1="78.74" x2="2.54" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="78.74" x2="0" y2="78.74" width="0.1524" layer="91"/>
 <junction x="-12.7" y="78.74"/>
 <pinref part="IC2" gate="G$1" pin="GND@1"/>
 <pinref part="IC2" gate="G$1" pin="GND@2"/>

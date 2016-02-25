@@ -7000,84 +7000,6 @@ In this library the device names are the same as the pin names of the symbols, t
 </deviceset>
 </devicesets>
 </library>
-<library name="LINX-RXM-315-LR">
-<packages>
-<package name="LINX-RXM-315-LR">
-<smd name="1" x="-7.747" y="8.89" dx="1.778" dy="1.651" layer="1"/>
-<smd name="2" x="-7.747" y="6.35" dx="1.778" dy="1.651" layer="1"/>
-<smd name="3" x="-7.747" y="3.81" dx="1.778" dy="1.651" layer="1"/>
-<smd name="4" x="-7.747" y="1.27" dx="1.778" dy="1.651" layer="1"/>
-<smd name="5" x="-7.747" y="-1.27" dx="1.778" dy="1.651" layer="1"/>
-<smd name="6" x="-7.747" y="-3.81" dx="1.778" dy="1.651" layer="1"/>
-<smd name="7" x="-7.747" y="-6.35" dx="1.778" dy="1.651" layer="1"/>
-<smd name="8" x="-7.747" y="-8.89" dx="1.778" dy="1.651" layer="1"/>
-<smd name="16" x="7.747" y="8.89" dx="1.778" dy="1.651" layer="1"/>
-<smd name="13" x="7.747" y="1.27" dx="1.778" dy="1.651" layer="1"/>
-<smd name="15" x="7.747" y="6.35" dx="1.778" dy="1.651" layer="1"/>
-<smd name="10" x="7.747" y="-6.35" dx="1.778" dy="1.651" layer="1"/>
-<smd name="12" x="7.747" y="-1.27" dx="1.778" dy="1.651" layer="1"/>
-<smd name="11" x="7.747" y="-3.81" dx="1.778" dy="1.651" layer="1"/>
-<smd name="9" x="7.747" y="-8.89" dx="1.778" dy="1.651" layer="1"/>
-<smd name="14" x="7.747" y="3.81" dx="1.778" dy="1.651" layer="1"/>
-</package>
-</packages>
-<symbols>
-<symbol name="LINX-RXM-315-LR">
-<pin name="NC1" x="-15.24" y="10.16" length="middle"/>
-<pin name="NC2" x="-15.24" y="7.62" length="middle"/>
-<pin name="NC3" x="-15.24" y="5.08" length="middle"/>
-<pin name="GND1" x="-15.24" y="2.54" length="middle"/>
-<pin name="VCC" x="-15.24" y="0" length="middle"/>
-<pin name="PDN" x="-15.24" y="-2.54" length="middle"/>
-<pin name="RSSI" x="-15.24" y="-5.08" length="middle"/>
-<pin name="DATA" x="-15.24" y="-7.62" length="middle"/>
-<pin name="ANT" x="17.78" y="10.16" length="middle" rot="R180"/>
-<pin name="GND2" x="17.78" y="7.62" length="middle" rot="R180"/>
-<pin name="NC9" x="17.78" y="5.08" length="middle" rot="R180"/>
-<pin name="NC8" x="17.78" y="2.54" length="middle" rot="R180"/>
-<pin name="NC7" x="17.78" y="0" length="middle" rot="R180"/>
-<pin name="NC6" x="17.78" y="-2.54" length="middle" rot="R180"/>
-<pin name="NC5" x="17.78" y="-5.08" length="middle" rot="R180"/>
-<pin name="NC4" x="17.78" y="-7.62" length="middle" rot="R180"/>
-<wire x1="-10.16" y1="-10.16" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="12.7" x2="12.7" y2="12.7" width="0.254" layer="94"/>
-<wire x1="12.7" y1="12.7" x2="12.7" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-10.16" x2="-10.16" y2="-10.16" width="0.254" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="LINX-RXM-315-LR">
-<gates>
-<gate name="G$1" symbol="LINX-RXM-315-LR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="LINX-RXM-315-LR">
-<connects>
-<connect gate="G$1" pin="ANT" pad="16"/>
-<connect gate="G$1" pin="DATA" pad="8"/>
-<connect gate="G$1" pin="GND1" pad="4"/>
-<connect gate="G$1" pin="GND2" pad="15"/>
-<connect gate="G$1" pin="NC1" pad="1"/>
-<connect gate="G$1" pin="NC2" pad="2"/>
-<connect gate="G$1" pin="NC3" pad="3"/>
-<connect gate="G$1" pin="NC4" pad="9"/>
-<connect gate="G$1" pin="NC5" pad="10"/>
-<connect gate="G$1" pin="NC6" pad="11"/>
-<connect gate="G$1" pin="NC7" pad="12"/>
-<connect gate="G$1" pin="NC8" pad="13"/>
-<connect gate="G$1" pin="NC9" pad="14"/>
-<connect gate="G$1" pin="PDN" pad="6"/>
-<connect gate="G$1" pin="RSSI" pad="7"/>
-<connect gate="G$1" pin="VCC" pad="5"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="14-pin-ribbon">
 <description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
@@ -7260,6 +7182,84 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 </deviceset>
 </devicesets>
 </library>
+<library name="LINX-RXM-315-LR">
+<packages>
+<package name="LINX-RXM-315-LR">
+<smd name="1" x="-7.747" y="8.89" dx="1.778" dy="1.651" layer="1"/>
+<smd name="2" x="-7.747" y="6.35" dx="1.778" dy="1.651" layer="1"/>
+<smd name="3" x="-7.747" y="3.81" dx="1.778" dy="1.651" layer="1"/>
+<smd name="4" x="-7.747" y="1.27" dx="1.778" dy="1.651" layer="1"/>
+<smd name="5" x="-7.747" y="-1.27" dx="1.778" dy="1.651" layer="1"/>
+<smd name="6" x="-7.747" y="-3.81" dx="1.778" dy="1.651" layer="1"/>
+<smd name="7" x="-7.747" y="-6.35" dx="1.778" dy="1.651" layer="1"/>
+<smd name="8" x="-7.747" y="-8.89" dx="1.778" dy="1.651" layer="1"/>
+<smd name="16" x="7.747" y="8.89" dx="1.778" dy="1.651" layer="1"/>
+<smd name="13" x="7.747" y="1.27" dx="1.778" dy="1.651" layer="1"/>
+<smd name="15" x="7.747" y="6.35" dx="1.778" dy="1.651" layer="1"/>
+<smd name="10" x="7.747" y="-6.35" dx="1.778" dy="1.651" layer="1"/>
+<smd name="12" x="7.747" y="-1.27" dx="1.778" dy="1.651" layer="1"/>
+<smd name="11" x="7.747" y="-3.81" dx="1.778" dy="1.651" layer="1"/>
+<smd name="9" x="7.747" y="-8.89" dx="1.778" dy="1.651" layer="1"/>
+<smd name="14" x="7.747" y="3.81" dx="1.778" dy="1.651" layer="1"/>
+</package>
+</packages>
+<symbols>
+<symbol name="LINX-RXM-315-LR">
+<pin name="NC1" x="-15.24" y="10.16" length="middle"/>
+<pin name="NC2" x="-15.24" y="7.62" length="middle"/>
+<pin name="NC3" x="-15.24" y="5.08" length="middle"/>
+<pin name="GND1" x="-15.24" y="2.54" length="middle"/>
+<pin name="VCC" x="-15.24" y="0" length="middle"/>
+<pin name="PDN" x="-15.24" y="-2.54" length="middle"/>
+<pin name="RSSI" x="-15.24" y="-5.08" length="middle"/>
+<pin name="DATA" x="-15.24" y="-7.62" length="middle"/>
+<pin name="ANT" x="17.78" y="10.16" length="middle" rot="R180"/>
+<pin name="GND2" x="17.78" y="7.62" length="middle" rot="R180"/>
+<pin name="NC9" x="17.78" y="5.08" length="middle" rot="R180"/>
+<pin name="NC8" x="17.78" y="2.54" length="middle" rot="R180"/>
+<pin name="NC7" x="17.78" y="0" length="middle" rot="R180"/>
+<pin name="NC6" x="17.78" y="-2.54" length="middle" rot="R180"/>
+<pin name="NC5" x="17.78" y="-5.08" length="middle" rot="R180"/>
+<pin name="NC4" x="17.78" y="-7.62" length="middle" rot="R180"/>
+<wire x1="-10.16" y1="-10.16" x2="-10.16" y2="12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="12.7" x2="12.7" y2="12.7" width="0.254" layer="94"/>
+<wire x1="12.7" y1="12.7" x2="12.7" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-10.16" x2="-10.16" y2="-10.16" width="0.254" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="LINX-RXM-315-LR">
+<gates>
+<gate name="G$1" symbol="LINX-RXM-315-LR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="LINX-RXM-315-LR">
+<connects>
+<connect gate="G$1" pin="ANT" pad="16"/>
+<connect gate="G$1" pin="DATA" pad="8"/>
+<connect gate="G$1" pin="GND1" pad="4"/>
+<connect gate="G$1" pin="GND2" pad="15"/>
+<connect gate="G$1" pin="NC1" pad="1"/>
+<connect gate="G$1" pin="NC2" pad="2"/>
+<connect gate="G$1" pin="NC3" pad="3"/>
+<connect gate="G$1" pin="NC4" pad="9"/>
+<connect gate="G$1" pin="NC5" pad="10"/>
+<connect gate="G$1" pin="NC6" pad="11"/>
+<connect gate="G$1" pin="NC7" pad="12"/>
+<connect gate="G$1" pin="NC8" pad="13"/>
+<connect gate="G$1" pin="NC9" pad="14"/>
+<connect gate="G$1" pin="PDN" pad="6"/>
+<connect gate="G$1" pin="RSSI" pad="7"/>
+<connect gate="G$1" pin="VCC" pad="5"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -7286,9 +7286,10 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <part name="D1" library="diode" deviceset="1N4004" device="" value=""/>
 <part name="R2" library="rcl" deviceset="R-US_" device="0204/2V" value="10 kohm"/>
 <part name="SUPPLY1" library="supply2" deviceset="+9V" device="" value="+4.8V"/>
-<part name="U$1" library="LINX-RXM-315-LR" deviceset="LINX-RXM-315-LR" device=""/>
 <part name="X1" library="14-pin-ribbon" deviceset="87758-1416" device=""/>
 <part name="IC2" library="linx" deviceset="ANT-XXX-SP" device=""/>
+<part name="R3" library="rcl" deviceset="R-US_" device="0204/2V" value="10 kohm"/>
+<part name="U$1" library="LINX-RXM-315-LR" deviceset="LINX-RXM-315-LR" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7317,9 +7318,10 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <instance part="D1" gate="1" x="-38.1" y="40.64" rot="R180"/>
 <instance part="R2" gate="G$1" x="172.72" y="71.12" rot="R270"/>
 <instance part="SUPPLY1" gate="G$1" x="68.58" y="121.92"/>
-<instance part="U$1" gate="G$1" x="127" y="73.66"/>
 <instance part="X1" gate="G$1" x="-40.64" y="104.14"/>
 <instance part="IC2" gate="G$1" x="132.08" y="45.72" rot="R90"/>
+<instance part="R3" gate="G$1" x="154.94" y="68.58" rot="R270"/>
+<instance part="U$1" gate="G$1" x="127" y="73.66"/>
 </instances>
 <busses>
 </busses>
@@ -7369,10 +7371,8 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="-12.7" y1="119.38" x2="-12.7" y2="93.98" width="0.1524" layer="91"/>
 <junction x="48.26" y="119.38"/>
 <junction x="-12.7" y="93.98"/>
-<pinref part="U$1" gate="G$1" pin="GND2"/>
 <wire x1="144.78" y1="81.28" x2="160.02" y2="81.28" width="0.1524" layer="91"/>
 <junction x="160.02" y="81.28"/>
-<pinref part="U$1" gate="G$1" pin="GND1"/>
 <wire x1="111.76" y1="76.2" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="76.2" x2="109.22" y2="93.98" width="0.1524" layer="91"/>
 <junction x="109.22" y="93.98"/>
@@ -7386,6 +7386,8 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <pinref part="IC2" gate="G$1" pin="GND@3"/>
 <pinref part="IC2" gate="G$1" pin="GND@4"/>
 <pinref part="IC2" gate="G$1" pin="GND@5"/>
+<pinref part="U$1" gate="G$1" pin="GND1"/>
+<pinref part="U$1" gate="G$1" pin="GND2"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -7484,22 +7486,22 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="-5.08" y1="96.52" x2="106.68" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="96.52" x2="106.68" y2="73.66" width="0.1524" layer="91"/>
 <junction x="-5.08" y="96.52"/>
-<pinref part="U$1" gate="G$1" pin="VCC"/>
 <wire x1="106.68" y1="73.66" x2="111.76" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="AVCC"/>
 <wire x1="-5.08" y1="48.26" x2="2.54" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="DVCC"/>
 <wire x1="-5.08" y1="83.82" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
 <junction x="-5.08" y="83.82"/>
+<pinref part="U$1" gate="G$1" pin="VCC"/>
 </segment>
 </net>
 <net name="N$9" class="0">
 <segment>
 <wire x1="165.1" y1="83.82" x2="165.1" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="35.56" x2="132.08" y2="35.56" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="ANT"/>
 <wire x1="165.1" y1="83.82" x2="144.78" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="IC2" gate="G$1" pin="ANT"/>
+<pinref part="U$1" gate="G$1" pin="ANT"/>
 </segment>
 </net>
 <net name="N$10" class="0">

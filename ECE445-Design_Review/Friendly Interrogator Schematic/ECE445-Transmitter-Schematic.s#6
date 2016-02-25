@@ -7186,33 +7186,6 @@ Source: http://www.molex.com/pdm_docs/sd/877580616_sd.pdf</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="NO_CONNECT">
-<packages>
-<package name="NO_CONNECT">
-<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="NO_CONNECT">
-<wire x1="-0.508" y1="0.508" x2="0.508" y2="-0.508" width="0.127" layer="94"/>
-<wire x1="0.508" y1="0.508" x2="-0.508" y2="-0.508" width="0.127" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="NO_CONNECT">
-<gates>
-<gate name="G$1" symbol="NO_CONNECT" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="NO_CONNECT">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="linx">
 <description>&lt;b&gt;LINX&lt;/b&gt; RF Modules&lt;p&gt;
 www.linxtechnologies.com&lt;br&gt;
@@ -7315,26 +7288,6 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <part name="SUPPLY1" library="supply2" deviceset="+9V" device="" value="+4.8V"/>
 <part name="U$1" library="LINX-RXM-315-LR" deviceset="LINX-RXM-315-LR" device=""/>
 <part name="X1" library="14-pin-ribbon" deviceset="87758-1416" device=""/>
-<part name="U$2" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$3" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$4" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$5" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$6" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$7" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$8" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$9" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$10" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$11" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$12" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$14" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$15" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$16" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$17" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$18" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$13" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$19" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$20" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="U$21" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
 <part name="IC2" library="linx" deviceset="ANT-XXX-SP" device=""/>
 </parts>
 <sheets>
@@ -7366,26 +7319,6 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <instance part="SUPPLY1" gate="G$1" x="68.58" y="121.92"/>
 <instance part="U$1" gate="G$1" x="127" y="73.66"/>
 <instance part="X1" gate="G$1" x="-40.64" y="104.14"/>
-<instance part="U$2" gate="G$1" x="2.54" y="43.18"/>
-<instance part="U$3" gate="G$1" x="2.54" y="40.64"/>
-<instance part="U$4" gate="G$1" x="144.78" y="66.04"/>
-<instance part="U$5" gate="G$1" x="144.78" y="68.58"/>
-<instance part="U$6" gate="G$1" x="144.78" y="71.12"/>
-<instance part="U$7" gate="G$1" x="144.78" y="73.66"/>
-<instance part="U$8" gate="G$1" x="144.78" y="76.2"/>
-<instance part="U$9" gate="G$1" x="144.78" y="78.74"/>
-<instance part="U$10" gate="G$1" x="111.76" y="78.74"/>
-<instance part="U$11" gate="G$1" x="111.76" y="81.28"/>
-<instance part="U$12" gate="G$1" x="111.76" y="83.82"/>
-<instance part="U$14" gate="G$1" x="-22.86" y="88.9"/>
-<instance part="U$15" gate="G$1" x="-58.42" y="88.9"/>
-<instance part="U$16" gate="G$1" x="-58.42" y="93.98"/>
-<instance part="U$17" gate="G$1" x="-58.42" y="99.06"/>
-<instance part="U$18" gate="G$1" x="-58.42" y="109.22"/>
-<instance part="U$13" gate="G$1" x="-22.86" y="109.22"/>
-<instance part="U$19" gate="G$1" x="-22.86" y="93.98"/>
-<instance part="U$20" gate="G$1" x="-58.42" y="119.38"/>
-<instance part="U$21" gate="G$1" x="-22.86" y="114.3"/>
 <instance part="IC2" gate="G$1" x="132.08" y="45.72" rot="R90"/>
 </instances>
 <busses>
@@ -7415,8 +7348,7 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="-12.7" y1="93.98" x2="109.22" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="93.98" x2="160.02" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="93.98" x2="160.02" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="81.28" x2="160.02" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="76.2" x2="160.02" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="81.28" x2="160.02" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="50.8" x2="160.02" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="48.26" x2="160.02" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="45.72" x2="160.02" y2="43.18" width="0.1524" layer="91"/>
@@ -7437,8 +7369,6 @@ Source: http://www.antennafactor.com/documents/ANT-315-SP_Data_Sheet.pdf</descri
 <wire x1="-12.7" y1="119.38" x2="-12.7" y2="93.98" width="0.1524" layer="91"/>
 <junction x="48.26" y="119.38"/>
 <junction x="-12.7" y="93.98"/>
-<wire x1="149.86" y1="76.2" x2="160.02" y2="76.2" width="0.1524" layer="91"/>
-<junction x="160.02" y="76.2"/>
 <pinref part="U$1" gate="G$1" pin="GND2"/>
 <wire x1="144.78" y1="81.28" x2="160.02" y2="81.28" width="0.1524" layer="91"/>
 <junction x="160.02" y="81.28"/>
