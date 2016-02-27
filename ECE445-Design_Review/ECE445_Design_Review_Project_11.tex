@@ -12,6 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % some commonly used packages
+\usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{color,soul}
 \usepackage{amsmath}
@@ -275,11 +276,11 @@ Power-Out: \\
 Input(s): MSP430 Microcontroller Pins \_\_ \& \_\_ (List Pin Labels Here)\hl{change} \\
 Output(s): 5mW Laser Beam 
 
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($650nm$) laser. See section \ref{section-safety-ethics} for more on safety of the laser. 
+
 The 5mW laser diode will operate on 3.3V at 25mA so a 1.3k$\Omega$ (confirm?) resistor is necessary to drop the current being supplied to the diode down to this threshold. 
 
-Due to safety and ethical considerations, the requirements have changed for the divergence of the beam. The proposal stated a requirement of a 5-6 ft diameter beam at 50, 150, and 300 m (with optical adjustments allowed). This was assuming the team was using a 20mW laser diode which is now not the case (this design choice will  be discussed in both Section \ref{section-safety-ethics} and Section \ref{section-simulations-calculations} as appropriate). Instead the team will be using a 5 mW laser which will produce a beam divergence of 2.5-2.75 feet at \_\_\_\_ feet. 
-
-Again, please refer to Section \ref{section-safety-ethics} and Section \ref{section-simulations-calculations} to view an in-depth discussion about these design choices.
+To save cost and time, the team will be purchasing an adjustable focus laser. This laser will allow for optical adjustments to achieve the beam diameter at all required distances. The team will ensure the purchased laser meets these requirements, and will adjust the lens if necessary. 
 
 \normalsize\textbf{R.F. Receiver} \\
 Power-In: 4.8V (from Power Module) \\
@@ -339,11 +340,15 @@ Output(s):
 
 The Real Time Clock on board the Friendly Target Unit will be the same as the Friendly Interrogator Unit. Please reference that section to get all details pertaining to the Real Time Clock.
 
-\normalsize\textbf{Laser Photodiode}\\
-Power-In: \\
-Power-Out: \\
-Input(s): \\
-Output(s):
+\normalsize\textbf{Photoreceiver}\\
+Power-In: N/A \\
+Power-Out: N/A \\
+Input(s): Laser Transmitter \\
+Output(s): MCU
+
+A network of four photodiodes mounted on the friendly target will report incoming laser signals to the MCU. The photodiode signals will be boosted via an operational amplifier, and passed through a low-pass filter. The $40kHz$ signal that passes through the filter will be sampled and processed by the MCU. 
+
+For a detailed analysis of the choice of the photodiodes, see section \ref{section-tolerance-analysis}
 
 \normalsize\textbf{R.F. Transmitter}\\
 Power-In: \\
@@ -450,14 +455,8 @@ This result shows that a single standard alkaline AA 1.5V disposable battery wil
 
 \normalsize\textbf{Power Module (Friendly Target Unit)} \\
 
-\normalsize\textbf{Laser Diode} \\
-With some tolerance, the PIN photodiode used in the friendly target system can register an irradiance of 9 $\frac{W}{m^2}$. The laser required to achieve this irradiance is a function of the laser power and the radius of the beam. With relatively short distances of 0-300 m, atmospheric deflection of light is negligible. 
+\normalsize\textbf{Laser Diode and Photodiode} \\
 
-Using trigonometry, the power as a function of radius is given by $P = \pi r^2  E_{req} $, where $r$ is the radius (in meters) and $E_{req}$ is the required irradiance of 9 $\frac{W}{m^2}$. 
-
-For a diameter equal to the one stated in the proposal ($\approx 1.6764 m$), a $\pi (0.8382)^2(9) \approx 20 mW$ laser is needed. A $20 mW$ laser is a Class 3B laser, and is considered dangerous. For the scope of this senior design project, a $5mW$ laser will be used instead. 
-
-The radius achieved using a $5 mW$ laser is given by $\sqrt{\frac{P}{E_{req} \pi}} = 0.420522 m$. This is approximately a $2.75 ft$ diameter beam, which is still the size of a person's chest.
 
 \subsubsection{Simulations/Plots}
 \hl{INSERT PLOTS/ANY SORT OF ANALYSIS HERE}
@@ -470,9 +469,78 @@ The radius achieved using a $5 mW$ laser is given by $\sqrt{\frac{P}{E_{req} \pi
 	\includegraphics[scale=0.3]{Requirements.png}
 	\caption{Requirements/Verification for Laser Transmitter System\label{fig:requirements}}
 \end{figure}
-\subsection{Tolerance Analysis}
-\hl{NEED TO INCLUDE IN DEPTH ANALYSIS-\\
-	Tolerance analysis is part of the DESIGN process. The tolerance analysis is not an experiment to see what the limits of your project are after it has been designed and built. The tolerance analysis is an exercise in working backwards from what your goal is, and then figuring out how precise a specific hardware component must be. "We will stress the device until it no longer works as intended and look at the results" is not a tolerance analysis. "Given that we have a goal of X, The accuracy of component Y must be Z to achieve X properly" is a tolerance analysis. It should involve math and design equations. For example, in amplifier design there is usually a bias circuit that includes a resistor network. Resistor values in real life are not exact and have an advertised tolerance (10\%, 5\%, 1\%). Find how accurate your resistors must be to meet your gain or bandwidth requirements in the worst case scenario. If it is lower than 10\%, you have just concluded that your design will require parts with a tighter tolerance.}
+\subsection{Tolerance Analysis} \label{section-tolerance-analysis}
+The inherent limitations of laser power for safety means that the performance is in the hands of the photodiode. The starting point for selection criteria was to choose a photodiode type. There are three main photodiode types: normal, PIN, and Avalanche; the team chose PIN photodiodes as they have a high sensitivity and speed. A normal photodiode would not be sensitive enough to register a wide divergence $5mW$ laser, and an Avalanche photodiode requires high voltage. 
+
+The next selection criteria is the material with which the photodiode is made. This includes materials such as Si, InGaAs, and InA. The optimum wavelength is dependent on the material selection.
+
+With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, will have the highest detectivity for the visible wavelength.  
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.4]{detectivity-table.png}
+	\label{fig:detectivity-table}
+	\caption{Specific Detectivity for Photodetector Materials \textsuperscript{\cite{Optical}} \label{fig:detectivity-table}}
+\end{figure}
+
+Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode is of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations will use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
+
+The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is 
+\begin{center}
+	{\large $NEP = \frac{\sqrt{A}}{D^*}$}  $[\frac{W}{Hz^{1/2}}]$
+\end{center}
+
+The incident irradiance, $E_i$, to cancel noise is
+\begin{center}
+	{\large $E_i = \frac{NEP * \sqrt{f}}{A} = \frac{\sqrt{Af}}{AD^*} = \frac{f}{D^*\sqrt{A}}$} $[\frac{W}{m^{2}}]$
+\end{center}
+
+The NEP measures the incident irradiance to cancel the noise on the photodiode. To register a signal on the MCU, the incident irradiance must be higher than the noise. To be conservative, define the required incident irradiance as 
+\begin{center}
+	{\large $E_{req} = 2E_i$} $[\frac{W}{m^{2}}]$
+\end{center}
+
+Multiplying the area of the laser's spot by the required incident irradiance at the photodiode gives the necessary power. Thus, the radius of the spot in terms of the power of the laser and required incident irradiance at the photodiode is 
+\begin{center}
+	{\large $r = \sqrt{\frac{P}{\pi E_{req}}}$} $[m]$
+\end{center}
+
+Note that the power contained in the laser's spot does not depend on distance from the source, as atmospheric reflection is negligible at $300 m$.
+
+The radius, in terms of the detectivity, frequency, and sensor active area is
+\begin{center}
+	{\large $r = \sqrt{\frac{PD^*\sqrt{A}}{2 \pi f}}$} $[m]$
+\end{center}
+
+The proposal listed $0.8382 m$ as the ideal radius of the laser's spot. Unfortunately, with the $5mW$ red laser, this would require a sensor with a massive active area. The largest sensor the team could find, at a reasonable price, has a $100 mm^2$ active area. 
+
+For the $100 mm^2$ active area photodiode operating at $650 nm = 4.61219 × 10^{14} Hz$ 
+\begin{center}
+	$r = 0.608721 m \approx 61 cm$
+\end{center}
+
+Refining the proposal requirements, the team has set a new requirement of a $50 cm$ laser spot radius, making the diameter of the beam $1m$ at distances of $50m, 150m,$ and $300m$ with optical adjustment. 
+
+Capturing these requirements, the team must transmit a signal to a photo-detector at the following ranges:
+\begin{itemize}
+	\item Short Range (0 - 50 m)
+	\item Medium Range (50 - 150 m)
+	\item Long Range (150 - 300 m)
+\end{itemize}
+
+The team should then verify that the signal was received. Furthermore, the team should verify that the signal spans the width of a human chest. More concretely, that a sighted-in laser transmitter can be aimed at any point within $50 cm$ of the receiver and still register the transmitted signal. 
+
+Test Procedure:
+
+\begin{itemize}
+	\item Mount the receiver 300 m downrange of the transmitter
+	\item Aim the laser transmitter directly at the receiver, using a mount (like a vice grip) to keep it stable. 
+	\item Verify the signal is received via the probe point on the PCB
+	\item Aim and verify the signal is also received when aiming 25 cm to the right, top, and bottom of the receiver. 
+	\item Repeat these steps for 50 m and 150 m. 
+\end{itemize}
+
+
 
 \subsection{Safety} \label{section-safety-ethics}
 \normalsize\textbf{Laser Diode} \\
