@@ -672,11 +672,11 @@ Test Procedure:
 
 \subsection{Safety} \label{section-safety-ethics}
 \normalsize\textbf{Laser Diode} \\
-As stated previously, the proposal requirements would have required a $20mW$ IR laser. However, in the State of Illinois, a 20mW laser is considered a Class 3B laser and must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. This would have required the team to file the correct paperwork and pay a registration fee of \$50. This paperwork would have likely caused delays in receiving parts and construction of this project. A 20 mW laser would have also needed much more pre-caution and safety mitigations than a much less powerful laser.
+To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. 
 
 For the reasons stated above, the team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
 
-The following is a calculation for the nominal ocular hazard distance (NOHD) of our laser, as defined by the ANSI Standard \cite{ANSI}.
+The following is a calculation for the nominal ocular hazard distance (NOHD) of the laser, as defined by the ANSI Standard \cite{ANSI}.
 
 The maximum permissible exposure (MPE), as defined by the ANSI Standard \cite{ANSI} is the highest power or energy density of a light source that is considered safe, i.e. that has a negligible probability for creating damage. This MPE for a pulsing laser is calculated as the minimum of the following three rules:
 
@@ -688,7 +688,63 @@ The maximum permissible exposure (MPE), as defined by the ANSI Standard \cite{AN
 	exceed the single-pulse MPE multiplied by a multiple-pulse correction factor
 \end{enumerate}
 
-The laser will pulse at a rate of 40 kHz. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $300m$. The divergence of the beam for 300m is 2.79 mrad and the beam waist is approximately $4 mm$. \\
+The laser will pulse at a rate of $40 kHz$. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $300m$. The divergence of the beam for 300m is 2.79 mrad and the beam waist is approximately $4 mm$. \\
+
+ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as 
+\begin{center}
+	\large
+	$C_6 =$
+	$\frac{\theta}{1.5}$ for $1.5 \leq \theta \leq 100$\\
+	$C_6 = 1$ for $\theta < 1.5, \theta > 100$
+\end{center}
+
+Using trigonometry, the divergence angle, $\theta$, for the laser is 
+\begin{center}
+	\large
+	$Tan^{-1}(\frac{r}{300})* 1000$ $[mrad]$
+\end{center}
+
+Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
+\begin{center}
+	\large
+    $R_1 = 5*10^{-3} * C_6$
+\end{center}
+
+The Rule 2 calculation is
+\begin{center}
+	\large
+	$R_2 = 18 (T)^{0.75}$
+\end{center}
+
+The Rule 3 calculation is
+\begin{center}
+	\large
+	$R_3 = R1(T*f)^{0.25}$
+\end{center}
+
+The most restrictive rule defines the MPE 
+\begin{center}
+	\large
+	$MPE = min(R_1, R_2, R_3)$
+\end{center}
+
+The MPE, then, is\\
+{\large $min($}
+\begin{center}
+	\large
+	$ 5*10^{-3} * Tan^{-1}(\frac{.5}{300})* 1000 = 0.00833333 [\frac{J}/{m^2}]$
+	$18 (.25)^{0.75} = $ \\
+\end{center}
+
+The NOHD is defined as
+
+\begin{center}
+	\large
+$ \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}$
+\end{center}
+
+Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam, $4mm$. This gives an NOHD of 
+
 
 Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
 

@@ -21,8 +21,8 @@
 \contentsline {subsection}{\numberline {3.1}Tolerance Analysis}{15}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Safety}{17}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Ethical Issues}{19}{subsection.3.3}
-\contentsline {section}{\numberline {4}Cost and Schedule}{20}{section.4}
-\contentsline {subsection}{\numberline {4.1}Cost Analysis}{20}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Schedule}{20}{subsection.4.2}
-\contentsline {section}{Reference}{21}{subsection.4.2}
+\contentsline {section}{\numberline {4}Cost and Schedule}{21}{section.4}
+\contentsline {subsection}{\numberline {4.1}Cost Analysis}{21}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Schedule}{21}{subsection.4.2}
+\contentsline {section}{Reference}{22}{subsection.4.2}
 \contentsfinish 
