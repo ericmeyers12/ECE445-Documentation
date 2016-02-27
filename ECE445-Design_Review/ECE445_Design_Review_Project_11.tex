@@ -343,19 +343,32 @@ As stated before this identification number will be fed into the MCU also and it
 
 \normalsize\textbf{Power Module} \\
 Power-In: N/A\\
-Power-Out: \\
-Input(s): \\
-Output(s):
+Power-Out: TI MSP430F2274 Microcontroller (3.3V), R.F. Transmitter (3.3V), and Photoreceiver (+/- 10V)\\
+Input(s): N/A\\
+Output(s): N/A
 
-The power module on board the Friendly Target Unit will be the same as the Friendly Interrogator Unit. Th Please reference that section to get all details pertaining to the power module.
+The power module on board the Friendly Target Unit will be the same as the Friendly Interrogator Unit. Please reference that section to get all details pertaining to the power module.
 
 
-\normalsize\textbf{Microcontroller} \\
-Power-In: \\
+\normalsize\textbf{MSP430 Microcontroller} \\
+Power-In: Power Module (3.3V)\\
 Power-Out:\\
 Input(s):\\
 Output(s):\\
-\hl{INDICATE WHICH PINS ARE ACTIVE AND NOT}
+
+Please reference the MSP430 Microcontroller section on board the Friendly Interrogator Unit for details on the selection of the MSP 430. 
+
+The MSP430 Microcontroller on the Friendly Target Unit will receive input from the photoreceiver unit, which will allow it to register the PWM signal sent from the Friendly Interrogator Unit. The Microcontroller will also utilize the R.F. Encoder/Transmitter to broadcast an acknowledge signal to the Friendly Interrogator Unit. 
+
+The R.F. Transmitter takes as input 8 address bits and 8 data bits. The PWM laser signal from the Friendly Interrogator will contain the 8 address bits corresponding to the Interrogator's R/F decoder/receiver. The 8 data bits will be generated based on a shared passcode and RTC between the Friendly Target and Interrogator systems. 
+
+Figure \ref{tab:msp430-pin-assignments-target} is a list of the active pins on the Friendly Target MCU. 
+
+\begin{table} [H]
+	\centering
+		\includegraphics[scale=0.52]{MSP430_Pin_Assignments-Target.png}
+	\caption{Pin Layout Table\label{tab:msp430-pin-assignments-target}}
+\end{table}
 
 \normalsize\textbf{Real Time Clock} \\
 Power-In: \\
@@ -671,7 +684,7 @@ Test Procedure:
 
 
 \subsection{Safety} \label{section-safety-ethics}
-\normalsize\textbf{Laser Diode} \\
+\normalsize\textbf{Laser Safety} \\
 To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. 
 
 For the reasons stated above, the team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
@@ -688,7 +701,9 @@ The maximum permissible exposure (MPE), as defined by the ANSI Standard \cite{AN
 	exceed the single-pulse MPE multiplied by a multiple-pulse correction factor
 \end{enumerate}
 
-The laser will pulse at a rate of $40 kHz$. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $300m$. The divergence of the beam for 300m is 2.79 mrad and the beam waist is approximately $4 mm$. \\
+The laser will pulse at a rate of $40 kHz$. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $300m$. 
+
+At $5mW$ with a pulse width of $1.25*10^{-5}$, the power of the laser is $6.25*10^{-8} J$. 
 
 ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as 
 \begin{center}
@@ -732,45 +747,36 @@ The MPE, then, is\\
 {\large $min($}
 \begin{center}
 	\large
-	$ 5*10^{-3} * Tan^{-1}(\frac{.5}{300})* 1000 = 0.00833333 [\frac{J}/{m^2}]$
-	$18 (.25)^{0.75} = $ \\
+	$ 5*10^{-3} * Tan^{-1}(\frac{.5}{300})* 1000$\\
+	$18 (.25)^{0.75}$ \\
+	$0.00833333 (0.25*40000)^{0.25}$
+\end{center}
+{\large $)$}
+
+This gives 
+\begin{center}
+	\large
+	$MPE = min(0.00833333, 6.36396, 0.0833333) = 0.00833333 [\frac{J}{m^2}]$
 \end{center}
 
-The NOHD is defined as
-
+The NOHD is defined as (with $\theta$ in terms of $rad$, not $mrad$)
 \begin{center}
 	\large
 $ \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}$
 \end{center}
 
-Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam, $4mm$. This gives an NOHD of 
+Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam, $0.5mm$. This gives an NOHD of 
+\begin{center}
+	\large
+	$ \frac{\sqrt{\frac{4 * 6.25*10^{-8} }{\pi * 0.00833333}} - 2*0.0005}{Tan^{-1}(\frac{.5}{300})} = 1.25 m$
+\end{center}
 
+The team will take precautions to avoid eye contact with the laser within $1.25m$ of the source. If it is absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person will be required to wear protective eye wear. 
 
-Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
+The risk of eye damage is mitigated by the fact that the laser is both visible, and not always powered on. 
 
-{\large $5*10^{-3}*(\frac{2.79}{1.5})  = 0.0093 \frac{J}{m^2}$ }\\
-
-The Rule 2 calculation is
-
-{\large $\frac{18(.25^{0.75})(\frac{2.79}{1.5})}{.25*40000} = 0.0011837 \frac{J}{m^2}$ }\\
-
-The Rule 3 calculation is
-
-{\large $(.25*40000)^{0.25} * 5*10^{-3}*(\frac{2.79}{1.5}) = 0.093 \frac{J}{m^2}$ }\\
-
-The most restrictive of all the rules is Rule 2, which gives us an MPE of $0.0011837 \frac{J}{m^2}$.
-
-At $5mW$ with a pulse width of $1.25*10^{-5}$, the power of the laser is $6.25*10^{-8} J$. 
-
-The NOHD is defined as
-
-{\LARGE $ \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}$}
-
-Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam ($1mm$). This gives an NOHD of 
-
-{\Large$ \frac{\sqrt{\frac{4 * 6.25*10^{-8}}{\pi * 0.0011837}} - 2(0.004)}{0.00279} = 0.0713 m $}
-
-The team will avoid eye damage by not working with their eyes inside of 8 cm from the laser. If it is necessary to get this close to the laser, the team will wear eye protection or simply power off the laser. 
+\normalsize\textbf{Electrical Safety} \\
+The majority of the components operate at less than $5V$, which does not present a significant risk. Two components, however, operate with a voltage differential of $20V$. This is the $5V$ to $10V$ converter and the Operational Amplifier used for the photoreceiver. The team will exercise caution when working with these units; using a multimeter to verify the part is powered off before making contact. 
 
 
 \subsection{Ethical Issues}
