@@ -10,6 +10,8 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Citations.bib
 Warning--I didn't find a database entry for "USArmy"
 Warning--I didn't find a database entry for "Garrison"
+Warning--I didn't find a database entry for "Microphotonics"
+Warning--I didn't find a database entry for "Optical"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -17,7 +19,7 @@ Warning--I didn't find a database entry for "Garrison"
 Done.
 You've used 3 entries,
             4031 wiz_defined-function locations,
-            828 strings with 7663 characters,
+            832 strings with 7705 characters,
 and the built_in function-call counts, 1124 in all, are:
 = -- 86
 > -- 3
@@ -56,4 +58,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 4
 write$ -- 50
-(There were 2 warnings)
+(There were 4 warnings)
