@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 FEB 2016 18:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 FEB 2016 20:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1125,7 +1125,7 @@ Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 517
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [13]
-<PCB_Trace_Figure.png, id=295, 608.2725pt x 313.17pt>
+<PCB_Trace_Figure.png, id=296, 608.2725pt x 313.17pt>
 File: PCB_Trace_Figure.png Graphic file (type png)
 
 <use PCB_Trace_Figure.png>
@@ -1309,7 +1309,7 @@ st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fo
 nts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ECE445_Design_Review_Project_11.pdf (26 pages, 3444787 bytes)
+Output written on ECE445_Design_Review_Project_11.pdf (26 pages, 3444762 bytes)
 .
 PDF statistics:
  481 PDF objects out of 1000 (max. 8388607)
