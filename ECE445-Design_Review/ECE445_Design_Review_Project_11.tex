@@ -498,7 +498,7 @@ In order to select parts that satisfied this requirement, the active current con
 Because the R.F. receiver and the 5mW laser will only be powered when the operator designates, the standby current consumption of these units will be 0.
 
 Therefore, with this information, the maximum possible active current consumption will be:
-\begin{center}{I\textsubscript{Total} = $270 \mu A + 25 mA + 5.9 mA + 0.7 \mu A$}\end{center}
+\begin{center}{Active Consumption I\textsubscript{Total} = $270 \mu A + 25 mA + 5.9 mA = 31.17 mA $}\end{center}
 
 Assuming the team uses a standard Alkaline AA 1.5V Battery, these typically produce anywhere from 1800mAh to 2500 mAh \hl{insert reference here}. Therefore, the average of these two values will be used as the capacity of the battery: 2150 mAh. Since all of the components being used requires 3.3V, this battery must be fed into a voltage step-up converter as stated previously. The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \hl{insert reference here}.
 
@@ -507,54 +507,7 @@ Using energy conservation laws, the equivalent capacity can be determined after 
 \begin{center} 
 $Total Capacity = \frac{P_\textrm{battery}* time *  V_\textrm{battery}} {V_\textrm{converter-output}} * Converter Efficiency$
 
-$ Total Capacity = \frac{2150 mAh *  1.5V} {3.3V} * 75\% = 732.95 mAh * 0.75 =$ \textbf{14.95 hr active use} 
-\end{center}
-
-This result shows that a single standard alkaline AA 1.5V disposable battery will be more than sufficient enough to satisfy the requirements of 8 hours of active use time.
-
-\normalsize\textbf{Power Module (Friendly Target Unit)} \\
-The following section is intended to backup the design choices made for the power module on the friendly target first shown in section \ref{section-friendly-interrogator-design}.
-
-The team placed a strict requirement (shown in section \_\_\_) regarding the operation time of the friendly target unit (at 8 hours of operation time $\pm$ 5\% \hl{verify}).
-
-As with the Interrogator Unit; In order to select parts that satisfied this requirement, the active current consumption on the entire unit must first be calculated. The main power consumption modules on board the friendly target unit are the MSP430F2274, the photoreceiver operational amplifier, and the Linx KH3 R.F. transmitter. These values were received from each of the respective datasheets. The following table displays the active current consumption of each unit. 
-
-
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c|c|c}	% ccccccc indicates 7 center aligned columns
-		\toprule	% top separator
-		Module & Active Current Consumption & Standby Current Consumption\\
-		\midrule
-		MSP430 & 270 $\mu$A & 0.1 - 0.7 $\mu$A\\ 
-		Linx KH3 R.F. Transmitter & 2.7 mA & 1 $\mu$A\\
-		Photoreceiver Op Amp & 2.4 mA (max) & 2.4 mA (max) \\
-		MAX680 5V to +/- 10V Converter & 500 $\mu$A  & 500 $\mu$A \\
-		\bottomrule	% bottom separator
-	\end{tabular}%
-	\caption{Current Consumption of Target Modules}
-	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
-\end{table}%
-
-With this information, the maximum possible active current consumption will be:
-\begin{center}{I\textsubscript{Total} = $270 \mu A + 2.7 mA + 2.4 mA + 500 \mu A$}\end{center}
-
-As stated for the interrogation unit, the capacity of the Alkaline AA 1.5V battery will be assumed to be 2150 mAh. 
-
-The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \hl{insert reference here}. The team is using a MAX680 +5V to +/-10V Voltage Converter which has as 85\% Power-Conversion Efficiency  \hl{insert reference here}. 
-
-The use time can be calculated as follows:
-
-\begin{center} 
-	$\textrm{Total Energy} = C_\textrm{battery} * V_\textrm{battery} = 2150 mAh * 1.5V = 3225 mWh$
-	
-	$\textrm{Total Active Power} = \frac{20V * 2.4 mA}{.85 * .75} + \frac{3.3 V * (0.270 + 2.7 + 0.5) mA}{.75} = 90.5621 mW$
-	
-	$\textrm{Active Use Time} = \frac{\textrm{Total Energy}}{\textrm{Total Active Power}} \approx \textrm{\textbf{24 hr active use}}$
-	
-	$\textrm{Total Standby Power} = \frac{20V * 2.4 mA}{.85 * .75} + \frac{3.3 V * (0.270 + .001 + 0.5) mA}{.75} = 78.6865 mW$
-	
-	$\textrm{Standby Use Time} = \frac{\textrm{Total Energy}}{\textrm{Total Passive Power}} \approx \textrm{\textbf{27 hr standby use}}$
+$ Total Capacity = \frac{2150 mAh *  1.5V} {3.3V} * 75\% = \left(\frac{732.95 mAh}{31.17mA}\right) =$ \textbf{23.5 hr active use} 
 \end{center}
 
 This result shows that a single standard alkaline AA 1.5V disposable battery will be more than sufficient enough to satisfy the requirements of 8 hours of active use time.
