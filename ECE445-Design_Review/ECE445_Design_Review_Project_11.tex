@@ -502,12 +502,20 @@ Therefore, with this information, the maximum possible active current consumptio
 
 Assuming the team uses a standard Alkaline AA 1.5V Battery, these typically produce anywhere from 1800mAh to 2500 mAh \hl{insert reference here}. Therefore, the average of these two values will be used as the capacity of the battery: 2150 mAh. Since all of the components being used requires 3.3V, this battery must be fed into a voltage step-up converter as stated previously. The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \hl{insert reference here}.
 
-Using energy conservation laws, the equivalent capacity can be determined after stepping this voltage up from 1.5V to 3.3V. Since Energy = Power * time, we can use a ratio of the energy produced per hour of the standard alkaline battery to the output voltage of the converter. This calculation can be shown below:
+Since Energy = Power * time, we can use a ratio of the energy produced per hour of the standard alkaline battery to the output voltage of the converter. This calculation can be shown below:
+
+
 
 \begin{center} 
-$Total Capacity = \frac{P_\textrm{battery}* time *  V_\textrm{battery}} {V_\textrm{converter-output}} * Converter Efficiency$
-
-$ Total Capacity = \frac{2150 mAh *  1.5V} {3.3V} * 75\% = \left(\frac{732.95 mAh}{31.17mA}\right) =$ \textbf{23.5 hr active use} 
+	$\textrm{Total Energy} = C_\textrm{battery} * V_\textrm{battery} = 2150 mAh * 1.5V = 3225 mWh$
+	
+	$\textrm{Total Active Power} = \frac{3.3 V * (0.270 + 5.9 + 25) mA}{.75} = 137.15mW$ 
+	
+	$\textrm{Active Use Time} = \frac{\textrm{Total Energy}}{\textrm{Total Active Power}} \approx \textrm{\textbf{24 hr active use}}$
+	
+	$\textrm{Total Standby Power} = \frac{3.3 V * (0.270) mA}{.75} = 11.88 mW$
+	
+	$\textrm{Standby Use Time} = \frac{\textrm{Total Energy}}{\textrm{Total Passive Power}} \approx \textrm{\textbf{271 hr  standby use}}$
 \end{center}
 
 This result shows that a single standard alkaline AA 1.5V disposable battery will be more than sufficient enough to satisfy the requirements of 8 hours of active use time.
