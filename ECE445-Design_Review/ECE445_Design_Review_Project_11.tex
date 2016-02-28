@@ -347,14 +347,13 @@ Power-Out: TI MSP430F2274 Microcontroller (3.3V), R.F. Transmitter (3.3V), and P
 Input(s): N/A\\
 Output(s): N/A
 
-The power module on board the Friendly Target Unit will be the same as the Friendly Interrogator Unit. Please reference that section to get all details pertaining to the power module.
-
+The power module on board will utilize the same DC-DC Step-Up Voltage Converter as the friendly interrogator unit. However, the friendly target unit's power module must produce both an output voltage of 3.3V for the MCU and 10V for the operational amplifier. 
 
 \normalsize\textbf{MSP430 Microcontroller} \\
 Power-In: Power Module (3.3V)\\
 Power-Out:\\
-Input(s):\\
-Output(s):\\
+Input(s):Photoreceiver, Real Time Clock\\
+Output(s): R.F. Transmitter 
 
 Please reference the MSP430 Microcontroller section on board the Friendly Interrogator Unit for details on the selection of the MSP 430. 
 
@@ -454,14 +453,14 @@ This section is to explain the flow of events in the system as a whole as well a
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.4]{Functional_Flowchart.png}
+	\includegraphics[scale=0.55]{Functionality_Flowchart.pdf}
 	\caption{Flowchart for Functionality\label{fig:circuit-schematic}}
 \end{figure}
 
 The left side of this diagram are all events that occur within the friendly interrogator unit, and the right side represents all of the events that occur on the friendly target side. This flow diagram also assumes that both the interrogator operator and the friendly target operator have powered on their respective units.
 
 \subsubsection{Friendly Interrogator Software Flow}
-The software on the MCU on the friendly interrogator unit will follow a very simple flow. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
+The software on the MCU on the friendly interrogator unit will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
 \begin{itemize}
 	\item R0 - program counter
 	\item R1 - stack pointer 
@@ -469,11 +468,9 @@ The software on the MCU on the friendly interrogator unit will follow a very sim
 	\item R3 - constant generator
 	\item R4 - R15 - general purpose registers
 \end{itemize}
-
-Using these 12 general purpose registers the team can accomplish the task 
+Using these 12 general purpose registers the team can accurately identify a target as friendly. The flow diagram in Figure \ref*{fig:friendly-interrogator-software-flowchart} in the Appendix depicts the series of processes and events that take place within the MCU in order for the target to be identified as friendly. 
 
 \subsection{Numerical Analysis and Simulations/Plots} \label{section-simulations-calculations}
-
 \subsubsection{Calculations}
 \normalsize\textbf{Power Module (Friendly Interrogator Unit)} \\
 The following section is intended to backup the design choices made for the power module on the friendly interrogator first shown in section \ref{section-friendly-interrogator-design}.
@@ -863,7 +860,14 @@ The labor cost was calculated as follows:
 % include the BibTex file here to build reference
 \bibliography{Citations}\addcontentsline{toc}{section}{Reference}
 
-\clearpage
+\section*{Appendix}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.50]{Friendly_Interrogator_Software_Flowchart.pdf}
+	\caption{Flowchart for Functionality\label{fig:friendly-interrogator-software-flowchart}}
+\end{figure}
+
 \end{spacing}
 \end{document}
 
