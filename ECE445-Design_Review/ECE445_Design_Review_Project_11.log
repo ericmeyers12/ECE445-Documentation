@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 FEB 2016 22:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 FEB 2016 09:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -763,7 +763,7 @@ Package: titletoc 2011/12/15 v1.6 TOC entries
 )
 (./ECE445_Design_Review_Project_11.aux
 
-LaTeX Warning: Label `tab:table2' multiply defined.
+LaTeX Warning: Label `fig:circuit-schematic' multiply defined.
 
 
 LaTeX Warning: Label `tab:table2' multiply defined.
@@ -853,15 +853,15 @@ LaTeX Info: Redefining \nameref on input line 134.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* h-part:(L,W,R)=(79.49744pt, 455.30013pt, 79.49744pt)
+* v-part:(T,H,B)=(79.49744pt, 635.97511pt, 79.49744pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
+* \textwidth=455.30013pt
+* \textheight=635.97511pt
+* \oddsidemargin=7.22745pt
+* \evensidemargin=7.22745pt
+* \topmargin=-29.77255pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -901,24 +901,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 188.
 
-LaTeX Warning: Citation `USArmy' on page 1 undefined on input line 179.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 189.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 189.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 188.
 
-
-LaTeX Warning: Citation `Garrison' on page 1 undefined on input line 189.
-
-
-LaTeX Warning: Citation `Garrison' on page 1 undefined on input line 190.
-
-<University-of-Illinois-logo.jpg, id=177, 395.4775pt x 156.585pt>
+<University-of-Illinois-logo.jpg, id=193, 395.4775pt x 156.585pt>
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
@@ -940,14 +932,14 @@ l.206 \clearpage
                  [1
 
  <./University-of-Illinois-logo.jpg>]
-<System_Block_Diagram.png, id=186, 977.6525pt x 750.805pt>
+<System_Block_Diagram.png, id=205, 963.6pt x 722.7pt>
 File: System_Block_Diagram.png Graphic file (type png)
 
 <use System_Block_Diagram.png>
 Package pdftex.def Info: System_Block_Diagram.png used on input line 216.
-(pdftex.def)             Requested size: 439.93956pt x 337.85913pt.
+(pdftex.def)             Requested size: 433.616pt x 325.21199pt.
 
-<Friendly_Interrogator_Block_Diagram.png, id=188, 902.37125pt x 648.4225pt>
+<Friendly_Interrogator_Block_Diagram.png, id=207, 902.37125pt x 648.4225pt>
 File: Friendly_Interrogator_Block_Diagram.png Graphic file (type png)
 
 <use Friendly_Interrogator_Block_Diagram.png>
@@ -963,230 +955,205 @@ Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 228
  [2
 
  <./System_Block_Diagram.png>]
-
-LaTeX Warning: Reference `fig:aat1217-voltage-converter-circuit' on page 3 unde
-fined on input line 239.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
-
- []
-
-<PCB_Battery_Mount.png, id=199, 149.55875pt x 191.71625pt>
+<PCB_Battery_Mount.png, id=219, 149.55875pt x 191.71625pt>
 File: PCB_Battery_Mount.png Graphic file (type png)
 
 <use PCB_Battery_Mount.png>
-Package pdftex.def Info: PCB_Battery_Mount.png used on input line 246.
+Package pdftex.def Info: PCB_Battery_Mount.png used on input line 245.
 (pdftex.def)             Requested size: 59.82243pt x 76.68513pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 248
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 247
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [3 <./Friendly_Interrogator_Block_Diagram.png>]
-<MSP430_Pin_Assignments.png, id=208, 1279.78125pt x 568.1225pt>
-File: MSP430_Pin_Assignments.png Graphic file (type png)
+<MSP430_Pin_Assignments_Interrogator.png, id=228, 1268.74pt x 494.84875pt>
+File: MSP430_Pin_Assignments_Interrogator.png Graphic file (type png)
 
-<use MSP430_Pin_Assignments.png>
-Package pdftex.def Info: MSP430_Pin_Assignments.png used on input line 276.
-(pdftex.def)             Requested size: 473.51166pt x 210.20203pt.
+<use MSP430_Pin_Assignments_Interrogator.png>
+Package pdftex.def Info: MSP430_Pin_Assignments_Interrogator.png used on input 
+line 265.
+(pdftex.def)             Requested size: 469.42645pt x 183.09117pt.
 
-Overfull \hbox (3.75664pt too wide) in paragraph at lines 276--277
+Overfull \hbox (14.12633pt too wide) in paragraph at lines 265--266
  [][] 
  []
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 278
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 268
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [4 <./PCB_Battery_Mount.png>]
-
-LaTeX Warning: Reference `section-functionality' on page 5 undefined on input l
-ine 280.
-
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 301
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 290
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [5 <./MSP430_Pin_Assignments.png>]
-
-LaTeX Warning: Reference `section-functionality' on page 6 undefined on input l
-ine 333.
-
-<Friendly_Target_Block_Diagram.png, id=229, 961.5925pt x 474.77374pt>
+ [5 <./MSP430_Pin_Assignments_Interrogator.png>]
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 328
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+ [6]
+<Friendly_Target_Block_Diagram.png, id=263, 961.5925pt x 474.77374pt>
 File: Friendly_Target_Block_Diagram.png Graphic file (type png)
 
 <use Friendly_Target_Block_Diagram.png>
 Package pdftex.def Info: Friendly_Target_Block_Diagram.png used on input line 3
-40.
+37.
 (pdftex.def)             Requested size: 480.79507pt x 237.38629pt.
 
-Overfull \hbox (11.04005pt too wide) in paragraph at lines 340--341
+Overfull \hbox (25.49495pt too wide) in paragraph at lines 337--338
  [][] 
  []
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 343
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [6]
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 363
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 348
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [7 <./Friendly_Target_Block_Diagram.png>] <MSP430_Pin_Assignments-Target.png, 
-id=242, 907.39pt x 360.34625pt>
+id=274, 907.39pt x 360.34625pt>
 File: MSP430_Pin_Assignments-Target.png Graphic file (type png)
 
 <use MSP430_Pin_Assignments-Target.png>
 Package pdftex.def Info: MSP430_Pin_Assignments-Target.png used on input line 3
-68.
+65.
 (pdftex.def)             Requested size: 471.84552pt x 187.38112pt.
 
-Overfull \hbox (2.0905pt too wide) in paragraph at lines 368--369
+Overfull \hbox (16.5454pt too wide) in paragraph at lines 365--366
  [][] 
  []
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 396
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 374
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [8 <./MSP430_Pin_Assignments-Target.png>] <Voltage_Converter_Schematic.png, id
-=250, 1109.14375pt x 536.0025pt>
+ [8 <./MSP430_Pin_Assignments-Target.png>]
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 424
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+ [9]
+<Voltage_Converter_Schematic.png, id=292, 1109.14375pt x 536.0025pt>
 File: Voltage_Converter_Schematic.png Graphic file (type png)
 
 <use Voltage_Converter_Schematic.png>
-Package pdftex.def Info: Voltage_Converter_Schematic.png used on input line 425
+Package pdftex.def Info: Voltage_Converter_Schematic.png used on input line 428
 .
 (pdftex.def)             Requested size: 388.20613pt x 187.60368pt.
 
-<Crystal_Oscillator_Schematic.png, id=251, 568.1225pt x 564.1075pt>
+<Crystal_Oscillator_Schematic.png, id=293, 568.1225pt x 564.1075pt>
 File: Crystal_Oscillator_Schematic.png Graphic file (type png)
 
 <use Crystal_Oscillator_Schematic.png>
 Package pdftex.def Info: Crystal_Oscillator_Schematic.png used on input line 43
-1.
+4.
 (pdftex.def)             Requested size: 198.84584pt x 197.44057pt.
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 434
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-[9 <./Voltage_Converter_Schematic.png>]
-<MCU_Laser_Schematic.png, id=259, 1068.99374pt x 532.99126pt>
+<MCU_Laser_Schematic.png, id=294, 1068.99374pt x 532.99126pt>
 File: MCU_Laser_Schematic.png Graphic file (type png)
 
 <use MCU_Laser_Schematic.png>
-Package pdftex.def Info: MCU_Laser_Schematic.png used on input line 437.
+Package pdftex.def Info: MCU_Laser_Schematic.png used on input line 440.
 (pdftex.def)             Requested size: 459.65836pt x 229.18178pt.
 
-<RF_Receiver_Decoder_Schematic.png, id=260, 815.045pt x 557.08125pt>
+Overfull \hbox (4.35823pt too wide) in paragraph at lines 440--441
+ [][] 
+ []
+
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 443
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+ [10 <./Voltage_Converter_Schematic.png> <./Crystal_Oscillator_Schematic.png>]
+<RF_Receiver_Decoder_Schematic.png, id=302, 815.045pt x 557.08125pt>
 File: RF_Receiver_Decoder_Schematic.png Graphic file (type png)
 
 <use RF_Receiver_Decoder_Schematic.png>
 Package pdftex.def Info: RF_Receiver_Decoder_Schematic.png used on input line 4
-43.
+46.
 (pdftex.def)             Requested size: 407.5215pt x 278.53995pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 446
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 455
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-[10 <./Crystal_Oscillator_Schematic.png> <./MCU_Laser_Schematic.png>]
-<Functionality_Flowchart.pdf, id=269, 822.07124pt x 532.99126pt>
+[11 <./MCU_Laser_Schematic.png> <./RF_Receiver_Decoder_Schematic.png>]
+<Functionality_Flowchart.pdf, id=312, 822.07124pt x 532.99126pt>
 File: Functionality_Flowchart.pdf Graphic file (type pdf)
 
 <use Functionality_Flowchart.pdf>
-Package pdftex.def Info: Functionality_Flowchart.pdf used on input line 456.
+Package pdftex.def Info: Functionality_Flowchart.pdf used on input line 461.
 (pdftex.def)             Requested size: 452.14058pt x 293.1461pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 459
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 469
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-[11 <./RF_Receiver_Decoder_Schematic.png>]
+[12 <./Functionality_Flowchart.pdf>]
+<Encryption_Diagram.png, id=321, 982.67125pt x 367.3725pt>
+File: Encryption_Diagram.png Graphic file (type png)
+
+<use Encryption_Diagram.png>
+Package pdftex.def Info: Encryption_Diagram.png used on input line 475.
+(pdftex.def)             Requested size: 442.19798pt x 165.31609pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 474
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 493
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [12 <./Functionality_Flowchart.pdf>]
+ [13 <./Encryption_Diagram.png>]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 522
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 536
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [13]
-<PCB_Trace_Figure.png, id=294, 608.2725pt x 313.17pt>
+ [14]
+<PCB_Trace_Figure.png, id=348, 608.2725pt x 313.17pt>
 File: PCB_Trace_Figure.png Graphic file (type png)
 
 <use PCB_Trace_Figure.png>
-Package pdftex.def Info: PCB_Trace_Figure.png used on input line 537.
+Package pdftex.def Info: PCB_Trace_Figure.png used on input line 557.
 (pdftex.def)             Requested size: 182.48315pt x 93.95172pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 564
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 579
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [14 <./PCB_Trace_Figure.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 599--600
+ [15 <./PCB_Trace_Figure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
 
  []
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 604
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [15]
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 656
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 620
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [16]
-<Requirements.png, id=320, 1537.745pt x 903.375pt>
-File: Requirements.png Graphic file (type png)
- <use Requirements.png>
-Package pdftex.def Info: Requirements.png used on input line 660.
-(pdftex.def)             Requested size: 461.32706pt x 271.01459pt.
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
-
-LaTeX Warning: Citation `Microphotonics' on page 17 undefined on input line 668
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 669
 .
-
-<detectivity-table.png, id=321, 379.4175pt x 280.04625pt>
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+ [17]
+<detectivity-table.png, id=389, 379.4175pt x 280.04625pt>
 File: detectivity-table.png Graphic file (type png)
 
 <use detectivity-table.png>
-Package pdftex.def Info: detectivity-table.png used on input line 672.
+Package pdftex.def Info: detectivity-table.png used on input line 686.
 (pdftex.def)             Requested size: 151.7643pt x 112.0165pt.
-
-
-LaTeX Warning: Citation `Optical' on page 17 undefined on input line 674.
-
-
-LaTeX Warning: Citation `Optical' on page 17 undefined on input line 674.
-
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 676
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [17 <./Requirements.png>]
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 677.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 691.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
@@ -1195,7 +1162,7 @@ File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 708
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 699
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [18 <./detectivity-table.png>]
@@ -1204,14 +1171,14 @@ Missing character: There is no — in font cmr10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 745
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 741
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [19]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 798
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 777
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [20]
@@ -1225,100 +1192,107 @@ Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 839
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 847
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 877
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [22]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 864
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 877
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [23
+ [23]
+(./ECE445_Design_Review_Project_11.bbl
+Missing character: There is no â in font cmti10!
+Missing character: There is no € in font cmti10!
+Missing character: There is no “ in font cmti10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 133
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-]
-(./ECE445_Design_Review_Project_11.bbl)
-<Friendly_Interrogator_Software_Flowchart.pdf, id=377, 821.0675pt x 1290.8225pt
->
+[24
+
+])
+<Friendly_Interrogator_Software_Flowchart.pdf, id=458, 824.07875pt x 1290.8225p
+t>
 File: Friendly_Interrogator_Software_Flowchart.pdf Graphic file (type pdf)
  <use Friendly_Interrogator_Software_Flowchart.pdf>
 Package pdftex.def Info: Friendly_Interrogator_Software_Flowchart.pdf used on i
-nput line 873.
-(pdftex.def)             Requested size: 410.53275pt x 645.40967pt.
+nput line 886.
+(pdftex.def)             Requested size: 370.83202pt x 580.86476pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 876
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 889
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [24
-
-]
-Overfull \vbox (50.47964pt too high) has occurred while \output is active []
+ [25]
+Overfull \vbox (0.38963pt too high) has occurred while \output is active []
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 876
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 889
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [25 <./Friendly_Interrogator_Software_Flowchart.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 878.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 878.
+ [26 <./Friendly_Interrogator_Software_Flowchart.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 891.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 891.
  (./ECE445_Design_Review_Project_11.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 878.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 878.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 891.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 891.
 Package rerunfilecheck Info: File `ECE445_Design_Review_Project_11.out' has not
  changed.
-(rerunfilecheck)             Checksum: A079B25B046C40DF33866451DC60AC66;1894.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: 9277EF3C6B0DE70261FC8BA8FA4D4801;2082.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 878.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 891.
  ) 
 Here is how much of TeX's memory you used:
- 17638 strings out of 493089
- 336782 string characters out of 6134842
- 390061 words of memory out of 5000000
- 20836 multiletter control sequences out of 15000+600000
+ 17674 strings out of 493089
+ 337424 string characters out of 6134842
+ 390780 words of memory out of 5000000
+ 20852 multiletter control sequences out of 15000+600000
  17520 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,16n,51p,10419b,993s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,16n,51p,10419b,1038s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ECE445_Design_Review_Project_11.pdf (27 pages, 3447418 bytes)
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on ECE445_Design_Review_Project_11.pdf (28 pages, 3003908 bytes)
 .
 PDF statistics:
- 488 PDF objects out of 1000 (max. 8388607)
- 375 compressed objects within 4 object streams
- 85 named destinations out of 1000 (max. 500000)
- 297 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 569 PDF objects out of 1000 (max. 8388607)
+ 452 compressed objects within 5 object streams
+ 105 named destinations out of 1000 (max. 500000)
+ 313 words of extra memory for PDF output out of 10000 (max. 10000000)
 

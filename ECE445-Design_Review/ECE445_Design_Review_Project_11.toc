@@ -8,21 +8,23 @@
 \contentsline {subsubsection}{\numberline {2.1.1}System Overview}{2}{subsubsection.2.1.1}
 \contentsline {subsubsection}{\numberline {2.1.2}Friendly Interrogator Unit}{2}{subsubsection.2.1.2}
 \contentsline {subsubsection}{\numberline {2.1.3}Friendly Target Unit}{7}{subsubsection.2.1.3}
-\contentsline {subsection}{\numberline {2.2}Circuit Schematics}{9}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator Unit}{9}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Friendly Target Unit}{11}{subsubsection.2.2.2}
-\contentsline {subsection}{\numberline {2.3}Software Flowcharts / Functionality}{11}{subsection.2.3}
-\contentsline {subsubsection}{\numberline {2.3.1}System Flow}{11}{subsubsection.2.3.1}
-\contentsline {subsubsection}{\numberline {2.3.2}Friendly Interrogator Software Flow}{12}{subsubsection.2.3.2}
-\contentsline {subsection}{\numberline {2.4}Numerical Analysis and Simulations/Plots}{13}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Calculations}{13}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}Simulations/Plots}{17}{subsubsection.2.4.2}
-\contentsline {section}{\numberline {3}Requirements and Verification}{17}{section.3}
-\contentsline {subsection}{\numberline {3.1}Tolerance Analysis}{17}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Safety}{19}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Ethical Issues}{21}{subsection.3.3}
-\contentsline {section}{\numberline {4}Cost and Schedule}{23}{section.4}
-\contentsline {subsection}{\numberline {4.1}Cost Analysis}{23}{subsection.4.1}
+\contentsline {subsection}{\numberline {2.2}Circuit Schematics}{10}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator Unit}{10}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Friendly Target Unit}{12}{subsubsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3}Software Flowcharts / Functionality}{12}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}System Flow}{12}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Encryption and Message Sending Protocol}{12}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3}Friendly Interrogator Software Flow}{13}{subsubsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.4}Friendly Target Software Flow}{14}{subsubsection.2.3.4}
+\contentsline {subsection}{\numberline {2.4}Numerical Analysis and Simulations/Plots}{14}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Calculations}{14}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.2}Simulations/Plots}{18}{subsubsection.2.4.2}
+\contentsline {section}{\numberline {3}Requirements and Verification}{18}{section.3}
+\contentsline {subsection}{\numberline {3.1}Tolerance Analysis}{18}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Safety}{20}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Ethical Issues}{22}{subsection.3.3}
+\contentsline {section}{\numberline {4}Cost and Schedule}{22}{section.4}
+\contentsline {subsection}{\numberline {4.1}Cost Analysis}{22}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Schedule}{23}{subsection.4.2}
-\contentsline {section}{Reference}{24}{subsection.4.2}
+\contentsline {section}{Reference}{25}{subsection.4.2}
 \contentsfinish 

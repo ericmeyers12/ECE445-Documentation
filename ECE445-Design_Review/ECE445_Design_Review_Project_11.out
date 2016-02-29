@@ -13,15 +13,17 @@
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Friendly Target Unit}{subsection.2.2}% 13
 \BOOKMARK [2][-]{subsection.2.3}{Software Flowcharts / Functionality}{section.2}% 14
 \BOOKMARK [3][-]{subsubsection.2.3.1}{System Flow}{subsection.2.3}% 15
-\BOOKMARK [3][-]{subsubsection.2.3.2}{Friendly Interrogator Software Flow}{subsection.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.4}{Numerical Analysis and Simulations/Plots}{section.2}% 17
-\BOOKMARK [3][-]{subsubsection.2.4.1}{Calculations}{subsection.2.4}% 18
-\BOOKMARK [3][-]{subsubsection.2.4.2}{Simulations/Plots}{subsection.2.4}% 19
-\BOOKMARK [1][-]{section.3}{Requirements and Verification}{}% 20
-\BOOKMARK [2][-]{subsection.3.1}{Tolerance Analysis}{section.3}% 21
-\BOOKMARK [2][-]{subsection.3.2}{Safety}{section.3}% 22
-\BOOKMARK [2][-]{subsection.3.3}{Ethical Issues}{section.3}% 23
-\BOOKMARK [1][-]{section.4}{Cost and Schedule}{}% 24
-\BOOKMARK [2][-]{subsection.4.1}{Cost Analysis}{section.4}% 25
-\BOOKMARK [2][-]{subsection.4.2}{Schedule}{section.4}% 26
-\BOOKMARK [1][-]{subsection.4.2}{Reference}{}% 27
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Encryption and Message Sending Protocol}{subsection.2.3}% 16
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Friendly Interrogator Software Flow}{subsection.2.3}% 17
+\BOOKMARK [3][-]{subsubsection.2.3.4}{Friendly Target Software Flow}{subsection.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.4}{Numerical Analysis and Simulations/Plots}{section.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Calculations}{subsection.2.4}% 20
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Simulations/Plots}{subsection.2.4}% 21
+\BOOKMARK [1][-]{section.3}{Requirements and Verification}{}% 22
+\BOOKMARK [2][-]{subsection.3.1}{Tolerance Analysis}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.2}{Safety}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.3}{Ethical Issues}{section.3}% 25
+\BOOKMARK [1][-]{section.4}{Cost and Schedule}{}% 26
+\BOOKMARK [2][-]{subsection.4.1}{Cost Analysis}{section.4}% 27
+\BOOKMARK [2][-]{subsection.4.2}{Schedule}{section.4}% 28
+\BOOKMARK [1][-]{subsection.4.2}{Reference}{}% 29
