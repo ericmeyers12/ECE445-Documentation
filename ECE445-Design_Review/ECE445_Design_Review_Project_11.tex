@@ -504,9 +504,8 @@ The interrogator and target unit must be synced initially before active use. Thi
 	\caption{Flowchart for Functionality\label{fig:circuit-schematic}}
 \end{figure}
 
-
-\subsubsection{Friendly Interrogator Software Flow}
-The software on the MCU on the friendly interrogator unit will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
+\subsubsection{Software Flow}
+The software on both of the MCUs will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
 \begin{itemize}
 	\item R0 - program counter
 	\item R1 - stack pointer 
@@ -514,18 +513,7 @@ The software on the MCU on the friendly interrogator unit will follow a very sim
 	\item R3 - constant generator
 	\item R4 - R15 - general purpose registers
 \end{itemize}
-Using these 12 general purpose registers the team can accurately identify a target as friendly. The flow diagram in Figure \ref*{fig:friendly-interrogator-software-flowchart} in the Appendix depicts the series of processes and events that take place within the MCU in order for the target to be identified as friendly. 
-
-\subsubsection{Friendly Target Software Flow}
-The software on the MCU on the friendly target unit will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
-\begin{itemize}
-	\item R0 - program counter
-	\item R1 - stack pointer 
-	\item R2 - status register
-	\item R3 - constant generator
-	\item R4 - R15 - general purpose registers
-\end{itemize}
-Using these 12 general purpose registers the team can accurately identify a target as friendly. The flow diagram in Figure \ref*{fig:friendly-target-software-flowchart} in the Appendix depicts the series of processes and events that take place within the MCU in order for the friendly target unit to broadcast an acknowledge signal. 
+Using these 12 general purpose registers the team can accurately receive signals, broadcast signals, and eventually identify a target as friendly. The flow diagrams in Figure \ref*{fig:friendly-interrogator-software-flowchart} and Figure \ref*{fig:friendly-target-software-flowchart} in the Appendix depict the series of processes and events that take place within both MCUs in order for the target to be identified as friendly. 
 
 \subsection{Numerical Analysis and Simulations/Plots} \label{section-simulations-calculations}
 \subsubsection{Calculations}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  1 MAR 2016 22:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  1 MAR 2016 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -966,7 +966,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
 
-<University-of-Illinois-logo.jpg, id=194, 395.4775pt x 156.585pt>
+<University-of-Illinois-logo.jpg, id=200, 395.4775pt x 156.585pt>
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
@@ -988,14 +988,14 @@ l.208 \clearpage
                  [1
 
  <./University-of-Illinois-logo.jpg>]
-<System_Block_Diagram.png, id=206, 963.6pt x 722.7pt>
+<System_Block_Diagram.png, id=212, 963.6pt x 722.7pt>
 File: System_Block_Diagram.png Graphic file (type png)
 
 <use System_Block_Diagram.png>
 Package pdftex.def Info: System_Block_Diagram.png used on input line 218.
 (pdftex.def)             Requested size: 433.616pt x 325.21199pt.
 
-<Friendly_Interrogator_Block_Diagram.png, id=208, 902.37125pt x 648.4225pt>
+<Friendly_Interrogator_Block_Diagram.png, id=214, 902.37125pt x 648.4225pt>
 File: Friendly_Interrogator_Block_Diagram.png Graphic file (type png)
 
 <use Friendly_Interrogator_Block_Diagram.png>
@@ -1018,7 +1018,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [2
 
  <./System_Block_Diagram.png>]
-<PCB_Battery_Mount.png, id=220, 149.55875pt x 191.71625pt>
+<PCB_Battery_Mount.png, id=226, 149.55875pt x 191.71625pt>
 File: PCB_Battery_Mount.png Graphic file (type png)
 
 <use PCB_Battery_Mount.png>
@@ -1037,7 +1037,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3 <./Friendly_Interrogator_Block_Diagram.png>]
-<MSP430_Pin_Assignments_Interrogator.png, id=229, 1268.74pt x 494.84875pt>
+<MSP430_Pin_Assignments_Interrogator.png, id=235, 1268.74pt x 494.84875pt>
 File: MSP430_Pin_Assignments_Interrogator.png Graphic file (type png)
 
 <use MSP430_Pin_Assignments_Interrogator.png>
@@ -1088,7 +1088,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6] <Friendly_Target_Block_Diagram.png, id=264, 961.5925pt x 474.77374pt>
+[6] <Friendly_Target_Block_Diagram.png, id=270, 961.5925pt x 474.77374pt>
 File: Friendly_Target_Block_Diagram.png Graphic file (type png)
 
 <use Friendly_Target_Block_Diagram.png>
@@ -1113,7 +1113,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [7 <./Friendly_Target_Block_Diagram.png>]
-<MSP430_Pin_Assignments-Target.png, id=275, 907.39pt x 360.34625pt>
+<MSP430_Pin_Assignments-Target.png, id=281, 907.39pt x 360.34625pt>
 File: MSP430_Pin_Assignments-Target.png Graphic file (type png)
 
 <use MSP430_Pin_Assignments-Target.png>
@@ -1151,7 +1151,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9] <Voltage_Converter_Schematic.png, id=293, 1109.14375pt x 536.0025pt>
+[9] <Voltage_Converter_Schematic.png, id=299, 1109.14375pt x 536.0025pt>
 File: Voltage_Converter_Schematic.png Graphic file (type png)
 
 <use Voltage_Converter_Schematic.png>
@@ -1159,7 +1159,7 @@ Package pdftex.def Info: Voltage_Converter_Schematic.png used on input line 430
 .
 (pdftex.def)             Requested size: 388.20613pt x 187.60368pt.
 
-<Crystal_Oscillator_Schematic.png, id=294, 568.1225pt x 564.1075pt>
+<Crystal_Oscillator_Schematic.png, id=300, 568.1225pt x 564.1075pt>
 File: Crystal_Oscillator_Schematic.png Graphic file (type png)
 
 <use Crystal_Oscillator_Schematic.png>
@@ -1167,7 +1167,7 @@ Package pdftex.def Info: Crystal_Oscillator_Schematic.png used on input line 43
 6.
 (pdftex.def)             Requested size: 198.84584pt x 197.44057pt.
 
-<MCU_Laser_Schematic.png, id=295, 1068.99374pt x 532.99126pt>
+<MCU_Laser_Schematic.png, id=301, 1068.99374pt x 532.99126pt>
 File: MCU_Laser_Schematic.png Graphic file (type png)
 
 <use MCU_Laser_Schematic.png>
@@ -1191,7 +1191,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [10 <./Voltage_Converter_Schematic.png> <./Crystal_Oscillator_Schematic.png>]
-<RF_Receiver_Decoder_Schematic.png, id=303, 815.045pt x 557.08125pt>
+<RF_Receiver_Decoder_Schematic.png, id=309, 815.045pt x 557.08125pt>
 File: RF_Receiver_Decoder_Schematic.png Graphic file (type png)
 
 <use RF_Receiver_Decoder_Schematic.png>
@@ -1211,13 +1211,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [11 <./MCU_Laser_Schematic.png> <./RF_Receiver_Decoder_Schematic.png>]
-<MCU-Target.png, id=314, 750.805pt x 483.8075pt>
+<MCU-Target.png, id=320, 750.805pt x 483.8075pt>
 File: MCU-Target.png Graphic file (type png)
  <use MCU-Target.png>
 Package pdftex.def Info: MCU-Target.png used on input line 458.
 (pdftex.def)             Requested size: 375.40158pt x 241.90315pt.
 
-<Op-Amp-Power.png, id=315, 975.645pt x 383.4325pt>
+<Op-Amp-Power.png, id=321, 975.645pt x 383.4325pt>
 File: Op-Amp-Power.png Graphic file (type png)
  <use Op-Amp-Power.png>
 Package pdftex.def Info: Op-Amp-Power.png used on input line 464.
@@ -1227,7 +1227,7 @@ Overfull \hbox (32.52118pt too wide) in paragraph at lines 464--465
  [][] 
  []
 
-<Photoreceiver.png, id=316, 641.39626pt x 445.665pt>
+<Photoreceiver.png, id=322, 641.39626pt x 445.665pt>
 File: Photoreceiver.png Graphic file (type png)
  <use Photoreceiver.png>
 Package pdftex.def Info: Photoreceiver.png used on input line 470.
@@ -1246,7 +1246,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [12 <./MCU-Target.png> <./Op-Amp-Power.png>]
-<RFTransmitter.png, id=325, 826.08624pt x 476.78125pt>
+<RFTransmitter.png, id=331, 826.08624pt x 476.78125pt>
 File: RFTransmitter.png Graphic file (type png)
  <use RFTransmitter.png>
 Package pdftex.def Info: RFTransmitter.png used on input line 476.
@@ -1265,7 +1265,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [13 <./Photoreceiver.png> <./RFTransmitter.png>]
-<Functionality_Flowchart.pdf, id=334, 822.07124pt x 532.99126pt>
+<Functionality_Flowchart.pdf, id=340, 822.07124pt x 532.99126pt>
 File: Functionality_Flowchart.pdf Graphic file (type pdf)
 
 <use Functionality_Flowchart.pdf>
@@ -1284,7 +1284,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [14 <./Functionality_Flowchart.pdf>]
-<Encryption_Diagram.png, id=344, 982.67125pt x 367.3725pt>
+<Encryption_Diagram.png, id=350, 982.67125pt x 367.3725pt>
 File: Encryption_Diagram.png Graphic file (type png)
 
 <use Encryption_Diagram.png>
@@ -1292,7 +1292,7 @@ Package pdftex.def Info: Encryption_Diagram.png used on input line 503.
 (pdftex.def)             Requested size: 442.19798pt x 165.31609pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 522
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 518
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1305,7 +1305,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [15 <./Encryption_Diagram.png>]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 558
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 564
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1315,15 +1315,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16] <PCB_Trace_Figure.png, id=366, 608.2725pt x 313.17pt>
+[16] <PCB_Trace_Figure.png, id=376, 608.2725pt x 313.17pt>
 File: PCB_Trace_Figure.png Graphic file (type png)
 
 <use PCB_Trace_Figure.png>
-Package pdftex.def Info: PCB_Trace_Figure.png used on input line 594.
+Package pdftex.def Info: PCB_Trace_Figure.png used on input line 582.
 (pdftex.def)             Requested size: 182.48315pt x 93.95172pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 601
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 606
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1334,9 +1334,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [17 <./PCB_Trace_Figure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 644--645
+
+ []
+
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 643
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 648
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1347,13 +1351,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 656--657
-
- []
-
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 688
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 697
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1363,34 +1363,22 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[19] <detectivity-table.png, id=410, 379.4175pt x 280.04625pt>
+[19] <detectivity-table.png, id=417, 379.4175pt x 280.04625pt>
 File: detectivity-table.png Graphic file (type png)
 
 <use detectivity-table.png>
-Package pdftex.def Info: detectivity-table.png used on input line 718.
+Package pdftex.def Info: detectivity-table.png used on input line 706.
 (pdftex.def)             Requested size: 151.7643pt x 112.0165pt.
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 722
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 711.
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 26.13104pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[20]
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 723.
-
- (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 753
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 724
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1400,12 +1388,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[21 <./detectivity-table.png>]
+[20 <./detectivity-table.png>]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no — in font cmr10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 787
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 764
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[21]
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 793
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1418,7 +1419,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [22]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 834
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 853
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1431,7 +1432,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [23]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 883
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 888
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1442,19 +1443,19 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 904--905
+Underfull \hbox (badness 10000) in paragraph at lines 892--893
 
  []
 
-<Schedule_Extended.png, id=460, 670.505pt x 641.39626pt>
+<Schedule_Extended.png, id=473, 670.505pt x 641.39626pt>
 File: Schedule_Extended.png Graphic file (type png)
 
 <use Schedule_Extended.png>
-Package pdftex.def Info: Schedule_Extended.png used on input line 910.
+Package pdftex.def Info: Schedule_Extended.png used on input line 898.
 (pdftex.def)             Requested size: 422.4204pt x 404.08177pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 913
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 904
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1464,20 +1465,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[25]
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 916
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
-
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 26.13104pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[26 <./Schedule_Extended.png>] (./ECE445_Design_Review_Project_11.bbl
+[25 <./Schedule_Extended.png>] (./ECE445_Design_Review_Project_11.bbl
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no “ in font cmti10!
@@ -1497,12 +1485,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[27
+[26
 
 ])
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 920
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 908
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1512,58 +1500,58 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[28]
+[27]
 
 Package pdfpages Warning: Option `page' is unknow to \includepdf.
 (pdfpages)                Did you mean `pages'? (Note the `s'!)
 (pdfpages)                OK, I'll proceed as if it were `pages'.
 
-<Design-Review-Requirements-Verification.pdf, id=501, 614.295pt x 794.97pt>
+<Design-Review-Requirements-Verification.pdf, id=503, 614.295pt x 794.97pt>
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf used on in
-put line 924.
+put line 912.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf used on in
-put line 924.
+put line 912.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Design-Review-Requirements-Verification.pdf, id=504, page=1, 614.295pt x 794.9
+<Design-Review-Requirements-Verification.pdf, id=506, page=1, 614.295pt x 794.9
 7pt>
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
  <use Design-Review-Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page1 use
-d on input line 924.
+d on input line 912.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page1 use
-d on input line 924.
+d on input line 912.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page1 use
-d on input line 924.
+d on input line 912.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page1 use
-d on input line 924.
+d on input line 912.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page1 use
-d on input line 926.
+d on input line 914.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
- [29
+ [28
 
  <./Design-Review-Requirements-Verification.pdf>]
 
@@ -1574,68 +1562,68 @@ Package pdfpages Warning: Option `page' is unknow to \includepdf.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 <use Design-Review-Requirements-Verification.pdf>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf used on in
-put line 930.
+put line 918.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf used on in
-put line 930.
+put line 918.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Design-Review-Requirements-Verification.pdf, id=533, page=2, 614.295pt x 794.9
+<Design-Review-Requirements-Verification.pdf, id=534, page=2, 614.295pt x 794.9
 7pt>
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
  <use Design-Review-Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page2 use
-d on input line 930.
+d on input line 918.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page2 use
-d on input line 930.
+d on input line 918.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page2 use
-d on input line 930.
+d on input line 918.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page2 use
-d on input line 930.
+d on input line 918.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Design-Review-Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Design-Review-Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Design-Review-Requirements-Verification.pdf, page2 use
-d on input line 932.
+d on input line 920.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
- [30
+ [29
 
  <./Design-Review-Requirements-Verification.pdf>]
-<Friendly_Interrogator_Software_Flowchart.pdf, id=539, 824.07875pt x 1290.8225p
+<Friendly_Interrogator_Software_Flowchart.pdf, id=541, 824.07875pt x 1290.8225p
 t>
 File: Friendly_Interrogator_Software_Flowchart.pdf Graphic file (type pdf)
  <use Friendly_Interrogator_Software_Flowchart.pdf>
 Package pdftex.def Info: Friendly_Interrogator_Software_Flowchart.pdf used on i
-nput line 935.
+nput line 923.
 (pdftex.def)             Requested size: 370.83202pt x 580.86476pt.
 
-<Friendly_Target_Software_Flowchart.pdf, id=540, 926.46124pt x 1695.33376pt>
+<Friendly_Target_Software_Flowchart.pdf, id=542, 926.46124pt x 1695.33376pt>
 File: Friendly_Target_Software_Flowchart.pdf Graphic file (type pdf)
 
 <use Friendly_Target_Software_Flowchart.pdf>
 Package pdftex.def Info: Friendly_Target_Software_Flowchart.pdf used on input l
-ine 941.
+ine 929.
 (pdftex.def)             Requested size: 370.57793pt x 678.1215pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 944
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 932
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1645,7 +1633,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[31
+[30
 
  <./Friendly_Interrogator_Software_Flowchart.pdf>]
 Overfull \vbox (64.1464pt too high) has occurred while \output is active []
@@ -1653,7 +1641,7 @@ Overfull \vbox (64.1464pt too high) has occurred while \output is active []
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 944
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 932
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1663,12 +1651,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[32 <./Friendly_Target_Software_Flowchart.pdf>]
-<Parts_and_Labor_Cost.pdf, id=557, 695.59875pt x 401.45984pt>
+[31 <./Friendly_Target_Software_Flowchart.pdf>]
+<Parts_and_Labor_Cost.pdf, id=559, 695.59875pt x 401.45984pt>
 File: Parts_and_Labor_Cost.pdf Graphic file (type pdf)
 
 <use Parts_and_Labor_Cost.pdf>
-Package pdftex.def Info: Parts_and_Labor_Cost.pdf used on input line 947.
+Package pdftex.def Info: Parts_and_Labor_Cost.pdf used on input line 935.
 (pdftex.def)             Requested size: 626.0331pt x 361.3105pt.
 
 Overfull \vbox (12.05798pt too high) has occurred while \output is active []
@@ -1676,7 +1664,7 @@ Overfull \vbox (12.05798pt too high) has occurred while \output is active []
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 950
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 938
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1686,58 +1674,71 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[33 <./Parts_and_Labor_Cost.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 952.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 952.
+[32 <./Parts_and_Labor_Cost.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 940.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 940.
  (./ECE445_Design_Review_Project_11.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 952.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 952.
-Package rerunfilecheck Info: File `ECE445_Design_Review_Project_11.out' has not
- changed.
-(rerunfilecheck)             Checksum: B5E70E8A428C822F09BFC2FCDFFA33CB;2090.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 940.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 940.
 
+
+Package rerunfilecheck Warning: File `ECE445_Design_Review_Project_11.out' has 
+changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ECE445_Design_Review_Project_11.out
+':
+(rerunfilecheck)             Before: 2B1ED71B2277CA682FE585550F9009D2;2163
+(rerunfilecheck)             After:  4409EB56973784744C1A4649F8A3872A;1979.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 952.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 940.
  ) 
 Here is how much of TeX's memory you used:
- 18502 strings out of 493089
- 351213 string characters out of 6134842
+ 18503 strings out of 493089
+ 351246 string characters out of 6134842
  405760 words of memory out of 5000000
- 21618 multiletter control sequences out of 15000+600000
+ 21619 multiletter control sequences out of 15000+600000
  17520 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,19n,47p,10419b,1062s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ECE445_Design_Review_Project_11.pdf (35 pages, 3955779 bytes)
+ 39i,19n,51p,10419b,1060s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsubsection.2.3.6} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.2.3.5} has been referenced but does n
+ot exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/cm-super/sfrm1000.pfb>
+Output written on ECE445_Design_Review_Project_11.pdf (34 pages, 3954485 bytes)
 .
 PDF statistics:
- 684 PDF objects out of 1000 (max. 8388607)
- 530 compressed objects within 6 object streams
+ 686 PDF objects out of 1000 (max. 8388607)
+ 532 compressed objects within 6 object streams
  130 named destinations out of 1000 (max. 500000)
- 383 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 391 words of extra memory for PDF output out of 10000 (max. 10000000)
 
