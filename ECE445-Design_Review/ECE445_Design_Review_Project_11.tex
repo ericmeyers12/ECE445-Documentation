@@ -28,7 +28,7 @@
 \usepackage{multirow}	% multi-row tables
 \usepackage{array}		% define column format of a table
 \usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
-\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}% set the page margins to 1 inch
+\usepackage[top=1.1in, bottom=1.1in, left=1.1in, right=1.1in]{geometry}% set the page margins to 1 inch
 
 % use the fancyhdr package to maintain the format of the page numbers,
 % which is useful when the text color is changed
@@ -182,7 +182,6 @@ The purpose of this project is to create a system that quickly and accurately id
 
 The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is, indeed, friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to the "friendly interrogator" and the target will  be referred to as the "friendly target". 
 
-This communication protocol can be 
 \subsection{Objectives}
 \subsubsection{Goals and Benefits}
 \begin{itemize}
@@ -202,6 +201,7 @@ This communication protocol can be
 	\item R.F. Transmitter on friendly target to send acknowledgement back to interrogator.
 	\item R.F. Receiver on friendly interrogator to verify that the target is friendly.
 	\item LED on friendly interrogator to indicate to the operator the status of the target.
+	\item Quick response time (human reaction time is 190 ms \textsuperscript{\cite{Reaction_Times}})
 \end{itemize}
 \clearpage
 
@@ -232,15 +232,14 @@ Power-Out: MSP430 Microcontroller, 5mW Laser Transmitter, R.F. Receiver/Decoder,
 Input(s): N/A\\
 Output(s): N/A
 
-The power module will consist of a single standard alkaline AA battery (no specific brand/part name is necessary) which will lead into a Skyworks AAT1217 DC-DC step-up voltage converter. This will step the voltage up to 3.3V with a maximum current output of 100 mA which is sufficient enough to power the MCU, laser transmitter, and the R.F. receiver. Please refer to Section \ref{section-simulations-calculations} for these calculations regarding power delivery to this unit and resistor/capacitor/inductor part selection. 
+The power module will consist of a single standard alkaline AA battery (no specific brand/part name is necessary) which will feed into a Skyworks AAT1217 DC-DC step-up voltage converter. This will step the voltage up to 3.3V with a maximum current output of 100 mA which is sufficient enough to power the MCU, laser transmitter, and the R.F. receiver/decoder. Please refer to Section \ref{section-simulations-calculations} for these calculations regarding power delivery to this unit.
 
-As noted on the block diagram, in between the power module and the R.F. receiver/laser transmitter, there is a switch to control the power given to these two modules. This switch exists for two reasons: (1) to decrease power consumption and (2) to limit the amount of time the laser transmitter is sending data. This design choice will be expanded upon in Section \_\_\_.
+As noted on the block diagram, in between the power module and the R.F. receiver/decoder and laser transmitter block, there is a switch. This is meant to regulate the power consumption of these two devices and to give the operator the choice to query their target instead of the laser constantly querying and drawing current. This decreases power consumption tremendously.
 
-The circuit to operate the DC-DC step-up converter is shown in Figure \ref{fig:aat1217-voltage-converter-circuit}. \\
+The circuit schematic to operate the DC-DC step-up converter properly is shown in Figure \ref{fig:voltage-converter-schematic} below in Section \ref{section-circuit-schematics}.
 
 
-
-The battery will be mounted to the PCB a standard AA through-hole PCB battery mount shown in Figure \ref{fig:pcb-battery-mount}. However, this will be omitted from the circuit schematic for simplilcity purposes. During the construction of the PCB the team will have to create the 
+The battery will be mounted to the PCB a standard AA through-hole PCB battery mount shown in Figure \ref{fig:pcb-battery-mount}. However, this will be omitted from the circuit schematic for simplicity purposes. This part will be included when constructing the PCB.
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.4]{PCB_Battery_Mount.png}
@@ -250,34 +249,28 @@ The battery will be mounted to the PCB a standard AA through-hole PCB battery mo
 \normalsize\textbf{MSP430 Microcontroller} \\
 Power-In: 3.3V (from Voltage Converter Output) \\
 Power-Out: N/A \\
-Input(s): R.F. Receiver/Decoder Data-Out, 8-Pin DIP Switch,  Real Time Clock (32.768kHz Crystal) \\
-Output(s): LED, 5mW 650nm Laser Diode
+Input(s): R.F. Receiver/Decoder Data-Out, 8-Pin DIP Switch,  Real Time Clock (32.768kHz Crystal), Reset Clock/Sync Button \\
+Output(s): LED, 5mW 650nm Laser Transmitter
 
-The team chose to work with an T.I. MSP430F2274 Microcontroller Unit \textsuperscript{\cite{MSP430F2274}} due to its compiler simplicity, its availability in the ECE445 Senior Design Labs (available inventory) and the number of GPIO Pins on board (compared to other options, this model had several I/O pins and was the least expensive). Compared to many other MCUs on the market, the MSP430 is relatively well documented and there exist several support forums on the internet to assist the team throughout the duration of the project.
+The team chose to work with an T.I. MSP430F2274 Microcontroller Unit due to its compiler simplicity, the low-power consumption, and the amount of General Purpose Input/Output (GPIO) pins available on board.
 
 The board requires a 3.3V power supply to both the DV\textsubscript{cc} (pin 2) and AV\textsubscript{cc} (pin 16) which is why the voltage regulator is necessary as stated in the previous section. 
 
-As stated above, the input the MSP430 MCU will be the R.F. receiver/decoder signal, the 8-pin DIP switch, and the real time clock.
+The inputs to the MCU will be the R.F. receiver/decoder signal (9 GPIO pins), the 8-pin DIP switch (8 GPIO pins), the real time clock (2 GPIO pins), and the reset clock/sync button (1 GPIO pin). The inputs will consume a total of 20 GPIO pins. The outputs of the MCU consist of the LED indicator (1 GPIO pin) and the laser transmitter (1 GPIO pin). This brings the total number of GPIO pins to 22. The power will consume 4 pins on the MCU and this brings the total amount of pins being consumed to 28 out of 38 on-board. 
 
-The R.F. receiver/decoder signal will be the acknowledgment sent from the friendly target. These outputs from the receiver/decoder will be fed into pins 20 - 27 on the MCU. This cooresponds to 8 bits of data the MCU will be receiving from the friendly interrogator.
-
-The 8-pin DIP switch, which is the unique I.D. of the friendly interrogator, will be fed into pins 31 -38 on the MCU. 
-
-The 5 mW laser will be fed into pin 17 of the MCU to control the modulation of the signal to send the unique I.D. to the friendly target. 
-
-This unique I.D. provided by the DIP switch will be used in conjunction with the output pin to the laser transmitter to create a "laser pulse" that sends the data of the I.D. to the friendly target. This will be explained in more detail in section \hl{BLAHFUCKINGBLAH}.
-
-\hl{Progr}
-
-The above descriptions can be summarized with Table \ref{tab:msp430-pin-assignments} below. Each pin/label is listed with the description of the input or output. The red rows indicate that the pin is a power/ground line, the blue rows indicate that the pin is an input \textit{to} the MCU and the green rows indicate that the pin is an output \textit{from} the MCU. 
+This is summarized in Table \ref{tab:msp430-pin-assignments} .Each pin/label is listed with the description of the input or output. The red rows indicate that the pin is a power/ground line, the blue rows indicate that the pin is an input \textit{to} the MCU and the green rows indicate that the pin is an output \textit{from} the MCU.
 
 \begin{table} [H]
 	\centering
-	\includegraphics[scale=0.37]{MSP430_Pin_Assignments.png}
+	\includegraphics[scale=0.37]{MSP430_Pin_Assignments_Interrogator.png}
 	\caption{Pin Layout Table\label{tab:msp430-pin-assignments}}
 \end{table}
 
-Please refer to Section \ref{section-functionality} to view in-depth discussion about the functionality of the MSP430F2274 Microcontroller Unit and how it will be used throughout this project.
+The R.F. receiver/decoder signal will be the acknowledgment sent from the friendly target. These outputs from the receiver/decoder will be fed into pins 20 - 27 on the MCU. This corresponds to 8 bits of data the MCU will be receiving from the friendly interrogator.
+
+This unique I.D. provided by the DIP switch (pins 31-38) will be used in conjunction with the output pin to the laser transmitter (pin 17). The data will be sent over optical transmission by pulsing the laser at a set frequency to send a bit-stream of the I.D. to the friendly target. This will be explained in more detail in Section \ref{section-software}.
+
+The reset clock/sync switch is meant to send a signal to the real time clock (explained below) to reset the clock.
 
 \normalsize\textbf{Real Time Clock}\\
 Power-In: N/A \\
@@ -285,19 +278,21 @@ Power-Out: N/A \\
 Input(s): N/A \\
 Output(s): MSP430 Microcontroller
 
-The real time clock is necessary for the verification of the acknowledgement signal sent by the R.F. transmitter on the friendly target unit. It will operate using a 32.768 kHz Crystal Oscillator (as recommended by T.I. \textsuperscript{\cite{RTC-Implementation}}) with an accuracy of +/- 20 PPM (Parts Per Million - deviates between 32.7673 kHz and 32.7687 kHz). It will be used in conjunction with the real time clock library provided by T.I. \hl{INSERT REFERENCE HERE}.
+The Real Time Clock (RTC) is necessary for the verification of the acknowledgment signal sent by the R.F. transmitter/encoder on board the friendly target unit. It will operate using a ECS-3x8 32.768 kHz crystal oscillator (as recommended by T.I. \textsuperscript{\cite{RTC-Implementation}}) with an accuracy of $\pm$ 20 PPM \textsuperscript{\cite{Crystal}} (Parts Per Million - deviates between 32.7673 kHz and 32.7687 kHz). It will be used in conjunction with the real time clock library provided by T.I. \textsuperscript{\cite{RTC-Library}}.
 
-\normalsize\textbf{Laser Diode}\\
+Essentially, the concept is that interrupts will be generated at 1-second intervals and this will be used in conjunction with software to keep track of the given second, minute, hour, and day it currently is. The reset clock/sync button explained in the MCU section will be used to reset this count in software and turn the clock back to 0 for synchronization purposes. This will be used for debugging and prototyping purposes only and on a final product used in the military, this type of synchronization could not be used.
+
+\normalsize\textbf{Laser Diode/Transmitter}\\
 Power-In: 3.3V (from Voltage Converter Output) \\
 Power-Out: N/A \\
 Input(s): MSP430 Microcontroller
 Output(s):  5mW 650nm laser signal containing unique I.D. of interrogator 
 
-For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($650nm$) laser. See section \ref{section-safety-ethics} for more on safety of the laser. 
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($650nm$) laser. See Section \ref{section-safety-ethics} for more on safety of the laser. 
 
-The team will use a 5 mW 650 nm TTL laser transmitter to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. This laser will operate on 3.3V at 25mA so a 1.3$\Omega$  resistor is necessary to drop the current being supplied to the diode down to this threshold. 
+The team will use a 5 mW 650 nm TTL laser transmitter to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. This laser will operate on 3.3V at 25mA so a 130 $\Omega$  resistor is necessary to drop the current being supplied to the diode down to this threshold. 
 
-To save cost and time, the team will be purchasing an adjustable focus laser. This laser will allow for optical adjustments to achieve the beam diameter at all required distances. The team will ensure the purchased laser meets these requirements, and will adjust the lens if necessary. 
+To save cost and time, the team will be purchasing an adjustable focus laser. This laser will allow for optical adjustments to achieve a beam diameter of $\approx$ 1 meter at all required distances. The team will ensure the purchased laser meets these requirements, and will adjust the lens if necessary. The team will also create an operator's manual so that the operator of the friendly interrogator unit will know how much to adjust the lens by to achieve a proper spot size at a distance.
 
 \normalsize\textbf{R.F. Receiver/Decoder} \\
 Power-In: 3.3V (from Voltage Converter Output) \\
@@ -305,7 +300,7 @@ Power-Out: N/A \\
 Input(s): 8-Pin DIP Switch\\
 Output(s): MSP430 Microcontroller
 
-A Linx 315 MHz KH3 Series R.F. Receiver/Decoder will be used for this project along with a Linx 315-SP Splatch PCB Mounted Antenna. Some important values that were used in the selection process of this part are listed in Table \ref{tab:rf-receiver-important-values}
+A Linx 315 MHz KH3 Series R.F. Receiver/Decoder will be used for this project along with a Linx 315-SP Splatch PCB mounted antenna. Some important values that were used in the selection process of this part are listed in Table \ref{tab:rf-receiver-important-values}\textsuperscript{\cite{Linx-Receiver}\cite{Linx-Antenna}}:
 
 \begin{table}[htbp]
 	\centering
@@ -328,9 +323,11 @@ A Linx 315 MHz KH3 Series R.F. Receiver/Decoder will be used for this project al
 
 Important values to note are the R.F. input impedance, the receiver frequency, and the receiver sensitivity. The input impedence is stating it requires the entire R.F. receiver system to be matched at 50 $\Omega$. This requires the trace on the PCB from the receiver to the antenna to also be at a 50 $\Omega$ impedence. The frequency and sensitivity affect the range of the receiver/transmitter pair and this calculation along with the PCB trace-width calculation can be found in Section \ref{section-simulations-calculations}.
 
-The decoder provides very important functionality and simplicity to the system. There are a total of 10 address lines on the decoder that must match up to the cooresponding transmitting encoder. The lines do not output data through the data-out lines if the address lines do not match up. The team decided to make use of these lines and wire them up to a 8-pin DIP switch so that the operator can choose their unique interrogator I.D. Therefore only 8 out of the 10 address lines on the encoder will be used and the top two most significant bits will be grounded (lines A9 and A10).
+The antenna is a basic quarter-wave monopole producing an output gain of +2.15 dB.
 
-As stated before this identification number will be fed into the MCU also and it will determine what the 5mW laser transmitter will send out to the friendly target. This process will be explained in Section \ref{section-functionality}.
+The decoder provides very important functionality and simplicity to the system. There are a total of 10 address lines on the decoder that must match up to the cooresponding transmitting encoder. The lines do not output data through the data-out lines if these address lines do not match up. For example if the transmitter/encoder's address lines are set to 0000000000, then the receiver/decoder's address lines must also be set to 0000000000. The team decided to make use of these lines and wire them up to a 8-pin DIP switch so that the operator can choose their unique interrogator I.D. Therefore only 8 out of the 10 address lines on the encoder will be used and the top two most significant bits will be grounded (lines A9 and A10).
+
+The process behind the R.F. receiver and processing of the transmitted data will be explained in the Section \ref{section-software}.
 
 %DESIGN - FRIENDLY TARGET UNIT
 \subsubsection{Friendly Target Unit}
@@ -343,25 +340,25 @@ As stated before this identification number will be fed into the MCU also and it
 
 \normalsize\textbf{Power Module} \\
 Power-In: N/A\\
-Power-Out: TI MSP430F2274 Microcontroller (3.3V), R.F. Transmitter (3.3V), and Photoreceiver (+/- 10V)\\
+Power-Out: MSP430 Microcontroller (3.3V), R.F. Transmitter/Encoder (3.3V), and Photoreceiver (+/- 10V)\\
 Input(s): N/A\\
 Output(s): N/A
 
-The power module on board will utilize the same DC-DC Step-Up Voltage Converter as the friendly interrogator unit. However, the friendly target unit's power module must produce both an output voltage of 3.3V for the MCU and 10V for the operational amplifier. 
+The power module on board will utilize the same DC-DC Step-Up Voltage Converter as the friendly interrogator unit. However, the friendly target unit's power module must produce both an output voltage of 3.3V for the MCU and 10V for the operational amplifier. This will be accomplished by using one AAT1217 step-up converter to step the voltage up to 3.3V and another to step it up to 5V. This 5V output will then be cascaded into a Maxim MAX680 5V-to-10V step-up converter. Detailed power calculations can be found in Section \ref{section-simulations-calculations}.
 
 \normalsize\textbf{MSP430 Microcontroller} \\
 Power-In: Power Module (3.3V)\\
-Power-Out:\\
-Input(s):Photoreceiver, Real Time Clock\\
-Output(s): R.F. Transmitter 
+Power-Out: N/A \\
+Input(s): Photoreceiver, Real Time Clock\\
+Output(s): R.F. Transmitter/Encoder
 
-Please reference the MSP430 Microcontroller section on board the Friendly Interrogator Unit for details on the selection of the MSP 430. 
+The MSP430 Microcontroller on the friendly target unit will receive analog input from the 4 photoreceiver units which will then be converted into a digital value using the on board Analog-to-Digital Converters(ADC). The microcontroller will also utilize the R.F. encoder/transmitter (explained below) to broadcast an acknowledge signal back to the friendly interrogator unit.
 
-The MSP430 Microcontroller on the Friendly Target Unit will receive input from the photoreceiver unit, which will allow it to register the PWM signal sent from the Friendly Interrogator Unit. The Microcontroller will also utilize the R.F. Encoder/Transmitter to broadcast an acknowledge signal to the Friendly Interrogator Unit. 
+The MCU will take in the outputs of these photodiodes and determine the I.D. of the interrogator. This I.D. will then be output via pins 31 through 38 to the R.F. transmitter/encoder address lines (this will ensure the R.F. transmitter/encoder address pins will be the same as the receiver end and a transmission will make it through). The software behind this will be described in Section \ref{section-software}.
 
-The R.F. Transmitter takes as input 8 address bits and 8 data bits. The PWM laser signal from the Friendly Interrogator will contain the 8 address bits corresponding to the Interrogator's R/F decoder/receiver. The 8 data bits will be generated based on a shared passcode and RTC between the Friendly Target and Interrogator systems. 
+Once the MCU receives a valid query, it will generate a passphrase based on a common clock and a common passphrase that will then be sent as an output (pins 11-14 and 25-28) to the R.F. transmitter/encoder. This will be the acknowledgment that the interrogator must receive in order for the target to be identified as friendly. This passphrase that is generated will be explained in Section \ref{section-software}.
 
-Figure \ref{tab:msp430-pin-assignments-target} is a list of the active pins on the Friendly Target MCU. 
+Figure \ref{tab:msp430-pin-assignments-target} is a list of the active pins on the Friendly Target MCU. There is a total 28/38 GPIO pins used on this MSP430.
 
 \begin{table} [H]
 	\centering
@@ -370,30 +367,28 @@ Figure \ref{tab:msp430-pin-assignments-target} is a list of the active pins on t
 \end{table}
 
 \normalsize\textbf{Real Time Clock} \\
-Power-In: \\
-Power-Out: \\
-Input(s): \\
-Output(s):
+Power-In: N/A\\
+Power-Out: N/A\\
+Input(s): N/A\\
+Output(s): MSP430 Microcontroller
 
 The Real Time Clock on board the Friendly Target Unit will be the same as the Friendly Interrogator Unit. Please reference that section to get all details pertaining to the Real Time Clock.
 
 \normalsize\textbf{Photoreceiver}\\
 Power-In: N/A \\
 Power-Out: N/A \\
-Input(s): Laser Transmitter \\
-Output(s): MCU
+Input(s): Laser Transmitter Signal sent from Friendly Interrogator\\
+Output(s): MSP430 Microcontroller
 
 A network of four photodiodes mounted on the friendly target will report incoming laser signals to the MCU. The photodiode signals will be boosted via an operational amplifier, and passed through a low-pass filter. The $40kHz$ signal that passes through the filter will be sampled and processed by the MCU. 
 
-For a detailed analysis of the choice of the photodiodes, see section \ref{section-tolerance-analysis}
+For a detailed analysis of the choice of the photodiodes, see Section \ref{section-tolerance-analysis}
 
-\normalsize\textbf{R.F. Transmitter}\\
-Power-In: \\
-Power-Out: \\ 
-Input(s): \\ 
-Output(s):
-
-A Linx 315 MHz LR Series R.F. Transmitter will be used for this project along with a Linx 315-SP Splatch PCB Mounted Antenna. This is an identical setup to the receiver end on the friendly interrogator unit as discussed before.  
+\normalsize\textbf{R.F. Transmitter/Encoder}\\
+Power-In: Power Module (3.3V)\\
+Power-Out: N/A\\ 
+Input(s): MSP430 Microcontroller (Data and Address Pins)\\ 
+Output(s): 315 MHz R.F. Acknowledgment Signal
 
 \begin{table}[htbp]
 	\centering
@@ -401,25 +396,33 @@ A Linx 315 MHz LR Series R.F. Transmitter will be used for this project along wi
 		\toprule	% top separator
 		Parameter & Typical Value \\
 		\midrule
-		Transmit Frequency & 315 MHz \\ 
-		Output Power & 4 dB \\
-		Data Rate & 10,000 bps \\
-		R.F. Output Impedance & 50 $\Omega$ \\
-		Transmitter Turn-On Time & 1.0 ms  \\
+		Operating Voltage & 3.3V\\
+		Supply Current & 2.7mA\\
+		Transmitter Frequency & 315 MHz \\ 
+		Transmitter Power & -1 dBm \\
+		Antenna Gain & 2.15dB  \\
+		R.F. Input Impedance & 50 $\Omega$ \\
+		Datarate & 100 bps - 10,000 bps  \\
+		Receiver Turn-On Time & 7.0 ms  \\
 		\bottomrule	% bottom separator
 	\end{tabular}%
-	\caption{Notable Datasheet Values for Linx 315 MHz LR R.F. Transmitter}
-	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
-\end{table}
+	\caption{Linx 315 MHz KH3 R.F. Transmitter/Encoder}
+	\label{tab:rf-transmitter-important-values}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+\end{table}%
+
+The team decided to work with a Linx 315MHz KH3 R.F. Transmitter/Encoder Module that outputs a total transmitting power of -1dBm. This will be more than sufficient enough to satisfy the requirements of 300 meters (as shown in Section \ref{section-simulations-calculations}). This will be used in conjunction with a quarter-wave monopole antenna (Splatch-315-SP PCB mounted antenna) that provides an antenna gain of 2.15 dB. These values can be summarized in the above table\textsuperscript{\cite{Linx-Transmitter}\cite{Linx-Antenna}}.
+
+As stated before, the address lines and data lines on this transmitter/encoder will be wired up to the MCU so that the proper acknowledgement can be sent to the interrogator.
+
+A similar approach to the friendly interrogator unit will be taken in order to match the R.F. input impedance. The PCB trace-width calculation can be found in Section \ref{section-simulations-calculations}.
 
 
 
 %Subsection - Circuit Schematics
-\subsection{Circuit Schematics}
+\subsection{Circuit Schematics} \label{section-circuit-schematics}
 
 \subsubsection{Friendly Interrogator Unit}
-The circuit schematic is shown below for the Friendly Interrogator Subsystem.
-\hl{INSERT OVERALL CIRCUIT SCHEMATIC HERE}
+The circuit schematic for the friendly interrogator unit is broken into 4 primary modules for schematic viewing: the AAT1217 DC-DC step-up converter, the crystal oscillator, the MCU/laser transmitter/LED indicator/power switches, and the R.F. receiver/decoder circuits. These are displayed below.
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.35]{Voltage_Converter_Schematic.png}
@@ -446,8 +449,10 @@ The circuit schematic is shown below for the Friendly Interrogator Subsystem.
 
 
 \subsubsection{Friendly Target Unit}
+\hl{ADD DESCRIPTION OF CIRCUIT SCHEMATICS} \\
+\hl{PLACE CIRCUIT SCHEMATICS FOR FRIENDLY TARGET UNIT HERE}
 
-\subsection{Software Flowcharts / Functionality}
+\subsection{Software Flowcharts / Functionality} \label{section-software}
 \subsubsection{System Flow}
 This section is to explain the flow of events in the system as a whole as well as each the friendly interrogator subsystem and the friendly target subsystem. The below diagram is a flowchart representing the events that occur to identify a target as friendly.
 
@@ -458,6 +463,19 @@ This section is to explain the flow of events in the system as a whole as well a
 \end{figure}
 
 The left side of this diagram are all events that occur within the friendly interrogator unit, and the right side represents all of the events that occur on the friendly target side. This flow diagram also assumes that both the interrogator operator and the friendly target operator have powered on their respective units.
+
+\subsubsection{Encryption and Message Sending Protocol}
+The encryption on a system like this is very important to take into consideration and for that reason the team decided to use a passphrase generated both off a common passphrase that is shared in between all friendly interrogator/friendly units and a common clock. The common clock will be provided via the Real Time Clock and this will allow the MCU to have registers containing the current value of seconds/minutes/days/hours/etc. 
+
+The algorithm is relatively straight forward to understand. A timer will be setup (Timer\_A3) to generate interrupts every 10 seconds. This will be to update the contents within the RTC register (R6) every 10 seconds and to have a $\pm$5 second differential to validate the acknowledgement signal. The RTC register will contain 16 bits for counting up on the seconds since the last reset. So it will not be a "true" RTC, however you will have the ability to access the seconds eclipsed since pressing the "sync" button at any given time and this result will be valid for 10 seconds.
+
+The interrogator and target unit must be synced initially before active use. This is so that the two clocks have minimal skew. 
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.45]{Encryption_Diagram.png}
+	\caption{Flowchart for Functionality\label{fig:circuit-schematic}}
+\end{figure}
+
 
 \subsubsection{Friendly Interrogator Software Flow}
 The software on the MCU on the friendly interrogator unit will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
@@ -470,14 +488,16 @@ The software on the MCU on the friendly interrogator unit will follow a very sim
 \end{itemize}
 Using these 12 general purpose registers the team can accurately identify a target as friendly. The flow diagram in Figure \ref*{fig:friendly-interrogator-software-flowchart} in the Appendix depicts the series of processes and events that take place within the MCU in order for the target to be identified as friendly. 
 
+\subsubsection{Friendly Target Software Flow}
+\hl{REFERENCE FRIENDLY TARGET SOFTWARE FLOW DIAGRAM TO APPENDIX}
 \subsection{Numerical Analysis and Simulations/Plots} \label{section-simulations-calculations}
 \subsubsection{Calculations}
 \normalsize\textbf{Power Module (Friendly Interrogator Unit)} \\
-The following section is intended to backup the design choices made for the power module on the friendly interrogator first shown in section \ref{section-friendly-interrogator-design}.
+The following section is intended to backup the design choices made for the power module on the friendly interrogator first shown in Section \ref{section-friendly-interrogator-design}.
 
-The team placed a strict requirement (shown in section \_\_\_) regarding the operation time of the friendly interrogator unit (at 8 hours of operation time $\pm$ 5\% \hl{verify}).
+The team placed a strict requirement (shown in Section \ref{section-requirements-verification}) regarding the operation time of the friendly interrogator unit (at 8 hours of operation time $\pm$ 5\%).
 
-In order to select parts that satisfied this requirement, the active current consumption on the entire unit must first be calculated. The main power consumption modules on board the friendly interrogator unit are the MSP430F2274, the 5mW 635nm TTL laser transmitter, and the Linx KH3 R.F. receiver. These values were received from each of the respective datasheets. The following table displays the active current consumption of each unit. 
+In order to select parts that satisfied this requirement, the active current consumption on the entire unit must first be calculated. The main power consumption modules on board the friendly interrogator unit are the MSP430F2274, the 5mW 635nm TTL laser transmitter, and the Linx KH3 R.F. receiver. These values were received from each of the respective datasheets. The following table displays the active current consumption of each unit\textsuperscript{\cite{MSP430F2274} \cite{Linx-Receiver} \cite{Laser}}. 
 
 
 \begin{table}[htbp]
@@ -500,7 +520,7 @@ Because the R.F. receiver and the 5mW laser will only be powered when the operat
 Therefore, with this information, the maximum possible active current consumption will be:
 \begin{center}{Active Consumption I\textsubscript{Total} = $270 \mu A + 25 mA + 5.9 mA = 31.17 mA $}\end{center}
 
-Assuming the team uses a standard Alkaline AA 1.5V Battery, these typically produce anywhere from 1800mAh to 2500 mAh \hl{insert reference here}. Therefore, the average of these two values will be used as the capacity of the battery: 2150 mAh. Since all of the components being used requires 3.3V, this battery must be fed into a voltage step-up converter as stated previously. The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \hl{insert reference here}.
+Assuming the team uses a standard Alkaline AA 1.5V Battery, these typically produce anywhere from 1800mAh to 2500 mAh \textsuperscript{\cite{Battery}} Therefore, the average of these two values will be used as the capacity of the battery: 2150 mAh. Since all of the components being used requires 3.3V, this battery must be fed into a voltage step-up converter as stated previously. The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \textsuperscript{\cite{AAT1217}}.
 
 Since Energy = Power * time, we can use a ratio of the energy produced per hour of the standard alkaline battery to the output voltage of the converter. This calculation can be shown below:
 
@@ -538,7 +558,7 @@ Figure \ref{fig:pcb-trace} shows all variables that affect the impedence of a PC
 	\caption{PCB Microstrip Impedence Variables\label{fig:pcb-trace}}
 \end{figure}
 
-The equation to calculate the impedance is as follows:
+The equation to calculate the impedance is as follows\textsuperscript{\cite{Microstrip}}:
 \begin{center}
 \large$Z = \frac{Z_0}{2\pi*\sqrt{2}*\sqrt{\epsilon+ 1}} * ln\left(1 + 4*\frac{H}{w_{eff}} * \left(X_1 + X_2 \right )\right )$
 \end{center}
@@ -555,7 +575,7 @@ where
 	$X_2 = \sqrt{16*\left(\frac{H}{W_{eff}} \right )^2 * \left(\frac{14*\epsilon+8}{11*\epsilon} \right )^2 * \left(\frac{\epsilon + 1}{2*\epsilon} \right ) * \pi^2}$
 \end{center}
 
-The ECE parts shop uses 1 oz copper trace and FR4 board material as its substrate \hl{insert reference}. Assuming these properties have not changed at the time of this design review, then the following values can be used for T, H, Z, $Z_0$ and $\epsilon$ :
+The ECE parts shop uses 1 oz copper trace and FR4 board material as its substrate \cite{ECE-Electronics-Shop} Assuming these properties have not changed at the time of this design review, then the following values can be used for T, H, Z, $Z_0$ and $\epsilon$ :
 \begin{center}
 	$Z_0 =$ impedence of free space $\approx$ 120 $\pi \Omega$ \\
 	$T = 1.4 $mils\\
@@ -582,28 +602,28 @@ Transmission Path Loss is the sum of all the antenna R.F. gains and deduction of
 \begin{center}
 	$L = P_T + (A_g - C_l)$
 \end{center}
-This equation can be used in conjunction with the following equation to calculate the total range in kilometers:
+This path loss can be used in conjunction with the following equation to calculate the total range in kilometers\textsuperscript{\cite{RFDistance}}:
 \begin{center}
 	\large
 	$d_{TX->RX} = 10^{\left( \frac{L - 32.45 -20*log(f_{MHz})}{20}\right)}$
 \end{center}
 The following values were used in this range calculation:
 \begin{center}
-$P_T$ = +4dBm \\
+$P_T$ = -1dBm \\
 $A_g$ = 2.15 dBi (quarter-wave monopole) \\
 $C_l$ = 0 dB \\ 
 $G_{tot}$ =  2.15dB\\
 $R$ = -116 dBm \\
 $L$ =  120.15\\
 \end{center}
-Plugging in these values to the equation stated before, the team received a range of \textbf{77.03 km} which well surpasses the requirements of 300 m. \\
+Plugging in these values to the equation stated before, the team received a range of \textbf{73.03 km} which well surpasses the requirements of 300 m. \\
 
 \normalsize\textbf{Power Module (Friendly Target Unit)} \\
-The following section is intended to backup the design choices made for the power module on the friendly target first shown in section \ref{section-friendly-interrogator-design}.
+The following section is intended to backup the design choices made for the power module on the friendly target first shown in Section \ref{section-friendly-interrogator-design}.
 
-The team placed a strict requirement (shown in section \_\_\_) regarding the operation time of the friendly target unit (at 8 hours of operation time $\pm$ 5\% \hl{verify}).
+The team placed a strict requirement (shown in Section \ref{section-requirements-verification}) regarding the operation time of the friendly target unit (at 8 hours of operation time $\pm$ 5\%).
 
-As with the Interrogator Unit; In order to select parts that satisfied this requirement, the active current consumption on the entire unit must first be calculated. The main power consumption modules on board the friendly target unit are the MSP430F2274, the photoreceiver operational amplifier, and the Linx KH3 R.F. transmitter. These values were received from each of the respective datasheets. The following table displays the active current consumption of each unit. 
+As with the Interrogator Unit; In order to select parts that satisfied this requirement, the active current consumption on the entire unit must first be calculated. The main power consumption modules on board the friendly target unit are the MSP430F2274, the photoreceiver operational amplifier, and the Linx KH3 R.F. transmitter/decoder. These values were received from each of the respective datasheets. The following table displays the active current consumption of each unit\textsuperscript{\cite{MSP430F2274} \cite{Linx-Receiver} \cite{Laser}}. 
 
 
 \begin{table}[htbp]
@@ -627,7 +647,7 @@ With this information, the maximum possible active current consumption will be:
 
 As stated for the interrogation unit, the capacity of the Alkaline AA 1.5V battery will be assumed to be 2150 mAh. 
 
-The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency \hl{insert reference here}. The team is using a MAX680 +5V to +/-10V Voltage Converter which has as 85\% Power-Conversion Efficiency  \hl{insert reference here}. 
+The team is using the AAT1217 step-up converter this boosts the voltage up from 1.5V to 3.3V with a ~75\% efficiency\textsuperscript{\cite{AAT1217}}. The team is using a MAX680 +5V to +/-10V Voltage Converter which has as 85\% power-conversion efficiency \textsuperscript{\cite{MAX680}} . 
 
 The use time can be calculated as follows:
 
@@ -645,21 +665,15 @@ The use time can be calculated as follows:
 
 This result shows that a single standard alkaline AA 1.5V disposable battery will be more than sufficient enough to satisfy the requirements of 8 hours of active use time.
 
-\normalsize\textbf{Laser Diode} \\
-\hl{Put lens equations, ref tolerance analysis}
 
 \subsubsection{Simulations/Plots}
-\hl{INSERT PLOTS/ANY SORT OF ANALYSIS HERE}
+\hl{PUT SIMULATIONS/PLOTS HERE}
 
 
 %SECTION - Requirements and Verification
-\section{Requirements and Verification}
-\hl{UPDATE THIS TABLE-maybe reference an appendix in the back?}
-\begin{figure} [H]
-	\centering
-	\includegraphics[scale=0.3]{Requirements.png}
-	\caption{Requirements/Verification for Laser Transmitter System\label{fig:requirements}}
-\end{figure}
+\section{Requirements and Verification} \label{section-requirements-verification}
+\hl{PUT REQUIREMENTS/VERIFICATION HERE}
+
 \subsection{Tolerance Analysis} \label{section-tolerance-analysis}
 The inherent limitations of laser power for safety means that the performance is in the hands of the photodiode. The starting point for selection criteria was to choose a photodiode type. There are three main photodiode types: normal, PIN, and Avalanche; the team chose PIN photodiodes as they have a high sensitivity and speed. A normal photodiode would not be sensitive enough to register a wide divergence $5mW$ laser, and an Avalanche photodiode requires high voltage. 
 
@@ -739,9 +753,9 @@ To achieve the laser beam diameter at $300 m$ associated in the proposal, a Clas
 
 For the reasons stated above, the team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
 
-The following is a calculation for the nominal ocular hazard distance (NOHD) of the laser, as defined by the ANSI Standard \cite{ANSI}.
+The following is a calculation for the nominal ocular hazard distance (NOHD) of the laser, as defined by the ANSI Standard\textsuperscript{\cite{ANSI}}.
 
-The maximum permissible exposure (MPE), as defined by the ANSI Standard \cite{ANSI} is the highest power or energy density of a light source that is considered safe, i.e. that has a negligible probability for creating damage. This MPE for a pulsing laser is calculated as the minimum of the following three rules:
+The maximum permissible exposure (MPE), as defined by the ANSI Standard \textsuperscript{\cite{ANSI}} is the highest power or energy density of a light source that is considered safe, i.e. that has a negligible probability for creating damage. This MPE for a pulsing laser is calculated as the minimum of the following three rules:
 
 \begin{enumerate}
 	\item Any single pulse in the train must not exceed the MPE for the pulse exposure time.
@@ -844,7 +858,6 @@ This project has several ethical issues that can be addressed by the IEEE Code o
 \end{enumerate}
 
 %SECTION - Cost and Schedule
-\clearpage
 \section{Cost and Schedule}
 
 \subsection{Cost Analysis}
@@ -854,10 +867,10 @@ The labor cost was calculated as follows:
 	Labor Cost = Worker Salary (\$/hour) x 2.5 x Time (Hours) Invested In Project
 \end{center}
 
-\hl{COMPILE PARTS LIST, SUM UP TOTAL, ADD TO LABOR COSTS - SAME AS PROPOSAL}
+\hl{PUT PARTS LIST HERE}
 
 \subsection{Schedule}
-\hl{EDIT SCHEDULE CREATED IN PROPOSAL}
+\hl{PUT SCHEDULE/TIMELINE HERE}
 
 
 %SECTION - References
@@ -870,7 +883,7 @@ The labor cost was calculated as follows:
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.50]{Friendly_Interrogator_Software_Flowchart.pdf}
+	\includegraphics[scale=0.450]{Friendly_Interrogator_Software_Flowchart.pdf}
 	\caption{Flowchart for Functionality\label{fig:friendly-interrogator-software-flowchart}}
 \end{figure}
 

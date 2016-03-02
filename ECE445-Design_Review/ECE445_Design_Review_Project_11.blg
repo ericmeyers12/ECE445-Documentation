@@ -8,54 +8,51 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Citations.bib
-Warning--I didn't find a database entry for "USArmy"
-Warning--I didn't find a database entry for "Garrison"
-Warning--I didn't find a database entry for "Microphotonics"
-Warning--I didn't find a database entry for "Optical"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty publisher in USArmy
 
 Done.
-You've used 3 entries,
+You've used 20 entries,
             4031 wiz_defined-function locations,
-            832 strings with 7705 characters,
-and the built_in function-call counts, 1124 in all, are:
-= -- 86
-> -- 3
-< -- 0
-+ -- 3
-- -- 0
-* -- 57
-:= -- 211
-add.period$ -- 6
-call.type$ -- 3
-change.case$ -- 5
-chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 92
-empty$ -- 107
-format.name$ -- 0
-if$ -- 226
+            912 strings with 10006 characters,
+and the built_in function-call counts, 7857 in all, are:
+= -- 622
+> -- 73
+< -- 18
++ -- 40
+- -- 12
+* -- 308
+:= -- 1408
+add.period$ -- 39
+call.type$ -- 20
+change.case$ -- 29
+chr.to.int$ -- 51
+cite$ -- 21
+duplicate$ -- 647
+empty$ -- 776
+format.name$ -- 12
+if$ -- 1702
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 20
-newline$ -- 36
-num.names$ -- 0
-pop$ -- 58
+int.to.str$ -- 20
+missing$ -- 136
+newline$ -- 107
+num.names$ -- 12
+pop$ -- 403
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 85
+skip$ -- 611
 stack$ -- 0
-substring$ -- 7
-swap$ -- 48
-text.length$ -- 0
+substring$ -- 149
+swap$ -- 369
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 3
-warning$ -- 0
-while$ -- 0
-width$ -- 4
-write$ -- 50
-(There were 4 warnings)
+type$ -- 20
+warning$ -- 1
+while$ -- 15
+width$ -- 22
+write$ -- 205
+(There was 1 warning)
