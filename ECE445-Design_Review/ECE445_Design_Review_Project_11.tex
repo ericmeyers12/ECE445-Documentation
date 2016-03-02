@@ -21,7 +21,9 @@
 \usepackage{setspace}
 \usepackage{longtable}
 \usepackage{url}
+\usepackage{pdfpages}
 \usepackage{float}
+\usepackage{rotating}
 \usepackage{caption}
 \usepackage{booktabs}  % professional-looking tables
 \usepackage{multicol} %used for getting multicolumn without page-break
@@ -185,13 +187,13 @@ The idea is to develop a two-way communication system so that when a soldier aim
 \subsection{Objectives}
 \subsubsection{Goals and Benefits}
 \begin{itemize}
-	\item Reduce number of friendly fire accidents during combat \textsuperscript{\cite{Garrison}}
-	\item Reduce number of misfires accidents during combat \textsuperscript{\cite{Garrison}}
-	\item Notify friendly personnel location of particular friendly target when aiming
+	\item Reduce the number of friendly fire accidents during combat \textsuperscript{\cite{Garrison}}.
+	\item Reduce the number of misfire accidents during combat\textsuperscript{\cite{Garrison}}.
+	\item Notify friendly personnel location of particular friendly target when aiming in their direction.
 	\item Other applications including but not limited to:
 	\begin{itemize}
 		\item Paintball or Airsoft
-		\item Arcade Laser Tag
+		\item Arcade laser tag and other various recreation sports
 	\end{itemize}
 \end{itemize}
 \subsubsection{Functions and Features}
@@ -201,7 +203,7 @@ The idea is to develop a two-way communication system so that when a soldier aim
 	\item R.F. Transmitter on friendly target to send acknowledgement back to interrogator.
 	\item R.F. Receiver on friendly interrogator to verify that the target is friendly.
 	\item LED on friendly interrogator to indicate to the operator the status of the target.
-	\item Quick response time (human reaction time is 190 ms \textsuperscript{\cite{Reaction_Times}})
+	\item Quick response time (human reaction time is 190 ms\textsuperscript{\cite{Reaction_Times}}).
 \end{itemize}
 \clearpage
 
@@ -904,10 +906,16 @@ The labor cost was calculated as follows:
 	Labor Cost = Worker Salary (\$/hour) x 2.5 x Time (Hours) Invested In Project
 \end{center}
 
-\hl{PUT PARTS LIST HERE}
+Most parts were gathered using the resources found on Digi-Key Electronics and a table of these parts can be found in the Appendix in Figure \ref{fig:parts-cost-list}. \\
 
 \subsection{Schedule}
-\hl{PUT SCHEDULE/TIMELINE HERE}
+\hl{UPDATE SCHEDULE}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.63]{Schedule_Extended.png}
+	\caption{Schedule\label{fig:friendly-interrogator-software-flowchart}}
+\end{figure}
 
 
 %SECTION - References
@@ -915,19 +923,37 @@ The labor cost was calculated as follows:
 \bibliographystyle{IEEE_ECE}
 % include the BibTex file here to build reference
 \bibliography{Citations}\addcontentsline{toc}{section}{Reference}
-
+\clearpage
 \section*{Appendix}
-
+\begin{figure} [H]
+	\centering
+	\includepdf[page=1, scale=0.85] {Design-Review-Requirements-Verification.pdf}
+\end{figure}
+\clearpage
+\begin{figure} [H]
+	\centering
+	\includepdf[page=2, scale=0.85] {Design-Review-Requirements-Verification.pdf}
+\end{figure}
+\clearpage
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.450]{Friendly_Interrogator_Software_Flowchart.pdf}
 	\caption{Flowchart for Functionality\label{fig:friendly-interrogator-software-flowchart}}
 \end{figure}
 
+<<<<<<< HEAD
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.400]{Friendly_Target_Software_Flowchart.pdf}
 	\caption{Flowchart for Functionality\label{fig:friendly-target-software-flowchart}}
+=======
+\hl{PUT FRIENDLY TARGET SOFTWARE FLOWCHART HERE}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale = 0.9, angle=90]{Parts_and_Labor_Cost.pdf}
+	\caption{Parts and Labor Estimate\label{fig:parts-cost-list}}
+>>>>>>> bde58db83847b7d8955c920267523ee2ca6ee025
 \end{figure}
 
 \end{spacing}
