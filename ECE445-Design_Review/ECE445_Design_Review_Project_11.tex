@@ -182,7 +182,7 @@ There have been several friendly fire incidents in recorded military history, ac
 
 The purpose of this project is to create a system that quickly and accurately identifies friendly targets among military personnel on foot. Similar systems exist for aircraft, however not many exist for infantry.
 
-The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is, indeed, friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the "friendly interrogator" and the target will  be referred to as the "friendly target". In reality, many infantry units will have both an interrogator unit mounted to their gun, and a target unit mounted to their chest; the team has separated the hardware for these units to ensure that non-combatants can also be identified as friendly. 
+The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is, indeed, friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the ``friendly interrogator" and the target will  be referred to as the ``friendly target". In reality, many infantry units will have both an interrogator unit mounted to their gun, and a target unit mounted to their chest; the team has separated the hardware for these units to ensure that non-combatants can also be identified as friendly. 
 
 \subsection{Objectives}
 \subsubsection{Goals and Benefits}
@@ -249,9 +249,9 @@ The battery will be mounted to the PCB a standard AA through-hole PCB battery mo
 \end{figure}
 
 \normalsize\textbf{MSP430 Microcontroller} \\
-Power-In: 3.3V (from Voltage Converter Output) \\
-Power-Out: N/A \\
-Input(s): R.F. Receiver/Decoder Data-Out, 8-Pin DIP Switch,  Real Time Clock (32.768kHz Crystal), Reset Clock/Sync Button \\
+Power-In: Power Module (3.3V-from Voltage Converter Output)\\
+Power-Out: N/A\\
+Input(s): R.F. Receiver/Decoder Data-Out, 8-Pin DIP Switch,  Real Time Clock (32.768kHz Crystal), Reset Clock/Sync Button\\
 Output(s): LED, 5mW 650nm Laser Transmitter
 
 The team chose to work with an T.I. MSP430F2274 Microcontroller Unit due to its compiler simplicity, the low-power consumption, and the amount of General Purpose Input/Output (GPIO) pins available on board.
@@ -285,7 +285,7 @@ The Real Time Clock (RTC) is necessary for the verification of the acknowledgmen
 Essentially, the concept is that interrupts will be generated at 1-second intervals and this will be used in conjunction with software to keep track of the given second, minute, hour, and day it currently is. The reset clock/sync button explained in the MCU section will be used to reset this count in software and turn the clock back to 0 for synchronization purposes. This will be used for debugging and prototyping purposes only and on a final product used in the military, this type of synchronization could not be used.
 
 \normalsize\textbf{Laser Diode/Transmitter}\\
-Power-In: 3.3V (from Voltage Converter Output) \\
+Power-In: Power Module (3.3V-from Voltage Converter Output) \\
 Power-Out: N/A \\
 Input(s): MSP430 Microcontroller
 Output(s):  5mW 650nm laser signal containing unique I.D. of interrogator 
@@ -297,7 +297,7 @@ The team will use a 5 mW 635 nm TTL laser transmitter to transmit the unique I.D
 To save cost and time, the team will be purchasing an adjustable focus laser. This laser will allow for optical adjustments to achieve a beam diameter of $\approx$ $0.4$ meters at all required distances. The team will ensure the purchased laser meets these requirements, and will adjust the lens if necessary. The team will also create an operator's manual so that the operator of the friendly interrogator unit will know how much to adjust the lens by to achieve a proper spot size at a distance.
 
 \normalsize\textbf{R.F. Receiver/Decoder} \\
-Power-In: 3.3V (from Voltage Converter Output) \\
+Power-In: Power Module (3.3V-from Voltage Converter Output) \\
 Power-Out: N/A \\
 Input(s): 8-Pin DIP Switch\\
 Output(s): MSP430 Microcontroller
@@ -349,7 +349,7 @@ Output(s): N/A
 The power module on board will utilize the same DC-DC Step-Up Voltage Converter as the friendly interrogator unit. However, the friendly target unit's power module must produce both an output voltage of 3.3V for the MCU and 10V for the operational amplifier on the photoreceiver unit. This will be accomplished by using one AAT1217 step-up converter to step the voltage up to 3.3V and another to step it up to 5V. This 5V output will then be cascaded into a Maxim MAX680 5V to +/- 10V step-up converter. Detailed power calculations can be found in Section \ref{section-simulations-calculations}.
 
 \normalsize\textbf{MSP430 Microcontroller} \\
-Power-In: Power Module (3.3V)\\
+Power-In: Power Module (3.3V-from Voltage Converter Output)\\
 Power-Out: N/A \\
 Input(s): Photoreceiver, Real Time Clock\\
 Output(s): R.F. Transmitter/Encoder
@@ -467,13 +467,13 @@ The circuit schematic for the friendly target unit utilizes the same AAT1217 sch
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.55]{Photoreceiver.png}
+	\includegraphics[scale=0.65]{Photoreceiver.png}
 	\caption{Photoreceiver Unit Schematic\label{fig:photoreceiver-schematic}}
 \end{figure}
 
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.5]{RFTransmitter.png}
+	\includegraphics[scale=0.53]{RFTransmitter.png}
 	\caption{R.F. Transmitter Schematic\label{fig:photoreceiver-schematic}}
 \end{figure}
 
@@ -484,7 +484,7 @@ This section is to explain the flow of events in the system as a whole as well a
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.55]{Functionality_Flowchart.pdf}
-	\caption{Flowchart for Functionality\label{fig:circuit-schematic}}
+	\caption{Flowchart of System\label{fig:circuit-schematic}}
 \end{figure}
 
 The left side of this diagram are all events that occur within the friendly interrogator unit, and the right side represents all of the events that occur on the friendly target side. This flow diagram also assumes that both the interrogator operator and the friendly target operator have powered on their respective units.
@@ -497,15 +497,15 @@ The encryption on a system like this is very important to take into consideratio
 
 The algorithm is relatively straight forward to understand. A timer will be setup (Timer\_A3) to generate interrupts every 10 seconds. This will be to update the contents within the RTC register (R6) every 10 seconds and to have a $\pm$5 second differential to validate the acknowledgement signal. The RTC register will contain 16 bits for counting up on the seconds since the last reset. So it will not be a "true" RTC, however the team will have the ability to access the seconds elapsed since pressing the "sync" button at any given, time and this result will be valid for up to a 10 second delay between sync presses.
 x
-The interrogator and target unit must be synced initially before active use. This is so that the two clocks have minimal skew. 
+The interrogator and target unit must be synced initially before active use. This is so that the two clocks have minimal skew. The below figure summarizes the above descrioption.
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.45]{Encryption_Diagram.png}
-	\caption{Flowchart for Functionality\label{fig:circuit-schematic}}
+	\caption{Encryption Technique\label{fig:encryption}}
 \end{figure}
 
 \subsubsection{Software Flow}
-The software on both of the MCUs will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
+The software on both of the MCUs will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, I/O and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
 \begin{itemize}
 	\item R0 - program counter
 	\item R1 - stack pointer 
@@ -536,7 +536,7 @@ In order to select parts that satisfied this requirement, the active current con
 		5 mW Laser & 25 mA (max) & 0 mA \\
 	\bottomrule	% bottom separator
 	\end{tabular}%
-	\caption{Notable Datasheet Values for Linx 315 MHz LR R.F. Receiver}
+	\caption{Current Consumption Values for Interrogator Unit}
 	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
 \end{table}%
 
@@ -663,7 +663,7 @@ As with the Interrogator Unit; In order to select parts that satisfied this requ
 		MAX680 5V to +/- 10V Converter & 500 $\mu$A  & 500 $\mu$A \\
 		\bottomrule	% bottom separator
 	\end{tabular}%
-	\caption{Current Consumption of Target Modules}
+	\caption{Current Consumption of Target Unit}
 	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
 \end{table}%
 
@@ -692,7 +692,7 @@ This result shows that a single standard alkaline AA 1.5V disposable battery wil
 
 %SECTION - Requirements and Verification
 \section{Requirements and Verification} \label{section-requirements-verification}
-\hl{PUT REQUIREMENTS/VERIFICATION HERE}
+Please refer to the Appendix in this document to view the Requirements and Verification.
 
 \subsection{Tolerance Analysis} \label{section-tolerance-analysis}
 The inherent limitations of laser power for safety means that the performance is in the hands of the photodiode. The starting point for selection criteria was to choose a photodiode type. There are three main photodiode types: normal, PIN, and Avalanche; the team chose PIN photodiodes as they have a high sensitivity and speed. A normal photodiode would not be sensitive enough to register a wide divergence $5mW$ laser, and an Avalanche photodiode requires high voltage. 
@@ -879,6 +879,8 @@ This project has several ethical issues that can be addressed by the IEEE Code o
 \item to avoid injuring others, their property, reputation, or employment by false or malicious action;  
 \end{enumerate}
 
+There will be no handling of any weapons this semester whatsoever. The team will use replacement props for demonstration purposes.
+
 %SECTION - Cost and Schedule
 \section{Cost and Schedule}
 
@@ -896,7 +898,7 @@ Most parts were gathered using the resources found on Digi-Key Electronics and a
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.63]{Schedule_Extended.png}
-	\caption{Schedule\label{fig:friendly-interrogator-software-flowchart}}
+	\caption{Schedule\label{fig:extended-schedule}}
 \end{figure}
 
 
@@ -921,13 +923,13 @@ Most parts were gathered using the resources found on Digi-Key Electronics and a
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.450]{Friendly_Interrogator_Software_Flowchart.pdf}
-	\caption{Flowchart for Functionality\label{fig:friendly-interrogator-software-flowchart}}
+	\caption{Flowchart of Interrogator Unit\label{fig:friendly-interrogator-software-flowchart}}
 \end{figure}
 
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.400]{Friendly_Target_Software_Flowchart.pdf}
-	\caption{Flowchart for Functionality\label{fig:friendly-target-software-flowchart}}
+	\caption{Flowchart of Target Unit\label{fig:friendly-target-software-flowchart}}
 \end{figure}
 
 \begin{figure} [H]
