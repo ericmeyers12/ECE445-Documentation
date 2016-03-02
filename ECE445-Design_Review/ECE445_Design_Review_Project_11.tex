@@ -182,7 +182,7 @@ There have been several friendly fire incidents in recorded military history, ac
 
 The purpose of this project is to create a system that quickly and accurately identifies friendly targets among military personnel on foot. Similar systems exist for aircraft, however not many exist for infantry.
 
-The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is, indeed, friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to the "friendly interrogator" and the target will  be referred to as the "friendly target". 
+The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is, indeed, friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the "friendly interrogator" and the target will  be referred to as the "friendly target". In reality, many infantry units will have both an interrogator unit mounted to their gun, and a target unit mounted to their chest; the team has separated the hardware for these units to ensure that non-combatants can also be identified as friendly. 
 
 \subsection{Objectives}
 \subsubsection{Goals and Benefits}
@@ -190,10 +190,10 @@ The idea is to develop a two-way communication system so that when a soldier aim
 	\item Reduce the number of friendly fire accidents during combat \textsuperscript{\cite{Garrison}}.
 	\item Reduce the number of misfire accidents during combat\textsuperscript{\cite{Garrison}}.
 	\item Notify friendly personnel location of particular friendly target when aiming in their direction.
-	\item Other applications including but not limited to:
+	\item Other applications include, but are not limited to:
 	\begin{itemize}
 		\item Paintball or Airsoft
-		\item Arcade laser tag and other various recreation sports
+		\item Arcade laser tag and other recreation sports
 	\end{itemize}
 \end{itemize}
 \subsubsection{Functions and Features}
@@ -290,11 +290,11 @@ Power-Out: N/A \\
 Input(s): MSP430 Microcontroller
 Output(s):  5mW 650nm laser signal containing unique I.D. of interrogator 
 
-For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($650nm$) laser. See Section \ref{section-safety-ethics} for more on safety of the laser. 
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($635nm$) laser. See Section \ref{section-safety-ethics} for more on safety of the laser. 
 
-The team will use a 5 mW 650 nm TTL laser transmitter to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. This laser will operate on 3.3V at 25mA so a 130 $\Omega$  resistor is necessary to drop the current being supplied to the diode down to this threshold. 
+The team will use a 5 mW 635 nm TTL laser transmitter to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. This laser will operate on 3.3V at 25mA so a 130 $\Omega$  resistor is necessary to drop the current being supplied to the diode down to this threshold. 
 
-To save cost and time, the team will be purchasing an adjustable focus laser. This laser will allow for optical adjustments to achieve a beam diameter of $\approx$ 1 meter at all required distances. The team will ensure the purchased laser meets these requirements, and will adjust the lens if necessary. The team will also create an operator's manual so that the operator of the friendly interrogator unit will know how much to adjust the lens by to achieve a proper spot size at a distance.
+To save cost and time, the team will be purchasing an adjustable focus laser. This laser will allow for optical adjustments to achieve a beam diameter of $\approx$ $0.4$ meters at all required distances. The team will ensure the purchased laser meets these requirements, and will adjust the lens if necessary. The team will also create an operator's manual so that the operator of the friendly interrogator unit will know how much to adjust the lens by to achieve a proper spot size at a distance.
 
 \normalsize\textbf{R.F. Receiver/Decoder} \\
 Power-In: 3.3V (from Voltage Converter Output) \\
@@ -327,7 +327,7 @@ Important values to note are the R.F. input impedance, the receiver frequency, a
 
 The antenna is a basic quarter-wave monopole producing an output gain of +2.15 dB.
 
-The decoder provides very important functionality and simplicity to the system. There are a total of 10 address lines on the decoder that must match up to the cooresponding transmitting encoder. The lines do not output data through the data-out lines if these address lines do not match up. For example if the transmitter/encoder's address lines are set to 0000000000, then the receiver/decoder's address lines must also be set to 0000000000. The team decided to make use of these lines and wire them up to a 8-pin DIP switch so that the operator can choose their unique interrogator I.D. Therefore only 8 out of the 10 address lines on the encoder will be used and the top two most significant bits will be grounded (lines A9 and A10).
+The decoder provides important functionality and simplicity to the system. There are a total of 10 address lines on the decoder that must match up to the corresponding transmitting encoder. The lines do not output data through the data-out lines if these address lines do not match up. For example if the transmitter/encoder's address lines are set to 0000000000, then the receiver/decoder's address lines must also be set to 0000000000. The team decided to make use of these lines and wire them up to an 8-pin DIP switch so that the operator can choose their unique interrogator I.D. Therefore only 8 out of the 10 address lines on the encoder will be used and the top two most significant bits will be grounded (lines A9 and A10).
 
 The process behind the R.F. receiver and processing of the transmitted data will be explained in the Section \ref{section-software}.
 
@@ -346,7 +346,7 @@ Power-Out: MSP430 Microcontroller (3.3V), R.F. Transmitter/Encoder (3.3V), and P
 Input(s): N/A\\
 Output(s): N/A
 
-The power module on board will utilize the same DC-DC Step-Up Voltage Converter as the friendly interrogator unit. However, the friendly target unit's power module must produce both an output voltage of 3.3V for the MCU and 10V for the operational amplifier. This will be accomplished by using one AAT1217 step-up converter to step the voltage up to 3.3V and another to step it up to 5V. This 5V output will then be cascaded into a Maxim MAX680 5V-to-10V step-up converter. Detailed power calculations can be found in Section \ref{section-simulations-calculations}.
+The power module on board will utilize the same DC-DC Step-Up Voltage Converter as the friendly interrogator unit. However, the friendly target unit's power module must produce both an output voltage of 3.3V for the MCU and 10V for the operational amplifier on the photoreceiver unit. This will be accomplished by using one AAT1217 step-up converter to step the voltage up to 3.3V and another to step it up to 5V. This 5V output will then be cascaded into a Maxim MAX680 5V to +/- 10V step-up converter. Detailed power calculations can be found in Section \ref{section-simulations-calculations}.
 
 \normalsize\textbf{MSP430 Microcontroller} \\
 Power-In: Power Module (3.3V)\\
@@ -360,7 +360,7 @@ The MCU will take in the outputs of these photodiodes and determine the I.D. of 
 
 Once the MCU receives a valid query, it will generate a passphrase based on a common clock and a common passphrase that will then be sent as an output (pins 11-14 and 25-28) to the R.F. transmitter/encoder. This will be the acknowledgment that the interrogator must receive in order for the target to be identified as friendly. This passphrase that is generated will be explained in Section \ref{section-software}.
 
-Figure \ref{tab:msp430-pin-assignments-target} is a list of the active pins on the Friendly Target MCU. There is a total 28/38 GPIO pins used on this MSP430.
+Figure \ref{tab:msp430-pin-assignments-target} is a list of the active pins on the Friendly Target MCU. There is a total 28/38 GPIO pins used on this MSP430. Each pin/label is listed with the description of the input or output. The red rows indicate that the pin is a power/ground line, the blue rows indicate that the pin is an input \textit{to} the MCU and the green rows indicate that the pin is an output \textit{from} the MCU.
 
 \begin{table} [H]
 	\centering
@@ -377,7 +377,7 @@ Output(s): MSP430 Microcontroller
 The Real Time Clock on board the Friendly Target Unit will be the same as the Friendly Interrogator Unit. Please reference that section to get all details pertaining to the Real Time Clock.
 
 \normalsize\textbf{Photoreceiver}\\
-Power-In: N/A \\
+Power-In: Power Module (+/- 10V)\\
 Power-Out: N/A \\
 Input(s): Laser Transmitter Signal sent from Friendly Interrogator\\
 Output(s): MSP430 Microcontroller
@@ -495,8 +495,8 @@ Both the Friendly Interrogator Unit and Friendly Target Unit must have a shared 
 \subsubsection{Encryption and Message Sending Protocol}
 The encryption on a system like this is very important to take into consideration and for that reason the team decided to use a passphrase generated both off a common passphrase that is shared in between all friendly interrogator/friendly units and a common clock. The common clock will be provided via the Real Time Clock and this will allow the MCU to have registers containing the current value of seconds/minutes/days/hours/etc. 
 
-The algorithm is relatively straight forward to understand. A timer will be setup (Timer\_A3) to generate interrupts every 10 seconds. This will be to update the contents within the RTC register (R6) every 10 seconds and to have a $\pm$5 second differential to validate the acknowledgement signal. The RTC register will contain 16 bits for counting up on the seconds since the last reset. So it will not be a "true" RTC, however you will have the ability to access the seconds eclipsed since pressing the "sync" button at any given time and this result will be valid for 10 seconds.
-
+The algorithm is relatively straight forward to understand. A timer will be setup (Timer\_A3) to generate interrupts every 10 seconds. This will be to update the contents within the RTC register (R6) every 10 seconds and to have a $\pm$5 second differential to validate the acknowledgement signal. The RTC register will contain 16 bits for counting up on the seconds since the last reset. So it will not be a "true" RTC, however the team will have the ability to access the seconds elapsed since pressing the "sync" button at any given, time and this result will be valid for up to a 10 second delay between sync presses.
+x
 The interrogator and target unit must be synced initially before active use. This is so that the two clocks have minimal skew. 
 \begin{figure} [H]
 	\centering
@@ -702,11 +702,6 @@ The use time can be calculated as follows:
 
 This result shows that a single standard alkaline AA 1.5V disposable battery will be more than sufficient enough to satisfy the requirements of 8 hours of active use time.
 
-
-\subsubsection{Simulations/Plots}
-\hl{PUT SIMULATIONS/PLOTS HERE}
-
-
 %SECTION - Requirements and Verification
 \section{Requirements and Verification} \label{section-requirements-verification}
 \hl{PUT REQUIREMENTS/VERIFICATION HERE}
@@ -756,12 +751,12 @@ The radius, in terms of the detectivity, frequency, and sensor active area is
 
 The proposal listed $0.8382 m$ as the ideal radius of the laser's spot. Unfortunately, with the $5mW$ red laser, this would require a sensor with a massive active area. The largest sensor the team could find, at a reasonable price, has a $8.53 mm^2$ active area. 
 
-For the $8.53 mm^2$ active area photodiode operating at $650 nm = 4.61219 × 10^{14} Hz$ 
+For the $8.53 mm^2$ active area photodiode operating at $635 nm = 4.72441 × 10^{14} Hz$ 
 \begin{center}
-	$r = 0.608721 m \approx 33 cm$
+	$r = 0.326998 m \approx 33 cm$
 \end{center}
 
-Refining the proposal requirements, the team has set a new requirement of a minimum $20 cm$ laser spot radius, making the diameter of the beam $0.4m$ at distances of $50m, 150m,$ and $300m$ with optical adjustment. 
+Refining the proposal requirements, the team has set a new requirement of a minimum $20 cm$ laser spot radius, making the diameter of the beam $0.4m$ at distances of $50m, 150m,$ and $300m$ with optical adjustment. This is well within the limit calculated above.  
 
 Capturing these requirements, the team must transmit a signal to a photoreceiver at the following ranges:
 \begin{itemize}
@@ -929,6 +924,7 @@ Most parts were gathered using the resources found on Digi-Key Electronics and a
 	\includepdf[page=1, scale=0.85] {Design-Review-Requirements-Verification.pdf}
 \end{figure}
 \clearpage
+
 \begin{figure} [H]
 	\centering
 	\includepdf[page=2, scale=0.85] {Design-Review-Requirements-Verification.pdf}
@@ -940,7 +936,6 @@ Most parts were gathered using the resources found on Digi-Key Electronics and a
 	\caption{Flowchart for Functionality\label{fig:friendly-interrogator-software-flowchart}}
 \end{figure}
 
-<<<<<<< HEAD
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.400]{Friendly_Target_Software_Flowchart.pdf}
