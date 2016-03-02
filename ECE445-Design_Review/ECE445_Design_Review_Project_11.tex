@@ -449,8 +449,31 @@ The circuit schematic for the friendly interrogator unit is broken into 4 primar
 
 
 \subsubsection{Friendly Target Unit}
-\hl{ADD DESCRIPTION OF CIRCUIT SCHEMATICS} \\
-\hl{PLACE CIRCUIT SCHEMATICS FOR FRIENDLY TARGET UNIT HERE}
+The circuit schematic for the friendly target unit utilizes the same AAT1217 schematic presented in Figure \ref{fig:voltage-converter-schematic}. The remaining schematics for the friendly target unit include the Op Amp Power Circuit, which steps up the supply 1.5V battery to +/- 10V to be used by the photoreceiver unit's op amp; the photoreceiver unit, which steps up and low-pass filters the signal from four photodiodes; the R.F. Transmitter, which broadcasts an acknowledge signal upon receipt of a valid laser transmission on the photoreceiver; and the MCU, which processes the four photoreciever outputs, creates an acknowledge signal, and broadcasts it over the R.F. transmitter. These are displayed below:
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{MCU-Target.png}
+	\caption{MCU for the Friendly Target Unit  Schematic\label{fig:mcu-target-schematic}}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{Op-Amp-Power.png}
+	\caption{1.5V to  +/- 10V Power Converter for Photoreceiver Op Amp Schematic\label{fig:op-amp-power-schematic}}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.55]{Photoreceiver.png}
+	\caption{Photoreceiver Unit Schematic\label{fig:photoreceiver-schematic}}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.5]{RFTransmitter.png}
+	\caption{R.F. Transmitter Schematic\label{fig:photoreceiver-schematic}}
+\end{figure}
 
 \subsection{Software Flowcharts / Functionality} \label{section-software}
 \subsubsection{System Flow}
@@ -463,6 +486,9 @@ This section is to explain the flow of events in the system as a whole as well a
 \end{figure}
 
 The left side of this diagram are all events that occur within the friendly interrogator unit, and the right side represents all of the events that occur on the friendly target side. This flow diagram also assumes that both the interrogator operator and the friendly target operator have powered on their respective units.
+
+\subsubsection{Synchronizing the RTCs}
+Both the Friendly Interrogator Unit and Friendly Target Unit must have a shared clock. For the scope of this project, both units will have a "sync" button. The sync button will reset the clock register to 0 on the unit. Units can then synchronize clocks by pressing the "sync" button at the same time. Note that since the tolerance for clock skew is 10 seconds, the sync button should meet this requirement. 
 
 \subsubsection{Encryption and Message Sending Protocol}
 The encryption on a system like this is very important to take into consideration and for that reason the team decided to use a passphrase generated both off a common passphrase that is shared in between all friendly interrogator/friendly units and a common clock. The common clock will be provided via the Real Time Clock and this will allow the MCU to have registers containing the current value of seconds/minutes/days/hours/etc. 
@@ -489,7 +515,16 @@ The software on the MCU on the friendly interrogator unit will follow a very sim
 Using these 12 general purpose registers the team can accurately identify a target as friendly. The flow diagram in Figure \ref*{fig:friendly-interrogator-software-flowchart} in the Appendix depicts the series of processes and events that take place within the MCU in order for the target to be identified as friendly. 
 
 \subsubsection{Friendly Target Software Flow}
-\hl{REFERENCE FRIENDLY TARGET SOFTWARE FLOW DIAGRAM TO APPENDIX}
+The software on the MCU on the friendly target unit will follow a very simple flow utilizing basic concepts of microcontrollers including timer, interrupts, i/o and basic logic and arithmetic. The MSP430F2274 contains 16 registers of which 4 are protected and 12 are general purpose registers:
+\begin{itemize}
+	\item R0 - program counter
+	\item R1 - stack pointer 
+	\item R2 - status register
+	\item R3 - constant generator
+	\item R4 - R15 - general purpose registers
+\end{itemize}
+Using these 12 general purpose registers the team can accurately identify a target as friendly. The flow diagram in Figure \ref*{fig:friendly-target-software-flowchart} in the Appendix depicts the series of processes and events that take place within the MCU in order for the friendly target unit to broadcast an acknowledge signal. 
+
 \subsection{Numerical Analysis and Simulations/Plots} \label{section-simulations-calculations}
 \subsubsection{Calculations}
 \normalsize\textbf{Power Module (Friendly Interrogator Unit)} \\
@@ -724,28 +759,28 @@ For the $8.53 mm^2$ active area photodiode operating at $650 nm = 4.61219 × 10^
 	$r = 0.608721 m \approx 33 cm$
 \end{center}
 
-Refining the proposal requirements, the team has set a new requirement of a $25 cm$ laser spot radius, making the diameter of the beam $0.5m$ at distances of $50m, 150m,$ and $300m$ with optical adjustment. 
+Refining the proposal requirements, the team has set a new requirement of a minimum $20 cm$ laser spot radius, making the diameter of the beam $0.4m$ at distances of $50m, 150m,$ and $300m$ with optical adjustment. 
 
-Capturing these requirements, the team must transmit a signal to a photo-detector at the following ranges:
+Capturing these requirements, the team must transmit a signal to a photoreceiver at the following ranges:
 \begin{itemize}
 	\item Short Range (0 - 50 m)
 	\item Medium Range (50 - 150 m)
 	\item Long Range (150 - 300 m)
 \end{itemize}
 
-The team should then verify that the signal was received. Furthermore, the team should verify that the signal spans the width of a human chest. More concretely, that a sighted-in laser transmitter can be aimed at any point within $50 cm$ of the receiver and still register the transmitted signal. 
+The team will verify this requirement with the following procedure:
 
-Test Procedure:
-
-\begin{itemize}
-	\item Mount the receiver 300 m downrange of the transmitter
-	\item Aim the laser transmitter directly at the receiver, using a mount (like a vice grip) to keep it stable. 
-	\item Verify the signal is received via the probe point on the PCB
-	\item Aim and verify the signal is also received when aiming 25 cm to the right, top, and bottom of the receiver. 
-	\item Repeat these steps for 50 m and 150 m. 
-\end{itemize}
-
-
+\begin{enumerate}
+	\item Measure and label each distance on ground surface.
+	\item Setup target at desired location (1 out of 3 locations), being a 1.5 x 1.5 meter white, flat, square surface and measure out a circle with 20 cm radius, centered at the origin of the surface.
+	\item Place 4 photoreceivers on outer perimeter of 20cm circle.
+	\item Connect multimeter to output of photoreceivers
+	\item Setup laser on stable surface at source, and connect power line to 130 ohm resistor and ground line to GND.
+	\item Place string at base of laser and guide string to the origin of the target surface. This is to ensure that the laser is in line with the target and accurately hits the target.
+	\item Note the value on the multimeter
+	\item Power on laser by providing it a constant 3.3V power source.
+	\item Ensure the multimeter does not fall below the value noted in (7) for a period of 5 seconds. 
+\end{enumerate}
 
 \subsection{Safety} \label{section-safety-ethics}
 \normalsize\textbf{Laser Safety} \\
@@ -842,6 +877,8 @@ The risk of eye damage is mitigated by the fact that the laser is both visible, 
 \normalsize\textbf{Electrical Safety} \\
 The majority of the components operate at less than $5V$, which does not present a significant risk. Two components, however, operate with a voltage differential of $20V$. This is the $5V$ to $10V$ converter and the Operational Amplifier used for the photoreceiver. The team will exercise caution when working with these units; using a multimeter to verify the part is powered off before making contact. 
 
+The team will also follow normal battery safety procedures with all batteries in use; ensuring that they are stored at a safe temperature, are not leaking battery acid or damaged, and are not shorted. 
+
 
 \subsection{Ethical Issues}
 This project has several ethical issues that can be addressed by the IEEE Code of Conduct. Specifically, numbers 1, 2, 3, 5, 6, 7, and 9 are the most important items that pertain to the Infantry I.F.F. System the team is building this semester. 
@@ -885,6 +922,12 @@ The labor cost was calculated as follows:
 	\centering
 	\includegraphics[scale=0.450]{Friendly_Interrogator_Software_Flowchart.pdf}
 	\caption{Flowchart for Functionality\label{fig:friendly-interrogator-software-flowchart}}
+\end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.400]{Friendly_Target_Software_Flowchart.pdf}
+	\caption{Flowchart for Functionality\label{fig:friendly-target-software-flowchart}}
 \end{figure}
 
 \end{spacing}

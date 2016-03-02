@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 FEB 2016 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  1 MAR 2016 20:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,9 +836,6 @@ LaTeX Warning: Label `fig:system-diagram' multiply defined.
 LaTeX Warning: Label `fig:system-diagram' multiply defined.
 
 
-LaTeX Warning: Label `fig:detectivity-table' multiply defined.
-
-
 LaTeX Warning: Label `fig:timeline' multiply defined.
 
 
@@ -1068,19 +1065,23 @@ Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 339
  [5
 
  <./Requirements-Verification-Table.png>]
+
+LaTeX Warning: Reference `fig:detectivity-table' on page 6 undefined on input l
+ine 364.
+
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
+<use University-of-Illinois-logo.jpg>
 Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 371
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
  [6]
-<Timeline.png, id=136, 856.19875pt x 389.455pt>
+<Timeline.png, id=134, 856.19875pt x 389.455pt>
 File: Timeline.png Graphic file (type png)
  <use Timeline.png>
 Package pdftex.def Info: Timeline.png used on input line 389.
 (pdftex.def)             Requested size: 385.28587pt x 175.25313pt.
 
-<Schedule_Extended.png, id=137, 713.66624pt x 746.79pt>
+<Schedule_Extended.png, id=135, 713.66624pt x 746.79pt>
 File: Schedule_Extended.png Graphic file (type png)
 
 <use Schedule_Extended.png>
@@ -1091,7 +1092,7 @@ File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 399
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
- [7 <./Timeline.png>] <cost-labor-table.png, id=145, 935.495pt x 733.74126pt>
+ [7 <./Timeline.png>] <cost-labor-table.png, id=143, 935.495pt x 733.74126pt>
 File: cost-labor-table.png Graphic file (type png)
 
 <use cost-labor-table.png>
@@ -1115,15 +1116,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 426.
  (./ECE445-Proposal.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 426.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 426.
+Package rerunfilecheck Info: File `ECE445-Proposal.out' has not changed.
+(rerunfilecheck)             Checksum: 1570EA70E7E8DE7204EA24D33FABC991;560.
 
-
-Package rerunfilecheck Warning: File `ECE445-Proposal.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ECE445-Proposal.out':
-(rerunfilecheck)             Before: 1E26F44999C98C89B020054676A0BA3F;560
-(rerunfilecheck)             After:  1570EA70E7E8DE7204EA24D33FABC991;560.
 
 LaTeX Warning: There were undefined references.
 
@@ -1133,35 +1128,32 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 426.
  ) 
 Here is how much of TeX's memory you used:
- 22136 strings out of 493089
- 446462 string characters out of 6134842
- 578748 words of memory out of 5000000
- 25166 multiletter control sequences out of 15000+600000
+ 22133 strings out of 493089
+ 446425 string characters out of 6134842
+ 578625 words of memory out of 5000000
+ 25165 multiletter control sequences out of 15000+600000
  13078 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,16n,67p,655b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{figure.caption.8} has been referenced but does no
-t exist, replaced by a fixed one
-
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ECE445-Proposal.pdf (11 pages, 2425948 bytes).
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on ECE445-Proposal.pdf (11 pages, 2425832 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
  133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
