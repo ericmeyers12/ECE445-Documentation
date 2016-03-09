@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ECE 445 SENIOR DESIGN TEMPLATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[letterpaper,10pt]{article}
@@ -490,10 +490,10 @@ This section is to explain the flow of events in the system as a whole as well a
 The left side of this diagram are all events that occur within the friendly interrogator unit, and the right side represents all of the events that occur on the friendly target side. This flow diagram also assumes that both the interrogator operator and the friendly target operator have powered on their respective units.
 
 \subsubsection{Synchronizing the RTCs}
-Both the Friendly Interrogator Unit and Friendly Target Unit must have a shared clock. For the scope of this project, both units will have a "sync" button. The sync button will reset the clock register to 0 on the unit. Units can then synchronize clocks by pressing the "sync" button at the same time. Note that since the tolerance for clock skew is 10 seconds, the sync button should meet this requirement. 
+Both the friendly interrogator unit and friendly target unit must have a shared clock. For the scope of this project, both units will have a "sync" button. The sync button will reset the clock register to 0 on the unit. Units can then synchronize clocks by pressing the "sync" button at the same time. Note that since the tolerance for clock skew is 10 seconds, the sync button should meet this requirement. 
 
 \subsubsection{Encryption and Message Sending Protocol}
-The encryption on a system like this is very important to take into consideration and for that reason the team decided to use a passphrase generated both off a common passphrase that is shared in between all friendly interrogator/friendly units and a common clock. The common clock will be provided via the Real Time Clock and this will allow the MCU to have registers containing the current value of seconds/minutes/days/hours/etc. 
+The encryption on a system like this is very important to take into consideration and for that reason the team decided to use a passphrase generated both off a common passphrase that is shared in between all friendly interrogator/friendly units and a common clock. The common clock will be provided via the Real Time Clock and this will allow the MCU to have registers containing the current value of seconds. 
 
 The algorithm is relatively straight forward to understand. A timer will be setup (Timer\_A3) to generate interrupts every 10 seconds. This will be to update the contents within the RTC register (R6) every 10 seconds and to have a $\pm$5 second differential to validate the acknowledgement signal. The RTC register will contain 16 bits for counting up on the seconds since the last reset. So it will not be a "true" RTC, however the team will have the ability to access the seconds elapsed since pressing the "sync" button at any given, time and this result will be valid for up to a 10 second delay between sync presses.
 x
@@ -878,8 +878,13 @@ This project has several ethical issues that can be addressed by the IEEE Code o
 \skipitems{1}
 \item to avoid injuring others, their property, reputation, or employment by false or malicious action;  
 \end{enumerate}
+Number 1 and 9 apply to this project in a significant way due to the handling of lasers and equipment that is to be used for mounting on a weapon. For one, there will be no handling of any weapons this semester whatsoever. The team will use replacement props for demonstration purposes. The laser safety has been verified to be safe up to 1.5 meters and the team will in NO matter use the laser in an unsafe manner. The laser will only be used for project-purposes and will not be used outside of the lab.
 
-There will be no handling of any weapons this semester whatsoever. The team will use replacement props for demonstration purposes.
+Number 2 and 3 are somewhat of the same and the team will ensure to disclose any crucial information the ECE department must know regarding our project, as soon as the team is aware. 
+
+Number 5 is particularly important in this project due to the IFF system being designed for wartime use. This means that the team must understand the consequences if pursued further. There are lives at stake here and this is a very serious matter. 
+
+Number 6 and 7 can be coupled together in an academic integrity statement. There are several other I.F.F. systems developed by other schools and the team is well aware of this. However, the work the team produces this year will be an individual/team pursuit unique to the senior design semester of spring 2016. It will, in no way, be a reproduction of any other I.F.F. system out there. The design approaches maybe similar due to similar constraints/budgetary concerns, however, the work the team produces will be 100\% authentic and absolutely not plagiarized. 
 
 %SECTION - Cost and Schedule
 \section{Cost and Schedule}
@@ -922,7 +927,7 @@ Most parts were gathered using the resources found on Digi-Key Electronics and a
 \clearpage
 \begin{figure} [H]
 	\centering
-	\includegraphics[scale=0.450]{Friendly_Interrogator_Software_Flowchart.pdf}
+	\includegraphics[scale=0.40]{Friendly_Interrogator_Software_Flowchart.pdf}
 	\caption{Flowchart of Interrogator Unit\label{fig:friendly-interrogator-software-flowchart}}
 \end{figure}
 
