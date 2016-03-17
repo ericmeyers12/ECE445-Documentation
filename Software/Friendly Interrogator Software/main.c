@@ -4,8 +4,7 @@
 //  Author: Eric Meyers and Noah Prince
 //  Date(s): Initial Revision 3/15/2016
 // 
-//
-//  Description: This piece of software is an interrupt based piece of microcontroller 
+//  Description: This piece of software is an interrupt based piece of microcontroller... 
 //
 //                        MSP430F22x4
 //                    -----------------
@@ -60,13 +59,27 @@ int main(void)
 
   address |= (P1_0 | P1_1 | P1_2 | P1_3 | P1_4 | P1_5 | P1_6 | P1_7);
 
-  //SETUP PREAMBLE BITS AND PARITY/CHECKSUM BITS
+  //Setup preamble bits, address bits (from receiver) and checksum to be in global integer
 
-  while (P2_0 == 1) // While V_IN_RF_LAS Switch is high then pulse the laser
+  //Laser Pulse Word =
+  //StB3 StB2 StB1 StB0 A7 ... A0 CS3 CS2 CS1 CS0
+
+  //Setup Timer A to do 0.1 Hz interrupts (for seconds counter) - 10s
+  char rtc_timer_a_flag = 0;
+
+  //Setup Timer B to do 40 kHz interrupts (for laser) -  25us
+  char laser_timer_b_flag = 0;
+
+
+  while (P2_0 == 1) // While V_IN_RF_LAS Switch is high then pulse the laser and check R.F. Signal
   {
     //PULSE LASER USING INT 
+    //If Valid Transmission Flag is high then gather datalines from R.F. Receiver
   }
   // If V_IN_RF_LAS switch != high then enter LPM3 w/ interrupts enabled
   __bis_SR_register(LPM3_bits + GIE);
 }  
+
+
+
   

@@ -73,7 +73,7 @@ int main(void)
   P1DIR |= 0x01;                            // P1.0 output
   TACCTL0 = CCIE;                           // TACCR0 interrupt enabled
   TACCR0 = 50000;
-  TACTL = TASSEL_2 + MC_2;                  // SMCLK, contmode
+  TACTL = TASSEL_1 + MC_2;                  // ACLK, contmode
 
   __bis_SR_register(LPM0_bits + GIE);       // Enter LPM0 w/ interrupt
 }
