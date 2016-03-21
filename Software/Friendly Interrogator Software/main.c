@@ -12,7 +12,7 @@
 //                  |                 |
 //            3.3V--|DVCC         P1_6|--A1
 //                  |                 |
-//               X--|P2_5         P1_5|--A2
+//            SYNC--|P2_5         P1_5|--A2
 //                  |                 |
 //             GND--|DVSS         P1_4|--A3
 //                  |                 |
@@ -26,7 +26,7 @@
 //                  |                 |
 //     V_IN_RF_LAS--|P2_1         P2_4|--X
 //                  |                 |
-//               X--|P2_2         P2_3|--VT 
+//       LAS_TRANS--|P2_2         P2_3|--VT 
 //                  |                 |
 //              D0--|P3_0         P3_7|--D4
 //                  |                 |
@@ -40,46 +40,128 @@
 //                  |                 |
 //            3.3V--|AVCC         P4_6|--X
 //                  |                 |
-//       LAS_TRANS--|P4_0         P4_5|--X
+//               X--|P4_0         P4_5|--X
 //                  |                 |
-//            SYNC--|P4_1         P4_4|--X
+//               X--|P4_1         P4_4|--X
 //                  |                 |
-//             GND--|P4_2         P4_3|--X
+//               X--|P4_2         P4_3|--X
 //                  |                 | 
 //                   -----------------
+// INPUT GPIO PINS : P1.0, P1.1, P1.2, P1.3, P1.4, P1.5, P1.6, P1.7 = R.F. Address Lines
+//                   P3.0, P3.1, P3.2, P3.3, P3.4, P3.5, P3.6, P3.7 = R.F. Data Lines
+//                   P2.1 = Power Button for R.F. Receiver and Laser Transmitter
+//                   P2.5 = Sync Button to Reset/Sync Clocks
+//                   
+//       
+// OUTPUT GPIO PINS: P2.0 = LED Indicator (Friendly or Enemy)
+//                   P2.2 = Laser Transmitter
 //
 //  Built with CCE Version: 3.2.2 and IAR Embedded Workbench Version: 4.11B
 //******************************************************************************
 #include <msp430.h>
 #include "pins.h"
 
+/* ==== Initialize Global Variables ==== */
+int seconds = 0; //Seconds Timer 
+int ten_seconds = 0; //Ten Second Timer
+
+/*  Main Function
+ *  Description: This main function performs all necessary tasks to take in the 
+ *              appropriate address lines, pulse the appropriate unique I.D. to the
+ *              friendly target unit and wait for an acknowledgement. This "ack" from
+ *              the target unit
+ */
 int main(void)
 {
+  /* ==== Initialize Local Variables ==== */
   char address = 0;
 
+  /* Turn off Watch-Dog Timers */
+  WDTCTL = WDTPW + WDTHOLD; 
+
+  /* ==== Set Direction of GPIO ==== */
+  //PXDIR - BITWISE : 1 OUTPUT 0 INPUT : source: page 329 MSP430x2xx  */
+  P1DIR |= 0xFFFF; // All pins on P1 (P1.0 - P1.7) are inputs - Address Lines
+  P3DIR |= 0xFFFF; // All pins on P3 (P3.0 - P3.7) are inputs - Data Lines
+  P2DIR &= (BIT0 | BIT2); //Set P2.0 & P2.2 as output - Laser Transmitter & Indicator
+  P2DIR |= (BIT1 | BIT5); //Set P2.1 & P2.5 as input - Sync and Power to R.F. & Laser
+
+  /* =======Laser Pulse Word ==========================================
+  ---------------------------------------------------------------------
+  | ST_B3 | ST_B2 | ST_B1 | ST_B0 | A7 ... A0 | CS3 | CS2 | CS1 | CS0 |
+  ---------------------------------------------------------------------
+  with ST_B3 - ST_B0 = Start Bits (Logic Highs (1s))
+       A7 - A0 = R.F. Address Lines (Depending on 8-Pin DIP Switch)
+       CS3 - CS0 = CheckSum Bits (Not Really sure what these are for yet tbh
+  ======================================================================*/
+  //Combine address into single char to get a
   address |= (P1_0 | P1_1 | P1_2 | P1_3 | P1_4 | P1_5 | P1_6 | P1_7);
+  
 
-  //Setup preamble bits, address bits (from receiver) and checksum to be in global integer
 
-  //Laser Pulse Word =
-  //StB3 StB2 StB1 StB0 A7 ... A0 CS3 CS2 CS1 CS0
+  /* ============ Setup Timers ===========================================*/
+  //Setup Timer A1 to perform 1 Hz interrupts (for seconds counter) - 1s
+  char ten_sec_timer_a_flag = 0;//Validation period flag - 10 seconds
+  TA0CCR0 = 32768; // Set count limit (32.768 kHz Clock = 32,768 ticks until one interrupt is registered)
+  TA0CCTL0 = 0x10; //Enable counter interrupts - bit 4
+  TA0CTL = TASSEL_1 + MC_1; //Timer A0 with ACLK @ 32768Hz @ 3.0V(VERIFY), count up.
 
-  //Setup Timer A to do 0.1 Hz interrupts (for seconds counter) - 10s
-  char rtc_timer_a_flag = 0;
-
-  //Setup Timer B to do 40 kHz interrupts (for laser) -  25us
+  //Setup Timer B0 to do 40 kHz interrupts (for laser) -  25us
   char laser_timer_b_flag = 0;
+  TB0CCR0 = 100; // Set count limit (16 MHz Clock = 16000 ticks until one interrupt is registered)
+  TB0CCTL0 = 0x10; //Enable counter interrupts - bit 4
+  TB0CTL = TBSSEL_2 + ID_2 + MC_1; //Timer A0 with SMCLK @ 16 MHz/4 = 4MHz @ 3.0V(VERIFY), count up.
 
 
-  while (P2_0 == 1) // While V_IN_RF_LAS Switch is high then pulse the laser and check R.F. Signal
+  /* ==== Main Loop (Perform pulsing, poll for response?) ==== */
+  while (1)
   {
-    //PULSE LASER USING INT 
-    //If Valid Transmission Flag is high then gather datalines from R.F. Receiver
+    /* FIRST: UPDATE ACKNOWLEDGEMENT PASSPHRASE */
+    if (ten_sec_timer_a_flag)
+    {
+      ten_sec_timer_a_flag = 0;
+      // UPDATE ACKNOWLEDGEMENT VERIFICATION PASSPHRASE
+    }
+
+    // Check to see if operator has switched R.F. and Laser ON
+    if (P2IN & BIT1) 
+    {
+      /* PULSE UNIQUE ID, CHECK VALID TRANSMISSION SIGNAL*/
+      if (laser_timer_b_flag)
+      {
+        laser_timer_b_flag = 0;
+        // PULSE UNIQUE I.D.
+        // SET SOME DELAY
+        // CHECK R.F. RECEIVER VALID TRANSMISSION SIGNAL
+        if (P2IN & BIT3)
+          //WAIT FOR RESPONSE - TIMEOUT OF 40 ms?   
+      }
+    } 
   }
   // If V_IN_RF_LAS switch != high then enter LPM3 w/ interrupts enabled
-  __bis_SR_register(LPM3_bits + GIE);
+  //__bis_SR_register(LPM3_bits + GIE);
 }  
 
 
+/*  ISR : Timer_A3
+ *  Description: This timer acts as our "RTC" and increments the "seconds" variable every second,
+ *  (obviously), and also depending on the value of "seconds" it sets the ten_sec_timer_a_flag.
+ */
+#pragma vector = TIMER0_A0_VECTOR
+__interrupt void Timer0_A0 (void) 
+{
+  seconds++;
+  ten_sec_timer_a_flag = (seconds % 10 == 0);
+}
+
+
+/*  ISR : Timer_B3
+ *  Description: This timer triggers the laser transmitter at 40 kHz 
+ */
+#pragma vector = TIMER0_B0_VECTOR
+__interrupt void Timer0_B0 (void) 
+{
+  laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 
+}
 
   
