@@ -9236,88 +9236,45 @@ www.radiohm.com</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="maxim">
-<description>&lt;b&gt;Maxim Components&lt;/b&gt;&lt;p&gt;
-
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<library name="PDM1-S3-D12-S">
 <packages>
-<package name="SO08">
-<description>&lt;b&gt;Small Outline Package&lt;/b&gt; SOIC 150 mil</description>
-<wire x1="2.159" y1="1.9558" x2="-2.159" y2="1.9558" width="0.1524" layer="21"/>
-<wire x1="2.159" y1="-1.9558" x2="2.54" y2="-1.5748" width="0.1524" layer="21" curve="90"/>
-<wire x1="-2.54" y1="1.5748" x2="-2.159" y2="1.9558" width="0.1524" layer="21" curve="-90"/>
-<wire x1="2.159" y1="1.9558" x2="2.54" y2="1.5748" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-2.54" y1="-1.5748" x2="-2.159" y2="-1.9558" width="0.1524" layer="21" curve="90"/>
-<wire x1="-2.159" y1="-1.9558" x2="2.159" y2="-1.9558" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="-1.5748" x2="2.54" y2="1.5748" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="1.5748" x2="-2.54" y2="0.508" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="0.508" x2="-2.54" y2="-0.508" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="-0.508" x2="-2.54" y2="-1.5748" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="0.508" x2="-2.54" y2="-0.508" width="0.1524" layer="21" curve="-180"/>
-<wire x1="-2.54" y1="-1.6002" x2="2.54" y2="-1.6002" width="0.0508" layer="21"/>
-<smd name="1" x="-1.905" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="8" x="-1.905" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="2" x="-0.635" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="3" x="0.635" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="7" x="-0.635" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="6" x="0.635" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="4" x="1.905" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="5" x="1.905" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<text x="3.937" y="-2.032" size="1.27" layer="27" ratio="10" rot="R90">&gt;VALUE</text>
-<text x="-2.921" y="-1.905" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
-<rectangle x1="1.651" y1="1.9558" x2="2.159" y2="3.0988" layer="51"/>
-<rectangle x1="-2.159" y1="-3.0988" x2="-1.651" y2="-1.9558" layer="51"/>
-<rectangle x1="-0.889" y1="-3.0988" x2="-0.381" y2="-1.9558" layer="51"/>
-<rectangle x1="0.381" y1="-3.0734" x2="0.889" y2="-1.9304" layer="51"/>
-<rectangle x1="1.651" y1="-3.0988" x2="2.159" y2="-1.9558" layer="51"/>
-<rectangle x1="0.381" y1="1.9558" x2="0.889" y2="3.0988" layer="51"/>
-<rectangle x1="-0.889" y1="1.9558" x2="-0.381" y2="3.0988" layer="51"/>
-<rectangle x1="-2.159" y1="1.9558" x2="-1.651" y2="3.0988" layer="51"/>
+<package name="PDM1-S3-D12-S">
+<pad name="1" x="-5.08" y="0" drill="0.8" shape="square"/>
+<pad name="2" x="-2.54" y="0" drill="0.8" shape="square"/>
+<pad name="5" x="7.62" y="0" drill="0.8" shape="square"/>
+<pad name="4" x="5.08" y="0" drill="0.8" shape="square"/>
+<pad name="3" x="2.54" y="0" drill="0.8" shape="square"/>
 </package>
 </packages>
 <symbols>
-<symbol name="MAX680">
-<wire x1="-7.62" y1="-10.16" x2="7.62" y2="-10.16" width="0.4064" layer="94"/>
-<wire x1="7.62" y1="10.16" x2="7.62" y2="-10.16" width="0.4064" layer="94"/>
-<wire x1="7.62" y1="10.16" x2="-7.62" y2="10.16" width="0.4064" layer="94"/>
-<wire x1="-7.62" y1="-10.16" x2="-7.62" y2="10.16" width="0.4064" layer="94"/>
-<text x="-7.62" y="10.795" size="1.778" layer="95">&gt;NAME</text>
-<text x="-7.62" y="-12.7" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="C1-" x="-12.7" y="2.54" length="middle" direction="pas"/>
-<pin name="C1+" x="-12.7" y="7.62" length="middle" direction="pas"/>
-<pin name="C2+" x="-12.7" y="-2.54" length="middle" direction="pas"/>
-<pin name="C2-" x="-12.7" y="-7.62" length="middle" direction="pas"/>
-<pin name="V+" x="12.7" y="7.62" length="middle" direction="out" rot="R180"/>
-<pin name="V-" x="12.7" y="2.54" length="middle" direction="out" rot="R180"/>
-<pin name="VCC" x="12.7" y="-2.54" length="middle" rot="R180"/>
-<pin name="GND" x="12.7" y="-7.62" length="middle" rot="R180"/>
+<symbol name="PDM1-S3-D12-S">
+<pin name="VIN" x="-12.7" y="5.08" length="middle"/>
+<pin name="GND" x="-12.7" y="-5.08" length="middle"/>
+<pin name="+V" x="12.7" y="5.08" length="middle" rot="R180"/>
+<pin name="0V" x="12.7" y="0" length="middle" rot="R180"/>
+<pin name="-V" x="12.7" y="-5.08" length="middle" rot="R180"/>
+<wire x1="-7.62" y1="-7.62" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="7.62" x2="7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="7.62" x2="7.62" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-7.62" x2="-7.62" y2="-7.62" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MAX680CSA" prefix="IC">
-<description>Switched-capcitor &lt;b&gt;VOLTAGE CONVERTER&lt;/b&gt;</description>
+<deviceset name="PDM1-S3-D12-S">
 <gates>
-<gate name="G$1" symbol="MAX680" x="0" y="0"/>
+<gate name="G$1" symbol="PDM1-S3-D12-S" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SO08">
+<device name="" package="PDM1-S3-D12-S">
 <connects>
-<connect gate="G$1" pin="C1+" pad="7"/>
-<connect gate="G$1" pin="C1-" pad="1"/>
-<connect gate="G$1" pin="C2+" pad="2"/>
-<connect gate="G$1" pin="C2-" pad="3"/>
-<connect gate="G$1" pin="GND" pad="5"/>
-<connect gate="G$1" pin="V+" pad="8"/>
-<connect gate="G$1" pin="V-" pad="4"/>
-<connect gate="G$1" pin="VCC" pad="6"/>
+<connect gate="G$1" pin="+V" pad="5"/>
+<connect gate="G$1" pin="-V" pad="3"/>
+<connect gate="G$1" pin="0V" pad="4"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="VIN" pad="1"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="MF" value="MAXIM" constant="no"/>
-<attribute name="MPN" value="MAX680CSA" constant="no"/>
-<attribute name="OC_FARNELL" value="9725717" constant="no"/>
-<attribute name="OC_NEWARK" value="34C3975" constant="no"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -9359,8 +9316,6 @@ www.radiohm.com</description>
 </modules>
 <parts>
 <part name="OPAMP" library="ON Semiconductor_By_element14_Batch_1" deviceset="MC33179PG" device=""/>
-<part name="PC2" library="rcl" deviceset="C-US" device="025-024X044" value="4.7 u"/>
-<part name="PC3" library="rcl" deviceset="C-US" device="025-024X044" value="4.7 u"/>
 <part name="RRC2" library="opto-trans-siemens" deviceset="BPW32" device=""/>
 <part name="RRC3" library="opto-trans-siemens" deviceset="BPW32" device=""/>
 <part name="RRC1" library="opto-trans-siemens" deviceset="BPW32" device=""/>
@@ -9399,7 +9354,7 @@ www.radiohm.com</description>
 <part name="R5" library="rcl" deviceset="R-US_" device="0204/2V" value="100M"/>
 <part name="D1" library="diode" deviceset="1N4004" device="" value=""/>
 <part name="CRYS" library="rcl" deviceset="R-EU_" device="0204/5"/>
-<part name="IC1" library="maxim" deviceset="MAX680CSA" device=""/>
+<part name="U$13" library="PDM1-S3-D12-S" deviceset="PDM1-S3-D12-S" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9415,8 +9370,6 @@ www.radiohm.com</description>
 </plain>
 <instances>
 <instance part="OPAMP" gate="A" x="271.78" y="93.98"/>
-<instance part="PC2" gate="G$1" x="96.52" y="154.94" rot="R180"/>
-<instance part="PC3" gate="G$1" x="96.52" y="144.78" rot="R180"/>
 <instance part="RRC2" gate="1" x="182.88" y="88.9" rot="R90"/>
 <instance part="RRC3" gate="1" x="182.88" y="78.74" rot="R90"/>
 <instance part="RRC1" gate="1" x="182.88" y="99.06" rot="R90"/>
@@ -9455,25 +9408,11 @@ www.radiohm.com</description>
 <instance part="R5" gate="G$1" x="-124.46" y="68.58" rot="R270"/>
 <instance part="D1" gate="1" x="-111.76" y="68.58" rot="R90"/>
 <instance part="CRYS" gate="G$1" x="-91.44" y="68.58" rot="R270"/>
-<instance part="IC1" gate="G$1" x="124.46" y="152.4"/>
+<instance part="U$13" gate="G$1" x="91.44" y="124.46"/>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="N$1" class="0">
-<segment>
-<pinref part="PC2" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="160.02" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="C1+"/>
-</segment>
-</net>
-<net name="N$3" class="0">
-<segment>
-<pinref part="PC3" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="149.86" x2="111.76" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="C2+"/>
-</segment>
-</net>
 <net name="MCU-2.1" class="0">
 <segment>
 <wire x1="-43.18" y1="66.04" x2="-48.26" y2="66.04" width="0.1524" layer="91"/>
@@ -9626,8 +9565,9 @@ www.radiohm.com</description>
 <pinref part="JP2" gate="G$1" pin="15"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="GND"/>
-<wire x1="137.16" y1="144.78" x2="137.16" y2="127" width="0.1524" layer="91"/>
+<pinref part="U$13" gate="G$1" pin="GND"/>
+<wire x1="71.12" y1="119.38" x2="78.74" y2="119.38" width="0.1524" layer="91"/>
+<label x="66.04" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="+10V" class="0">
@@ -9637,9 +9577,9 @@ www.radiohm.com</description>
 <label x="254" y="127" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="137.16" y1="160.02" x2="142.24" y2="160.02" width="0.1524" layer="91"/>
-<label x="137.16" y="160.02" size="1.778" layer="95"/>
-<pinref part="IC1" gate="G$1" pin="V+"/>
+<pinref part="U$13" gate="G$1" pin="+V"/>
+<wire x1="104.14" y1="129.54" x2="116.84" y2="129.54" width="0.1524" layer="91"/>
+<label x="116.84" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="-10V" class="0">
@@ -9650,25 +9590,9 @@ www.radiohm.com</description>
 <wire x1="220.98" y1="76.2" x2="220.98" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="137.16" y1="154.94" x2="142.24" y2="154.94" width="0.1524" layer="91"/>
-<label x="137.16" y="154.94" size="1.778" layer="95"/>
-<pinref part="IC1" gate="G$1" pin="V-"/>
-</segment>
-</net>
-<net name="PC3" class="0">
-<segment>
-<pinref part="PC3" gate="G$1" pin="1"/>
-<wire x1="96.52" y1="142.24" x2="111.76" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="142.24" x2="111.76" y2="144.78" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="C2-"/>
-</segment>
-</net>
-<net name="PC2" class="0">
-<segment>
-<pinref part="PC2" gate="G$1" pin="1"/>
-<wire x1="96.52" y1="152.4" x2="111.76" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="152.4" x2="111.76" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="C1-"/>
+<pinref part="U$13" gate="G$1" pin="-V"/>
+<wire x1="104.14" y1="119.38" x2="116.84" y2="119.38" width="0.1524" layer="91"/>
+<label x="116.84" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCU-2.4" class="0">
@@ -9732,13 +9656,9 @@ www.radiohm.com</description>
 <pinref part="PR5" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="50.8" y1="160.02" x2="83.82" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="160.02" x2="83.82" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="137.16" x2="144.78" y2="137.16" width="0.1524" layer="91"/>
-<label x="96.52" y="134.62" size="1.778" layer="95"/>
-<pinref part="IC1" gate="G$1" pin="VCC"/>
-<wire x1="144.78" y1="137.16" x2="144.78" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="149.86" x2="137.16" y2="149.86" width="0.1524" layer="91"/>
+<pinref part="U$13" gate="G$1" pin="VIN"/>
+<wire x1="71.12" y1="129.54" x2="78.74" y2="129.54" width="0.1524" layer="91"/>
+<label x="66.04" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCU-1.0" class="0">
