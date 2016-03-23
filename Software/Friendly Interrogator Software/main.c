@@ -61,6 +61,8 @@
 #include <msp430.h>
 #include "pins.h"
 
+#define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
+
 /* ==== Initialize Global Variables ==== */
 int seconds = 0; //Seconds Timer 
 int ten_seconds = 0; //Ten Second Timer
@@ -74,7 +76,13 @@ int ten_seconds = 0; //Ten Second Timer
 int main(void)
 {
   /* ==== Initialize Local Variables ==== */
+  int i = 0;            //loop variable
+  int unique_id;
+  int ack_passphrase;
+  int received_ack_passphrase;
   char address = 0;
+  char start = 0;
+  char check_sum = 0;
 
   /* Turn off Watch-Dog Timers */
   WDTCTL = WDTPW + WDTHOLD; 
@@ -86,22 +94,29 @@ int main(void)
   P2DIR &= (BIT0 | BIT2); //Set P2.0 & P2.2 as output - Laser Transmitter & Indicator
   P2DIR |= (BIT1 | BIT5); //Set P2.1 & P2.5 as input - Sync and Power to R.F. & Laser
 
-  /* =======Laser Pulse Word ==========================================
+  /* =======Laser Unique I.D. ==========================================
   ---------------------------------------------------------------------
   | ST_B3 | ST_B2 | ST_B1 | ST_B0 | A7 ... A0 | CS3 | CS2 | CS1 | CS0 |
   ---------------------------------------------------------------------
   with ST_B3 - ST_B0 = Start Bits (Logic Highs (1s))
        A7 - A0 = R.F. Address Lines (Depending on 8-Pin DIP Switch)
-       CS3 - CS0 = CheckSum Bits (Not Really sure what these are for yet tbh
+       CS3 - CS0 = CheckSum Bits (A7+A6+...+A1+A0)
   ======================================================================*/
-  //Combine address into single char to get a
-  address |= (P1_0 | P1_1 | P1_2 | P1_3 | P1_4 | P1_5 | P1_6 | P1_7);
-  
+  //Combine address into single char, set start bits to all high
+  address |= (P1IN & 0xFF);
+  start = 0x0F;
 
+  //calculate check-sum bits based off of how many ones in unique i.d.
+  for(; i < 8; i++) {
+          check_sum += (address>>i) & BIT0;
+  }
+
+  //shift bits properly to set the unique_id upon starting
+  unique_id = (start << 12) | (address << 4) | check_sum;
 
   /* ============ Setup Timers ===========================================*/
   //Setup Timer A1 to perform 1 Hz interrupts (for seconds counter) - 1s
-  char ten_sec_timer_a_flag = 0;//Validation period flag - 10 seconds
+  char ten_sec_timer_a_flag = 0; //Validation period flag - 10 seconds
   TA0CCR0 = 32768; // Set count limit (32.768 kHz Clock = 32,768 ticks until one interrupt is registered)
   TA0CCTL0 = 0x10; //Enable counter interrupts - bit 4
   TA0CTL = TASSEL_1 + MC_1; //Timer A0 with ACLK @ 32768Hz @ 3.0V(VERIFY), count up.
@@ -116,25 +131,35 @@ int main(void)
   /* ==== Main Loop (Perform pulsing, poll for response?) ==== */
   while (1)
   {
-    /* FIRST: UPDATE ACKNOWLEDGEMENT PASSPHRASE */
+    /* UPDATE ACKNOWLEDGEMENT PASSPHRASE */
     if (ten_sec_timer_a_flag)
     {
       ten_sec_timer_a_flag = 0;
-      // UPDATE ACKNOWLEDGEMENT VERIFICATION PASSPHRASE
+      ack_passphrase = PASSPHRASE | seconds; 
     }
 
-    // Check to see if operator has switched R.F. and Laser ON
+    /* IF OPERATOR TURNED LASER/RECEIVER ON, BEGIN PULSING/CHECKING RECEIVED ACK*/
     if (P2IN & BIT1) 
     {
       /* PULSE UNIQUE ID, CHECK VALID TRANSMISSION SIGNAL*/
-      if (laser_timer_b_flag)
-      {
-        laser_timer_b_flag = 0;
-        // PULSE UNIQUE I.D.
-        // SET SOME DELAY
-        // CHECK R.F. RECEIVER VALID TRANSMISSION SIGNAL
-        if (P2IN & BIT3)
-          //WAIT FOR RESPONSE - TIMEOUT OF 40 ms?   
+        for (i = 0; i < 16; i ++)
+        {
+          while (!laser_timer_b_flag);    //wait for 40kHz signal
+          laser_timer_b_flag = 0;         //reset flag
+
+          //Turn P2.2 ON or OFF depending on state of unique I.D.
+          ((unique_id >> i) & BIT0) ? (P2OUT |= 0x02) : (P2OUT &= ~0x02);
+        }
+
+        /*CHECK R.F. RECEIVER VALID TRANSMISSION SIGNAL*/
+        if (P2IN & BIT3){
+          //Get data bits from receiver on P3.0 - P3.7
+          received_ack_passphrase = (P3IN & 0xFF);
+          //Verify with our local copy
+          if (received_ack_passphrase == ack_passphrase)
+            //TURN ON INDICATION LED!! (FRIENDLY TARGET IDENTIFIED)
+            P2OUT |= BIT0
+        } 
       }
     } 
   }
