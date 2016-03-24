@@ -76,13 +76,13 @@ int ten_seconds = 0; //Ten Second Timer
 int main(void)
 {
   /* ==== Initialize Local Variables ==== */
-  int i = 0;            //loop variable
-  int unique_id;
-  int ack_passphrase;
-  int received_ack_passphrase;
-  char address = 0;
-  char start = 0;
-  char check_sum = 0;
+  int i = 0;                       // loop variable
+  int unique_id;                   // unique i.d. to pulse on laser
+  int ack_passphrase;              // local ackn passphrase to verify wtih received
+  int received_ack_passphrase;     // ack passphrase received from target unit
+  char address;                    // address line bits (condensed into a single char)
+  char start;                      // start bits (4 bits) - to signify to photo receiver on target
+  char check_sum;                  // check-sum bits (4 bits) - sum of all address bits
 
   /* Turn off Watch-Dog Timers */
   WDTCTL = WDTPW + WDTHOLD; 
@@ -158,15 +158,12 @@ int main(void)
           //Verify with our local copy
           if (received_ack_passphrase == ack_passphrase)
             //TURN ON INDICATION LED!! (FRIENDLY TARGET IDENTIFIED)
-            P2OUT |= BIT0
+            P2OUT |= BIT0;
         } 
       }
     } 
-  }
-  // If V_IN_RF_LAS switch != high then enter LPM3 w/ interrupts enabled
-  //__bis_SR_register(LPM3_bits + GIE);
-}  
-
+}
+ 
 
 /*  ISR : Timer_A3
  *  Description: This timer acts as our "RTC" and increments the "seconds" variable every second,
