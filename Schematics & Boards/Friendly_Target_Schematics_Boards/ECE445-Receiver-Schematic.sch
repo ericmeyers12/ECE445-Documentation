@@ -9359,12 +9359,11 @@ www.radiohm.com</description>
 <sheets>
 <sheet>
 <plain>
-<text x="30.48" y="33.02" size="1.778" layer="91">RF Transmitter</text>
 <text x="83.82" y="-33.02" size="1.778" layer="91">3.3v</text>
 <text x="40.64" y="-5.08" size="1.778" layer="91">RF Transmitter</text>
 <text x="261.62" y="134.62" size="1.778" layer="91">Photoreceivers</text>
 <text x="213.36" y="218.44" size="1.778" layer="91">MCU Power</text>
-<text x="60.96" y="177.8" size="1.778" layer="91">OPAmp Power</text>
+<text x="83.82" y="139.7" size="1.778" layer="91">OPAmp Power</text>
 <text x="-17.78" y="104.14" size="1.778" layer="91">MCU</text>
 <text x="-116.84" y="144.78" size="1.778" layer="91" rot="R270">Crystal Oscillator Circuit</text>
 </plain>
@@ -9386,11 +9385,11 @@ www.radiohm.com</description>
 <instance part="U$4" gate="G$1" x="-48.26" y="71.12"/>
 <instance part="U$5" gate="G$1" x="-48.26" y="68.58"/>
 <instance part="U$6" gate="G$1" x="-48.26" y="43.18"/>
-<instance part="U$7" gate="G$1" x="58.42" y="40.64" rot="R180"/>
-<instance part="U$8" gate="G$1" x="58.42" y="43.18" rot="R180"/>
-<instance part="U$9" gate="G$1" x="58.42" y="45.72" rot="R180"/>
-<instance part="U$10" gate="G$1" x="58.42" y="50.8" rot="R180"/>
-<instance part="U$11" gate="G$1" x="58.42" y="48.26" rot="R180"/>
+<instance part="U$7" gate="G$1" x="-12.7" y="40.64" rot="R180"/>
+<instance part="U$8" gate="G$1" x="-12.7" y="43.18" rot="R180"/>
+<instance part="U$9" gate="G$1" x="-12.7" y="45.72" rot="R180"/>
+<instance part="U$10" gate="G$1" x="-12.7" y="50.8" rot="R180"/>
+<instance part="U$11" gate="G$1" x="-12.7" y="48.26" rot="R180"/>
 <instance part="PR4" gate="G$1" x="203.2" y="187.96" rot="R90"/>
 <instance part="PR5" gate="G$1" x="261.62" y="187.96" rot="R90"/>
 <instance part="PR6" gate="G$1" x="261.62" y="175.26" rot="R90"/>
@@ -9400,7 +9399,7 @@ www.radiohm.com</description>
 <instance part="RR3" gate="G$1" x="307.34" y="58.42" rot="R180"/>
 <instance part="RR4" gate="G$1" x="307.34" y="40.64" rot="R180"/>
 <instance part="U$12" gate="G$1" x="119.38" y="-20.32" rot="R180"/>
-<instance part="JP1" gate="G$1" x="50.8" y="60.96" rot="R180"/>
+<instance part="JP1" gate="G$1" x="-20.32" y="60.96" rot="R180"/>
 <instance part="JP2" gate="G$1" x="-40.64" y="66.04"/>
 <instance part="C3" gate="G$1" x="-81.28" y="83.82" rot="R90"/>
 <instance part="C4" gate="G$1" x="-78.74" y="53.34" rot="R90"/>
@@ -9447,9 +9446,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-2.3" class="0">
 <segment>
-<wire x1="53.34" y1="63.5" x2="58.42" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="63.5" x2="-12.7" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="10"/>
-<label x="66.04" y="63.5" size="1.778" layer="95"/>
+<label x="-5.08" y="63.5" size="1.778" layer="95"/>
 </segment>
 <segment>
 <label x="297.18" y="30.48" size="1.778" layer="95"/>
@@ -9605,9 +9604,9 @@ www.radiohm.com</description>
 <pinref part="RR1" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="53.34" y1="66.04" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="66.04" x2="-12.7" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="11"/>
-<label x="66.04" y="66.04" size="1.778" layer="95"/>
+<label x="-5.08" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -9663,9 +9662,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.0" class="0">
 <segment>
-<wire x1="53.34" y1="68.58" x2="58.42" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="68.58" x2="-12.7" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="12"/>
-<label x="66.04" y="68.58" size="1.778" layer="95"/>
+<label x="-5.08" y="68.58" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A7"/>
@@ -9675,9 +9674,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.1" class="0">
 <segment>
-<wire x1="53.34" y1="71.12" x2="58.42" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="71.12" x2="-12.7" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="13"/>
-<label x="66.04" y="71.12" size="1.778" layer="95"/>
+<label x="-5.08" y="71.12" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A6"/>
@@ -9687,9 +9686,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.2" class="0">
 <segment>
-<wire x1="53.34" y1="73.66" x2="58.42" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="73.66" x2="-12.7" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="14"/>
-<label x="66.04" y="73.66" size="1.778" layer="95"/>
+<label x="-5.08" y="73.66" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A5"/>
@@ -9699,9 +9698,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.3" class="0">
 <segment>
-<wire x1="53.34" y1="76.2" x2="58.42" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="76.2" x2="-12.7" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="15"/>
-<label x="66.04" y="76.2" size="1.778" layer="95"/>
+<label x="-5.08" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A4"/>
@@ -9711,9 +9710,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.4" class="0">
 <segment>
-<wire x1="53.34" y1="78.74" x2="58.42" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="78.74" x2="-12.7" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="16"/>
-<label x="68.58" y="78.74" size="1.778" layer="95"/>
+<label x="-2.54" y="78.74" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A3"/>
@@ -9723,9 +9722,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.5" class="0">
 <segment>
-<wire x1="53.34" y1="81.28" x2="58.42" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="81.28" x2="-12.7" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="17"/>
-<label x="66.04" y="81.28" size="1.778" layer="95"/>
+<label x="-5.08" y="81.28" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A2"/>
@@ -9735,9 +9734,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.6" class="0">
 <segment>
-<wire x1="53.34" y1="83.82" x2="58.42" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="83.82" x2="-12.7" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="18"/>
-<label x="66.04" y="83.82" size="1.778" layer="95"/>
+<label x="-5.08" y="83.82" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A1"/>
@@ -9747,9 +9746,9 @@ www.radiohm.com</description>
 </net>
 <net name="MCU-1.7" class="0">
 <segment>
-<wire x1="53.34" y1="86.36" x2="58.42" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="86.36" x2="-12.7" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="19"/>
-<label x="66.04" y="86.36" size="1.778" layer="95"/>
+<label x="-5.08" y="86.36" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="A0"/>
@@ -9816,9 +9815,9 @@ www.radiohm.com</description>
 <label x="-15.24" y="-40.64" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="53.34" y1="53.34" x2="58.42" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="53.34" x2="-12.7" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="6"/>
-<label x="66.04" y="53.34" size="1.778" layer="95"/>
+<label x="-5.08" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCU-3.5" class="0">
@@ -9829,9 +9828,9 @@ www.radiohm.com</description>
 <label x="-15.24" y="-43.18" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="53.34" y1="55.88" x2="58.42" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="55.88" x2="-12.7" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="7"/>
-<label x="66.04" y="55.88" size="1.778" layer="95"/>
+<label x="-5.08" y="55.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCU-3.6" class="0">
@@ -9841,9 +9840,9 @@ www.radiohm.com</description>
 <label x="-15.24" y="-45.72" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="53.34" y1="58.42" x2="58.42" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="58.42" x2="-12.7" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="8"/>
-<label x="66.04" y="58.42" size="1.778" layer="95"/>
+<label x="-5.08" y="58.42" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCU-3.7" class="0">
@@ -9853,9 +9852,9 @@ www.radiohm.com</description>
 <label x="-15.24" y="-48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="53.34" y1="60.96" x2="58.42" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="60.96" x2="-12.7" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="9"/>
-<label x="66.04" y="60.96" size="1.778" layer="95"/>
+<label x="-5.08" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCU-4.0" class="0">
