@@ -1,10 +1,15 @@
 //******************************************************************************
 //  MSP430F2274 Infantry Identification Friend or Foe Software 
-//  FRIENDLY INTERROGATOR UNIT
-//  Author: Eric Meyers and Noah Prince
+//  University of Illinois - ECE445 - Senior Design - Project #11
+//  Authors: Eric Meyers and Noah Prince
 //  Date(s): Initial Revision 3/15/2016
-// 
-//  Description: This piece of software is an interrupt based piece of microcontroller... 
+//  --------------------------------------------------------------
+//  FRIENDLY INTERROGATOR UNIT
+//  
+//  Description: This piece of software is meant to control the friendly interrogator unit
+//               on the Infantry I.F.F. System. Upon connecting all hardware components correctly
+//               this software will generate 40kHz interrupts to send a laser transmission, and 
+//               then proceed to poll for an acknowledgement from the friendly target unit. 
 //
 //                        MSP430F22x4
 //                    -----------------
@@ -62,10 +67,10 @@
 #include "pins.h"
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
+#define UNIT_TEST_LASER_SIG 1
 
 /* ==== Initialize Global Variables ==== */
 int seconds = 0; //Seconds Timer 
-int ten_seconds = 0; //Ten Second Timer
 
 /*  Main Function
  *  Description: This main function performs all necessary tasks to take in the 
@@ -123,27 +128,35 @@ int main(void)
 
   //Setup Timer B0 to do 40 kHz interrupts (for laser) -  25us
   char laser_timer_b_flag = 0;
-  TB0CCR0 = 100; // Set count limit (16 MHz Clock = 16000 ticks until one interrupt is registered)
+  TB0CCR0 = 100000; // Set count limit (16 MHz Clock = 160,000/100,000 = 160 ticks until one interrupt is registered)
   TB0CCTL0 = 0x10; //Enable counter interrupts - bit 4
-  TB0CTL = TBSSEL_2 + ID_2 + MC_1; //Timer A0 with SMCLK @ 16 MHz/4 = 4MHz @ 3.0V(VERIFY), count up.
+  TB0CTL = TBSSEL_2 + ID_2 + MC_1; //Timer A0 with SMCLK @ 160/4 = 40kHz @ 3.0V(VERIFY), count up.
+
+
+  /*===== DEBUGGING - UNIT TEST FOR LASER SIGNAL - must be 40kHz */
+  #if UNIT_TEST_LASER_SIG
+    for (;;) {
+      while (!laser_timer_b_flag);    //wait for 40kHz signal
+      laser_timer_b_flag = 0;         //reset flag
+      P2OUT ^= 0x02;                  //toggle P2.2 on MSP
+    }
+  #endif
+  /*============================================================*/
 
 
   /* ==== Main Loop (Perform pulsing, poll for response?) ==== */
   while (1)
   {
     /* UPDATE ACKNOWLEDGEMENT PASSPHRASE */
-    if (ten_sec_timer_a_flag)
-    {
+    if (ten_sec_timer_a_flag) {
       ten_sec_timer_a_flag = 0;
-      ack_passphrase = PASSPHRASE | seconds; 
+      ack_passphrase = PASSPHRASE | seconds; //NO ENCRYPTION YET - simply 0xXXXX or'd w/ seconds count
     }
 
     /* IF OPERATOR TURNED LASER/RECEIVER ON, BEGIN PULSING/CHECKING RECEIVED ACK*/
-    if (P2IN & BIT1) 
-    {
+    if (P2IN & BIT1)  {
       /* PULSE UNIQUE ID, CHECK VALID TRANSMISSION SIGNAL*/
-        for (i = 0; i < 16; i ++)
-        {
+        for (i = 0; i < 16; i ++) {
           while (!laser_timer_b_flag);    //wait for 40kHz signal
           laser_timer_b_flag = 0;         //reset flag
 
@@ -151,10 +164,16 @@ int main(void)
           ((unique_id >> i) & BIT0) ? (P2OUT |= 0x02) : (P2OUT &= ~0x02);
         }
 
-        /*CHECK R.F. RECEIVER VALID TRANSMISSION SIGNAL*/
-        if (P2IN & BIT3){
-          //Get data bits from receiver on P3.0 - P3.7
-          received_ack_passphrase = (P3IN & 0xFF);
+        /*CHECK R.F. RECEIVER VALID TRANSMISSION (V_T) SIGNAL*/
+        if (P2IN & BIT3) {
+          //Get 1st set of data bits from receiver on P3.0 - P3.7 - MSB
+          received_ack_passphrase |= ((P3IN & 0xFF) << 8);
+
+          for (i=0; i < 10000; i++); //DELAY - this probably will not work, need to figure out anohter way
+
+          //Get 2nd set of data bits from receiver on P3.0 - P3.7 - LSB
+          received_ack_passphrase |=((P3IN & 0xFF));
+
           //Verify with our local copy
           if (received_ack_passphrase == ack_passphrase)
             //TURN ON INDICATION LED!! (FRIENDLY TARGET IDENTIFIED)
@@ -167,23 +186,21 @@ int main(void)
 
 /*  ISR : Timer_A3
  *  Description: This timer acts as our "RTC" and increments the "seconds" variable every second,
- *  (obviously), and also depending on the value of "seconds" it sets the ten_sec_timer_a_flag.
+ *  and also depending on the value of "seconds" it sets the ten_sec_timer_a_flag.
  */
 #pragma vector = TIMER0_A0_VECTOR
-__interrupt void Timer0_A0 (void) 
-{
+__interrupt void Timer0_A0 (void) {
   seconds++;
   ten_sec_timer_a_flag = (seconds % 10 == 0);
 }
 
 
 /*  ISR : Timer_B3
- *  Description: This timer triggers the laser transmitter at 40 kHz 
+ *  Description: This timer triggers the laser transmitter flag at 40 kHz (hopefully).
  */
 #pragma vector = TIMER0_B0_VECTOR
-__interrupt void Timer0_B0 (void) 
-{
-  laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 
+__interrupt void Timer0_B0 (void) {
+  laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 1
 }
 
   

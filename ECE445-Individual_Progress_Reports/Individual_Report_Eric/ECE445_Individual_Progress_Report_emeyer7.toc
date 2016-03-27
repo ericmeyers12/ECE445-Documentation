@@ -1,13 +1,14 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}Overview}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Personal Involvement}{1}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}Personal Contribution}{1}{subsection.1.2}
 \contentsline {section}{\numberline {2}Design}{1}{section.2}
 \contentsline {subsection}{\numberline {2.1}Overview}{1}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Circuit Schematics}{1}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator Unit}{1}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}System PCB Schematic}{3}{subsubsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.3}PCB Sub-Schematics and Verification}{4}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}Software}{8}{subsubsection.2.2.4}
-\contentsline {subsection}{\numberline {2.3}Conclusion}{8}{subsection.2.3}
-\contentsline {section}{Reference}{9}{Item.9}
+\contentsline {subsubsection}{\numberline {2.2.4}Software}{7}{subsubsection.2.2.4}
+\contentsline {subsection}{\numberline {2.3}Conclusion}{7}{subsection.2.3}
+\contentsline {section}{\numberline {3}Ethics}{8}{section.3}
+\contentsline {section}{Reference}{9}{section.3}
 \contentsfinish 
