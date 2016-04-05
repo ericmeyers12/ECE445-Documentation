@@ -4638,6 +4638,10 @@ at 30/07/2012 14:34:29</description>
 <wire x1="228.6" y1="198.12" x2="243.84" y2="198.12" width="0.1524" layer="91"/>
 <label x="241.3" y="198.12" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP2" gate="A" pin="2"/>
+<wire x1="114.3" y1="-27.94" x2="99.06" y2="-27.94" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+10V" class="0">
 <segment>
@@ -4684,6 +4688,10 @@ at 30/07/2012 14:34:29</description>
 <wire x1="12.7" y1="-30.48" x2="12.7" y2="-50.8" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="A" pin="13"/>
 <wire x1="12.7" y1="-50.8" x2="20.32" y2="-50.8" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP1" gate="A" pin="10"/>
+<wire x1="-40.64" y1="-20.32" x2="-30.48" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MCU-6.1" class="0">
