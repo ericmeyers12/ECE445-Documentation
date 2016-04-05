@@ -4512,9 +4512,8 @@ at 30/07/2012 14:34:29</description>
 <busses>
 </busses>
 <nets>
-<net name="MCU-2.3" class="0">
+<net name="MCU-3.6" class="0">
 <segment>
-<label x="287.02" y="25.4" size="1.778" layer="95"/>
 <wire x1="292.1" y1="40.64" x2="299.72" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="OPAMP" gate="A" pin="OUT_4"/>
 <wire x1="299.72" y1="40.64" x2="302.26" y2="40.64" width="0.1524" layer="91"/>
@@ -4524,9 +4523,10 @@ at 30/07/2012 14:34:29</description>
 <pinref part="JP3" gate="A" pin="1"/>
 <wire x1="299.72" y1="17.78" x2="299.72" y2="40.64" width="0.1524" layer="91"/>
 <junction x="299.72" y="40.64"/>
+<label x="299.72" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="MCU-5.1" class="0">
+<net name="MCU-1.7" class="0">
 <segment>
 <wire x1="294.64" y1="58.42" x2="302.26" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="OPAMP" gate="A" pin="OUT_3"/>
@@ -4538,9 +4538,10 @@ at 30/07/2012 14:34:29</description>
 <wire x1="292.1" y1="33.02" x2="294.64" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="294.64" y1="33.02" x2="294.64" y2="58.42" width="0.1524" layer="91"/>
 <junction x="294.64" y="58.42"/>
+<label x="292.1" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="MCU-3.5" class="0">
+<net name="MCU-5.0" class="0">
 <segment>
 <wire x1="297.18" y1="78.74" x2="302.26" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="OPAMP" gate="A" pin="OUT_2"/>
@@ -4553,6 +4554,7 @@ at 30/07/2012 14:34:29</description>
 <wire x1="294.64" y1="30.48" x2="289.56" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="289.56" y1="30.48" x2="289.56" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="289.56" y1="78.74" x2="297.18" y2="78.74" width="0.1524" layer="91"/>
+<label x="294.64" y="27.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -4641,6 +4643,10 @@ at 30/07/2012 14:34:29</description>
 <segment>
 <pinref part="JP2" gate="A" pin="2"/>
 <wire x1="114.3" y1="-27.94" x2="99.06" y2="-27.94" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP3" gate="A" pin="10"/>
+<wire x1="276.86" y1="17.78" x2="276.86" y2="33.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+10V" class="0">
@@ -4904,7 +4910,7 @@ at 30/07/2012 14:34:29</description>
 <pinref part="JP5" gate="A" pin="3"/>
 </segment>
 </net>
-<net name="N$1" class="0">
+<net name="MCU-5.2" class="0">
 <segment>
 <pinref part="RR1" gate="G$1" pin="2"/>
 <pinref part="OPAMP" gate="A" pin="OUT1"/>
@@ -4914,6 +4920,7 @@ at 30/07/2012 14:34:29</description>
 <wire x1="297.18" y1="45.72" x2="299.72" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="299.72" y1="45.72" x2="299.72" y2="104.14" width="0.1524" layer="91"/>
 <junction x="299.72" y="104.14"/>
+<label x="297.18" y="33.02" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ANT" class="0">
