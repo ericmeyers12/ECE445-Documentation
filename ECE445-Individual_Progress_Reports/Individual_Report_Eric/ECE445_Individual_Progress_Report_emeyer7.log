@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  25 MAR 2016 19:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 MAR 2016 08:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1238,23 +1238,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 213.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 212.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 213.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 212.
 
-<converter-schematic.png, id=91, 1140.26pt x 422.57875pt>
+<converter-schematic.png, id=100, 1140.26pt x 422.57875pt>
 File: converter-schematic.png Graphic file (type png)
 
 <use converter-schematic.png>
 Package pdftex.def Info: converter-schematic.png used on input line 235.
 (pdftex.def)             Requested size: 399.09698pt x 147.90477pt.
 
-<University-of-Illinois-logo.jpg, id=93, 395.4775pt x 156.585pt>
+<University-of-Illinois-logo.jpg, id=102, 395.4775pt x 156.585pt>
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
@@ -1276,26 +1276,26 @@ l.238
        [1
 
  <./University-of-Illinois-logo.jpg>]
-<oscillator-schematic.png, id=100, 301.125pt x 440.64626pt>
+<oscillator-schematic.png, id=114, 301.125pt x 440.64626pt>
 File: oscillator-schematic.png Graphic file (type png)
 
 <use oscillator-schematic.png>
 Package pdftex.def Info: oscillator-schematic.png used on input line 241.
 (pdftex.def)             Requested size: 105.39532pt x 154.22849pt.
 
-<transmitter-schematic.png, id=101, 567.11874pt x 164.615pt>
+<transmitter-schematic.png, id=115, 567.11874pt x 164.615pt>
 File: transmitter-schematic.png Graphic file (type png)
 
 <use transmitter-schematic.png>
 Package pdftex.def Info: transmitter-schematic.png used on input line 247.
 (pdftex.def)             Requested size: 243.85631pt x 70.78307pt.
 
-<receiver-dip-schematic.png, id=102, 798.985pt x 536.0025pt>
+<receiver-dip-schematic.png, id=116, 798.985pt x 536.0025pt>
 File: receiver-dip-schematic.png Graphic file (type png)
 
 <use receiver-dip-schematic.png>
 Package pdftex.def Info: receiver-dip-schematic.png used on input line 253.
-(pdftex.def)             Requested size: 399.49152pt x 268.0006pt.
+(pdftex.def)             Requested size: 319.58833pt x 214.3972pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
 Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 256
@@ -1309,13 +1309,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2 <./converter-schematic.png> <./oscillator-schematic.png> <./transmitter-sche
-matic.png>] <msp-schematic.png, id=113, 607.26875pt x 357.335pt>
+matic.png>] <msp-schematic.png, id=127, 607.26875pt x 357.335pt>
 File: msp-schematic.png Graphic file (type png)
 
 <use msp-schematic.png>
 Package pdftex.def Info: msp-schematic.png used on input line 259.
-(pdftex.def)             Requested size: 303.63364pt x 178.66705pt.
- <system-pcb.png, id=115, 973.6375pt x 768.8725pt>
+(pdftex.def)             Requested size: 242.9032pt x 142.93146pt.
+ <system-pcb.png, id=129, 973.6375pt x 768.8725pt>
 File: system-pcb.png Graphic file (type png)
 
 <use system-pcb.png>
@@ -1334,15 +1334,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3 <./receiver-dip-schematic.png> <./msp-schematic.png>]
-<msp-breakout.png, id=127, 320.19624pt x 560.0925pt>
+<msp-breakout.png, id=141, 320.19624pt x 560.0925pt>
 File: msp-breakout.png Graphic file (type png)
  <use msp-breakout.png>
 Package pdftex.def Info: msp-breakout.png used on input line 279.
-(pdftex.def)             Requested size: 128.07622pt x 224.03302pt.
+(pdftex.def)             Requested size: 96.0596pt x 168.02904pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 282
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 285
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1352,26 +1352,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4 <./system-pcb.png>] <converter-pcb.png, id=137, 396.48125pt x 363.3575pt>
+[4 <./system-pcb.png> <./msp-breakout.png>]
+<converter-pcb.png, id=152, 396.48125pt x 363.3575pt>
 File: converter-pcb.png Graphic file (type png)
-
-<use converter-pcb.png>
+ <use converter-pcb.png>
 Package pdftex.def Info: converter-pcb.png used on input line 292.
 (pdftex.def)             Requested size: 158.58968pt x 145.34041pt.
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 295
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 26.13104pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5 <./msp-breakout.png>]
-<transmitter-pcb.png, id=147, 307.1475pt x 496.85625pt>
+<transmitter-pcb.png, id=154, 307.1475pt x 496.85625pt>
 File: transmitter-pcb.png Graphic file (type png)
 
 <use transmitter-pcb.png>
@@ -1379,7 +1367,7 @@ Package pdftex.def Info: transmitter-pcb.png used on input line 302.
 (pdftex.def)             Requested size: 122.85681pt x 198.73897pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 308
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 305
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1389,23 +1377,35 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6 <./converter-pcb.png> <./transmitter-pcb.png>]
-<receiver-antenna-pcb.png, id=157, 583.17876pt x 569.12625pt>
+[5 <./converter-pcb.png>]
+<receiver-antenna-pcb.png, id=165, 583.17876pt x 569.12625pt>
 File: receiver-antenna-pcb.png Graphic file (type png)
 
 <use receiver-antenna-pcb.png>
 Package pdftex.def Info: receiver-antenna-pcb.png used on input line 312.
 (pdftex.def)             Requested size: 233.26736pt x 227.64647pt.
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 315
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-<kh3-receiver-breakout.png, id=159, 441.65pt x 566.115pt>
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6 <./transmitter-pcb.png>]
+<kh3-receiver-breakout.png, id=174, 441.65pt x 566.115pt>
 File: kh3-receiver-breakout.png Graphic file (type png)
 
 <use kh3-receiver-breakout.png>
 Package pdftex.def Info: kh3-receiver-breakout.png used on input line 321.
-(pdftex.def)             Requested size: 132.49602pt x 169.8358pt.
+(pdftex.def)             Requested size: 110.41222pt x 141.5284pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 324
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 337
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1415,10 +1415,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7 <./receiver-antenna-pcb.png>]
+[7 <./receiver-antenna-pcb.png> <./kh3-receiver-breakout.png>]
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ù in font cmti10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ù in font cmti10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 347
+
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 358
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1428,15 +1435,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8 <./kh3-receiver-breakout.png>]
-(./ECE445_Individual_Progress_Report_emeyer7.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 24.
-
-)
+[8] (./ECE445_Individual_Progress_Report_emeyer7.bbl)
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 355
+
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 387
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1449,7 +1452,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [9]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 403
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 433
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1459,12 +1462,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10
-
-]
+[10]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 447
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 478
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1477,7 +1478,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [11]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 493
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 524
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1490,7 +1491,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [12]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 503
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 538
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1501,38 +1502,40 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 503.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 503.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 538.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 538.
  (./ECE445_Individual_Progress_Report_emeyer7.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 503.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 503.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 538.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 538.
 Package rerunfilecheck Info: File `ECE445_Individual_Progress_Report_emeyer7.ou
 t' has not changed.
-(rerunfilecheck)             Checksum: D52899CCE3486FEA7AD2EB307CAD886F;766.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 503.
+(rerunfilecheck)             Checksum: 6937D0B139781E2E6EEC34E4F89659BA;812.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 538.
  ) 
 Here is how much of TeX's memory you used:
- 29052 strings out of 493089
- 570726 string characters out of 6134842
+ 29102 strings out of 493089
+ 571502 string characters out of 6134842
  689895 words of memory out of 5000000
- 31920 multiletter control sequences out of 15000+600000
- 15709 words of font info for 62 fonts, out of 8000000 for 9000
+ 31940 multiletter control sequences out of 15000+600000
+ 16055 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,16n,54p,10425b,2312s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,16n,54p,10425b,2371s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
 sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on ECE445_Individual_Progress_Report_emeyer7.pdf (15 pages, 1771
-597 bytes).
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on ECE445_Individual_Progress_Report_emeyer7.pdf (15 pages, 1802
+085 bytes).
 PDF statistics:
- 413 PDF objects out of 1000 (max. 8388607)
- 348 compressed objects within 4 object streams
- 184 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 473 PDF objects out of 1000 (max. 8388607)
+ 404 compressed objects within 5 object streams
+ 213 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
