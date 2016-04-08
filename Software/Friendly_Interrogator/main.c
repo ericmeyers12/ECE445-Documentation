@@ -58,6 +58,8 @@
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TEST_LASER_SIG 1
+#define THRESHOLD 200
+#define NUM_PHOTOS 4
 
 /* ==== Initialize Global Variables ==== */
 int seconds = 0; //Seconds Timer
@@ -68,11 +70,56 @@ int laser_count = 0;
 
 int photo_idx = 0;
 
+uint32_t photo_last[4];
 uint32_t photo_current[4];
 
-uint32_t photo_values[4][8];
 uint32_t photo_binary[4][8];
 
+void update_indices() {
+  // rollback current value
+  photo_last[photo] = photo_current[photo];
+
+  // increment photo idx
+  photo_idx = (photo_idx+1)%8
+}
+
+// Gets the binary value from the last cycle of a given photodiode
+uint32_t get_prev_binary_value(int photo, int idx) {
+  if (idx == 0) {
+    return photo_binary[photo][7];
+  } else {
+    return photo_binary[photo][idx - 1];
+  }
+}
+
+// Gets the binary value of the given photodiode at the current instance in time
+//  and stores it in photo_binary
+void get_binary(int photo) {
+  int dif = photo_current[photo] - photo_last[photo];
+
+  // Was a 0, is now a 1. 
+  if (dif > THRESHOLD) {
+    photo_binary[photo][photo_idx] = 1;
+  }
+  // Was a 1, is now a 0
+  else if (dif < -THRESHOLD) {
+    photo_binary[photo][photo_idx] = 0;
+  }
+  // Was within THRESHOLD of 0. It is what it was before
+  else {
+    photo_binary[photo] = get_prev_binary_value(photo, photo_idx);
+  }
+}
+
+// Gets all NUM_PHOTOS values at the current instance in time and stores them
+//  in photo_binary
+void get_photo_binaries() {
+  for (int i = 0; i < NUM_PHOTOS; i++) {
+    get_binary(i);
+  }
+
+  update_indices();
+}
 
 int main(void) {
 	/* ==== Initialize Local Variables ==== */
@@ -160,30 +207,9 @@ int main(void) {
 //		printf("ADC 14: %d", ADC14->MEM[0]);
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
-		photo_values[0][photo_idx] = photo_current[0];
-
-		if (photo_idx == 7) {
-			photo_idx = 0;
-		} else {
-			photo_idx++;
-		}
-
-	    if (photo_current[0] >= 0x999){             // ADC12MEM0 = A1 > 0.5AVcc?
-	      P1->OUT |= BIT0;                   // P1.0 = 1
-	      photo_binary[0][photo_idx-1] = 1;
-	    }
-	      else{
-	      P1->OUT &= ~BIT0;                     	// P1.0 = 0
-	    photo_binary[0][photo_idx-1] = 0;
-	      }
-
-		uint32_t i[8] = photo_binary[0];
-		if(photo_idx == 0) {
-			int j = 0; // useless shit
-
-		}
-
 		  ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;// P1.0 = 0
+
+      get_photo_binaries();
 	}
 	#endif
 	/*============================================================*/
@@ -251,6 +277,6 @@ void TA1_0_IRQHandler(void) {
 
 
 void ADC14_IRQHandler(void) {
-	photo_current[0] = ADC14->MEM[0];
+  photo_current[photo_idx] = ADC14->MEM[0];
 }
 
