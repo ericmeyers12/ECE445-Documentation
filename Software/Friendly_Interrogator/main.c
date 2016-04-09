@@ -173,15 +173,15 @@ int main(void) {
 
 	/* ============ Setup Timers ===========================================*/
 	//Setup Timer A1 to perform 1 Hz interrupts (for seconds counter) - 1s
-    TA0CCTL0 = CCIE;	// TACCR0 interrupt enabled
-    TA0CCR0 = 32768;	// Set count limit (32.768kHz Clock 32,768/32,768 = 1 tick/second)
-    TA0CTL = TASSEL__ACLK | MC__UP;	// ACLK, continuous mode (VERIFY SPEED)
+    TIMER_A0->CCTL[0] = CCIE;	// TACCR0 interrupt enabled
+    TIMER_A0->CCR[0] = 32768;	// Set count limit (32.768kHz Clock 32,768/32,768 = 1 tick/second)
+    TIMER_A0->CTL = TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__UP;	// ACLK, continuous mode (VERIFY SPEED)
 
 
     //Setup Timer A1 to perform 40 kHz interrupts (for laser) -  25us
-    TA1CCTL0 = CCIE; //Enable counter interrupts
-    TA1CCR0 = 10; // Set count limit (3 MHz Clock = 3,000,000/75 = 40,000 ticks until one interrupt is registered)
-    TA1CTL = TASSEL__ACLK | MC__CONTINUOUS; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
+    TIMER_A0->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
+    TIMER_A0->CCR[0] = 75; // Set count limit (3 MHz Clock = 3,000,000/75 = 40,000 ticks until one interrupt is registered)
+    TIMER_A0->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
 
     /*===SAMPLING INITIALIZATION Sampling time, S&H=16, ADC14 on ====*/
 	ADC14->CTL0 = ADC14_CTL0_SHT0_2 | ADC14_CTL0_SHP | ADC14_CTL0_ON;
@@ -202,17 +202,44 @@ int main(void) {
 	while(1) {
 		while (!/*ten_sec_timer_a_flag*/laser_timer_b_flag);    //wait for 3kHz signal
 		/*ten_sec_timer_a_flag*/laser_timer_b_flag = 0;         //reset flag
-//		P1OUT ^= BIT0;
-		P1OUT ^= BIT5;                  //toggle P1.0 on MSP
+		P1OUT ^= BIT5; //toggle P1.5 on MSP
 //		printf("ADC 14: %d", ADC14->MEM[0]);
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
+		ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;
+		photo_values[0][photo_idx] = photo_current[0];
+
+		if (photo_idx == 7) {
+			photo_idx = 0;
+		} else {
+			photo_idx++;
+		}
+
+	    if (photo_current[0] >= 0x7FF){ // ADC12MEM0 = A1 > 0.5AVcc?
+			P1OUT |= BIT0;  //turn on
+			photo_binary[0][photo_idx-1] = 1;
+	    }
+		else {
+			P1OUT &= ~BIT0; //turn off
+			photo_binary[0][photo_idx-1] = 0;
+		}	
+
+		uint32_t i[8] = photo_binary[0];
+		if(photo_idx == 0) {
+			int j = 0; // useless shit
+
+		}	  
+
 		  ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;// P1.0 = 0
 
       get_photo_binaries();
 	}
 	#endif
 	/*============================================================*/
+
+
+
+
 
 	/* ==== Main Loop (Perform pulsing, poll for response?) ==== */
 	while (1) {
@@ -258,7 +285,7 @@ int main(void) {
  *  and also depending on the value of "seconds" it sets the ten_sec_timer_a_flag.
  */
 void TA0_0_IRQHandler(void) {
-	TA0CCTL0 &= ~CCIFG;	//Reset interrupt flag
+	TIMER_A0->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG;
 	TA0CCR0 += 32768;
     seconds++;
     ten_sec_timer_a_flag = (seconds % 10 == 0);
