@@ -138,6 +138,11 @@
 <wire x1="79.68" y1="0" x2="79.68" y2="80" width="0" layer="20"/>
 <wire x1="79.68" y1="80" x2="0" y2="80" width="0" layer="20"/>
 <wire x1="0" y1="80" x2="0" y2="0" width="0" layer="20"/>
+<dimension x1="35.687" y1="76.708" x2="62.23" y2="76.708" x3="48.9585" y3="81.28" textsize="1.778" layer="20"/>
+<dimension x1="35.687" y1="76.708" x2="35.687" y2="71.12" x3="33.02" y3="73.914" textsize="1.778" layer="20"/>
+<dimension x1="62.23" y1="76.708" x2="62.23" y2="3.81" x3="82.55" y3="40.259" textsize="1.778" layer="20"/>
+<dimension x1="62.23" y1="3.81" x2="69.85" y2="3.81" x3="66.04" y3="-1.27" textsize="1.778" layer="20"/>
+<dimension x1="74.93" y1="76.2" x2="74.93" y2="35.56" x3="100.33" y3="55.88" textsize="1.778" layer="20"/>
 </plain>
 <libraries>
 <library name="pinhead">
@@ -2348,7 +2353,6 @@ design rules under a new name.</description>
 <wire x1="62.23" y1="3.81" x2="68.58" y2="3.81" width="3.2258" layer="1"/>
 <wire x1="68.58" y1="3.81" x2="68.58" y2="76.2" width="3.2258" layer="1"/>
 <wire x1="68.58" y1="76.2" x2="74.93" y2="76.2" width="3.2258" layer="1"/>
-<wire x1="74.93" y1="76.2" x2="74.93" y2="3.81" width="3.2258" layer="1"/>
 </signal>
 <signal name="N$3">
 <wire x1="40.64" y1="71.12" x2="41.6052" y2="71.1454" width="3.2258" layer="1"/>
@@ -2365,6 +2369,9 @@ design rules under a new name.</description>
 <wire x1="5.5499" y1="20.447" x2="3.5052" y2="22.4917" width="0.3302" layer="1"/>
 <wire x1="3.5052" y1="25.4127" x2="3.302" y2="25.654" width="0.3302" layer="1"/>
 <wire x1="5.5499" y1="20.447" x2="5.715" y2="20.32" width="0.3302" layer="1"/>
+</signal>
+<signal name="N$5">
+<wire x1="74.93" y1="76.2" x2="74.93" y2="35.56" width="3.23" layer="1"/>
 </signal>
 </signals>
 <errors>
