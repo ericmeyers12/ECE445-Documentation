@@ -5312,8 +5312,8 @@ Electronics Services Shop at Everitt Lab.</description>
 <part name="J4" library="pinhead" deviceset="PINHD-1X10" device=""/>
 <part name="U$1" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
 <part name="U$2" library="NO_CONNECT" deviceset="NO_CONNECT" device=""/>
-<part name="J2" library="pinhead" deviceset="PINHD-1X10" device=""/>
 <part name="J3" library="pinhead" deviceset="PINHD-1X10" device=""/>
+<part name="J2" library="pinhead" deviceset="PINHD-1X10" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5351,8 +5351,8 @@ Electronics Services Shop at Everitt Lab.</description>
 <instance part="J4" gate="A" x="58.42" y="55.88" rot="R180"/>
 <instance part="U$1" gate="G$1" x="15.24" y="121.92" rot="R180"/>
 <instance part="U$2" gate="G$1" x="27.94" y="121.92"/>
-<instance part="J2" gate="A" x="38.1" y="58.42"/>
-<instance part="J3" gate="A" x="83.82" y="55.88" rot="R180"/>
+<instance part="J3" gate="A" x="38.1" y="58.42"/>
+<instance part="J2" gate="A" x="83.82" y="55.88" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -5422,12 +5422,12 @@ Electronics Services Shop at Everitt Lab.</description>
 <label x="116.84" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="J2" gate="A" pin="2"/>
+<pinref part="J3" gate="A" pin="2"/>
 <wire x1="35.56" y1="66.04" x2="27.94" y2="66.04" width="0.1524" layer="91"/>
 <label x="22.86" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="J3" gate="A" pin="10"/>
+<pinref part="J2" gate="A" pin="10"/>
 <wire x1="86.36" y1="68.58" x2="93.98" y2="68.58" width="0.1524" layer="91"/>
 <label x="96.52" y="68.58" size="1.778" layer="95"/>
 </segment>

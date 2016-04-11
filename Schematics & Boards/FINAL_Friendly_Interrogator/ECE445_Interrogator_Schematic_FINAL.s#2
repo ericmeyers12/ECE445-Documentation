@@ -7649,11 +7649,11 @@ Electronics Services Shop at Everitt Lab.</description>
 <sheets>
 <sheet>
 <plain>
-<text x="1.778" y="127.254" size="1.778" layer="91">Power Source</text>
-<text x="3.302" y="124.46" size="1.778" layer="91">AA Battery</text>
+<text x="29.718" y="117.094" size="1.778" layer="91">Power Source</text>
+<text x="31.242" y="114.3" size="1.778" layer="91">AA Battery</text>
 <text x="165.1" y="101.6" size="1.778" layer="91">R.F. Receiver and 8-Line DIP Switch Schematic</text>
 <text x="24.384" y="22.86" size="1.778" layer="91">Laser Transmitter Schematic</text>
-<text x="32.258" y="119.634" size="1.778" layer="91">Regulated 3.3V</text>
+<text x="60.198" y="109.474" size="1.778" layer="91">Regulated 3.3V</text>
 </plain>
 <instances>
 <instance part="R7" gate="G$1" x="172.72" y="86.36" rot="R90"/>
@@ -7681,13 +7681,13 @@ Electronics Services Shop at Everitt Lab.</description>
 <instance part="JP4" gate="A" x="152.4" y="35.56" rot="R180"/>
 <instance part="J1" gate="A" x="12.7" y="58.42"/>
 <instance part="J4" gate="A" x="58.42" y="55.88" rot="R180"/>
-<instance part="U$1" gate="G$1" x="10.16" y="101.6" rot="R180"/>
-<instance part="U$2" gate="G$1" x="5.08" y="114.3" rot="R180"/>
+<instance part="U$1" gate="G$1" x="38.1" y="91.44" rot="R180"/>
+<instance part="U$2" gate="G$1" x="33.02" y="104.14" rot="R180"/>
 <instance part="J3" gate="A" x="38.1" y="58.42"/>
 <instance part="J2" gate="A" x="83.82" y="55.88" rot="R180"/>
-<instance part="IC1" gate="1" x="22.86" y="114.3"/>
-<instance part="C1" gate="G$1" x="12.7" y="109.22"/>
-<instance part="C2" gate="G$1" x="35.56" y="109.22"/>
+<instance part="IC1" gate="1" x="50.8" y="104.14"/>
+<instance part="C1" gate="G$1" x="40.64" y="99.06"/>
+<instance part="C2" gate="G$1" x="63.5" y="99.06"/>
 </instances>
 <busses>
 </busses>
@@ -7763,18 +7763,18 @@ Electronics Services Shop at Everitt Lab.</description>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="NC"/>
-<wire x1="10.16" y1="101.6" x2="12.7" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="101.6" x2="22.86" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="101.6" x2="22.86" y2="106.68" width="0.1524" layer="91"/>
-<label x="2.54" y="99.06" size="1.778" layer="95" rot="R180"/>
+<wire x1="38.1" y1="91.44" x2="40.64" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="91.44" x2="50.8" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="91.44" x2="50.8" y2="96.52" width="0.1524" layer="91"/>
+<label x="30.48" y="88.9" size="1.778" layer="95" rot="R180"/>
 <pinref part="IC1" gate="1" pin="GND"/>
 <pinref part="C1" gate="G$1" pin="2"/>
-<wire x1="12.7" y1="101.6" x2="12.7" y2="104.14" width="0.1524" layer="91"/>
-<junction x="12.7" y="101.6"/>
+<wire x1="40.64" y1="91.44" x2="40.64" y2="93.98" width="0.1524" layer="91"/>
+<junction x="40.64" y="91.44"/>
 <pinref part="C2" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="101.6" x2="35.56" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="101.6" x2="35.56" y2="104.14" width="0.1524" layer="91"/>
-<junction x="22.86" y="101.6"/>
+<wire x1="50.8" y1="91.44" x2="63.5" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="91.44" x2="63.5" y2="93.98" width="0.1524" layer="91"/>
+<junction x="50.8" y="91.44"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -8051,12 +8051,12 @@ Electronics Services Shop at Everitt Lab.</description>
 </segment>
 <segment>
 <pinref part="IC1" gate="1" pin="OUT"/>
-<wire x1="30.48" y1="114.3" x2="35.56" y2="114.3" width="0.1524" layer="91"/>
-<label x="53.34" y="114.3" size="1.778" layer="95" rot="R180"/>
+<wire x1="58.42" y1="104.14" x2="63.5" y2="104.14" width="0.1524" layer="91"/>
+<label x="81.28" y="104.14" size="1.778" layer="95" rot="R180"/>
 <pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="35.56" y1="114.3" x2="45.72" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="111.76" x2="35.56" y2="114.3" width="0.1524" layer="91"/>
-<junction x="35.56" y="114.3"/>
+<wire x1="63.5" y1="104.14" x2="73.66" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="101.6" x2="63.5" y2="104.14" width="0.1524" layer="91"/>
+<junction x="63.5" y="104.14"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -8166,12 +8166,12 @@ Electronics Services Shop at Everitt Lab.</description>
 <segment>
 <pinref part="U$2" gate="G$1" pin="NC"/>
 <pinref part="IC1" gate="1" pin="IN"/>
-<wire x1="5.08" y1="114.3" x2="12.7" y2="114.3" width="0.1524" layer="91"/>
-<label x="7.62" y="116.84" size="1.778" layer="95" rot="R180"/>
+<wire x1="33.02" y1="104.14" x2="40.64" y2="104.14" width="0.1524" layer="91"/>
+<label x="35.56" y="106.68" size="1.778" layer="95" rot="R180"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<wire x1="12.7" y1="114.3" x2="15.24" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="114.3" x2="12.7" y2="111.76" width="0.1524" layer="91"/>
-<junction x="12.7" y="114.3"/>
+<wire x1="40.64" y1="104.14" x2="43.18" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="104.14" x2="40.64" y2="101.6" width="0.1524" layer="91"/>
+<junction x="40.64" y="104.14"/>
 </segment>
 </net>
 </nets>

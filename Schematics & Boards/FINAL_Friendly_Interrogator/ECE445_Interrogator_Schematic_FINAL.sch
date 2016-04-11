@@ -7686,7 +7686,7 @@ Electronics Services Shop at Everitt Lab.</description>
 <instance part="J3" gate="A" x="38.1" y="58.42"/>
 <instance part="J2" gate="A" x="86.36" y="55.88" rot="R180"/>
 <instance part="IC1" gate="1" x="50.8" y="104.14"/>
-<instance part="C1" gate="G$1" x="40.64" y="99.06"/>
+<instance part="C1" gate="G$1" x="40.64" y="96.52"/>
 <instance part="C2" gate="G$1" x="63.5" y="96.52"/>
 </instances>
 <busses>
@@ -7763,7 +7763,6 @@ Electronics Services Shop at Everitt Lab.</description>
 <wire x1="50.8" y1="91.44" x2="50.8" y2="96.52" width="0.1524" layer="91"/>
 <label x="30.48" y="88.9" size="1.778" layer="95" rot="R180"/>
 <pinref part="IC1" gate="1" pin="GND"/>
-<wire x1="40.64" y1="91.44" x2="40.64" y2="93.98" width="0.1524" layer="91"/>
 <junction x="40.64" y="91.44"/>
 <wire x1="50.8" y1="91.44" x2="63.5" y2="91.44" width="0.1524" layer="91"/>
 <junction x="50.8" y="91.44"/>
@@ -8160,7 +8159,7 @@ Electronics Services Shop at Everitt Lab.</description>
 <wire x1="33.02" y1="104.14" x2="40.64" y2="104.14" width="0.1524" layer="91"/>
 <label x="35.56" y="106.68" size="1.778" layer="95" rot="R180"/>
 <wire x1="40.64" y1="104.14" x2="43.18" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="104.14" x2="40.64" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="104.14" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 <junction x="40.64" y="104.14"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 </segment>
