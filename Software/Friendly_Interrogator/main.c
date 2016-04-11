@@ -77,8 +77,10 @@ uint32_t photo_binary[4][8];
 
 void update_indices() {
   // rollback current value
-  photo_last[photo] = photo_current[photo];
-
+  int i;
+  for (i = 0; i < NUM_PHOTOS; i++) {
+    photo_last[i] = photo_current[i];
+  }
   // increment photo idx
   photo_idx = (photo_idx+1)%8
 }
@@ -107,14 +109,15 @@ void get_binary(int photo) {
   }
   // Was within THRESHOLD of 0. It is what it was before
   else {
-    photo_binary[photo] = get_prev_binary_value(photo, photo_idx);
+    photo_binary[photo][photo_idx] = get_prev_binary_value(photo, photo_idx);
   }
 }
 
 // Gets all NUM_PHOTOS values at the current instance in time and stores them
 //  in photo_binary
 void get_photo_binaries() {
-  for (int i = 0; i < NUM_PHOTOS; i++) {
+  int i;
+  for (i = 0; i < NUM_PHOTOS; i++) {
     get_binary(i);
   }
 
