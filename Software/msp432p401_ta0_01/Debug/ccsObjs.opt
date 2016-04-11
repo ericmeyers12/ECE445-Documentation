@@ -1,1 +1,0 @@
-"./msp432p401_ta0_01.obj" "./startup_msp432p401r_ccs.obj" "./system_msp432p401r.obj" "../msp432p401r.cmd" -l"libc.a" 
