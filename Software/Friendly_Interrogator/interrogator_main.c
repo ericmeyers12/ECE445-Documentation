@@ -19,21 +19,21 @@
 //                  |              |               		   |              |
 //           	 X--|P6.0       GND|--GND 	 		  V_T--|P2.6      P2.5|--X
 //                  |              |			 		   |			  |
-//              D0--|P3.2      P6.1|--X	     	   	   A7--|P2.4      P3.0|--X
+//              D7--|P3.2      P6.1|--X	     	   	   A7--|P2.4      P3.0|--X
 //                  |              |			  		   |              |
-//              D1--|P3.3      P4.0|--X		 	       A6--|P5.6      P5.7|--X
+//              D6--|P3.3      P4.0|--X		 	       A6--|P5.6      P5.7|--X
 //                  |              |			   		   |              |
-//         		D2--|P4.1      P4.2|--X		 	       A5--|P6.6       RST|--X
+//         		D5--|P4.1      P4.2|--X		 	       A5--|P6.6       RST|--X
 //                  |              |			  		   |              |
-//       	    D3--|P4.3      P4.4|--X			       A4--|P6.7      P1.6|--X
+//       	    D4--|P4.3      P4.4|--X			       A4--|P6.7      P1.6|--X
 //                  |              |			  		   |              |
-//            	D4--|P1.5      P4.5|--X		 	       A3--|P2.3      P1.7|--X
+//            	D3--|P1.5      P4.5|--X		 	       A3--|P2.3      P1.7|--X
 //                  |              |					   |              |
-//             	D5--|P4.6      P4.7|--X			       A2--|P5.1      P5.0|--X
+//             	D2--|P4.6      P4.7|--X			       A2--|P5.1      P5.0|--X
 //                  |              |		     		   |              |
-//     			D6--|P6.5      P5.4|--X	    	       A1--|P3.5      P5.2|--X
+//     			D1--|P6.5      P5.4|--X	    	       A1--|P3.5      P5.2|--X
 //                  |              |			  		   |              |
-//       		D7--|P6.4      P5.5|--X	 		       A0--|P3.7      P3.6|--X
+//       		D0--|P6.4      P5.5|--X	 		       A0--|P3.7      P3.6|--X
 //                   --------------							--------------
 //
 //						P1.0 - POWER_LAS_LED
@@ -57,14 +57,33 @@
 
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
-#define UNIT_TEST_LASER_SIG 1
+#define UNIT_TESTING 1
 #define THRESHOLD 200
 #define NUM_PHOTOS 4
+
+#define A0 (P3IN & BIT7 == 0)
+#define A1 (P3IN & BIT5 == 0)
+#define A2 (P5IN & BIT1 == 0)
+#define A3 (P2IN & BIT3 == 0)
+#define A4 (P6IN & BIT7 == 0)
+#define A5 (P6IN & BIT6 == 0)
+#define A6 (P5IN & BIT6 == 0)
+#define A7 (P2IN & BIT4 == 0)
+
+#define D0 (P6IN & BIT4 == 0)
+#define D1 (P6IN & BIT5 == 0)
+#define D2 (P4IN & BIT6 == 0)
+#define D3 (P1IN & BIT5 == 0)
+#define D4 (P4IN & BIT3 == 0)
+#define D5 (P4IN & BIT1 == 0)
+#define D6 (P3IN & BIT3 == 0)
+#define D7 (P3IN & BIT2 == 0)
 
 /* ==== Initialize Global Variables ==== */
 int seconds = 0; //Seconds Timer
 int laser_timer_b_flag = 0;
 int ten_sec_timer_a_flag = 0;
+int test_second_flag = 0; //TESTING
 
 int laser_count = 0;
 
@@ -76,7 +95,7 @@ int main(void) {
 	int received_ack_passphrase;     // ack passphrase received from target unit
 	char address = 0;                // address line bits (condensed into a single char)
 	char start;                      // start bits (4 bits) - to signify to photo receiver on target
-	char check_sum;                  // check-sum bits (4 bits) - sum of all address bits
+	char check_sum = 0;                  // check-sum bits (4 bits) - sum of all address bits
 
 	/* Turn off Watch-Dog Timers */
     WDTCTL = WDTPW | WDTHOLD;
@@ -84,18 +103,26 @@ int main(void) {
 
     /* ==== Set Direction of GPIO ==== */
     // PXDIR - BITWISE : 1 OUTPUT 0 INPUT
-//    P1DIR &= ~(BIT1 | BIT4 |BIT5); 	//Clear Bits 1, 4, and 5 on P1DIR to set P1.1, P1.4 and P1.5 to input
-    P1DIR |= (BIT0|BIT5);  //Set Bit 0 on P1DIR to set P1.0 to output
-    P2DIR | (BIT0);
-    //P2DIR |= (BIT0  | BIT6); //Set Bit 0 and 6 on P2DIR to set P2.0 and P2.6 to output
-    //P2DIR &= ~(BIT3 | BIT4 | BIT7); //Clear Bit 3, 4, and 7 on P2DIR to set P2.3, P2.4, and P2.7 to intput
-//    P3DIR &= ~(BIT2 | BIT3 | BIT5 | BIT7); //Clear Bits 2, 3, 5 and 7 on P3DIR to set P3.2, P3.3, P3.5, and P3.7 to input
-//    P4DIR &= ~(BIT1 | BIT3 | BIT6); //Clear Bits 1, 3 and 6 on P4DIR to set P4.1, P4.3, and P4.6 to input
-//    P5DIR &= ~(BIT1 | BIT6); //Clear Bits 1 and 6 on P5DIR to set P5.1 and P5.6 to input
-//    P6DIR &= ~(BIT4 | BIT5 | BIT6 | BIT7); //Clear Bits 4, 5, 6, and 7 on P6DIR to set P6.4, P6.5, P6.6, and P6.7 to input
+//    P1DIR |= (BIT0|BIT1|BIT4);  			//Port 1 OUTPUT Bits- 0, 1, 4
+//    P1DIR &= ~(BIT5);						//Port 1 INPUT Bits - 5
+//    P2DIR |= (BIT0  | BIT7); 				//Port 2 OUTPUT Bits- 0,6
+//    P2DIR &= ~(BIT3 | BIT4); 				//Port 2 INPUT Bits - 3, 4, 7
+//    P3DIR &= ~(BIT2 | BIT3 | BIT5 | BIT7); 	//Port 3 INPUT Bits - 2, 3, 5, 7
+//    P4DIR &= ~(BIT1 | BIT3 | BIT6); 		//Port 4 INPUT Bits - 1, 3, 6
+//    P5DIR &= ~(BIT1 | BIT6);				//Port 5 INPUT Bits - 1, 6
+//    P6DIR &= ~(BIT4 | BIT5 | BIT6 | BIT7); 	//Port 6 INPUT Bits - 4, 5, 6, 7
 
-    P5->SEL1 |= BIT4;                           // Configure P5.4 for ADC
-      P5->SEL0 |= BIT4;
+	#if UNIT_TESTING
+		P5->SEL1 |= BIT4; // Configure P5.4 for ADC
+		P5->SEL0 |= BIT4;
+
+		//Set all appropriate I/O
+		P3DIR |= BIT0;	//OUTPUT - D0 Transmitter
+		P4DIR &= ~BIT0;	//INPUT - Valid Transmission on Receiver
+		P6DIR &= ~BIT0; //INPUT - D0 on Receiver
+
+		P1DIR |= BIT0; //OUTPUT - LED
+	#endif
 
 
     /* =======Laser Unique I.D. ==========================================
@@ -126,52 +153,41 @@ int main(void) {
 
 
     //Setup Timer A1 to perform 40 kHz interrupts (for laser) -  25us
-    TIMER_A0->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
-    TIMER_A0->CCR[0] = 600; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
-    TIMER_A0->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
-
-
-    /*===SAMPLING INITIALIZATION Sampling time, S&H=16, ADC14 on ====*/
-	ADC14->CTL0 = ADC14_CTL0_SHT0_2 | ADC14_CTL0_SHP | ADC14_CTL0_ON;
-	ADC14->CTL1 = ADC14_CTL1_RES_2;         // Use sampling timer, 12-bit conversion results
-
-	ADC14->MCTL[0] |= ADC14_MCTLN_INCH_1;   // A1 ADC input select; Vref=AVCC
-	ADC14->IER0 |= ADC14_IER0_IE0;          // Enable ADC conv complete interrupt
-
-	/*==============================================================*/
+    TIMER_A1->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
+    TIMER_A1->CCR[0] = 600; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
+    TIMER_A1->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A1 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
 
     __enable_interrupt();
     NVIC->ISER[0] = 1 << ((TA0_0_IRQn) & 31);
-    NVIC->ISER[0] = 1 << ((ADC14_IRQn) & 30);
-    NVIC->ISER[0] = 1 << ((TA1_0_IRQn) & 29);
+    NVIC->ISER[0] = 1 << ((TA1_0_IRQn) & 30);
 
 	/*===== DEBUGGING - UNIT TEST FOR LASER SIGNAL - must be 40kHz */
-	#if UNIT_TEST_LASER_SIG
+	#if UNIT_TESTING
 	while(1) {
-		while (!/*ten_sec_timer_a_flag*/laser_timer_b_flag);    //wait for 3kHz signal
-		/*ten_sec_timer_a_flag*/laser_timer_b_flag = 0;         //reset flag
-		P1OUT ^= BIT5; //toggle P1.5 on MSP
+		//while (!laser_timer_b_flag);    //wait for 3kHz signal
+		//laser_timer_b_flag = 0;         //reset flag
+		/*P1OUT ^= BIT5; //toggle P1.5 on MSP*/
 //		printf("ADC 14: %d", ADC14->MEM[0]);
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
-		ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;
 
+		//R.F. TESTS: P6.0 = D0 on Receiver, P4.0 = Valid Transmission on Receiver
+		//			  P3.0 = D0 on Transmitter
+		while (!test_second_flag);
+		test_second_flag = 0;
 
-		}	  
+		P3OUT ^= BIT0;		//Toggle D0 on Transmitter
+//		if (P4IN & BIT0 != 0){
+//			if (P6IN & BIT0 != 0)
+//				P1OUT ^= BIT0;
+//		}
 
-		  ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;// P1.0 = 0
-
-      get_photo_binaries();
 	}
 	#endif
 	/*============================================================*/
 
-
-
-
-
 	/* ==== Main Loop (Perform pulsing, poll for response?) ==== */
-	while (1) {
+	while(1){
 		/* UPDATE ACKNOWLEDGEMENT PASSPHRASE */
 		if (ten_sec_timer_a_flag) {
 			ten_sec_timer_a_flag = 0;
@@ -191,18 +207,19 @@ int main(void) {
 
 			/*CHECK R.F. RECEIVER VALID TRANSMISSION (V_T) SIGNAL*/
 			if (P2IN & BIT7) {
-				//Get 1st set of data bits from receiver on P3.0 - P3.7 - MSB
-				received_ack_passphrase |= ((BIT0/*CHANGE TO NEW BITS*/) << 8);
+				//Get 1st set of data bits from receiver on  - MSB
+				received_ack_passphrase = 0;// |= ((BIT0/*CHANGE TO NEW BITS*/) << 8);
 
 				for (i=0; i < 10000; i++); //DELAY - this probably will not work, need to figure out anohter way
 
-				//Get 2nd set of data bits from receiver on P3.0 - P3.7 - LSB
-				received_ack_passphrase |=((BIT0/*CHANGE TO NEW BITS*/));
+				//Get 2nd set of data bits from receiver on  - LSB
+				received_ack_passphrase = 0; //|=((BIT0/*CHANGE TO NEW BITS*/));
 
 				//Verify with our local copy
-				if (received_ack_passphrase == ack_passphrase)
+				if (received_ack_passphrase == ack_passphrase){
 					//TURN ON INDICATION LED!! (FRIENDLY TARGET IDENTIFIED)
 					P2OUT |= BIT0;
+				}
 			}
 		}
 	}
@@ -218,7 +235,7 @@ void TA0_0_IRQHandler(void) {
 	TA0CCR0 += 32768;
     seconds++;
     ten_sec_timer_a_flag = (seconds % 10 == 0);
-    laser_timer_b_flag = 1;
+    test_second_flag = 1;
 }
 
 /*  ISR : Timer_A1
@@ -229,10 +246,5 @@ void TA1_0_IRQHandler(void) {
 	TA1CCTL0 &=- ~CCIFG;
 	TA1CCR0 += 0;
 	laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 1
-}
-
-
-void ADC14_IRQHandler(void) {
-  photo_current[photo_idx] = ADC14->MEM[0];
 }
 

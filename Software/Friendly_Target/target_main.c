@@ -58,7 +58,7 @@
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TEST_LASER_SIG 1
-#define THRESHOLD 200
+#define THRESHOLD 0x1FF
 #define NUM_PHOTOS 4
 
 /* ==== Initialize Global Variables ==== */
@@ -211,30 +211,12 @@ int main(void) {
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
 		ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;
-		photo_binary[0][photo_idx] = photo_current[0];
-
-		if (photo_idx == 7) {
-			photo_idx = 0;
-		} else {
-			photo_idx++;
-		}
-
-	    if (photo_current[0] >= 0x7FF){ // ADC12MEM0 = A1 > 0.5AVcc?
-			P1OUT |= BIT0;  //turn on
-			photo_binary[0][photo_idx-1] = 1;
-	    }
-		else {
-			P1OUT &= ~BIT0; //turn off
-			photo_binary[0][photo_idx-1] = 0;
-		}
 
 		uint32_t i[8] = photo_binary[0];
 		if(photo_idx == 0) {
 			int j = 0; // useless shit
 
 		}
-
-		  ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;// P1.0 = 0
 
       get_photo_binaries();
 	}
