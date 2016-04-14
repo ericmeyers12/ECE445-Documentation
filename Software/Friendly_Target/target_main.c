@@ -58,7 +58,7 @@
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TEST_LASER_SIG 1
-#define THRESHOLD 0x1FF
+#define THRESHOLD 600
 #define NUM_PHOTOS 4
 
 /* ==== Initialize Global Variables ==== */
@@ -176,37 +176,36 @@ int main(void) {
 
 	/* ============ Setup Timers ===========================================*/
 	//Setup Timer A1 to perform 1 Hz interrupts (for seconds counter) - 1s
-    TIMER_A0->CCTL[0] = CCIE;	// TACCR0 interrupt enabled
-    TIMER_A0->CCR[0] = 32768;	// Set count limit (32.768kHz Clock 32,768/32,768 = 1 tick/second)
-    TIMER_A0->CTL = TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__UP;	// ACLK, continuous mode (VERIFY SPEED)
+    //TIMER_A0->CCTL[0] = CCIE;	// TACCR0 interrupt enabled
+//    TIMER_A0->CCR[0] = 32768;	// Set count limit (32.768kHz Clock 32,768/32,768 = 1 tick/second)
+//    TIMER_A0->CTL = TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__UP;	// ACLK, continuous mode (VERIFY SPEED)
+//
 
-
-    //Setup Timer A1 to perform 40 kHz interrupts (for laser) -  25us
-    TIMER_A0->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
-    TIMER_A0->CCR[0] = 600; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
-    TIMER_A0->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
+    //Setup Timer A1 to perform 5 kHz interrupts (for laser) -  25us
+    TIMER_A1->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
+    TIMER_A1->CCR[0] = 600; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
+    TIMER_A1->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
 
 
     /*===SAMPLING INITIALIZATION Sampling time, S&H=16, ADC14 on ====*/
-	ADC14->CTL0 = ADC14_CTL0_SHT0_2 | ADC14_CTL0_SHP | ADC14_CTL0_ON;
+	ADC14->CTL0 = ADC14_CTL0_SHT0_2 | ADC14_CTL0_SHP | ADC14_CTL0_ON; //| ADC14_CTL0_SSEL_3;
 	ADC14->CTL1 = ADC14_CTL1_RES_2;         // Use sampling timer, 12-bit conversion results
-
 	ADC14->MCTL[0] |= ADC14_MCTLN_INCH_1;   // A1 ADC input select; Vref=AVCC
 	ADC14->IER0 |= ADC14_IER0_IE0;          // Enable ADC conv complete interrupt
 
 	/*==============================================================*/
 
     __enable_interrupt();
-    NVIC->ISER[0] = 1 << ((TA0_0_IRQn) & 31);
+    NVIC->ISER[0] = 1 << ((TA1_0_IRQn) & 31);
     NVIC->ISER[0] = 1 << ((ADC14_IRQn) & 30);
-    NVIC->ISER[0] = 1 << ((TA1_0_IRQn) & 29);
+   // NVIC->ISER[0] = 1 << ((TA0_0_IRQn) & 30);
 
 	/*===== DEBUGGING - UNIT TEST FOR LASER SIGNAL - must be 40kHz */
 	#if UNIT_TEST_LASER_SIG
 	while(1) {
-		while (!/*ten_sec_timer_a_flag*/laser_timer_b_flag);    //wait for 3kHz signal
+		while (!/*ten_sec_timer_a_flag*/laser_timer_b_flag);    //wait for 5kHz signal
 		/*ten_sec_timer_a_flag*/laser_timer_b_flag = 0;         //reset flag
-		P1OUT ^= BIT5; //toggle P1.5 on MSP
+		//P1OUT ^= BIT5; //toggle P1.5 on MSP
 //		printf("ADC 14: %d", ADC14->MEM[0]);
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
@@ -216,6 +215,20 @@ int main(void) {
 		if(photo_idx == 0) {
 			int j = 0; // useless shit
 
+		}
+
+		int found = 1;
+		int j;
+		for (j = 0; j < 8; j++) {
+			if (photo_binary[0][j] != (j+1)%2){ // should be 10101010
+				found = 0;
+			}
+		}
+
+		if (found == 1) {
+			P1OUT |= BIT0;
+		} else {
+			P1OUT &= ~BIT0;
 		}
 
       get_photo_binaries();
@@ -275,7 +288,7 @@ void TA0_0_IRQHandler(void) {
 	TA0CCR0 += 32768;
     seconds++;
     ten_sec_timer_a_flag = (seconds % 10 == 0);
-    laser_timer_b_flag = 1;
+    //laser_timer_b_flag = 1;
 }
 
 /*  ISR : Timer_A1
@@ -283,13 +296,16 @@ void TA0_0_IRQHandler(void) {
  *  at a rate of 40kHz (25us).
  */
 void TA1_0_IRQHandler(void) {
-	TA1CCTL0 &=- ~CCIFG;
+	TIMER_A1->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG;
 	TA1CCR0 += 0;
 	laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 1
 }
 
 
 void ADC14_IRQHandler(void) {
-  photo_current[photo_idx] = ADC14->MEM[0];
+	P1OUT ^= BIT5; //toggle P1.5 on MSP
+
+  photo_current[0] = ADC14->MEM[0];
+  //P1OUT^=BIT5;
 }
 
