@@ -58,7 +58,7 @@
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TEST_LASER_SIG 1
-#define THRESHOLD 600
+#define THRESHOLD 100
 #define NUM_PHOTOS 4
 
 /* ==== Initialize Global Variables ==== */
@@ -181,10 +181,16 @@ int main(void) {
 //    TIMER_A0->CTL = TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__UP;	// ACLK, continuous mode (VERIFY SPEED)
 //
 
+    TIMER_A1->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG;
+    TIMER_A1->CCTL[0] = TIMER_A_CCTLN_CCIE;                          // TACCR0 interrupt enabled
+    TIMER_A1->CCR[0] = 3;
+    TIMER_A1->CTL |= TIMER_A_CTL_TASSEL_1 | TIMER_A_CTL_MC_2;                // ACLK, continues mode
+    //TIMER_A0->CTL |= TIMER_A_CTL_TASSEL_1 | TIMER_A_CTL_MC_2;                // ACLK, continues mode
+
     //Setup Timer A1 to perform 5 kHz interrupts (for laser) -  25us
-    TIMER_A1->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
-    TIMER_A1->CCR[0] = 600; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
-    TIMER_A1->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
+//    TIMER_A1->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
+//    TIMER_A1->CCR[0] = 10000; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
+//    TIMER_A1->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__CONTINUOUS; //Timer A0 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
 
 
     /*===SAMPLING INITIALIZATION Sampling time, S&H=16, ADC14 on ====*/
@@ -205,7 +211,6 @@ int main(void) {
 	while(1) {
 		while (!/*ten_sec_timer_a_flag*/laser_timer_b_flag);    //wait for 5kHz signal
 		/*ten_sec_timer_a_flag*/laser_timer_b_flag = 0;         //reset flag
-		//P1OUT ^= BIT5; //toggle P1.5 on MSP
 //		printf("ADC 14: %d", ADC14->MEM[0]);
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
@@ -217,65 +222,30 @@ int main(void) {
 
 		}
 
-		int found = 1;
+		int found_10 = 1;
+		int found_01 = 1;
 		int j;
 		for (j = 0; j < 8; j++) {
 			if (photo_binary[0][j] != (j+1)%2){ // should be 10101010
-				found = 0;
+				found_10 = 0;
+			}
+			if (photo_binary[0][j] != (j)%2){ // should be 01010101
+				found_01 = 0;
 			}
 		}
 
-		if (found == 1) {
+		if (found_01 == 1 || found_10 == 1) {
 			P1OUT |= BIT0;
 		} else {
 			P1OUT &= ~BIT0;
 		}
 
+
       get_photo_binaries();
+		//P1OUT ^= BIT5; //toggle P1.5 on MSP
 	}
 	#endif
 	/*============================================================*/
-
-
-
-
-
-	/* ==== Main Loop (Perform pulsing, poll for response?) ==== */
-	while (1) {
-		/* UPDATE ACKNOWLEDGEMENT PASSPHRASE */
-		if (ten_sec_timer_a_flag) {
-			ten_sec_timer_a_flag = 0;
-			ack_passphrase = PASSPHRASE | seconds; //NO ENCRYPTION YET - simply 0xXXXX or'd w/ seconds count
-		}
-
-		/* IF OPERATOR TURNED LASER/RECEIVER ON, BEGIN PULSING/CHECKING RECEIVED ACK*/
-		while (P1IN & BIT1)  {
-			/* PULSE UNIQUE ID, CHECK VALID TRANSMISSION SIGNAL*/
-			for (i = 0; i < 16; i ++) {
-				while (!laser_timer_b_flag);    //wait for 40kHz signal
-				laser_timer_b_flag = 0;         //reset flag
-
-				//Turn P2.2 ON or OFF depending on state of unique I.D.
-				((unique_id >> i) & BIT0) ? (P2OUT |= BIT6) : (P2OUT &= ~(BIT6));
-			}
-
-			/*CHECK R.F. RECEIVER VALID TRANSMISSION (V_T) SIGNAL*/
-			if (P2IN & BIT7) {
-				//Get 1st set of data bits from receiver on P3.0 - P3.7 - MSB
-				received_ack_passphrase |= ((BIT0/*CHANGE TO NEW BITS*/) << 8);
-
-				for (i=0; i < 10000; i++); //DELAY - this probably will not work, need to figure out anohter way
-
-				//Get 2nd set of data bits from receiver on P3.0 - P3.7 - LSB
-				received_ack_passphrase |=((BIT0/*CHANGE TO NEW BITS*/));
-
-				//Verify with our local copy
-				if (received_ack_passphrase == ack_passphrase)
-					//TURN ON INDICATION LED!! (FRIENDLY TARGET IDENTIFIED)
-					P2OUT |= BIT0;
-			}
-		}
-	}
 }
 
 
@@ -297,13 +267,13 @@ void TA0_0_IRQHandler(void) {
  */
 void TA1_0_IRQHandler(void) {
 	TIMER_A1->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG;
-	TA1CCR0 += 0;
 	laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 1
+    TIMER_A1->CCR[0] += 3;
 }
 
 
 void ADC14_IRQHandler(void) {
-	P1OUT ^= BIT5; //toggle P1.5 on MSP
+	//P1OUT ^= BIT5; //toggle P1.5 on MSP
 
   photo_current[0] = ADC14->MEM[0];
   //P1OUT^=BIT5;
