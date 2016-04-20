@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Friendly_Target/msp432p401_adc14_03.c&apos; to &apos;main.c&apos;" description="Rename resource &apos;msp432p401_adc14_03.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="msp432p401_adc14_03.c" name="main.c" stamp="1460404788900" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Friendly_Target/main.c&apos; to &apos;target_main.c&apos;" description="Rename resource &apos;main.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="main.c" name="target_main.c" stamp="1460404799885" updateReferences="true"/>
+</session>
