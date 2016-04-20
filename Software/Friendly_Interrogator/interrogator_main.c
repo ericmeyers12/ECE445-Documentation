@@ -56,7 +56,7 @@
 #include "msp.h"
 
 
-#define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
+#define PASSPHRASE 0x0000 //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TESTING 1
 #define THRESHOLD 200
 #define NUM_PHOTOS 4
@@ -106,7 +106,7 @@ int main(void) {
 //    P1DIR |= (BIT0|BIT1|BIT4);  			//Port 1 OUTPUT Bits- 0, 1, 4
 //    P1DIR &= ~(BIT5);						//Port 1 INPUT Bits - 5
 //    P2DIR |= (BIT0  | BIT7); 				//Port 2 OUTPUT Bits- 0,6
-//    P2DIR &= ~(BIT3 | BIT4); 				//Port 2 INPUT Bits - 3, 4, 7
+//    P2DIR &= ~(BIT3 | BIT4 | BIT6); 				//Port 2 INPUT Bits - 3, 4, 7, 6
 //    P3DIR &= ~(BIT2 | BIT3 | BIT5 | BIT7); 	//Port 3 INPUT Bits - 2, 3, 5, 7
 //    P4DIR &= ~(BIT1 | BIT3 | BIT6); 		//Port 4 INPUT Bits - 1, 3, 6
 //    P5DIR &= ~(BIT1 | BIT6);				//Port 5 INPUT Bits - 1, 6
@@ -117,11 +117,17 @@ int main(void) {
 		P5->SEL0 |= BIT4;
 
 		//Set all appropriate I/O
-		P3DIR |= BIT0;	//OUTPUT - D0 Transmitter
-		P4DIR &= ~BIT0;	//INPUT - Valid Transmission on Receiver
-		P6DIR &= ~BIT0; //INPUT - D0 on Receiver
+		P3->DIR |= BIT0;	//OUTPUT - D0 Transmitter
+		P4->DIR &= ~BIT0;	//INPUT - Valid Transmission on Receiver
+		P6->DIR &= ~BIT0; //INPUT - D0 on Receiver
 
-		P1DIR |= BIT0; //OUTPUT - LED
+		P1->DIR |= BIT0; //OUTPUT - LED
+		P2->DIR |= BIT7;
+
+		//Enabling Valid Transmission Interrupt Line
+		P2->DIR &= ~BIT6; //INPUT - VALID TRANSMISSION
+		P2->IE = BIT6; //Interrupt Enable on P2.6
+		P2->IES &=~BIT6; //Interrupt Edge Select on P2.6
 	#endif
 
 
@@ -144,23 +150,29 @@ int main(void) {
 	//shift bits properly to set the unique_id upon starting
 	unique_id = (start << 12) | (address << 4) | check_sum;
 
-
+	unique_id = 43690; //1010101010110100
 	/* ============ Setup Timers ===========================================*/
 	//Setup Timer A1 to perform 1 Hz interrupts (for seconds counter) - 1s
+    TIMER_A0->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG; //Clear interrupt flag to begin
     TIMER_A0->CCTL[0] = CCIE;	// TACCR0 interrupt enabled
     TIMER_A0->CCR[0] = 32768;	// Set count limit (32.768kHz Clock 32,768/32,768 = 1 tick/second)
-    TIMER_A0->CTL = TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__UP;	// ACLK, continuous mode (VERIFY SPEED)
+    TIMER_A0->CTL = TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__CONTINUOUS;	// ACLK, continuous mode (VERIFY SPEED)
 
 
-    //Setup Timer A1 to perform 40 kHz interrupts (for laser) -  25us
+    //Setup Timer A1 to perform 5.47 kHz interrupts (for laser) -  25us
+    TIMER_A1->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG; //Clear interrupt flag to begin
     TIMER_A1->CCTL[0] = TIMER_A_CCTLN_CCIE; // TACCR0 interrupt enabled
-    TIMER_A1->CCR[0] = 600; // Set count limit (3 MHz Clock = 3,000,000/600 = 5,000 ticks until one interrupt is registered)
-    TIMER_A1->CTL = TIMER_A_CTL_SSEL__SMCLK | TIMER_A_CTL_MC__UP; //Timer A1 with SMCLK @ 40kHz @ 3.0V(VERIFY), count up.
+    TIMER_A1->CCR[0] = 3; // Set count limit (32.768kHz Clock 32,768/3 = 5,427 tick/second)
+    TIMER_A1->CTL |= TIMER_A_CTL_SSEL__ACLK | TIMER_A_CTL_MC__CONTINUOUS;// ACLK, continuous mode
 
-    __enable_interrupt();
     NVIC->ISER[0] = 1 << ((TA0_0_IRQn) & 31);
     NVIC->ISER[0] = 1 << ((TA1_0_IRQn) & 30);
+    NVIC->ISER[0] = 1 << ((PORT2_IRQn) & 29);
 
+    __enable_interrupt();
+
+
+    i=0;
 	/*===== DEBUGGING - UNIT TEST FOR LASER SIGNAL - must be 40kHz */
 	#if UNIT_TESTING
 	while(1) {
@@ -173,10 +185,13 @@ int main(void) {
 
 		//R.F. TESTS: P6.0 = D0 on Receiver, P4.0 = Valid Transmission on Receiver
 		//			  P3.0 = D0 on Transmitter
-		while (!test_second_flag);
-		test_second_flag = 0;
+		while (!laser_timer_b_flag);
+		laser_timer_b_flag = 0;
+		((unique_id >> i) & BIT0) ? (P2->OUT |= BIT7) : (P2->OUT &= ~(BIT7));
+		i++;
+		if (i == 16)
+			i = 0;
 
-		P3OUT ^= BIT0;		//Toggle D0 on Transmitter
 //		if (P4IN & BIT0 != 0){
 //			if (P6IN & BIT0 != 0)
 //				P1OUT ^= BIT0;
@@ -232,10 +247,9 @@ int main(void) {
  */
 void TA0_0_IRQHandler(void) {
 	TIMER_A0->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG;
-	TA0CCR0 += 32768;
+	TIMER_A0->CCR[0] += 32768;
     seconds++;
     ten_sec_timer_a_flag = (seconds % 10 == 0);
-    test_second_flag = 1;
 }
 
 /*  ISR : Timer_A1
@@ -243,8 +257,18 @@ void TA0_0_IRQHandler(void) {
  *  at a rate of 40kHz (25us).
  */
 void TA1_0_IRQHandler(void) {
-	TA1CCTL0 &=- ~CCIFG;
-	TA1CCR0 += 0;
-	laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 1
+	 TIMER_A1->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG;
+	 laser_timer_b_flag = 1; //Set the laser_timer_b_flag to 1
+	 TIMER_A1->CCR[0] += 3;
+}
+
+
+/*  ISR : VT_IRQHandler
+ *  Description: This timer is for the laser transmitter to send the friendly target its unique I.D.
+ *  at a rate of 40kHz (25us).
+ */
+void VT_IRQHandler(void) {
+	P2->IFG &= ~BIT6; //Clear interrupt flag
+	//P1->OUT ^= BIT0; //Toggle LED to show flag is working
 }
 
