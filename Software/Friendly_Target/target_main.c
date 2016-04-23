@@ -66,6 +66,9 @@ int seconds = 0; //Seconds Timer
 int laser_timer_b_flag = 0;
 int ten_sec_timer_a_flag = 0;
 
+int valid_transmission = 0;
+int valid_transmission_ending_idx = 0;
+
 int laser_count = 0;
 
 int photo_idx = 0;
@@ -75,6 +78,37 @@ uint32_t photo_current[4];
 
 uint32_t photo_binary[4][8];
 
+int last_packet;
+int missed_packets = 0;
+
+void count_packet(int packet[8]) {
+  int packet_value = 0;
+  int i;
+  for (i = 0; i < 8; i++) {
+    packet_value = packet_value | packet[i];
+  }
+
+
+  // Start counting
+  if (packet_value == 0) {
+    // do nothing
+  } else {
+    if (last_packet == packet_value + 1) { // we expect it to be the next number
+      if (packet_value < 0 || packet_value > 256) {
+        // put a debugger here, verify missed_packets is low. 
+      }
+    } else {
+      missed_packets += packet_value - (last_packet + 1); // We missed all packets between expected and now
+    }
+  }
+
+  last_packet = packet_value;
+}
+
+int next_photo_idx(int idx) {
+	return (idx+1)%8;
+}
+
 void update_indices() {
   // rollback current value
   int i;
@@ -82,7 +116,7 @@ void update_indices() {
     photo_last[i] = photo_current[i];
   }
   // increment photo idx
-  photo_idx = (photo_idx+1)%8;
+  photo_idx = next_photo_idx(photo_idx);
 }
 
 // Gets the binary value from the last cycle of a given photodiode
@@ -209,40 +243,69 @@ int main(void) {
 	/*===== DEBUGGING - UNIT TEST FOR LASER SIGNAL - must be 40kHz */
 	#if UNIT_TEST_LASER_SIG
 	while(1) {
+		ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;
+
 		while (!/*ten_sec_timer_a_flag*/laser_timer_b_flag);    //wait for 5kHz signal
 		/*ten_sec_timer_a_flag*/laser_timer_b_flag = 0;         //reset flag
 //		printf("ADC 14: %d", ADC14->MEM[0]);
 //		 for (i = 200; i > 0; i--);          // Delay
 		  // Start sampling/conversion
-		ADC14->CTL0 |= ADC14_CTL0_ENC | ADC14_CTL0_SC;
 
-		uint32_t i[8] = photo_binary[0];
-		if(photo_idx == 0) {
-			int j = 0; // useless shit
-
-		}
+		get_photo_binaries();
 
 		int found_10 = 1;
 		int found_01 = 1;
-		int j;
-		for (j = 0; j < 8; j++) {
-			if (photo_binary[0][j] != (j+1)%2){ // should be 10101010
-				found_10 = 0;
+
+		// When in valid transmission receiving mode
+		if (valid_transmission) {
+			if (photo_idx == valid_transmission_ending_idx) {
+				valid_transmission = 1;
+
+				int x;
+				int y = valid_transmission_ending_idx; // The starting index
+				int packet[8];
+				// valid may have started recording with ending index 1. That means the packet starts with
+				//   index 2-7, then 1. So [2,3,4,5,6,7,1]. This loop just handles that wrapping
+				for (x = 0; x < 8; x++) {
+					packet[x] = photo_binary[0][next_photo_idx(y + x)];
+				}
+
+				// Do something with packet
+        count_packet(packet);
+				//for (x = 0; x < 8; x++) {
+					//printf("%d ", packet[x]);
+				//}
+				//printf("\n");
+
+				valid_transmission = 0; // reset valid_transmission flag
 			}
-			if (photo_binary[0][j] != (j)%2){ // should be 01010101
-				found_01 = 0;
+
+		}
+		// When not in valid transmission receiving mode, check if we received the preamble packet
+		else {
+			int j;
+			for (j = 0; j < 8; j++) {
+				if (photo_binary[0][j] != (j+1)%2){ // should be 10101010
+					found_10 = 0;
+				}
+				if (photo_binary[0][j] != (j)%2){ // should be 01010101
+					found_01 = 0;
+				}
+			}
+
+			if (found_10 == 1) {
+				valid_transmission = 1; // Start listening for the packet
+				valid_transmission_ending_idx = photo_idx; // This marks the end idx in the photo_binary array of the transmission
 			}
 		}
 
-		if (found_01 == 1 || found_10 == 1) {
+		// Enable lightup
+		if (found_01 == 1 || found_10 == 1 || valid_transmission) {
 			P1OUT |= BIT0;
 		} else {
 			P1OUT &= ~BIT0;
 		}
-
-
-      get_photo_binaries();
-		//P1OUT ^= BIT5; //toggle P1.5 on MSP
+		P1OUT ^= BIT5; //toggle P1.5 on MSP
 	}
 	#endif
 	/*============================================================*/
