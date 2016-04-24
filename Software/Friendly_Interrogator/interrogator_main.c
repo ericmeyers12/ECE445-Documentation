@@ -152,8 +152,8 @@ int main(void) {
 
 	//unique_id = 43690; //1010101010110100
   unique_id = 0;
-  preamble = 43690;
-  preamble_flag = 1; // 1 means send preamble. 0 means send unique id
+  int preamble = 170;
+  int preamble_flag = 1; // 1 means send preamble. 0 means send unique id
 	/* ============ Setup Timers ===========================================*/
 	//Setup Timer A1 to perform 1 Hz interrupts (for seconds counter) - 1s
     TIMER_A0->CCTL[0] &= ~TIMER_A_CCTLN_CCIFG; //Clear interrupt flag to begin
@@ -191,18 +191,18 @@ int main(void) {
 		while (!laser_timer_b_flag);
 		laser_timer_b_flag = 0;
 
-    int packet_to_send = preamble_flag == 1 ? preamble : unique_id;
+		int packet_to_send = preamble_flag == 1 ? preamble : unique_id;
     
-		((packet_to_send >> i) & BIT0) ? (P2->OUT |= BIT7) : (P2->OUT &= ~(BIT7));
+		((packet_to_send >> (7-i)) & BIT0) ? (P2->OUT |= BIT7) : (P2->OUT &= ~(BIT7));
 		i++;
-		if (i == 16) {
+		if (i == 8) {
 			i = 0;
-      if (preamble_flag == 0) {
-        unique_id++; // just sent a packet, up the packet number
-      }
+			if (preamble_flag == 0) {
+				unique_id = 128; // just sent a packet, up the packet number
+			}
       
-      preamble_flag ^= 1; // toggle preamble flag
-    }
+			preamble_flag ^= 1; // toggle preamble flag
+		}
 
 //		if (P4IN & BIT0 != 0){
 //			if (P6IN & BIT0 != 0)

@@ -80,29 +80,29 @@ uint32_t photo_binary[4][8];
 
 int last_packet;
 int missed_packets = 0;
+int start_counting = 0;
+int our_count = 0;
+int sixteen_count = 0;
+int packet[8];
 
-void count_packet(int packet[8]) {
-  int packet_value = 0;
-  int i;
-  for (i = 0; i < 8; i++) {
-    packet_value = packet_value | packet[i];
-  }
-
-
-  // Start counting
-  if (packet_value == 0) {
-    // do nothing
-  } else {
-    if (last_packet == packet_value + 1) { // we expect it to be the next number
-      if (packet_value < 0 || packet_value > 256) {
-        // put a debugger here, verify missed_packets is low. 
-      }
-    } else {
-      missed_packets += packet_value - (last_packet + 1); // We missed all packets between expected and now
+void check_for_zero(int packet_value) {
+	if (packet_value == 0) {
+		  missed_packets = 0;
+		  start_counting = 1;
+		  our_count = 0;
+	}
+}
+void count_packet(int packet_value) {
+    if (our_count == 101 && start_counting == 1) {
+  	  start_counting = 0;
+      // put a debugger here, verify missed_packets is low.
     }
-  }
 
-  last_packet = packet_value;
+    if (packet_value == our_count) { // we expect it to be the next number
+
+    } else {
+      missed_packets += 1;
+    }
 }
 
 int next_photo_idx(int idx) {
@@ -263,15 +263,20 @@ int main(void) {
 
 				int x;
 				int y = valid_transmission_ending_idx; // The starting index
-				int packet[8];
 				// valid may have started recording with ending index 1. That means the packet starts with
 				//   index 2-7, then 1. So [2,3,4,5,6,7,1]. This loop just handles that wrapping
 				for (x = 0; x < 8; x++) {
 					packet[x] = photo_binary[0][next_photo_idx(y + x)];
 				}
 
-				// Do something with packet
-        count_packet(packet);
+				  int packet_value = 0;
+				  int i;
+				  for (i = 0; i < 8; i++) {
+				    packet_value = packet_value | (packet[i] << i);
+				  }
+
+				  check_for_zero(packet_value);
+
 				//for (x = 0; x < 8; x++) {
 					//printf("%d ", packet[x]);
 				//}
@@ -302,10 +307,28 @@ int main(void) {
 		// Enable lightup
 		if (found_01 == 1 || found_10 == 1 || valid_transmission) {
 			P1OUT |= BIT0;
+			P1OUT ^= BIT5; // Toggle that sumbitch
 		} else {
 			P1OUT &= ~BIT0;
+			P1OUT &= ~BIT5;
 		}
-		P1OUT ^= BIT5; //toggle P1.5 on MSP
+
+		sixteen_count = (sixteen_count + 1) % 16;
+
+		if (sixteen_count == 0 && start_counting == 1) {
+
+			  int packet_value = 0;
+			  int i;
+			  for (i = 0; i < 8; i++) {
+			    packet_value = packet_value | packet[i] << i;
+			  }
+			// Do something with packet
+			  count_packet(packet_value);
+
+				our_count++;
+
+		}
+
 	}
 	#endif
 	/*============================================================*/
