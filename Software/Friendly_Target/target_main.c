@@ -58,7 +58,7 @@
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TEST_LASER_SIG 1
-#define THRESHOLD 200
+#define THRESHOLD 100
 #define NUM_PHOTOS 4
 
 /* ==== Initialize Global Variables ==== */
@@ -86,7 +86,7 @@ int sixteen_count = 0;
 int packet[8];
 
 void check_for_zero(int packet_value) {
-	if (packet_value == 0) {
+	if (packet_value == 128 && start_counting == 0) {
 		  missed_packets = 0;
 		  start_counting = 1;
 		  our_count = 0;
@@ -94,9 +94,9 @@ void check_for_zero(int packet_value) {
 	}
 }
 void count_packet(int packet_value) {
-    if (our_count == 100 && start_counting == 1) {
+    if (our_count == 1000 && start_counting == 1) {
   	  start_counting = 0;
-  	  printf("%d\n", missed_packets);
+  	  //printf("%d\n", missed_packets);
       // put a debugger here, verify missed_packets is low.
     }
 
