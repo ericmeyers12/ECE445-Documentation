@@ -87,6 +87,9 @@ int test_second_flag = 0; //TESTING
 
 int laser_count = 0;
 
+int on_count = 0;
+int on_flag = 0;
+
 int main(void) {
 	/* ==== Initialize Local Variables ==== */
 	int i = 0;                       // loop variable
@@ -193,7 +196,7 @@ int main(void) {
 
 		int packet_to_send = preamble_flag == 1 ? preamble : unique_id;
     
-		((packet_to_send >> (7-i)) & BIT0) ? (P2->OUT |= BIT7) : (P2->OUT &= ~(BIT7));
+		((packet_to_send >> (7-i)) & BIT0) ? (P2->OUT &= ~(BIT7)) : (P2->OUT |= BIT7);
 		i++;
 		if (i == 8) {
 			i = 0;
@@ -202,6 +205,14 @@ int main(void) {
 			}
       
 			preamble_flag ^= 1; // toggle preamble flag
+		}
+
+		if (on_flag && on_count < 16) {
+			P1->OUT |= BIT0; //Toggle LED to show flag is working
+			on_count++;
+		} else {
+			P1->OUT &= ~BIT0;
+			on_flag = 0;
 		}
 
 //		if (P4IN & BIT0 != 0){
@@ -281,6 +292,6 @@ void TA1_0_IRQHandler(void) {
  */
 void VT_IRQHandler(void) {
 	P2->IFG &= ~BIT6; //Clear interrupt flag
-	//P1->OUT ^= BIT0; //Toggle LED to show flag is working
+	on_flag = 1;
 }
 

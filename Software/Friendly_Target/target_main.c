@@ -58,7 +58,7 @@
 
 #define PASSPHRASE 0xB00B //HARDCODED PASSPHRASE - 16 bits
 #define UNIT_TEST_LASER_SIG 1
-#define THRESHOLD 100
+#define THRESHOLD 200
 #define NUM_PHOTOS 4
 
 /* ==== Initialize Global Variables ==== */
@@ -67,7 +67,7 @@ int laser_timer_b_flag = 0;
 int ten_sec_timer_a_flag = 0;
 
 int valid_transmission = 0;
-int valid_transmission_ending_idx = 0;
+int valid_transmission_starting_idx = 0;
 
 int laser_count = 0;
 
@@ -90,15 +90,17 @@ void check_for_zero(int packet_value) {
 		  missed_packets = 0;
 		  start_counting = 1;
 		  our_count = 0;
+		  sixteen_count = 0;
 	}
 }
 void count_packet(int packet_value) {
-    if (our_count == 101 && start_counting == 1) {
+    if (our_count == 100 && start_counting == 1) {
   	  start_counting = 0;
+  	  printf("%d\n", missed_packets);
       // put a debugger here, verify missed_packets is low.
     }
 
-    if (packet_value == our_count) { // we expect it to be the next number
+    if (packet_value == 128) { // we expect it to be the next number
 
     } else {
       missed_packets += 1;
@@ -253,26 +255,31 @@ int main(void) {
 
 		get_photo_binaries();
 
+		if (photo_idx == 0) {
+			int lol = 0;
+
+		}
+
 		int found_10 = 1;
 		int found_01 = 1;
 
 		// When in valid transmission receiving mode
 		if (valid_transmission) {
-			if (photo_idx == valid_transmission_ending_idx) {
-				valid_transmission = 1;
+			P1OUT |= BIT5; // Toggle that sumbitch
 
+			if (photo_idx == valid_transmission_starting_idx) {
 				int x;
-				int y = valid_transmission_ending_idx; // The starting index
+				int y = valid_transmission_starting_idx; // The starting index
 				// valid may have started recording with ending index 1. That means the packet starts with
 				//   index 2-7, then 1. So [2,3,4,5,6,7,1]. This loop just handles that wrapping
 				for (x = 0; x < 8; x++) {
-					packet[x] = photo_binary[0][next_photo_idx(y + x)];
+					packet[x] = photo_binary[0][(y + x) % 8];
 				}
 
 				  int packet_value = 0;
 				  int i;
 				  for (i = 0; i < 8; i++) {
-				    packet_value = packet_value | (packet[i] << i);
+				    packet_value = packet_value | (packet[i] << (7-i));
 				  }
 
 				  check_for_zero(packet_value);
@@ -290,24 +297,24 @@ int main(void) {
 		else {
 			int j;
 			for (j = 0; j < 8; j++) {
-				if (photo_binary[0][j] != (j+1)%2){ // should be 10101010
+				int idx = (photo_idx + j) % 8; // current photo index is 1 + last received photo idx. Then we go back 8 from there.
+				if (photo_binary[0][idx] != (j+1)%2){ // should be 10101010
 					found_10 = 0;
 				}
-				if (photo_binary[0][j] != (j)%2){ // should be 01010101
+				if (photo_binary[0][idx] != (j)%2){ // should be 01010101
 					found_01 = 0;
 				}
 			}
 
 			if (found_10 == 1) {
 				valid_transmission = 1; // Start listening for the packet
-				valid_transmission_ending_idx = photo_idx; // This marks the end idx in the photo_binary array of the transmission
+				valid_transmission_starting_idx = photo_idx; // This marks the end idx in the photo_binary array of the transmission
 			}
 		}
 
 		// Enable lightup
 		if (found_01 == 1 || found_10 == 1 || valid_transmission) {
 			P1OUT |= BIT0;
-			P1OUT ^= BIT5; // Toggle that sumbitch
 		} else {
 			P1OUT &= ~BIT0;
 			P1OUT &= ~BIT5;
@@ -320,8 +327,9 @@ int main(void) {
 			  int packet_value = 0;
 			  int i;
 			  for (i = 0; i < 8; i++) {
-			    packet_value = packet_value | packet[i] << i;
+			    packet_value = packet_value | (packet[i] << (7-i));
 			  }
+
 			// Do something with packet
 			  count_packet(packet_value);
 
