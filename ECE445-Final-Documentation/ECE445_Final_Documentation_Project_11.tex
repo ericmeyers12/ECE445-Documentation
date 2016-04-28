@@ -361,7 +361,7 @@ Binary values are stored in an array of length 8, since both packets and preambl
 
 Once a preamble has been received, a simple algorithm is used to capture a packet
 \begin{algorithm}[H]
-	\caption{ReceivePreamble}\label{euclid}
+	\caption{ReceivePacket}\label{euclid}
 	\begin{algorithmic}[1]
 		\State $\textit{packet} \gets \text{new}\ \textit{Array}(8)$
 		\State $\textit{lastBinaryValue} \gets 0$
