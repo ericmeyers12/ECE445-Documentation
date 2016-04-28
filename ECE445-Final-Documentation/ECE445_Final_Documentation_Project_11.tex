@@ -368,7 +368,7 @@ Once a preamble has been received, a simple algorithm is used to capture a packe
 		\State $\textit{lastAnalogValue} \gets 0$
 		\State $currentIndex \gets 0$\\
 		
-		\State \textbf{every} $200 \mu s$ \textbf{do}\\
+		\State 8 \textbf{times}, \textbf{every} $200 \mu s$ \textbf{do}\\
 		\quad // Store current value\\
 		\quad $\textit{currentAnalogValue} \gets \text{analogReadPhotoreceiver}$\\
 		\quad $\textit{currentBinaryValue} \gets \text{GetCurrentBinaryValue}(\textit{currentAnalogValue},$\\ 
