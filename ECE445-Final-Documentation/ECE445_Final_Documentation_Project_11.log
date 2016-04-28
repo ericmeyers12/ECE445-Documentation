@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  27 APR 2016 22:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 APR 2016 16:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,24 +757,49 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 \Gm@layoutvoffset=\dimen208
 \Gm@dimlist=\toks37
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip74
-\f@ncyO@elh=\skip75
-\f@ncyO@erh=\skip76
-\f@ncyO@olh=\skip77
-\f@ncyO@orh=\skip78
-\f@ncyO@elf=\skip79
-\f@ncyO@erf=\skip80
-\f@ncyO@olf=\skip81
-\f@ncyO@orf=\skip82
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+\@float@every@algorithm=\toks38
+\c@algorithm=\count183
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count184
+\c@ALG@rem=\count185
+\c@ALG@nested=\count186
+\ALG@tlm=\skip74
+\ALG@thistlm=\skip75
+\c@ALG@Lnr=\count187
+\c@ALG@blocknr=\count188
+\c@ALG@storecount=\count189
+\c@ALG@tmpcounter=\count190
+\ALG@tmplength=\skip76
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip77
+\f@ncyO@elh=\skip78
+\f@ncyO@erh=\skip79
+\f@ncyO@olh=\skip80
+\f@ncyO@orh=\skip81
+\f@ncyO@elf=\skip82
+\f@ncyO@erf=\skip83
+\f@ncyO@olf=\skip84
+\f@ncyO@orf=\skip85
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/paralist/paralist.sty
 Package: paralist 2013/06/09 v2.4 Extended list environments
-\pltopsep=\skip83
-\plpartopsep=\skip84
-\plitemsep=\skip85
-\plparsep=\skip86
-\pl@lab=\toks38
+\pltopsep=\skip86
+\plpartopsep=\skip87
+\plitemsep=\skip88
+\plparsep=\skip89
+\pl@lab=\toks39
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
@@ -797,11 +822,11 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 \ttl@box=\box85
-\beforetitleunit=\skip87
-\aftertitleunit=\skip88
+\beforetitleunit=\skip90
+\aftertitleunit=\skip91
 \ttl@plus=\dimen209
 \ttl@minus=\dimen210
-\ttl@toksa=\toks39
+\ttl@toksa=\toks40
 \titlewidth=\dimen211
 \titlewidthlast=\dimen212
 \titlewidthfirst=\dimen213
@@ -810,23 +835,30 @@ Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 Package: titletoc 2011/12/15 v1.6 TOC entries
 \ttl@leftsep=\dimen214
 )
-(./ECE445_Final_Documentation_Project_11.aux)
+(./ECE445_Final_Documentation_Project_11.aux
+
+LaTeX Warning: Label `euclid' multiply defined.
+
+
+LaTeX Warning: Label `euclid' multiply defined.
+
+)
 \openout1 = `ECE445_Final_Documentation_Project_11.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
-LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 139.
+LaTeX Font Info:    ... okay on input line 139.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/beamer/translator/dicts/translato
 r-basic-dictionary/translator-basic-dictionary-English.dict
@@ -836,17 +868,17 @@ Dictionary: translator-basic-dictionary, Language: English
 File: siunitx-abbreviations.cfg 2015/01/21 v2.6e siunitx: Abbreviated units
 ) (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count183
+\scratchcounter=\count191
 \scratchdimen=\dimen215
 \scratchbox=\box86
-\nofMPsegments=\count184
-\nofMParguments=\count185
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count186
+\nofMPsegments=\count192
+\nofMParguments=\count193
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count194
 \MPscratchDim=\dimen216
-\MPnumerator=\count187
-\makeMPintoPDFobject=\count188
-\everyMPtoPDFconversion=\toks41
+\MPnumerator=\count195
+\makeMPintoPDFobject=\count196
+\everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -866,7 +898,7 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 136.
+Package hyperref Info: Link coloring ON on input line 139.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -874,11 +906,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count189
+\c@section@level=\count197
 )
-LaTeX Info: Redefining \ref on input line 136.
-LaTeX Info: Redefining \pageref on input line 136.
-LaTeX Info: Redefining \nameref on input line 136.
+LaTeX Info: Redefining \ref on input line 139.
+LaTeX Info: Redefining \pageref on input line 139.
+LaTeX Info: Redefining \nameref on input line 139.
 
 (./ECE445_Final_Documentation_Project_11.out)
 (./ECE445_Final_Documentation_Project_11.out)
@@ -920,17 +952,17 @@ LaTeX Info: Redefining \nameref on input line 136.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c__siunitx_mathsf_int=\count190
-LaTeX Font Info:    Try loading font information for U+msa on input line 136.
+\c__siunitx_mathsf_int=\count198
+LaTeX Font Info:    Try loading font information for U+msa on input line 139.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 136.
+LaTeX Font Info:    Try loading font information for U+msb on input line 139.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-\c__siunitx_mathtt_int=\count191
+\c__siunitx_mathtt_int=\count199
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1
@@ -945,7 +977,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 177
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 180
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -959,28 +991,28 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.177 \clearpage
+l.180 \clearpage
                  [1
 
  <./University-of-Illinois-logo.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 190.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 193.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 193.
 
 <System_Block_Diagram.png, id=136, 908.39375pt x 698.61pt>
 File: System_Block_Diagram.png Graphic file (type png)
 
 <use System_Block_Diagram.png>
-Package pdftex.def Info: System_Block_Diagram.png used on input line 209.
+Package pdftex.def Info: System_Block_Diagram.png used on input line 212.
 (pdftex.def)             Requested size: 408.7734pt x 314.3716pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 212
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 215
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -994,7 +1026,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.212 
+l.215 
        [1
 
 ]
@@ -1002,7 +1034,7 @@ Missing character: There is no ¬ in font cmr10!
 Missing character: There is no ± in font cmr10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 228
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 231
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1013,9 +1045,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2 <./System_Block_Diagram.png>]
+
+LaTeX Warning: Reference `section-safety-ethics' on page 3 undefined on input l
+ine 246.
+
+
+LaTeX Warning: Reference `section-tolerance-analysis' on page 3 undefined on in
+put line 258.
+
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 282
+<use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 268
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1026,62 +1066,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3]
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ê in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no î in font cmr10!
-Missing character: There is no Ô in font cmr10!
-Missing character: There is no Ç in font cmr10!
-Missing character: There is no ¥ in font cmr10!
-Missing character: There is no Ô in font cmr10!
-Missing character: There is no Ç in font cmr10!
-Missing character: There is no ¥ in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ê in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ê in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ê in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ê in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ê in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
-Missing character: There is no ¬ in font cmr10!
-Missing character: There is no † in font cmr10!
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 310.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 308
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 331
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1092,6 +1081,98 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [4]
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 361
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 385
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6]
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no î in font cmr10!
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 396
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7]
+Missing character: There is no Ô in font cmr10!
+Missing character: There is no Ç in font cmr10!
+Missing character: There is no ¥ in font cmr10!
+Missing character: There is no Ô in font cmr10!
+Missing character: There is no Ç in font cmr10!
+Missing character: There is no ¥ in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
+Missing character: There is no ¬ in font cmr10!
+Missing character: There is no † in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no î in font cmr10!
@@ -1110,7 +1191,7 @@ Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 315
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 414
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1120,7 +1201,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[5] (./ECE445_Final_Documentation_Project_11.bbl
+[8] (./ECE445_Final_Documentation_Project_11.bbl
 Missing character: There is no ‚ in font cmti10!
 Missing character: There is no Ä in font cmti10!
 Missing character: There is no ì in font cmti10!
@@ -1128,7 +1209,7 @@ Missing character: There is no ì in font cmti10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 319
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 418
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1138,13 +1219,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6
+[9
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 323.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 323
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 422
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1154,39 +1235,49 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7
+[10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 323.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
  (./ECE445_Final_Documentation_Project_11.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 323.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 323.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
 Package rerunfilecheck Info: File `ECE445_Final_Documentation_Project_11.out' h
 as not changed.
 (rerunfilecheck)             Checksum: FE2A8ACB0BC3FCB568EE4B507D0F3634;1176.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 323.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
  ) 
 Here is how much of TeX's memory you used:
- 18208 strings out of 493089
- 344534 string characters out of 6134842
- 401939 words of memory out of 5000000
- 21451 multiletter control sequences out of 15000+600000
- 15888 words of font info for 62 fonts, out of 8000000 for 9000
+ 18757 strings out of 493089
+ 352529 string characters out of 6134842
+ 413020 words of memory out of 5000000
+ 21972 multiletter control sequences out of 15000+600000
+ 19232 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,16n,43p,10425b,938s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,15n,43p,10425b,938s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ECE445_Final_Documentation_Project_11.pdf (10 pages, 298992 b
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on ECE445_Final_Documentation_Project_11.pdf (13 pages, 343729 b
 ytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

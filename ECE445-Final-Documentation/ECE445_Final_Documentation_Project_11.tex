@@ -31,6 +31,9 @@
 \usepackage{array}		% define column format of a table
 \usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
 \usepackage[top=1.1in, bottom=1.1in, left=1.1in, right=1.1in]{geometry}% set the page margins to 1 inch
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
 % use the fancyhdr package to maintain the format of the page numbers,
 % which is useful when the text color is changed
@@ -239,26 +242,33 @@ Requirements are also imposed on the system speed. These are
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
 \\ \hl{TODO}
 
-\hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
-\\ \hl{TODO}
+\hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}\\
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($635nm$) laser. See Section \ref{section-safety-ethics} for more on safety of the laser. 
+
+The team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the $MSP430$ microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
 
 \hspace{5mm}\textbf{R.F. Receiver} \label{section:rf-receiver-design-procedure}
 \\ \hl{TODO}
 
 \subsubsection{Friendly Target}
-\hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:target-voltage-regulation-design-procedure}
-\\ \hl{TODO}
+\hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:target-voltage-regulation-design-procedure} \\
+See \ref{section:interrogator-voltage-regulation-design-procedure}
 
-\hspace{5mm}\textbf{Laser Photoreceiver} \label{section:laser-photoreceiver-design-procedure}
-\\ \hl{TODO}
+\hspace{5mm}\textbf{Laser Photoreceiver} \label{section:laser-photoreceiver-design-procedure}\\
+A photodiode was chosen such that a 5kHz signal could be processed and boosted to register a value between 0 and 3.3V at a maximum distance of $30m$ from the laser source. This couples the photoreceiver requirement with the intensity of the laser diode, which is capped at $5 mW$. A detailed analysis of the choice of photodiode is in \ref{section-tolerance-analysis}
 
-\hspace{5mm}\textbf{R.F. Transmitter} \label{section:rf-transmitter-design-procedure}
-\\ \hl{TODO}
+\hspace{5mm}\textbf{R.F. Transmitter} \label{section:rf-transmitter-design-procedure} \\
+The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). 
+\hl{TODO: Describe some of the governing equations}
 
 
 \subsubsection{System}
-\hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}
-\\ \hl{TODO}
+\hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}\\
+The microcontroller must have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this design, as most come with several ports, fast processors, and a built in timer.
+
+The design decision, then, came down to ease of use and available documentation. To this end, the team chose to use the $MSP430$ series of microcontroller. Previously, the team had tried to use $MSP432s$, but these units stopped functioning mid-design. 
+
+Other microcontroller options, including PIC and arduino were considered. Arduino was considered overkill and low difficulty for the project, PIC more difficult to work with due to less documented proprietary systems.
 
 FROM TEMPLATE: Discuss your design decisions for each block at the most general level: What alternative approaches tothe design are possible, which was chosen, and why is it desirable? Introduce the major design equations or other design tools used; show the general form of the circuits and describe their functions.
 
@@ -282,7 +292,96 @@ FROM TEMPLATE: Discuss your design decisions for each block at the most general 
 \hspace{5mm}\textbf{PCB} \label{section:target-pcb-design-details}
 \\ \hl{TODO}
 
+\hspace{5mm} \textbf{Software} \label{section:target-software-design-details}\\
+Incoming transmissions are broken into two parts, where a $1$ corresponds to a high at the transmission source, and a $0$ a low: 
+\begin{enumerate}
+	\small
+	\item \textbf{Preamble} - $10101010$ 
+	\item \textbf{Packet} - An 8 digit long value representing a numerical id
+\end{enumerate}
 
+Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room can the photoreceiver to report $0-2V$ when receiving no light from the transmitter, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before.
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\begin{algorithm}[H]
+	\caption{GetCurrentBinaryValue}\label{euclid}
+	\begin{algorithmic}[1]
+		\State $\textbf{Input}: \textit{currentAnalogValue},\ \textit{lastAnalogValue},\ \textit{lastBinaryValue},\ \textit{THRESHOLD}$\\
+		
+		\State $\textit{dif} \gets (\textit{currentAnalogValue} - \textit{lastAnalogValue})$\\\\
+		
+		
+		//Was a 0, now a high indicates a 1
+		\If {$dif > \textit{THRESHOLD}$} \\
+		\quad \Return $1$\\\\
+
+		//Was a 1, now a low indicates a 0
+		\ElsIf {$dif < -\textit{THRESHOLD}$} \\
+		\quad \Return $0$\\\\
+		
+		//No change from last value
+		\Else\\
+		\quad \Return \textit{lastBinaryValue}
+		\EndIf
+	\end{algorithmic}
+\end{algorithm}
+
+Binary values are stored in an array of length 8, since both packets and preambles are 8 bits. Because a preamble can come at any moment, an algorithm was designed both to store binary values in the array, and to always check for a preamble packet 
+
+\begin{algorithm}[H]
+	\caption{ReceivePreamble}\label{euclid}
+	\begin{algorithmic}[1]
+		\State $\textit{photoBinary} \gets \text{new}\ \textit{Array}(8)$
+		\State $\textit{lastBinaryValue} \gets 0$
+		\State $\textit{lastAnalogValue} \gets 0$
+		\State $currentIndex \gets 0$\\
+		
+		\State \textbf{every} $200 \mu s$ \textbf{do}\\
+		\quad // Store current value\\
+		\quad $\textit{currentAnalogValue} \gets \text{analogReadPhotoreceiver}$\\
+		\quad $\textit{currentBinaryValue} \gets \text{GetCurrentBinaryValue}(\textit{currentAnalogValue},$\\ 
+		\hspace{7.65cm} $\textit{lastAnalogValue},$\\
+		\hspace{7.65cm} $\textit{lastBinaryValue})$ \\
+		\quad $\text{photoBinary}[\textit{currentIndex}] \gets \textit{currentBinaryValue}$\\
+		\quad $\textit{currentIndex} = (\textit{currentIndex} + 1)\ \%\ 8$\\\\
+		
+		\quad // Check if last 8 received values make 10101010 
+		\State \quad $\textit{lastEightValues} = \text{concat}(\text{photoBinary}[\textit{currentIndex}...8],\text{photoBinary}[0..\textit{currentIndex}])$ \\
+		\quad \textbf{if} $\textit{lastEightValues} == 10101010$ \textbf{then}\\
+		\quad \quad ReceivePacket\\
+		
+		\State \quad $\textit{lastBinaryValue} \gets \textit{currentBinaryValue}$
+		\State \quad $\textit{lastAnalogValue} \gets \textit{currentAnalogValue}$
+		\State \textbf{end}		
+	\end{algorithmic}
+\end{algorithm}
+
+Once a preamble has been received, a simple algorithm is used to capture a packet
+\begin{algorithm}[H]
+	\caption{ReceivePreamble}\label{euclid}
+	\begin{algorithmic}[1]
+		\State $\textit{packet} \gets \text{new}\ \textit{Array}(8)$
+		\State $\textit{lastBinaryValue} \gets 0$
+		\State $\textit{lastAnalogValue} \gets 0$
+		\State $currentIndex \gets 0$\\
+		
+		\State \textbf{every} $200 \mu s$ \textbf{do}\\
+		\quad // Store current value\\
+		\quad $\textit{currentAnalogValue} \gets \text{analogReadPhotoreceiver}$\\
+		\quad $\textit{currentBinaryValue} \gets \text{GetCurrentBinaryValue}(\textit{currentAnalogValue},$\\ 
+		\hspace{7.65cm} $\textit{lastAnalogValue},$\\
+		\hspace{7.65cm} $\textit{lastBinaryValue})$ \\
+		\quad $\text{packet}[\textit{currentIndex}] \gets \textit{currentBinaryValue}$\\
+		\quad $\textit{currentIndex}\text{++}$\\\\
+		
+		\State \quad $\textit{lastBinaryValue} \gets \textit{currentBinaryValue}$
+		\State \quad $\textit{lastAnalogValue} \gets \textit{currentAnalogValue}$
+		\State \textbf{end}		
+	\end{algorithmic}
+\end{algorithm}
 \subsubsection{System}
 
 FROM TEMPLATE: Present the detailed design, with diagrams and component values. Show how the design equations were applied. Give equations and diagrams with specific design values and data. Place large data tables in an appendix.  Circuit diagrams that are too large to be readable on a single page should be broken into pieces for presentation.  The full diagram may be included in an appendix.  Use photographs only as necessary and treat them, along with all other graphics except tables, as figures.
