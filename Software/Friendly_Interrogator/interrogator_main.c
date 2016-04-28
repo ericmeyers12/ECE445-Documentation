@@ -196,22 +196,19 @@ int main(void) {
 
 		int packet_to_send = preamble_flag == 1 ? preamble : unique_id;
     
-		((packet_to_send >> (7-i)) & BIT0) ? (P2->OUT &= ~(BIT7)) : (P2->OUT |= BIT7);
+		((packet_to_send >> (7-i)) & BIT0) ? (P1->OUT &= ~(BIT0)) : (P1->OUT |= BIT0);
 		i++;
 		if (i == 8) {
 			i = 0;
 			if (preamble_flag == 0) {
 				unique_id = 128; // just sent a packet, up the packet number
 			}
-      
 			preamble_flag ^= 1; // toggle preamble flag
 		}
 
 		if (on_flag && on_count < 16) {
-			P1->OUT |= BIT0; //Toggle LED to show flag is working
 			on_count++;
 		} else {
-			P1->OUT &= ~BIT0;
 			on_flag = 0;
 		}
 

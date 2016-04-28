@@ -1,7 +1,11 @@
 ******************************************************************************
                   TI ARM Linker PC v5.2.7                      
 ******************************************************************************
+<<<<<<< HEAD
+>> Linked Tue Apr 26 16:16:10 2016
+=======
 >> Linked Mon Apr 25 10:08:40 2016
+>>>>>>> 6af7d4a62f09722796fcec3e4c5914ee7f1e5aec
 
 OUTPUT FILE NAME:   <Friendly_Target.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00000be5
