@@ -13,8 +13,9 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Friendly Target}{4}{subsubsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.3}System}{7}{subsubsection.2.2.3}
 \contentsline {section}{\numberline {3}Verification}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Counting Packets}{7}{subsection.3.1}
 \contentsline {section}{\numberline {4}Costs}{8}{section.4}
 \contentsline {section}{\numberline {5}Conclusion}{8}{section.5}
-\contentsline {section}{\numberline {6}References}{8}{section.6}
-\contentsline {section}{Reference}{9}{section.6}
+\contentsline {section}{\numberline {6}References}{9}{section.6}
+\contentsline {section}{Reference}{10}{section.6}
 \contentsfinish 

@@ -379,7 +379,9 @@ Once a preamble has been received, a simple algorithm is used to capture a packe
 		
 		\State \quad $\textit{lastBinaryValue} \gets \textit{currentBinaryValue}$
 		\State \quad $\textit{lastAnalogValue} \gets \textit{currentAnalogValue}$
-		\State \textbf{end}		
+		\State \textbf{end}\\\\
+		
+		\Return \textit{packet}
 	\end{algorithmic}
 \end{algorithm}
 \subsubsection{System}
@@ -391,6 +393,22 @@ FROM TEMPLATE: Present the detailed design, with diagrams and component values. 
 \section{Verification}
 \hl{INCLUDE R\&V TABLE IN APPENDIX IN BACK}
 \\ \hl{TODO}
+\subsection{Counting Packets}
+The following algorithm was used to count the number of missed packets from the photoreceiver
+\begin{algorithm}[H]
+	\caption{CountMissedPackets}\label{euclid}
+	\begin{algorithmic}[1]
+		\State \textbf{Input}: \textit{expectedPacketValue}\\
+		\State $\textit{missedPackets} \gets 0$\\
+		ReceivePreambleAndPacket // Get first packet to ensure transmission started
+		
+		\State $100.\textbf{times}\ \textbf{do}$\\
+			\quad ReceivePreambleOnce // Receive next 8 bits as preamble, ignore if not a correct preamble \\
+			\quad \textbf{if} ReceivePacket $\neq$ \textit{expectedPacketValue} \textbf{then} \\
+			\quad \quad \textit{missedPackets}++
+		\State \textbf{end}
+	\end{algorithmic}
+\end{algorithm}
 
 FROM TEMPLATE: Discuss the Requirement and Verification Table from your design review. Including the table in an appendix will help avoid lengthy and tedious narrative description in the main text, which may not be of immediate interest to your imagined audience of managers. Do not discuss low‐level requirements unless they failed to verify, or you found that they were critical in some unexpected way, or you need to makes changes—for instance, to the tolerances or acceptable ranges of quantitative results. It is important to hit the main points and explain any requirement that is not verified, but keep the discussion concise and refer interested readers to the appendix for details. Note that the design procedure, design details, and design verification can be organized in different ways. The Word template provided by the ECE 445 staff puts the first two in one chapter and the second in another; however, a separate chapter for each is also common, with chapter sections reiterating the main project components. If you do the latter, avoid unnecessary repetition of component descriptions. Another option, though rarely used, is to organize the report according to components or blocks, with each chapter describing the design procedure, details, and verification for a single component or block.
 
