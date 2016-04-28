@@ -237,10 +237,10 @@ Requirements are also imposed on the system speed. These are
 \subsection{Design Procedure} 
 \subsubsection{Friendly Interrogator}
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
-\\ \hl{TODO}
+There are strict requirements on the power module to provide at least 8 hours of a steady 3.3V output. Originally, in the design review, a 3.3V boost-converter was going to be utilized along with a single AA battery (1.5V) to supply the entire interrogator unit. This proved to be a difficult implementation For this reason, 
 
 \hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
-\\ \hl{TODO}
+A 5 mW 650nm laser transmitter was used for the interrogator which was placed inside of casing made out of a hollow aluminum tube. This coupled with single convex and concave lens was used d
 
 \hspace{5mm}\textbf{R.F. Receiver} \label{section:rf-receiver-design-procedure}
 \\ \hl{TODO}
@@ -318,6 +318,16 @@ consecutively in the text, as is done here. (ECE Editorial Services provides a m
 \bibliography{Citations}\addcontentsline{toc}{section}{Reference}
 \clearpage
 \section*{Appendix}
+\begin{figure} [H]
+	\centering
+	\includepdf[page=1, scale=0.85] {Requirements-Verification.pdf}
+\end{figure}
+\clearpage
+
+\begin{figure} [H]
+	\centering
+	\includepdf[page=2, scale=0.85] {Requirements-Verification.pdf}
+\end{figure}
 
 \end{spacing}
 \end{document}
