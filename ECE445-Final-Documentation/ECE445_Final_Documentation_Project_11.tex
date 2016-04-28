@@ -169,6 +169,9 @@ Project No. 11
 
 % build the table of contents. 
 \color{black}
+\pagenumbering{gobble}
+\section*{Abstract}
+This piece of equipment will reliably determine the status of a target. FUCK I DONT KNOW. This project is a reliable method to determining the status of friendly or enemy soldiers during combat eee reduce the number of friendly fire or misfire accidents between soldiers on foot during combat. A ``friend or foe" detection 
 \buildtoc
 \pagenumbering{gobble}
 \clearpage
@@ -179,34 +182,27 @@ Project No. 11
 \section{Introduction}
 The purpose of this project is to create a system that quickly and accurately identifies friendly targets among military personnel on foot. Similar systems exist for aircraft, however not many exist for infantry.
 
-The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is, indeed, friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the ``friendly interrogator" and the target will  be referred to as the ``friendly target". In reality, many infantry units will have both an interrogator unit mounted to their gun, and a target unit mounted to their chest; the team has separated the hardware for these units to ensure that non-combatants can also be identified as friendly. 
+The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the ``friendly interrogator" and the target will  be referred to as the ``friendly target". 
 
 \subsection{Objectives}
 \subsubsection{Goals and Benefits}
 \begin{itemize}
-	\item Reduce the number of friendly fire \& misfire accidents during combat \textsuperscript{\cite{Garrison}}.
-	\item Notify friendly personnel location of particular friendly target when aiming in their direction.
-	\item Other applications include, but are not limited to:
-	\begin{itemize}
-		\item Paintball or Airsoft
-		\item Arcade laser tag and other recreation sports
-	\end{itemize}
+	\item Reduce the number of friendly fire \& misfire accidents during combat.
+	\item Notify friendly personnel of friendly target when aiming in their direction.
+	\item Other applications include paintball, airsoft arcade laser tag, and various recreation sports.
 \end{itemize}
 
 
 \subsubsection{Functions and Features}
 \begin{itemize}
-	\item Laser diode on friendly interrogator to transmit unique I.D. of friendly interrogator.
-	\item Photodiodes on friendly target to detect unique I.D. and verify it is a valid signal.
-	\item R.F. Transmitter on friendly target to send acknowledgement back to interrogator.
-	\item R.F. Receiver on friendly interrogator to verify that the target is friendly.
-	\item LED on friendly interrogator to indicate to the operator the status of the target.
-	\item Quick response time (human reaction time is 190 ms\textsuperscript{\cite{Reaction_Times}}).
+	\item Laser transmitter on friendly interrogator to send unique I.D.
+	\item Photodiodes on friendly target detect unique I.D. and verify its signal.
+	\item R.F. transmitter on friendly target to send acknowledgement back to interrogator.
+	\item R.F. receiver on friendly interrogator to verify that the target is friendly.
+	\item LED to indicate friendly or enemy on interrogator unit with system response of less than 190 ms (human reaction time\textsuperscript{\cite{Reaction_Times}})
 \end{itemize}
-\clearpage
 
-The friendly interrogator unit will consist of a 5mW red laser transmitter to send out a unique query to the friendly target, along with an R.F. receiver to detect any acknowledgment sent from the target. The friendly target consists of multiple photoreceivers to detect the friendly interrogator's query and an R.F. transmitter to send acknowledgment back to the interrogator. This is summarized in the system block diagram shown in Figure \ref{fig:system-block-diagram}. 
-
+These functions and features are summarized in the system block diagram shown in Figure \ref{fig:system-block-diagram}. 
 
 \begin{figure} [H]
 	\centering
@@ -232,47 +228,90 @@ Requirements are also imposed on the system speed. These are
 \end{enumerate}
 
 
-\clearpage
 
 
+%SECTION - DESIGN
 \section{Design}
 
+%DESIGN PROCEDURE
+\subsection{Design Procedure} 
+\subsubsection{Friendly Interrogator}
+\hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
+\\ \hl{TODO}
+
+\hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
+\\ \hl{TODO}
+
+\hspace{5mm}\textbf{R.F. Receiver} \label{section:rf-receiver-design-procedure}
+\\ \hl{TODO}
+
+\subsubsection{Friendly Target}
+\hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:target-voltage-regulation-design-procedure}
+\\ \hl{TODO}
+
+\hspace{5mm}\textbf{Laser Photoreceiver} \label{section:laser-photoreceiver-design-procedure}
+\\ \hl{TODO}
+
+\hspace{5mm}\textbf{R.F. Transmitter} \label{section:rf-transmitter-design-procedure}
+\\ \hl{TODO}
 
 
-\subsubsection{Design Procedure} 
-\hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design}
+\subsubsection{System}
+\hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}
+\\ \hl{TODO}
 
-\hspace{5mm}\textbf{Laser Photoreceiver} \label{section:laser-photoreceiver-design}
-
-\hspace{5mm}\textbf{R.F. Transmitter} \label{section:rf-transmitter-design}
-
-\hspace{5mm}\textbf{R.F. Receiver} \label{section:rf-receiver-design}
-
-\hspace{5mm}\textbf{Microcontroller} \label{section:laser-transmitter-design}
 FROM TEMPLATE: Discuss your design decisions for each block at the most general level: What alternative approaches tothe design are possible, which was chosen, and why is it desirable? Introduce the major design equations or other design tools used; show the general form of the circuits and describe their functions.
 
 
-\subsubsection{Design Details}
 
+%DESIGN DETAILS
+\subsection{Design Details}
+
+\subsubsection{Friendly Interrogator}
+\hspace{5mm}\textbf{Circuit Schematics} \label{section:interrogator-circuit-schematics-design-details}
+\\ \hl{TODO}
+
+\hspace{5mm}\textbf{PCB} \label{section:interrogator-pcb-design-details}
+\\ \hl{TODO}
+
+
+\subsubsection{Friendly Target}
+\hspace{5mm}\textbf{Circuit Schematics} \label{section:target-circuit-schematics-design-details}
+\\ \hl{TODO}
+
+\hspace{5mm}\textbf{PCB} \label{section:target-pcb-design-details}
+\\ \hl{TODO}
+
+
+\subsubsection{System}
 
 FROM TEMPLATE: Present the detailed design, with diagrams and component values. Show how the design equations were applied. Give equations and diagrams with specific design values and data. Place large data tables in an appendix.  Circuit diagrams that are too large to be readable on a single page should be broken into pieces for presentation.  The full diagram may be included in an appendix.  Use photographs only as necessary and treat them, along with all other graphics except tables, as figures.
 
+
+%SECTION - VERIFICATION
 \section{Verification}
+\hl{INCLUDE R\&V TABLE IN APPENDIX IN BACK}
+\\ \hl{TODO}
+
 FROM TEMPLATE: Discuss the Requirement and Verification Table from your design review. Including the table in an appendix will help avoid lengthy and tedious narrative description in the main text, which may not be of immediate interest to your imagined audience of managers. Do not discuss low‐level requirements unless they failed to verify, or you found that they were critical in some unexpected way, or you need to makes changes—for instance, to the tolerances or acceptable ranges of quantitative results. It is important to hit the main points and explain any requirement that is not verified, but keep the discussion concise and refer interested readers to the appendix for details. Note that the design procedure, design details, and design verification can be organized in different ways. The Word template provided by the ECE 445 staff puts the first two in one chapter and the second in another; however, a separate chapter for each is also common, with chapter sections reiterating the main project components. If you do the latter, avoid unnecessary repetition of component descriptions. Another option, though rarely used, is to organize the report according to components or blocks, with each chapter describing the design procedure, details, and verification for a single component or block.
 
+%COSTS
 \section{Costs}
+\hl{TODO}
 FROM TEMPLATE: Labor cost estimates should use the following formula for each partner:
 ideal salary (hourly rate)  actual hours spent  2.5 include estimates for electronics and machine shop hours, as applicable. For parts, use real values when you know them; make realistic estimates otherwise. List both the retail cost and what you or the department paid (in this case you may list lab‐owned pieces as free).  If the project might be commercially viable, estimate the cost of mass‐production by listing bulk‐purchase costs. Make sure any tables are numbered appropriately, given titles, and cited directly in the text.  
 
+%CONCLUSION
 \section{Conclusion}
+\hl{TODO}
 FROM TEMPLATE: Bring together, concisely, the conclusions to be drawn. It may be appropriate, depending on the nature of the project, to begin or end with a two‐ or three‐sentence executive summary. The reader needs to be convinced that the design will work. Summarize your accomplishments. If uncertainties remain, they should be pointed out, and alternatives, such as modifying performance specifications, should be spelled out to deal with foreseeable outcomes. Use  words, not equations or diagrams. Devote a section to ethical considerations with reference to the IEEE Code of Ethics and any other applicable code (e.g., the AMA Code of Medical Ethics for certain bioengineering projects).
 
+%REFERENCES
 \section{References}
+\hl{TODO}
 FROM TEMPLATE: Follow the IEEE reference styles provided in this document for various kinds of sources. If you need to cite something for which there is no example, simply use common sense and provide—in a neat and orderly manner emulating the IEEE reference style—the information necessary for another researcher to find that source.   References [1]–[3] are examples of a manual, datasheet, and web page, respectively. References [4]–[7] are more standard, scholarly sources: a book, chapter in an edited book, journal article, and conference proceedings. Reference [8] is a technical report, and reference [9] is class notes. Cite all references
 consecutively in the text, as is done here. (ECE Editorial Services provides a more detailed description of IEEE reference style on its wiki: http://go.illinois.edu/ecethesis .)
 
-
-%SECTION - References
 \clearpage
 \bibliographystyle{IEEE_ECE}
 % include the BibTex file here to build reference
