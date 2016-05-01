@@ -154,7 +154,7 @@
 	{Spring 2016}
 }
 { % put your TA's name here. DO NOT include the brackets.
-	{Braedon Salz}
+	{Brady Salz}
 }
 
 % put the date and project number here. DO NOT include the brackets.
@@ -174,7 +174,7 @@ Project No. 11
 \color{black}
 \pagenumbering{gobble}
 \section*{Abstract}
-This piece of equipment will reliably determine the status of a target. FUCK I DONT KNOW. LIKE HOLY FUCKING SHIZ YO This project is a reliable method to determining the status of friendly or enemy soldiers during combat eee reduce the number of friendly fire or misfire accidents between soldiers on foot during combat. A ``friend or foe" detection 
+This project is a reliable method to determining the status of friendly or enemy soldiers during combat. This is an attempt to reduce the number of friendly fire or misfire accidents between soldiers on foot. A single LED indicator lights up identifying the target as either ``friendly" or ``enemy".
 \buildtoc
 \pagenumbering{gobble}
 \clearpage
@@ -213,24 +213,9 @@ These functions and features are summarized in the system block diagram shown in
 	\caption{System Block Diagram\label{fig:system-block-diagram}}
 \end{figure}
 
-The two-way communication system on both units is further divided into two one-way communication channels. The laser transmitter on board the friendly interrogator will send a signal to the photoreceivers on the friendly target. The R.F. transmitter on board the friendly target will then send acknowledgement back to the friendly interrogator. 
+The two-way communication system on both units is further divided into two one-way communication channels. The laser transmitter on board the friendly interrogator sends a signal to the photoreceivers on the friendly target. The R.F. transmitter on board the friendly target will then send acknowledgement back to the friendly interrogator. 
 
-An important aspect of this project is encryption and ensuring an enemy cannot pose as friendly to the interrogator. This will be addressed in two ways. Both systems will contain a locally synced clock so that ...
-
-
-\subsection{System Level Requirements}
-Requirements are imposed on both the R.F. subsystem and the laser subsystem to accurately receive packets. From a system perspective, the requirements are as follows:\hl{Should we still keep this in?}
-\begin{enumerate}
-	\item R.F. Transmitter/Receiver - Must be able to both transmit and receive at least 90\% of 8-bit packets sent over a distance of 5 meters with a carrier frequency of 315 MHz ± 50 MHz.
-	\item Laser Transmitter/Receiver - At least 90\% of transmitted laser packets must be received by the photoreciever at 5 m.
-\end{enumerate}
-
-Requirements are also imposed on the system speed. These are 
-\begin{enumerate}
-	\item Speed of System - A friendly target at 5 m should be marked friendly within 190 milliseconds.
-\end{enumerate}
-
-
+An important aspect of this project is encryption and ensuring an enemy cannot pose as friendly to the interrogator. This is addressed in two ways. Both systems will contain a locally synced clock so that a friendly target can only validate their acknowledgement within a period of time. Second, the acknowledgment that is sent back to the interrogator is a function of a common passphrase only know to the two systems.
 
 
 %SECTION - DESIGN
@@ -243,19 +228,18 @@ Requirements are also imposed on the system speed. These are
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.1]{interrogator_picture.png}
-	\caption{Friendly Interrogator Unit\label{fig:threshold}}
+	\caption{Friendly Interrogator Unit\label{fig:interrogator-picture}}
 \end{figure}
 
 \hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
 
-For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($635nm$) laser. See Section \ref{section-safety-ethics} for more on safety of the laser. 
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. 
 
-The team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. This laser was placed inside of a casing made out of hollow aluminum tube that was created to allow the user to adjust the spot size on the laser dot. The laser can be seen in Figure \ref{fig:} The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the $MSP430$ microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
+This laser was placed inside of a casing made out of hollow aluminum tube that was created to allow the user to adjust the spot size on the laser dot. The laser can be seen in Figure \ref{fig:interrogator-picture} The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the MSP430 microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
 
-
-
- 
 \hspace{5mm}\textbf{Laser Safety}
+
+\hl{This stuff was just copy-pasted from the design review - probably will need to change it up a bit}
 
  To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. 
  
@@ -347,10 +331,6 @@ The team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specifie
  
  The risk of eye damage is mitigated by the fact that the laser is both visible, and not always powered on. 
 
-
-\hspace{5mm}\textbf{R.F. Receiver} \label{section:rf-receiver-design-procedure}
-\\ \hl{TODO}
-
 \subsubsection{Friendly Target}
 
 
@@ -360,37 +340,96 @@ The team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specifie
 	\caption{Friendly Interrogator Unit\label{fig:threshold}}
 \end{figure}
 
-\hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:target-voltage-regulation-design-procedure} \\
-See \ref{section:interrogator-voltage-regulation-design-procedure}
 
 \hspace{5mm}\textbf{Laser Photoreceiver} \label{section:laser-photoreceiver-design-procedure}\\
-A photodiode was chosen such that a 5kHz signal could be processed and boosted to register a value between 0 and 3.3V at a maximum distance of $30m$ from the laser source. This couples the photoreceiver requirement with the intensity of the laser diode, which is capped at $5 mW$. A detailed analysis of the choice of photodiode is in \ref{section-tolerance-analysis}
+A photodiode was chosen such that a 5kHz signal could be processed and boosted to register a value between 0 and 3.3V at a maximum distance of $30m$ from the laser source. This couples the photoreceiver requirement with the intensity of the laser diode, which is capped at $5 mW$. 
+
+The inherent limitations of laser power for safety means that the performance is in the hands of the photodiode. The team did not change their design review choice and selected PIN photodiodes as they have a high sensitivity and speed.
+
+The next selection criteria is the material with which the photodiode is made. This includes materials such as Si, InGaAs, and InA. The optimum wavelength is dependent on the material selection.
+
+With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, will have the highest detectivity for the visible wavelength.  
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.4]{detectivity-table.png}
+	\label{fig:detectivity-table}
+	\caption{Specific Detectivity for Photodetector Materials \textsuperscript{\cite{Optical}} \label{fig:detectivity-table}}
+\end{figure}
+
+Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode is of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations will use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
+
+The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is 
+\begin{center}
+	{\large $NEP = \frac{\sqrt{A}}{D^*}$}  $[\frac{W}{Hz^{1/2}}]$
+\end{center}
+
+The incident irradiance, $E_i$, to cancel noise is
+\begin{center}
+	{\large $E_i = \frac{NEP * \sqrt{f}}{A} = \frac{\sqrt{Af}}{AD^*} = \frac{f}{D^*\sqrt{A}}$} $[\frac{W}{m^{2}}]$
+\end{center}
+
+The NEP measures the incident irradiance to cancel the noise on the photodiode. To register a signal on the MCU, the incident irradiance must be higher than the noise. To be conservative, define the required incident irradiance as 
+\begin{center}
+	{\large $E_{req} = 2E_i$} $[\frac{W}{m^{2}}]$
+\end{center}
+
+Multiplying the area of the laser's spot by the required incident irradiance at the photodiode gives the necessary power. Thus, the radius of the spot in terms of the power of the laser and required incident irradiance at the photodiode is 
+\begin{center}
+	{\large $r = \sqrt{\frac{P}{\pi E_{req}}}$} $[m]$
+\end{center}
+
+Note that the power contained in the laser's spot does not depend on distance from the source, as atmospheric reflection is negligible at $300 m$.
+
+The radius, in terms of the detectivity, frequency, and sensor active area is
+\begin{center}
+	{\large $r = \sqrt{\frac{PD^*\sqrt{A}}{2 \pi f}}$} $[m]$
+\end{center}
+
+The proposal listed $0.8382 m$ as the ideal radius of the laser's spot. Unfortunately, with the $5mW$ red laser, this would require a sensor with a massive active area. The largest sensor the team could find, at a reasonable price, has a $8.53 mm^2$ active area. 
+
+For the $8.53 mm^2$ active area photodiode operating at $635 nm = 4.72441 × 10^{14} Hz$ 
+\begin{center}
+	$r = 0.326998 m \approx 33 cm$
+\end{center}
+
+Refining the proposal requirements, the team has set a new requirement of a minimum $20 cm$ laser spot radius, making the diameter of the beam $0.4m$ at distances of $50m, 150m,$ and $300m$ with optical adjustment. This is well within the limit calculated above.  
 
 
 
-\hspace{5mm}\textbf{R.F. Transmitter} \label{section:rf-transmitter-design-procedure} \\
-The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). 
-\hl{TODO: Describe some of the governing equations}
 
 
 \subsubsection{System}
+
+\hspace{5mm}\textbf{R.F. Transmitter/Receiver} \label{section:rf-transmitter-design-procedure} \\
+
+
+The team purchased the R.F. receiver with the intentions of it being relatively easy to use out of the box and easily programmable with any MCU. However, in reality, the receiver proved to be much more difficult than the team imagined. 
+
+SMD adapters were used to plug the R.F. receiver into a breadboard and soon thereafter, the team learned that breadboards 
+
+The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). 
+\hl{TODO: Describe some of the governing equations}
 
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
 
 It is required that the power stay above 3.3V for a period of 8 hours. Originally, in the design review, a 3.3V boost-converter was going to be utilized along with a single AA battery (1.5V) to supply the entire interrogator unit. This proved to be a difficult implementation to use due to the MSP drawing more power than the team expected at the time of the design review. Also, the PCB mounting of this equipment proved to be difficult for unexperienced solderers. 
 
-For this reason, the team opted to use four AA standard alkaline batteries put through a regulator to drop the voltage supplied to the PCB down to 3.3V. In the friendly interrogator, this 3.3V output is fed directly into the MSP and R.F. modules for power. The friendly target will be explained in its respective section. 
+For this reason, the team opted to use four AA standard alkaline batteries put through a regulator to drop the voltage supplied to the PCB down to 3.3V. 
 
+In the friendly interrogator, this 3.3V output is fed directly into the MSP and R.F. modules for power.
+
+In the friendly target... \hl{Talk about power for friendly target here}
+
+ 
 \hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}\\
-
 The microcontroller must have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this design, as most come with several ports, fast processors, and a built in timer.
 
-The design decision, then, came down to ease of use and available documentation. To this end, the team chose to use the $MSP430$ series of microcontroller. Previously, the team had tried to use $MSP432s$, but these units stopped functioning mid-design. 
+In the design review, the team was using a MSP430F2274IDA, which proved to be very difficult to program using the lab-supplied FET programmer. For this reason the team decided to switch to the MSP432P401R(Launchpad model MSPEXP432P401) which contained an onboard debugger. These were much easier to use due to the USB-to-microUSB debugger. The team used these microcontrollers for approximately two weeks until both boards were determined to be defective due to internal shorts (drawing approximately 0.5A standby).
 
-Other microcontroller options, including PIC and arduino were considered. Arduino was considered overkill and low difficulty for the project, PIC more difficult to work with due to less documented proprietary systems.
+The team then decided to switch back to the MSP430 line but instead decided to use the Launchpad series similar to the MSP432. The MSP430G2553 (Launchpad model MSP-EXP430G2) was ultimately the model the team used during final demonstration. These worked excellent and did not cause any problems during demo. 
 
-FROM TEMPLATE: Discuss your design decisions for each block at the most general level: What alternative approaches tothe design are possible, which was chosen, and why is it desirable? Introduce the major design equations or other design tools used; show the general form of the circuits and describe their functions.
-
+Other microcontroller options, including PIC and arduino were considered. Arduino was considered overkill and low difficulty for the project, PIC more difficult to work with due to less documented proprietary systems. If pursuing this project further, the team would have still chosen the MSP430 Launchpad series due to the familiarity of using them for the 8 weeks during this project.
 
 
 %DESIGN DETAILS
@@ -398,11 +437,15 @@ FROM TEMPLATE: Discuss your design decisions for each block at the most general 
 
 
 \subsubsection{Friendly Interrogator}
+The Circuit and PCB evolved a great deal from the design review to simplify the circuit. First, the MSP microcontroller was changed from a surface mount device to a breakout using pinheaders on the PCB. The crystal oscillator circuit was removed and some switches were removed due to their complexity. The 
 \hspace{5mm}\textbf{Circuit Schematics} \label{section:interrogator-circuit-schematics-design-details}
-\\ \hl{TODO}
+
+Please refer to Figure \ref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit. 
 
 \hspace{5mm}\textbf{PCB} \label{section:interrogator-pcb-design-details}
-\\ \hl{TODO}
+
+Please refer to Figure \ref{fig:interrogator-pcb} for the circuit schematic of the friendly interrogator unit. 
+
 
 
 \subsubsection{Friendly Target}
@@ -462,11 +505,45 @@ The Requirements and Verification Table is shown in the appendix.
 
 \subsection{Laser Transmitter \& Photoreceiver}
 \subsubsection{Distance Requirement}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|c|c}	% ccccccc indicates 7 center aligned columns
+		\toprule	% top separator
+		Distance & Ambient & Transmitter On \\
+		\midrule
+		2 m  & 0.556 V & 1.75 V\\
+		5 m & 0.526 V & 1.59 V\\
+		15 m & 0.636 V & 1.12 V\\ 
+		30 m & 0.562 V & 0.87 V\\
+		
+		\bottomrule	% bottom separator
+	\end{tabular}%
+	\caption{Laser Transmitter Distance Test}
+	\label{tab:distance-requirement}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+\end{table}%
+
+\subsubsection{Spot Size Requirement}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|c|c}	% ccccccc indicates 7 center aligned columns
+		\toprule	% top separator
+		Distance & Smallest Spot Size Radius & Largest Spot Size Radius \\
+		\midrule
+		2 m  & 2.5mm & 16.25mm\\
+		5 m & 3.75mm & 36.5mm\\
+
+		
+		\bottomrule	% bottom separator
+	\end{tabular}%
+	\caption{Laser Transmitter Distance Test}
+	\label{tab:distance-requirement}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+\end{table}%
+
 \subsubsection{Packet Reception}
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.45]{packet_verification.png}
-	\caption{System Block Diagram\label{fig:packet-verification}}
+	\caption{Packet Sent/Received Signal\label{fig:packet-verification}}
 \end{figure}
 
 \subsubsection {Counting Packets}
@@ -479,29 +556,99 @@ The results are shown in Figure \ref{fig:transmitted-received}. The algorithm ve
 	\caption{Missed Packets Verification\label{fig:transmitted-received}}
 \end{figure}
 
+\subsection{R.F. Transmitter \& Receiver}
+No fuckin verification.
+
+\subsection{Power Module}
+The requirements stated the power module needed to output a steady 3.3V for a period of 8 hours $\pm$ 5\%
+
+\hspace{5mm}\textbf{Friendly Interrogator Consumption} \label{section:interrogator-consumption}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|c}	% ccccccc indicates 7 center aligned columns
+		\toprule	% top separator
+		Module & Active Current Consumption \\
+		\midrule
+		MSP430 & 1.521 mA \\ 
+		Linx KH3 R.F. Receiver & 10.1 mA \\
+		5 mW Laser & 24.7 mA (max) \\
+		PCB Standby & 30.1 mA \\
+		\bottomrule	% bottom separator
+		\textbf{Total} & 65.62 mA \\
+	\end{tabular}%
+	\caption{Current Consumption Values for Interrogator Unit}
+	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+\end{table}%
+
+
+\hspace{5mm}\textbf{Friendly Target Consumption} \label{section:ttarget-consumption}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|c}	% ccccccc indicates 7 center aligned columns
+		\toprule	% top separator
+		Module & Active Current Consumption \\
+		\midrule
+		MSP430 & 1.521 mA \\ 
+		Linx KH3 R.F. Transmitter & 7.81 mA\\
+		Photoreceiver Op Amp & 2.4 mA (max)\\
+		MAX680 5V to +/- 10V Converter & 500 $\mu$A \\
+		\bottomrule	% bottom separator
+		\textbf{Total} & -mA \\
+	\end{tabular}%
+	\caption{Current Consumption of Target Unit}
+	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+\end{table}%
+
+\subsection{System Speed}
+
 
 %COSTS
 \section{Costs}
-\hl{TODO: Compile cost estimates}
 
 The labor cost was calculated as follows:
 
 \begin{center}
-	Total dCost = Parts + Worker Salary (\$/hour) x 2.5 x Time (Hours) Invested In Project
+	Total Cost = Parts + Worker Salary (\$/hour) x 2.5 x Time (Hours) Invested In Project
 \end{center}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.45]{parts-labor-cost.png}
+	\caption{Parts and Labor Cost\label{fig:parts-labor-cost}}
+\end{figure}
+
+
 
 %CONCLUSION
 \section{Conclusion}
 \hl{TODO}
+\subsection{Ethics}
+This project has several ethical issues that can be addressed by the IEEE Code of Conduct. Specifically, numbers 1, 2, 3, 5, 6, 7, and 9 are the most important items that pertain to the Infantry I.F.F. System the team is building this semester. 
+\begin{enumerate}
+	\item to accept responsibility in making decisions consistent with the safety, health, and welfare of the public, and to disclose promptly factors that might endanger the public or the environment;
+	\item to avoid real or perceived conflicts of interest whenever possible, and to disclose them to affected parties when they do exist;
+	\item to be honest and realistic in stating claims or estimates based on available data;  
+	\skipitems{1}
+	\item to improve the understanding of technology; its appropriate application, and potential consequences;  
+	\item to maintain and improve our technical competence and to undertake technological tasks for others only if qualified by training or experience, or after full disclosure of pertinent limitations;  
+	\item to seek, accept, and offer honest criticism of technical work, to acknowledge and correct errors, and to credit properly the contributions of others;  
+	\skipitems{1}
+	\item to avoid injuring others, their property, reputation, or employment by false or malicious action;  
+\end{enumerate}
+Number 1 and 9 apply to this project in a significant way due to the handling of lasers and equipment that is to be used for mounting on a weapon. For one, there will be no handling of any weapons this semester whatsoever. The team will use replacement props for demonstration purposes. The laser safety has been verified to be safe up to 1.5 meters and the team will in NO matter use the laser in an unsafe manner. The laser will only be used for project-purposes and will not be used outside of the lab.
+
+Number 2 and 3 are somewhat of the same and the team will ensure to disclose any crucial information the ECE department must know regarding our project, as soon as the team is aware. 
+
+Number 5 is particularly important in this project due to the IFF system being designed for wartime use. This means that the team must understand the consequences if pursued further. There are lives at stake here and this is a very serious matter. 
+
+Number 6 and 7 can be coupled together in an academic integrity statement. There are several other I.F.F. systems developed by other schools and the team is well aware of this. However, the work the team produces this year will be an individual/team pursuit unique to the senior design semester of spring 2016. It will, in no way, be a reproduction of any other I.F.F. system out there. The design approaches maybe similar due to similar constraints/budgetary concerns, however, the work the team produces will be 100\% authentic and absolutely not plagiarized. 
+\subsection{Future Work}
 FROM TEMPLATE: Bring together, concisely, the conclusions to be drawn. It may be appropriate, depending on the nature of the project, to begin or end with a two‐ or three‐sentence executive summary. The reader needs to be convinced that the design will work. Summarize your accomplishments. If uncertainties remain, they should be pointed out, and alternatives, such as modifying performance specifications, should be spelled out to deal with foreseeable outcomes. Use  words, not equations or diagrams. Devote a section to ethical considerations with reference to the IEEE Code of Ethics and any other applicable code (e.g., the AMA Code of Medical Ethics for certain bioengineering projects).
 
-%REFERENCES
-\section{References}
-\hl{TODO}
-FROM TEMPLATE: Follow the IEEE reference styles provided in this document for various kinds of sources. If you need to cite something for which there is no example, simply use common sense and provide—in a neat and orderly manner emulating the IEEE reference style—the information necessary for another researcher to find that source.   References [1]–[3] are examples of a manual, datasheet, and web page, respectively. References [4]–[7] are more standard, scholarly sources: a book, chapter in an edited book, journal article, and conference proceedings. Reference [8] is a technical report, and reference [9] is class notes. Cite all references
-consecutively in the text, as is done here. (ECE Editorial Services provides a more detailed description of IEEE reference style on its wiki: http://go.illinois.edu/ecethesis .)
+
 
 \clearpage
+%REFERENCES
 \bibliographystyle{IEEE_ECE}
 % include the BibTex file here to build reference
 \bibliography{Citations}\addcontentsline{toc}{section}{Reference}
@@ -512,15 +659,22 @@ consecutively in the text, as is done here. (ECE Editorial Services provides a m
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.37]{friendly_interrogator_circuit.png}
-	\caption{Friendly InterrogatorCircuit Schematic \label{fig:threshold}}
+	\caption{Friendly Interrogator Circuit Schematic \label{fig:interrogator-schematic}}
 \end{figure}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.37]{interrogator_pcb.png}
+	\caption{Friendly Interrogator PCB\label{fig:interrogator-pcb}}
+\end{figure}
+
 
 %\begin{figure} [H]
 %	\centering
 %	\includegraphics[scale=0.37]{friendly_interrogator_circuit.png}
 %	\caption{Friendly Interrogator Circuit Schematic \label{fig:threshold}}
 %\end{figure}
-\hl{PUT TARGET UNIT SCHEMATIC HERE}
+\hl{PUT TARGET UNIT SCHEMATIC/PCB HERE}
 
 
 \makeatletter
