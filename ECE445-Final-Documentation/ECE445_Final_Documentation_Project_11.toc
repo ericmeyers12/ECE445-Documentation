@@ -6,15 +6,19 @@
 \contentsline {section}{\numberline {2}Design}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Design Procedure}{3}{subsection.2.1}
 \contentsline {subsubsection}{\numberline {2.1.1}Friendly Interrogator}{3}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Friendly Target}{3}{subsubsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.3}System}{3}{subsubsection.2.1.3}
-\contentsline {subsection}{\numberline {2.2}Design Details}{3}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator}{3}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Friendly Target}{4}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}System}{4}{subsubsection.2.2.3}
-\contentsline {section}{\numberline {3}Verification}{4}{section.3}
-\contentsline {section}{\numberline {4}Costs}{4}{section.4}
-\contentsline {section}{\numberline {5}Conclusion}{5}{section.5}
-\contentsline {section}{\numberline {6}References}{5}{section.6}
-\contentsline {section}{Reference}{6}{section.6}
+\contentsline {subsubsection}{\numberline {2.1.2}Friendly Target}{6}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}System}{6}{subsubsection.2.1.3}
+\contentsline {subsection}{\numberline {2.2}Design Details}{7}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator}{7}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Friendly Target}{7}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}System}{8}{subsubsection.2.2.3}
+\contentsline {section}{\numberline {3}Verification}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Laser Transmitter \& Photoreceiver}{8}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Distance Requirement}{8}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Packet Reception}{9}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Counting Packets}{9}{subsubsection.3.1.3}
+\contentsline {section}{\numberline {4}Costs}{9}{section.4}
+\contentsline {section}{\numberline {5}Conclusion}{10}{section.5}
+\contentsline {section}{\numberline {6}References}{10}{section.6}
+\contentsline {section}{Reference}{11}{section.6}
 \contentsfinish 

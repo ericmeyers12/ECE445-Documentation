@@ -2320,7 +2320,7 @@ design rules under a new name.</description>
 <signal name="N$2">
 </signal>
 <signal name="N$4">
-<wire x1="40.259" y1="71.12" x2="35.687" y2="71.12" width="3.2258" layer="1"/>
+<wire x1="40.4114" y1="70.9676" x2="35.687" y2="71.12" width="3.2258" layer="1"/>
 <wire x1="35.687" y1="71.12" x2="35.687" y2="76.708" width="3.2258" layer="1"/>
 <wire x1="35.687" y1="76.708" x2="62.23" y2="76.708" width="3.2258" layer="1"/>
 <wire x1="62.23" y1="76.708" x2="62.23" y2="3.81" width="3.2258" layer="1"/>
@@ -2329,7 +2329,7 @@ design rules under a new name.</description>
 <wire x1="68.58" y1="76.2" x2="74.93" y2="76.2" width="3.2258" layer="1"/>
 </signal>
 <signal name="N$3">
-<wire x1="40.64" y1="71.12" x2="41.6052" y2="71.1454" width="3.2258" layer="1"/>
+<wire x1="35.687" y1="71.12" x2="42.418" y2="70.866" width="3.2258" layer="1"/>
 </signal>
 <signal name="V_SOURCE">
 <contactref element="U$2" pad="P$1"/>
@@ -2485,6 +2485,8 @@ design rules under a new name.</description>
 <approved hash="5,1,47c4788639d19c3f"/>
 <approved hash="5,1,47c4788639d19c3f"/>
 <approved hash="5,1,b3c9e323d0ff3e72"/>
+<approved hash="19,1,5f625d72088a1eea"/>
+<approved hash="19,1,5a1c85fb22d40314"/>
 <approved hash="19,1,aafa66558ef93576"/>
 <approved hash="19,1,a61a1980f7f23d08"/>
 <approved hash="19,1,bafe754282442a18"/>
@@ -2495,8 +2497,9 @@ design rules under a new name.</description>
 <approved hash="19,1,becfb3b240772eea"/>
 <approved hash="19,1,a5ea48f4a69e3ee0"/>
 <approved hash="19,1,9d8603eed3580e10"/>
-<approved hash="19,1,5f625d72088a1eea"/>
-<approved hash="19,1,5a1c85fb22d40314"/>
+<approved hash="19,1,f0b3acc9fdc63e02"/>
+<approved hash="19,1,088269f8f4bfafa9"/>
+<approved hash="19,1,6d988b637de919f8"/>
 <approved hash="19,1,677832bf04b1b455"/>
 <approved hash="19,1,6a445ff1615ba1c9"/>
 <approved hash="19,1,66f64ec47e70ad63"/>
