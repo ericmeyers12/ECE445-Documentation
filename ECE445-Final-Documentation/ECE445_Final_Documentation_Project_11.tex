@@ -246,7 +246,6 @@ Requirements are also imposed on the system speed. These are
 	\caption{Friendly Interrogator Unit\label{fig:threshold}}
 \end{figure}
 
-
 \hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
 
 For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team will use a red ($635nm$) laser. See Section \ref{section-safety-ethics} for more on safety of the laser. 
@@ -349,12 +348,11 @@ The team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specifie
  The risk of eye damage is mitigated by the fact that the laser is both visible, and not always powered on. 
 
 
-
-
 \hspace{5mm}\textbf{R.F. Receiver} \label{section:rf-receiver-design-procedure}
 \\ \hl{TODO}
 
 \subsubsection{Friendly Target}
+
 
 \begin{figure} [H]
 	\centering
@@ -368,19 +366,22 @@ See \ref{section:interrogator-voltage-regulation-design-procedure}
 \hspace{5mm}\textbf{Laser Photoreceiver} \label{section:laser-photoreceiver-design-procedure}\\
 A photodiode was chosen such that a 5kHz signal could be processed and boosted to register a value between 0 and 3.3V at a maximum distance of $30m$ from the laser source. This couples the photoreceiver requirement with the intensity of the laser diode, which is capped at $5 mW$. A detailed analysis of the choice of photodiode is in \ref{section-tolerance-analysis}
 
+
+
 \hspace{5mm}\textbf{R.F. Transmitter} \label{section:rf-transmitter-design-procedure} \\
 The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). 
 \hl{TODO: Describe some of the governing equations}
 
 
 \subsubsection{System}
+
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
 
 It is required that the power stay above 3.3V for a period of 8 hours. Originally, in the design review, a 3.3V boost-converter was going to be utilized along with a single AA battery (1.5V) to supply the entire interrogator unit. This proved to be a difficult implementation to use due to the MSP drawing more power than the team expected at the time of the design review. Also, the PCB mounting of this equipment proved to be difficult for unexperienced solderers. 
 
 For this reason, the team opted to use four AA standard alkaline batteries put through a regulator to drop the voltage supplied to the PCB down to 3.3V. In the friendly interrogator, this 3.3V output is fed directly into the MSP and R.F. modules for power. The friendly target will be explained in its respective section. 
 
-\hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}
+\hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}\\
 
 The microcontroller must have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this design, as most come with several ports, fast processors, and a built in timer.
 
@@ -419,6 +420,7 @@ Incoming transmissions are broken into two parts, where a $1$ corresponds to a h
 	\item \textbf{Packet} - An 8 digit long value representing a numerical id
 \end{enumerate}
 
+
 Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room can the photoreceiver to report $0-2V$ when receiving no light from the transmitter, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before. This is similar to Non-Return to Zero Inverted (NRZI) encoding scheme widely used in many applications. This is Algorithm \ref{algo-1} shown in the appendix. Figure 
 
 \begin{figure} [H]
@@ -432,7 +434,20 @@ Binary values are stored in an array of length 8, since both packets and preambl
 
 Once a preamble has been received, a simple algorithm is used to capture a packet. This is Algorithm \ref{algo-3} in the appendix. After 100 queries of a packet has received 85\% success, an acknowledgement will be sent over R.F.
 
-\hl{}
+
+Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room can the photoreceiver to report $0-2V$ when receiving no light from the transmitter, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before.
+
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+
+Binary values are stored in an array of length 8, since both packets and preambles are 8 bits. Because a preamble can come at any moment, an algorithm was designed both to store binary values in the array, and to always check for a preamble packet 
+
+
+
+Once a preamble has been received, a simple algorithm is used to capture a packet
 
 \subsubsection{System}
 
@@ -441,6 +456,7 @@ FROM TEMPLATE: Present the detailed design, with diagrams and component values. 
 
 %SECTION - VERIFICATION
 \section{Verification}
+
 The Requirements and Verification Table is shown in the appendix.
 
 

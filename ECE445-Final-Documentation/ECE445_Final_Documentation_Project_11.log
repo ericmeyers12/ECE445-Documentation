@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 APR 2016 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 APR 2016 23:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -976,7 +976,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `ECE445_Final_Documentation_Project_11.toc'.
 
 
-<University-of-Illinois-logo.jpg, id=153, 395.4775pt x 156.585pt>
+<University-of-Illinois-logo.jpg, id=159, 395.4775pt x 156.585pt>
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
@@ -1007,7 +1007,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 193.
 
-<System_Block_Diagram.png, id=160, 914.41624pt x 698.61pt>
+<System_Block_Diagram.png, id=166, 914.41624pt x 698.61pt>
 File: System_Block_Diagram.png Graphic file (type png)
 
 <use System_Block_Diagram.png>
@@ -1048,7 +1048,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2 <./System_Block_Diagram.png>]
-<interrogator_picture.png, id=177, 2809.49625pt x 1412.27625pt>
+<interrogator_picture.png, id=183, 2809.49625pt x 1412.27625pt>
 File: interrogator_picture.png Graphic file (type png)
 
 <use interrogator_picture.png>
@@ -1057,14 +1057,14 @@ Package pdftex.def Info: interrogator_picture.png used on input line 245.
 
 
 LaTeX Warning: Reference `section-safety-ethics' on page 3 undefined on input l
-ine 252.
+ine 251.
 
 
-LaTeX Warning: Reference `fig:' on page 3 undefined on input line 254.
+LaTeX Warning: Reference `fig:' on page 3 undefined on input line 253.
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 266
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 265
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1077,7 +1077,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [3 <./interrogator_picture.png>]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 321
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 320
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1087,15 +1087,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4] <target_picture.png, id=204, 3173.8575pt x 1630.09pt>
+[4] <target_picture.png, id=210, 3173.8575pt x 1630.09pt>
 File: target_picture.png Graphic file (type png)
 
 <use target_picture.png>
-Package pdftex.def Info: target_picture.png used on input line 361.
+Package pdftex.def Info: target_picture.png used on input line 359.
 (pdftex.def)             Requested size: 253.91379pt x 130.40987pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 364
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 362
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1108,11 +1108,16 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [5]
 
 LaTeX Warning: Reference `section-tolerance-analysis' on page 6 undefined on in
-put line 369.
+put line 367.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
 
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 386
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 387
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1122,15 +1127,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6 <./target_picture.png>] <threshold.png, id=220, 578.16pt x 433.62pt>
+[6 <./target_picture.png>] <threshold.png, id=226, 578.16pt x 433.62pt>
 File: threshold.png Graphic file (type png)
 
 <use threshold.png>
-Package pdftex.def Info: threshold.png used on input line 426.
+Package pdftex.def Info: threshold.png used on input line 428.
 (pdftex.def)             Requested size: 260.16959pt x 195.1272pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 429
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 431
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1153,33 +1158,34 @@ Missing character: There is no ¬ in font cmr10!
 Missing character: There is no † in font cmr10!
 Missing character: There is no ¬ in font cmr10!
 Missing character: There is no † in font cmr10!
- <packet_verification.png, id=232, 578.16pt x 433.62pt>
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 463
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8 <./threshold.png>] <packet_verification.png, id=246, 578.16pt x 433.62pt>
 File: packet_verification.png Graphic file (type png)
 
 <use packet_verification.png>
-Package pdftex.def Info: packet_verification.png used on input line 452.
+Package pdftex.def Info: packet_verification.png used on input line 468.
 (pdftex.def)             Requested size: 260.16959pt x 195.1272pt.
-File: University-of-Illinois-logo.jpg Graphic file (type jpg)
- <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 455
-.
-(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 26.13104pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8 <./threshold.png>] <transmitted_received.png, id=243, 578.16pt x 433.62pt>
+<transmitted_received.png, id=249, 578.16pt x 433.62pt>
 File: transmitted_received.png Graphic file (type png)
 
 <use transmitted_received.png>
-Package pdftex.def Info: transmitted_received.png used on input line 462.
+Package pdftex.def Info: transmitted_received.png used on input line 478.
 (pdftex.def)             Requested size: 260.16959pt x 195.1272pt.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 475
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 481
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1189,7 +1195,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9 <./packet_verification.png> <./transmitted_received.png>]
+[9 <./packet_verification.png>]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ê in font cmr10!
@@ -1219,9 +1225,8 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
-
-<use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 488
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 504
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1231,7 +1236,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[10] (./ECE445_Final_Documentation_Project_11.bbl
+[10 <./transmitted_received.png>]
+File: University-of-Illinois-logo.jpg Graphic file (type jpg)
+ <use University-of-Illinois-logo.jpg>
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 504
+.
+(pdftex.def)             Requested size: 56.9055pt x 22.531pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 26.13104pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11] (./ECE445_Final_Documentation_Project_11.bbl
 Missing character: There is no ‚ in font cmti10!
 Missing character: There is no Ä in font cmti10!
 Missing character: There is no ì in font cmti10!
@@ -1239,7 +1257,7 @@ Missing character: There is no ì in font cmti10!
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 492
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 508
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1249,20 +1267,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11
+[12
 
-] <friendly_interrogator_circuit.png, id=262, 1193.45876pt x 517.935pt>
+] <friendly_interrogator_circuit.png, id=272, 1193.45876pt x 517.935pt>
 File: friendly_interrogator_circuit.png Graphic file (type png)
 
 <use friendly_interrogator_circuit.png>
-Package pdftex.def Info: friendly_interrogator_circuit.png used on input line 4
-98.
+Package pdftex.def Info: friendly_interrogator_circuit.png used on input line 5
+14.
 (pdftex.def)             Requested size: 441.57283pt x 191.63293pt.
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 515.
+put line 531.
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 564
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 580
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1276,14 +1294,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.564 
+l.580 
        [1
 
  <./friendly_interrogator_circuit.png>]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
 
 <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 589
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 605
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1297,11 +1315,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.589 
+l.605 
        [2]
 File: University-of-Illinois-logo.jpg Graphic file (type jpg)
  <use University-of-Illinois-logo.jpg>
-Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 604
+Package pdftex.def Info: University-of-Illinois-logo.jpg used on input line 620
 .
 (pdftex.def)             Requested size: 56.9055pt x 22.531pt.
 
@@ -1315,60 +1333,60 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.604 \clearpage
+l.620 \clearpage
                  [3]
 
 Package pdfpages Warning: Option `page' is unknow to \includepdf.
 (pdfpages)                Did you mean `pages'? (Note the `s'!)
 (pdfpages)                OK, I'll proceed as if it were `pages'.
 
-<Requirements-Verification.pdf, id=274, 614.295pt x 794.97pt>
+<Requirements-Verification.pdf, id=284, 614.295pt x 794.97pt>
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf>
-Package pdftex.def Info: Requirements-Verification.pdf used on input line 608.
+Package pdftex.def Info: Requirements-Verification.pdf used on input line 624.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
  <use Requirements-Verification.pdf>
-Package pdftex.def Info: Requirements-Verification.pdf used on input line 608.
+Package pdftex.def Info: Requirements-Verification.pdf used on input line 624.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Requirements-Verification.pdf, id=277, page=1, 614.295pt x 794.97pt>
+<Requirements-Verification.pdf, id=287, page=1, 614.295pt x 794.97pt>
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Requirements-Verification.pdf, page1 used on input lin
-e 608.
+e 624.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Requirements-Verification.pdf, page1 used on input lin
-e 608.
+e 624.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Requirements-Verification.pdf, page1 used on input lin
-e 608.
+e 624.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Requirements-Verification.pdf, page1 used on input lin
-e 608.
+e 624.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 1>
 Package pdftex.def Info: Requirements-Verification.pdf, page1 used on input lin
-e 610.
+e 626.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.610 \clearpage
+l.626 \clearpage
                  [4
 
  <./Requirements-Verification.pdf>]
@@ -1379,102 +1397,112 @@ Package pdfpages Warning: Option `page' is unknow to \includepdf.
 
 File: Requirements-Verification.pdf Graphic file (type pdf)
 <use Requirements-Verification.pdf>
-Package pdftex.def Info: Requirements-Verification.pdf used on input line 614.
+Package pdftex.def Info: Requirements-Verification.pdf used on input line 630.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
  <use Requirements-Verification.pdf>
-Package pdftex.def Info: Requirements-Verification.pdf used on input line 614.
+Package pdftex.def Info: Requirements-Verification.pdf used on input line 630.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Requirements-Verification.pdf, id=300, page=2, 614.295pt x 794.97pt>
+<Requirements-Verification.pdf, id=311, page=2, 614.295pt x 794.97pt>
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Requirements-Verification.pdf, page2 used on input lin
-e 614.
+e 630.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Requirements-Verification.pdf, page2 used on input lin
-e 614.
+e 630.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Requirements-Verification.pdf, page2 used on input lin
-e 614.
+e 630.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Requirements-Verification.pdf, page2 used on input lin
-e 614.
+e 630.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 618.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 634.
 File: Requirements-Verification.pdf Graphic file (type pdf)
 
 <use Requirements-Verification.pdf, page 2>
 Package pdftex.def Info: Requirements-Verification.pdf, page2 used on input lin
-e 618.
+e 634.
 (pdftex.def)             Requested size: 522.15321pt x 675.72769pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.618 \end{document}
+l.634 \end{document}
                      [5
 
  <./Requirements-Verification.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 618.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 634.
 
 (./ECE445_Final_Documentation_Project_11.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 618.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 618.
-Package rerunfilecheck Info: File `ECE445_Final_Documentation_Project_11.out' h
-as not changed.
-(rerunfilecheck)             Checksum: F959AB4794F9DAA6DDFB003DFF3ECA13;1494.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 634.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 634.
 
+
+Package rerunfilecheck Warning: File `ECE445_Final_Documentation_Project_11.out
+' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ECE445_Final_Documentation_Project_
+11.out':
+(rerunfilecheck)             Before: 8D988365B3435CB55E0A923BFE746A64;1560
+(rerunfilecheck)             After:  F959AB4794F9DAA6DDFB003DFF3ECA13;1494.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 618.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 634.
  ) 
 Here is how much of TeX's memory you used:
- 18825 strings out of 493089
- 354124 string characters out of 6134842
- 413252 words of memory out of 5000000
- 22016 multiletter control sequences out of 15000+600000
+ 18828 strings out of 493089
+ 354161 string characters out of 6134842
+ 413253 words of memory out of 5000000
+ 22017 multiletter control sequences out of 15000+600000
  19232 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,19n,44p,10425b,963s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on ECE445_Final_Documentation_Project_11.pdf (19 pages, 15375991
+ 42i,19n,44p,10425b,951s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsection.3.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on ECE445_Final_Documentation_Project_11.pdf (20 pages, 15376966
  bytes).
 PDF statistics:
- 382 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 268 words of extra memory for PDF output out of 10000 (max. 10000000)
 
