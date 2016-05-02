@@ -34,6 +34,7 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{subfig}
 
 
 % use the fancyhdr package to maintain the format of the page numbers,
@@ -488,15 +489,45 @@ The Circuit and PCB evolved a great deal from the design review to simplify the 
 \label{section:interrogator-adjustable-focus-laser}
 \hl{I would minimize the amount you talk about this info - im not sure if they would like the mechanical aspect as much as the ECE aspect - but still include some of it}
 
-The adjustable focus laser was built using two lenses, one convex and one concave. The laser can be seen pictured below: \hl{TODO: Picture}
+The adjustable focus laser was built using two lenses, one convex and one concave. The laser can be seen in figure \ref{fig:laser-transmitter}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.05]{laser-transmitter.png}
+	\label{fig:laser-transmitter}
+	\caption{Laser Transmitter}
+\end{figure}
 
 The concave lens is mounted in a 1/2 inch PVC nipple with hot glue. Behind the lens, a cut acrylic cicle with a hole in the center holds the laser in place. This acrylic cutout is also hot glued in place.
 
-The acrylic cutout holding the laser in the PVC nipple can be seen below. \hl{TODO: Picture}
+The acrylic cutout holding the laser in the PVC nipple can be seen in figure \ref{fig:acrylic}.
 
-Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed-off shower curtain rod. At the very end of the rod, the concave lens is secured in place using hot glue and a PVC connector. This can be seen blow. \hl{TODO: Picture}
+	\begin{figure}%
+		\centering
+		\subfloat{{\includegraphics[width=5cm]{acrylic.png} }}%
+		\qquad
+		\subfloat{{\includegraphics[width=5cm]{nipple.png} }}%
+		\caption{Acrylic Laser Holder in PVC Nipple}%
+		\label{fig:acrylic}%
+	\end{figure}
+	
+Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed-off shower curtain rod. At the very end of the rod, the concave lens is secured in place using hot glue and a PVC connector. This can be seen in figure \ref{fig:end}
 
-The shower curtain rod allows a user to twist counter-clockwise to free lateral motion, and then twist clockwise to secure the rod in place. This was ideal for the purpose of the interrogator's adjustable focus laser, as a user can adjust the focus and secure the rod in place. Below shows a picture with the rod fully extended, which shows a much larger length than the picture in figure  \hl{TODO: Picture} 
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.05]{end.png}
+	\label{fig:end}
+	\caption{Concave Lens Secured by PVC Connector}
+\end{figure}
+
+The shower curtain rod allows a user to twist counter-clockwise to free lateral motion, and then twist clockwise to secure the rod in place. This was ideal for the purpose of the interrogator's adjustable focus laser, as a user can adjust the focus and secure the rod in place. Below shows a picture with the rod fully extended, which shows a much larger length than the picture in figure \ref{fig:extended}
+
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.05]{extended-rod.png}
+	\label{fig:extended}
+	\caption{Extended Adjustable Focus Laser}
+\end{figure}
 
 \hspace{5mm}\textbf{Circuit Schematics} \label{section:interrogator-circuit-schematics-design-details}
 
