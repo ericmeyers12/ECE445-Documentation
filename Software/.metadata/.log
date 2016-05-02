@@ -6105,3 +6105,44 @@ Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.
 !ENTRY com.ti.ccstudio.debug 1 0 2016-04-27 08:43:49.961
 !MESSAGE DS_ERROR: Error connecting to the target:
 Could not find device (or device not supported)
+!SESSION 2016-04-29 10:44:42.627 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.7.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2016-04-29 10:44:45.705
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2016-04-29 10:44:45.705
+!MESSAGE debugServerDir=C:/ti/ccsv6/ccs_base/DebugServer
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2016-04-29 10:45:16.456
+!MESSAGE No repository found at http://www.ti.com/tool/mspdriverlib.
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-29 10:47:59.487
+!MESSAGE Indexed 'msp430g2xx3_ta_01.c' (1 sources, 5 headers) in 0.187 sec: 182 declarations; 642 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2016-04-29 10:48:17.987
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: MSP-FET430UIF is already in use
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2016-04-29 10:48:18.316
+!MESSAGE DS_ERROR: Error initializing emulator:
+MSP-FET430UIF is already in use
+
+!ENTRY com.ti.ccstudio.debug 1 0 2016-04-29 10:48:39.066
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: MSP-FET430UIF is already in use
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2016-04-29 10:48:39.096
+!MESSAGE DS_ERROR: Error initializing emulator:
+MSP-FET430UIF is already in use
+
+!ENTRY com.ti.ccstudio.system.setup.ui 1 0 2016-04-29 10:49:25.784
+!MESSAGE targetCfgPath1=C:/Users/ERIC_M~1/user/CCSTargetConfigurations
+
+!ENTRY com.ti.ccstudio.system.setup.ui 1 0 2016-04-29 10:49:25.784
+!MESSAGE targetCfgPath2=C:/Users/ERIC_M~1/ti/CCSTargetConfigurations
