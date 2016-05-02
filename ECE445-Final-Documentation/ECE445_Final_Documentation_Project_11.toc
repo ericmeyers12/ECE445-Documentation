@@ -5,24 +5,25 @@
 \contentsline {section}{\numberline {2}Design}{2}{section.2}
 \contentsline {subsection}{\numberline {2.1}Design Procedure}{2}{subsection.2.1}
 \contentsline {subsubsection}{\numberline {2.1.1}Friendly Interrogator}{3}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Friendly Target}{5}{subsubsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.3}System}{7}{subsubsection.2.1.3}
-\contentsline {subsection}{\numberline {2.2}Design Details}{8}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator}{8}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Friendly Target}{8}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}System}{10}{subsubsection.2.2.3}
-\contentsline {section}{\numberline {3}Verification}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}Laser Transmitter \& Photoreceiver}{10}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Distance Requirement}{10}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Spot Size Requirement}{10}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}Packet Reception}{11}{subsubsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.4}Counting Packets}{11}{subsubsection.3.1.4}
-\contentsline {subsection}{\numberline {3.2}R.F. Transmitter \& Receiver}{11}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Power Module}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}System Speed}{12}{subsection.3.4}
-\contentsline {section}{\numberline {4}Costs}{12}{section.4}
-\contentsline {section}{\numberline {5}Conclusion}{13}{section.5}
-\contentsline {subsection}{\numberline {5.1}Ethics}{13}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Future Work}{14}{subsection.5.2}
-\contentsline {section}{Reference}{15}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {2.1.2}Friendly Target}{7}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}System}{9}{subsubsection.2.1.3}
+\contentsline {subsection}{\numberline {2.2}Design Details}{10}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator}{10}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Friendly Target}{11}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}System}{12}{subsubsection.2.2.3}
+\contentsline {section}{\numberline {3}Verification}{12}{section.3}
+\contentsline {subsection}{\numberline {3.1}Laser Transmitter \& Photoreceiver}{12}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Distance Requirement}{12}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Spot Size Requirement}{12}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Packet Reception}{13}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Counting Packets}{13}{subsubsection.3.1.4}
+\contentsline {subsection}{\numberline {3.2}R.F. Transmitter \& Receiver}{13}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Power Module}{14}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}System Speed}{14}{subsection.3.4}
+\contentsline {section}{\numberline {4}Costs}{14}{section.4}
+\contentsline {section}{\numberline {5}Conclusion}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}Ethics}{15}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Accomplishments}{16}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Future Work}{16}{subsection.5.3}
+\contentsline {section}{Reference}{18}{subsection.5.3}
 \contentsfinish 
