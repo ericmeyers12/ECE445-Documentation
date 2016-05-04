@@ -176,7 +176,7 @@ Project No. 11
 \color{black}
 \pagenumbering{gobble}
 \section*{Abstract}
-This project serves as a method for infantry units to identify friendly vs enemy combatants in the heat of battle. Quick and reliable friendly identification will reduce the number of friendly fire or misfire accidents in combat. A single LED indicator lights up identifying the target as either ``friendly" or ``enemy". This could be extended to change the color of red-dot sites to green, similar to a reticle in a video game. 
+This project serves as a method for infantry units to identify friendly vs enemy combatants in the heat of battle. Quick and reliable friendly identification will reduce the number of friendly fire or misfire accidents in combat. A single LED indicator lights up identifying the target as a ``friendly." This could be extended to change the color of red-dot sites to green, similar to a reticle in a video game. 
 \buildtoc
 \pagenumbering{gobble}
 \clearpage
@@ -201,7 +201,7 @@ The idea is to develop a two-way communication system so that when a soldier aim
 \subsubsection{Functions and Features}
 \begin{itemize}
 	\item Laser transmitter on friendly interrogator to send unique I.D.
-	\item Photodiodes on friendly target detect unique I.D. and verify its signal.
+	\item Photodiodes on friendly target detect unique I.D.
 	\item R.F. transmitter on friendly target to send acknowledgement back to interrogator.
 	\item R.F. receiver on friendly interrogator to verify that the target is friendly.
 	\item LED to indicate friendly or enemy on interrogator unit with system response of less than 190 ms (human reaction time\textsuperscript{\cite{Reaction_Times}})
@@ -217,8 +217,7 @@ These functions and features are summarized in the system block diagram shown in
 
 The two-way communication system on both units is further divided into two one-way communication channels. The laser transmitter on board the friendly interrogator sends a signal to the photoreceivers on the friendly target. The R.F. transmitter on board the friendly target will then send acknowledgement back to the friendly interrogator. 
 
-An important aspect of this project is encryption and ensuring an enemy cannot pose as friendly to the interrogator. This is addressed in two ways. Both systems will contain a locally synced clock so that a friendly target can only validate their acknowledgement within a period of time. Second, the acknowledgment that is sent back to the interrogator is a function of a common passphrase only know to the two systems.
-
+An important aspect of this project is encryption and ensuring an enemy cannot pose as friendly to the interrogator. This is addressed in two ways; both systems contain a locally synced clock so that a friendly target can only validate their acknowledgment within a period of time. This eliminates the possibility of an enemy intercepting and retransmitting an acknowledgment signal. Second, the acknowledgment that is sent back to the interrogator is a function of a common passphrase only know to the two systems.
 
 %SECTION - DESIGN
 \section{Design}
@@ -237,7 +236,7 @@ An important aspect of this project is encryption and ensuring an enemy cannot p
 
 For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. 
 
-This laser was placed inside of a casing made out of hollow aluminum tube that was created to allow the user to adjust the spot size on the laser dot. The laser can be seen in Figure \ref{fig:interrogator-picture} The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the MSP430 microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
+This laser was placed inside of a casing made out of hollow aluminum tube that was created to allow the user to adjust the spot size on the laser dot. The laser can be seen in Figure \ref{fig:interrogator-picture}. The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the MSP430 microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
 
 \hspace{5mm} \textbf{Adjustable Focus}
 
@@ -264,9 +263,11 @@ Following from these equations,
 	f = \frac{Dw}{r} =  \frac{1}{f_1} + \frac{1}{f_2} - \frac{d}{f_1 f_2}
 \end{equation}
 
-This setup requires a tube, a laser, both lenses, and some a screwing cap for the tube. With their varying price and relative cheapness, PVC pipes and caps were a clear choice. 
+The hardware and construction of the adjustable focus laser is discussed in greater detail in Section \ref{section-design-details}. 
 
-The sawed-off shower rod has at least $\frac{1}{2}$ inches of adjustable distance. The beam width for the laser is around $2mm$. The spot radius is $20cm$. In order to test indoor in close quarters (i.e. the lab), the full distance should reach a spot radius of $20cm$ at $20 m$. This diverges slightly from the closest requirement of $50m$, but will still be able to hit $20cm$ at $50m$ and will make debugging easier. At the shortest distance the spot radius should be $20cm$ at $300m$. This gives us a system of equations with two unknowns: 
+The adjustable focus laser has at least $\frac{1}{2}$ inches of adjustable distance. The beam width for the laser is around $2mm$. The spot radius is $20cm$. In order to test indoor in close quarters (i.e. the lab), the full distance should reach a spot radius of $20cm$ at $20 m$. At the shortest distance the spot radius should be $20cm$ at $300m$. Note that the lenses were ordered under the assumption of $50, 150, 300 m$ requirements, and so these calculations are geared towards those original requirement. This is not necessarily a bad thing, as the system is extensible to work at the original ranges which accurately reflect different combat scenarios. The requirements calculated for the adjustable focus laser are built from teh $50, 150, 350 m$ distance requirements.
+
+This gives us a system of equations with two unknowns: 
 
  \begin{align} \label{eq:1} \large \begin{split}
 \frac{300*.002}{0.2} =  \frac{1}{f_1} + \frac{1}{f_2} - \frac{0}{f_1 f_2}
@@ -286,9 +287,7 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
 
 \hspace{5mm}\textbf{Laser Safety}
 
- To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. 
- 
- For the reasons stated above, the team will instead use a $5mW$ visible red laser. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
+ To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. Since the lasers were ordered prior to the change in distance requirements, the team continued to use the $5mW$ lasers for the duration of the project. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
  
  The following is a calculation for the nominal ocular hazard distance (NOHD) of the laser, as defined by the ANSI Standard\textsuperscript{\cite{ANSI}}.
  
@@ -372,9 +371,9 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  	$ \frac{\sqrt{\frac{4 * 6.25*10^{-8} }{\pi * 0.00833333}} - 2*0.0005}{Tan^{-1}(\frac{.5}{30})} = 1.25 m$
  \end{center}
  
- The team will take precautions to avoid eye contact with the laser within $1.25m$ of the source. If it is absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person will be required to wear protective eye wear. 
+ The team took precautions to avoid eye contact with the laser within $1.25m$ of the source. If it was absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person wore protective eye weat
  
- The risk of eye damage is mitigated by the fact that the laser is both visible, and not always powered on. 
+ The risk of eye damage was mitigated by the fact that the laser is both visible, and not always powered on. 
 
 \subsubsection{Friendly Target}
 
@@ -391,9 +390,9 @@ A photodiode was chosen such that a 5kHz signal could be processed and boosted t
 
 The inherent limitations of laser power for safety means that the performance is in the hands of the photodiode. The team did not change their design review choice and selected PIN photodiodes as they have a high sensitivity and speed.
 
-The next selection criteria is the material with which the photodiode is made. This includes materials such as Si, InGaAs, and InA. The optimum wavelength is dependent on the material selection.
+One of the selection criteria for the photodiodes was the material with which the photodiode is made. This includes materials such as Si, InGaAs, and InA. The optimum wavelength is dependent on the material selection.
 
-With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, will have the highest detectivity for the visible wavelength.  
+With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, had the highest detectivity for the visible wavelength.  
 
 \begin{figure} [H]
 	\centering
@@ -402,7 +401,7 @@ With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident powe
 	\caption{Specific Detectivity for Photodetector Materials \textsuperscript{\cite{Optical}} \label{fig:detectivity-table}}
 \end{figure}
 
-Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode is of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations will use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
+Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode was of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations will use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
 
 The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is 
 \begin{equation} \large 
@@ -438,11 +437,7 @@ For the $8.53 mm^2$ active area photodiode operating at $635 nm = 4.72441 × 10^
 	$r = 0.326998 m \approx 33 cm$
 \end{center}
 
-Refining the proposal requirements, the team has set a new requirement of a minimum $2 mm$ laser spot radius, making the diameter of the beam $30mm$ at distances of $5m, 15m,$ and $30m$ with optical adjustment. This is well within the limit calculated above. 
-
-
-
-
+This theoretical working spot radius for receiving a signal is large enough for such a system to be plausible; thus, the chosen photodiode was more than sufficient. 
 
 \subsubsection{System}
 
