@@ -50,4 +50,10 @@ E.~C.~E. {E}lectronics {S}hop, ``{D}esign {R}equirements,'' Web page, accessed
   \url{http://eshop.ece.illinois.edu/pcbdesign/designreq/designreq.php}
 \BIBentrySTDinterwordspacing
 
+\bibitem{IEEE}
+\BIBentryALTinterwordspacing
+I.~of~Electrical and E.~Engineers, ``Code of ethics,'' 2006. [Online].
+  Available: \url{http://www.ieee.org/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
