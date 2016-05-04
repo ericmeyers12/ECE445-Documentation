@@ -307,46 +307,46 @@ The hardware and construction of the adjustable focus laser is discussed in grea
  
  At $5mW$ with a pulse width of $1*10^{-4}$, the power of the laser is $5*10^{-7} J$. 
  
- ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as 
+ ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as Equation \ref{eq:c6-equation}.
  
- \begin{align} \label{eq:1} \large \begin{split}
+ \begin{align} \label{eq:c6-equation} \large \begin{split}
  C_6 =\frac{\theta}{1.5} \hspace{5mm} for \hspace{2.5mm}(1.5 \leq \theta \leq 100)
  \\
  C_6 = 1 \hspace{5mm} for \hspace{2.5mm} ( \theta < 1.5, \theta > 100)
  \end{split}
  \end{align}
  
- Using trigonometry, the divergence angle, $\theta$, for the laser is 
+ Using trigonometry, the divergence angle, $\theta$, for the laser is shown in Equation \ref{eq:div-angle}.
  
- \begin{equation}\label{eq:2} \large
+ \begin{equation}\label{eq:div-angle} \large
  \theta = Tan^{-1}(\frac{r}{300})* 1000 [mrad]
  \end{equation}
  
- Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
- \begin{equation}
+ Following the ANSI standard, the Rule 1 calculation is shown in Equation \ref{eq:r1}.
+ \begin{equation}\label{eq:r1}
  \large
  R_1 = 5*10^{-3} * C_6
  \end{equation}
  
- The Rule 2 calculation is
- \begin{equation}
+ The Rule 2 calculation is Equation \ref{eq:r2}.
+ \begin{equation}\label{eq:r2}
  \large
  R_2 = 18 (T)^{0.75}
  \end{equation}
  
- The Rule 3 calculation is
- \begin{equation}
+ The Rule 3 calculation is Equation \ref{eq:r3}.
+ \begin{equation} \label{eq:r3}
  \large
  R_3 = R1(T*f)^{0.25}
  \end{equation}
  
- The most restrictive rule defines the MPE as
- \begin{equation}
+ The most restrictive rule defines the MPE as Equation \ref{eq:mpe}.
+ \begin{equation}  \label{eq:mpe}
  \large
  MPE = min(R_1, R_2, R_3)
  \end{equation}
  
- The MPE, then, is\\
+ The MPE, then, is the following.\\
  {\large $min($}
  \begin{center}
  	\large
@@ -356,14 +356,14 @@ The hardware and construction of the adjustable focus laser is discussed in grea
  \end{center}
  {\large $)$}
  
- This gives 
+ This gives the following.
  \begin{center}
  	\large
  	$MPE = min(0.00833333, 6.36396, 0.0833333) = 0.00833333 [\frac{J}{m^2}]$
  \end{center}
  
- The NOHD is defined as (with $\theta$ in terms of $rad$, not $mrad$)
- \begin{equation} \large
+ The NOHD is defined as Equation \ref{eq:mpe-2} (with $\theta$ in terms of $rad$, not $mrad$).
+ \begin{equation} \large \label{eq:mpe-2}
  \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}
  \end{equation}
  
@@ -405,7 +405,7 @@ With photodiodes, noise-equivalent power (NEP) is a measure of the incident powe
 
 Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode was of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
 
-The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is Equation \ref{eq:nep}
+The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is Equation \ref{eq:nep}.
 \begin{equation} \large  \label{eq:nep}
 	NEP = \frac{\sqrt{A}}{D^*}  [\frac{W}{Hz^{1/2}}]
 \end{equation}
@@ -427,7 +427,7 @@ Multiplying the area of the laser's spot by the required incident irradiance at 
 
 Note that the power contained in the laser's spot does not depend on distance from the source, as atmospheric reflection is negligible at $30 m$.
 
-The radius, in terms of the detectivity, frequency, and sensor active area is in Equation \ref{eq:r-2}
+The radius, in terms of the detectivity, frequency, and sensor active area is in Equation \ref{eq:r-2}.
 \begin{equation}\large \label{eq:r-2}
 	r = \sqrt{\frac{PD^*\sqrt{A}}{2 \pi f}} [m]
 \end{equation}
@@ -505,16 +505,15 @@ The acrylic cutout holding the laser in the PVC nipple can be seen in Figure \re
 		\label{fig:acrylic}%
 	\end{figure}
 	
-Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed-off shower curtain rod. At the very end of the rod, the concave lens is secured in place using hot glue and a PVC connector. This can be seen in Figure \ref{fig:end}
+Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed-off shower curtain rod. At the very end of the rod, the concave lens is secured in place using hot glue and a PVC connector. This can be seen in Figure 7.
 
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.05]{end.png}
-	\label{fig:end}
-	\caption{Concave Lens Secured by PVC Connector}
+	\caption{Concave Lens Secured by PVC Connector	\label{fig:end}}
 \end{figure}
 
-The shower curtain rod allows a user to twist counter-clockwise to free lateral motion, and then twist clockwise to secure the rod in place. This was ideal for the purpose of the interrogator's adjustable focus laser, as a user can adjust the focus and secure the rod in place. Below shows a picture with the rod fully extended, which shows a much larger length than the picture in Figure \ref{fig:extended}
+The shower curtain rod allows a user to twist counter-clockwise to free lateral motion, and then twist clockwise to secure the rod in place. This was ideal for the purpose of the interrogator's adjustable focus laser, as a user can adjust the focus and secure the rod in place. Figure 8 shows a picture with the rod fully extended, which shows a much larger length than the picture in Figure 5.
 
 \begin{figure} [H]
 	\centering
@@ -527,7 +526,7 @@ The shower curtain rod allows a user to twist counter-clockwise to free lateral 
 The circuit and PCB evolved a great deal from the design review to simplify the system. First, the MSP microcontroller was changed from a surface mount device to a breakout using pinheaders on the PCB. The crystal oscillator circuit was removed and some switches were removed due to their complexity.
 
 The PCB adhered to the guidelines set out by the ECE Service Shop \textsuperscript{\cite{ECE-Electronics-Shop}}.
-Please refer to Figure \ref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit and Figure \ref{fig:interrogator-pcb} for the PCB layout of the friendly interrogator unit. 
+Please refer to Figure \autoref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit and Figure \autoref{fig:interrogator-pcb} for the PCB layout of the friendly interrogator unit. 
 
 
 
