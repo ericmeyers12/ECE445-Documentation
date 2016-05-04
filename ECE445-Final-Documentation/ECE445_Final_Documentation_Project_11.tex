@@ -301,9 +301,9 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  	exceed the single-pulse MPE multiplied by a multiple-pulse correction factor
  \end{enumerate}
  
- The laser will pulse at a rate of $5 kHz$. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $30m$. Note that even though the requirements changed to $30m$, that the laser is still able to achieve the divergence necessary to reach $300m$. Thus, since the device can have a minimum divergence to reach $300m$, the safety limitations are calculated at this divergence. 
+ The laser will pulse at a rate of $5 kHz$. Assuming at most a 50\% duty cycle, each pulse will be of max length $1*10^{-4} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $300m$. Note that even though the requirements changed to $30m$, that the laser is still able to achieve the divergence necessary to reach $300m$. Thus, since the device can have a minimum divergence to reach $300m$, the safety limitations are calculated at this divergence. 
  
- At $5mW$ with a pulse width of $1.25*10^{-5}$, the power of the laser is $6.25*10^{-8} J$. 
+ At $5mW$ with a pulse width of $1*10^{-4}$, the power of the laser is $5*10^{-7} J$. 
  
  ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as 
 
@@ -317,7 +317,7 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  Using trigonometry, the divergence angle, $\theta$, for the laser is 
 
  \begin{equation}\label{eq:2} \large
- 	\theta = Tan^{-1}(\frac{r}{30})* 1000 [mrad]
+ 	\theta = Tan^{-1}(\frac{r}{300})* 1000 [mrad]
  \end{equation}
  
  Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
@@ -348,7 +348,7 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  {\large $min($}
  \begin{center}
  	\large
- 	 $5*10^{-3} * Tan^{-1}(\frac{.5}{30})* 1000$,\\
+ 	 $5*10^{-3} * Tan^{-1}(\frac{.5}{300})* 1000$,\\
  	$18 (.25)^{0.75}$,\\
  	$0.00833333 (0.25*5000)^{0.25}$
  \end{center}
@@ -365,15 +365,15 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  	 \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}
  \end{equation}
  
- Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam, $0.5mm$. This gives an NOHD of 
+ Where P is the power of the beam ($5*10^{-7} J$) and $w$ is the waist of the beam, $0.5mm$. This gives an NOHD of 
  \begin{center}
  	\large
- 	$ \frac{\sqrt{\frac{4 * 6.25*10^{-8} }{\pi * 0.00833333}} - 2*0.0005}{Tan^{-1}(\frac{.5}{30})} = 1.25 m$
+ 	$ \frac{\sqrt{\frac{4 * 5*10^{-7} }{\pi * 0.00833333}} - 2*0.0005}{Tan^{-1}(\frac{.5}{300})} = 4.64m$
  \end{center}
  
- The team took precautions to avoid eye contact with the laser within $1.25m$ of the source. If it was absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person wore protective eye weat
+ The team took precautions to avoid eye contact with the laser within $5 m$ of the source, and kept a wide divergence angle when possible. If it was absolutely necessary to work with the laser powered on at full divergence, and a person within $1.25m$ of the laser, the person wore protective eye wear. 
  
- The risk of eye damage was mitigated by the fact that the laser is both visible, and not always powered on. 
+ The risk of eye damage was mitigated by the fact that the laser is both visible, not always powered on, and adjustable to have a very wide divergence. 
 
 \subsubsection{Friendly Target}
 
@@ -444,9 +444,9 @@ This theoretical working spot radius for receiving a signal is large enough for 
 \hspace{5mm}\textbf{R.F. Transmitter/Receiver} \label{section:rf-transmitter-design-procedure} \\
 The team purchased the R.F. receiver with the intentions of it being relatively easy to use out of the box and easily programmable with any MCU. However, in reality, the receiver proved to be much more difficult than the team imagined. 
 
-SMD adapters were used to plug the R.F. receiver into a breadboard and soon thereafter, the team learned that breadboards act as a large capacitor and filter out lower frequencies, which made the team question the reliability of testing with 315MHz. For this reason, the team switched to using perf boards and soldering female connections to connect to the SMD adapter. 
+SMD adapters were used to plug the R.F. receiver into a breadboard and soon thereafter, the team learned that breadboards act as a large capacitor and filter out frequencies above $10 MHz$, which made the team question the reliability of testing with 315MHz. For this reason, the team switched to using perf boards and soldering female connections to connect to the SMD adapter. 
 
-This caused many problems with establishing a reliable connection and soldering this equipment to a board for the first time was especially difficult. As explained in section \ref{section-design-details}, the R.F. transmitter/receiver did not work in the end of the project due to equipment defectiveness.
+This caused many problems with establishing a reliable connection and soldering this equipment to a board for the first time was especially difficult. As explained in section \ref{section-design-details}, the R.F. transmitter/receiver did not work in the end of the project due to equipment malfunction.
 
 The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). 
 \hl{TODO: Describe some of the governing equations}
@@ -464,7 +464,7 @@ In the friendly target, this 3.3V output is fed to the MSP and R.F. modules, and
  
 \hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}
 
-The microcontroller must have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this design, as most come with several ports, fast processors, and a built in timer.
+The microcontroller had to have enough ports to service both the R.F. boards and laser/photoreceiver inputs, enough speed to sample and decide on a packet value received at $5kHz$, and the ability to count seconds. A vast majority of microcontrollers fit these requirements for our design, as most come with several ports, fast processors, and a built in timer.
 
 In the design review, the team was using a MSP430F2274IDA, which proved to be very difficult to program using the lab-supplied FET programmer. For this reason the team decided to switch to the MSP432P401R(Launchpad model MSPEXP432P401) which contained an onboard debugger. These were much easier to use due to the USB-to-microUSB debugger. The team used these microcontrollers for approximately two weeks until both boards were determined to be defective due to internal shorts (drawing approximately 0.5A standby).
 
