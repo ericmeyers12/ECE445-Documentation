@@ -11,7 +11,7 @@
 % below unless you really know what you are doing.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% some commonly used packages
+% some commonly used packages\
 \usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{color,soul}
@@ -202,12 +202,12 @@ The idea is to develop a two-way communication system so that when a soldier aim
 \begin{itemize}
 	\item Laser transmitter on friendly interrogator to send unique I.D.
 	\item Photodiodes on friendly target detect unique I.D.
-	\item R.F. transmitter on friendly target to send acknowledgement back to interrogator.
+	\item Radio Frequency (R.F.) transmitter on friendly target to send acknowledgement back to interrogator.
 	\item R.F. receiver on friendly interrogator to verify that the target is friendly.
 	\item LED to indicate friendly or enemy on interrogator unit with system response of less than 190 ms (human reaction time\textsuperscript{\cite{Reaction_Times}})
 \end{itemize}
 
-These functions and features are summarized in the system block diagram shown in \autoref{fig:system-block-diagram} Figure \ref{fig:system-block-diagram}. 
+These functions and features are summarized in the system block diagram shown in \autoref{fig:system-block-diagram}. 
 
 \begin{figure} [H]
 	\centering
@@ -234,64 +234,66 @@ An important aspect of this project is encryption and ensuring an enemy cannot p
 
 \hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
 
-For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team used a 5 mW 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. 
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team used a 5 mW red 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. 
 
 This laser was placed inside of a casing made out of hollow aluminum tube that was created to allow the user to adjust the spot size on the laser dot. The laser can be seen in Figure \ref{fig:interrogator-picture}. The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the MSP430 microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
 
 \hspace{5mm} \textbf{Adjustable Focus}
 
-Adjustable focus is achieved by placing a convex lens in series after a concave lens. The convex lens is then moved to increase (or decrease) the distance between the lenses. This changes the effective focus. The effective focus of the dual-lens system can be described by 
+Adjustable focus is achieved by placing a convex lens in series after a concave lens. The convex lens is then moved to increase (or decrease) the distance between the lenses. This changes the effective focus. The effective focus of the dual-lens system can be described by Equation \ref{eq:focal-length}.
 
-\begin{equation}
+\begin{equation} \label{eq:focal-length}
 	\large
 	f = \frac{1}{f_1} + \frac{1}{f_2} - \frac{d}{f_1 f_2}
 \end{equation}
 
 Where $f$ is the effective focus, $f_1$ is the focal length of the concave lens (negative), $f_2$ is the focal length of the convex lens (positive) and $d$ is the distance between the lenses. 
 
-Furthermore, the required focal length for this project can be described as 
+Furthermore, the required focal length for this project is seen in Equation \ref{eq:tan}.
 
-\begin{equation} \large
+\begin{equation} \large \label{eq:tan}
 	Tan(\theta) = \frac{r}{D}
 \end{equation}
 
-Where $D$ is the distance to the target, and $r$ is the radius of the beam at that distance. 
+$D$ is the distance to the target, and $r$ is the radius of the beam at that distance. 
 
-Following from these equations, 
+Following from these equations, Equation \ref{eq:derived-focal} can be derived.
 
-\begin{equation} \large
+\begin{equation} \large \label{eq:derived-focal}
 	f = \frac{Dw}{r} =  \frac{1}{f_1} + \frac{1}{f_2} - \frac{d}{f_1 f_2}
 \end{equation}
 
-The hardware and construction of the adjustable focus laser is discussed in greater detail in Section \ref{section-design-details}. 
+
 
 The adjustable focus laser has at least $\frac{1}{2}$ inches of adjustable distance. The beam width for the laser is around $2mm$. The spot radius is $20cm$. In order to test indoor in close quarters (i.e. the lab), the full distance should reach a spot radius of $20cm$ at $20 m$. At the shortest distance the spot radius should be $20cm$ at $300m$. Note that the lenses were ordered under the assumption of $50, 150, 300 m$ requirements, and so these calculations are geared towards those original requirement. This is not necessarily a bad thing, as the system is extensible to work at the original ranges which accurately reflect different combat scenarios. The requirements calculated for the adjustable focus laser are built from teh $50, 150, 350 m$ distance requirements.
 
-This gives us a system of equations with two unknowns: 
+This gives us a system of equations with two unknowns, shown in Equation \ref{eq:system}. 
 
- \begin{align} \label{eq:1} \large \begin{split}
+ \begin{align} \label{eq:system} \large \begin{split}
 \frac{300*.002}{0.2} =  \frac{1}{f_1} + \frac{1}{f_2} - \frac{0}{f_1 f_2}
  \\
  \frac{20*.002}{0.2} =  \frac{1}{f_1} + \frac{1}{f_2} - \frac{0.0127}{f_1 f_2}
  \end{split}
  \end{align}
 
-Solving these equations
+Solving these equations we get the following numbers for the required focal lengths.
 \begin{center}
 	\large
 	$f_1 \approx -53mm$ \\
 	$f_2 \approx  52mm$
 \end{center}
 
-The best lenses the team could find with matching diameters were $-51mm$ and $50mm$, respectively. These calculations were originally performed under the expectation of using PVC pipes with a $\frac{1}{2}$ inch screwing distance. An updated design, explored more in depth in section \ref{section:interrogator-adjustable-focus-laser}, allowed for several inches of adjustable distance, which more than fulfilled the requirements. 
+The best lenses the team could find with matching diameters were $-51mm$ and $50mm$, respectively. These calculations were originally performed under the expectation of using PVC pipes with a $\frac{1}{2}$ inch screwing distance. An updated design, explored more in depth in Section \ref{section:interrogator-adjustable-focus-laser}, allowed for several inches of adjustable distance, which more than fulfilled the requirements. 
+
+The hardware and construction of the adjustable focus laser is discussed in greater detail in Section \ref{section-design-details}. 
 
 \hspace{5mm}\textbf{Laser Safety}
 
- To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. Since the lasers were ordered prior to the change in distance requirements, the team continued to use the $5mW$ lasers for the duration of the project. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to IR lasers which can go unnoticed for several seconds. 
+ To achieve the laser beam diameter at $300 m$ associated in the proposal, a Class 3B laser would be required. In the State of Illinois, a Class 3B laser must be registered with the Division of Nuclear Safety in the Illinois Emergency Management Agency. The 3B laser would also present a significant viewing hazard; especially in an application where the laser is intended to be pointed at people. Since the lasers were ordered prior to the change in distance requirements, the team continued to use the $5mW$ lasers for the duration of the project. $5mW$ visible lasers have a low chance of injuring the eye, as the blinking reflex will save a victim from permanent damage; as opposed to infrared lasers which can go unnoticed for several seconds. 
  
- The following is a calculation for the nominal ocular hazard distance (NOHD) of the laser, as defined by the ANSI Standard\textsuperscript{\cite{ANSI}}.
+ The following is a calculation for the nominal ocular hazard distance (NOHD) of the laser, as defined by the ANSI (American National Standards Institute) Standard\textsuperscript{\cite{ANSI}}.
  
- The maximum permissible exposure (MPE), as defined by the ANSI Standard \textsuperscript{\cite{ANSI}} is the highest power or energy density of a light source that is considered safe, i.e. that has a negligible probability for creating damage. This MPE for a pulsing laser is calculated as the minimum of the following three rules:
+ The maximum permissible exposure (MPE), as defined by the ANSI standard \textsuperscript{\cite{ANSI}} is the highest power or energy density of a light source that is considered safe, i.e. that has a negligible probability for creating damage. This MPE for a pulsing laser is calculated as the minimum of the following three rules:
  
  \begin{enumerate}
  	\item Any single pulse in the train must not exceed the MPE for the pulse exposure time.
@@ -305,46 +307,46 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  
  At $5mW$ with a pulse width of $1.25*10^{-5}$, the power of the laser is $6.25*10^{-8} J$. 
  
- ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as 
+ ANSI defines several constants for use in the calculation of laser safety. The relevant constant for these calculations is the constant $C_6$. This is defined as Equation \ref{eq:c6-equation}.
 
- \begin{align} \label{eq:1} \large \begin{split}
+ \begin{align} \label{eq:c6-equation} \large \begin{split}
  	C_6 =\frac{\theta}{1.5} \hspace{5mm} for \hspace{2.5mm}(1.5 \leq \theta \leq 100)
 	\\
    	C_6 = 1 \hspace{5mm} for \hspace{2.5mm} ( \theta < 1.5, \theta > 100)
    	\end{split}
  \end{align}
   
- Using trigonometry, the divergence angle, $\theta$, for the laser is 
+ Using trigonometry, the divergence angle, $\theta$, for the laser is shown in Equation \ref{eq:div-angle}.
 
- \begin{equation}\label{eq:2} \large
+ \begin{equation}\label{eq:div-angle} \large
  	\theta = Tan^{-1}(\frac{r}{300})* 1000 [mrad]
  \end{equation}
  
- Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
- \begin{equation}
+ Following the ANSI standard, the Rule 1 calculation is shown in Equation \ref{eq:r1}.
+ \begin{equation}\label{eq:r1}
  	\large
  	R_1 = 5*10^{-3} * C_6
  \end{equation}
  
- The Rule 2 calculation is
- \begin{equation}
+ The Rule 2 calculation is Equation \ref{eq:r2}.
+ \begin{equation}\label{eq:r2}
  	\large
  	R_2 = 18 (T)^{0.75}
  \end{equation}
  
- The Rule 3 calculation is
- \begin{equation}
+ The Rule 3 calculation is Equation \ref{eq:r3}.
+ \begin{equation} \label{eq:r3}
  	\large
  	R_3 = R1(T*f)^{0.25}
  \end{equation}
  
- The most restrictive rule defines the MPE as
- \begin{equation}
+ The most restrictive rule defines the MPE as Equation \ref{eq:mpe}.
+ \begin{equation}  \label{eq:mpe}
  	\large
  	MPE = min(R_1, R_2, R_3)
  \end{equation}
  
- The MPE, then, is\\
+ The MPE, then, is the following.\\
  {\large $min($}
  \begin{center}
  	\large
@@ -354,14 +356,14 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  \end{center}
  {\large $)$}
  
- This gives 
+ This gives the MPE to be the following.
  \begin{center}
  	\large
  	$MPE = min(0.00833333, 6.36396, 0.0833333) = 0.00833333 [\frac{J}{m^2}]$
  \end{center}
  
- The NOHD is defined as (with $\theta$ in terms of $rad$, not $mrad$)
- \begin{equation} \large
+ The NOHD is defined as Equation \ref{eq:mpe-2} (with $\theta$ in terms of $rad$, not $mrad$).
+ \begin{equation} \large \label{eq:mpe-2}
  	 \frac{\sqrt{\frac{4 * P}{\pi * MPE}} - 2w}{\theta}
  \end{equation}
  
@@ -372,12 +374,9 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  \end{center}
  
 
- These calculations show that the team was safe using a laser up to 1.25 meters.If absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person was required to wear protective eye wear. 
+ These calculations show that the team was safe using a laser up to 1.25 meters. The team took precautions to avoid eye contact with the laser within $1.25m$ of the source. If it was absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person wore protective eye wear.
 
- The team took precautions to avoid eye contact with the laser within $1.25m$ of the source. If it was absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person wore protective eye weat
-
- 
- The risk of eye damage was mitigated by the fact that the laser is both visible, and not always powered on. 
+ The risk of eye damage was also mitigated by the fact that the laser is both visible, and not always powered on. 
 
 \subsubsection{Friendly Target}
 
@@ -396,7 +395,7 @@ The inherent limitations of laser power for safety means that the performance is
 
 One of the selection criteria for the photodiodes was the material with which the photodiode is made. This includes materials such as Si, InGaAs, and InA. The optimum wavelength is dependent on the material selection.
 
-With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, had the highest detectivity for the visible wavelength.  
+With photodiodes, noise-equivalent power (NEP) is a measure of the incident power required to generate a response signal equal to the noise level of a detector system. Detectivity is the reciprocal of the NEP normalized for the active area of the photodiode.\textsuperscript{\cite{Microphotonics}}. The best photodiode, then, had the highest detectivity for the visible wavelength.  
 
 \begin{figure} [H]
 	\centering
@@ -407,36 +406,36 @@ With photodiodes, Noise-equivalent Power (NEP) is a measure of the incident powe
 
 Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode was of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations will use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
 
-The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is 
-\begin{equation} \large 
+The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is Equation \ref{eq:nep}
+\begin{equation} \large  \label{eq:nep}
 	NEP = \frac{\sqrt{A}}{D^*}  [\frac{W}{Hz^{1/2}}]
 \end{equation}
 
-The incident irradiance, $E_i$, to cancel noise is
-\begin{equation} \large 
+The incident irradiance, $E_i$, to cancel noise is Equation \ref{eq:ei}.
+\begin{equation} \large  \label{eq:ei}
 	E_i = \frac{NEP * \sqrt{f}}{A} = \frac{\sqrt{Af}}{AD^*} = \frac{f}{D^*\sqrt{A}} [\frac{W}{m^{2}}]
 \end{equation}
 
-The NEP measures the incident irradiance to cancel the noise on the photodiode. To register a signal on the MCU, the incident irradiance must be higher than the noise. To be conservative, define the required incident irradiance as 
-\begin{equation} \large 
+The NEP measures the incident irradiance to cancel the noise on the photodiode. To register a signal on the MCU, the incident irradiance must be higher than the noise. To be conservative, define the required incident irradiance as Equation \ref{eq:ereq}.
+\begin{equation} \large \label{eq:ereq}
 	E_{req} = 2E_i [\frac{W}{m^{2}}]
 \end{equation}
 
-Multiplying the area of the laser's spot by the required incident irradiance at the photodiode gives the necessary power. Thus, the radius of the spot in terms of the power of the laser and required incident irradiance at the photodiode is 
-\begin{equation} \large 
+Multiplying the area of the laser's spot by the required incident irradiance at the photodiode gives the necessary power. Thus, the radius of the spot in terms of the power of the laser and required incident irradiance at the photodiode is shown in Equation \ref{eq:r}.
+\begin{equation} \large \label{eq:r}
 	r = \sqrt{\frac{P}{\pi E_{req}}} [m]
 \end{equation}
 
 Note that the power contained in the laser's spot does not depend on distance from the source, as atmospheric reflection is negligible at $30 m$.
 
-The radius, in terms of the detectivity, frequency, and sensor active area is
-\begin{equation}\large 
+The radius, in terms of the detectivity, frequency, and sensor active area is in Equation \ref{eq:r-2}
+\begin{equation}\large \label{eq:r-2}
 	r = \sqrt{\frac{PD^*\sqrt{A}}{2 \pi f}} [m]
 \end{equation}
 
 The design review/proposal listed $0.8382 m$ as the ideal radius of the laser's spot. Unfortunately, with the $5mW$ red laser, this would require a sensor with a massive active area. The largest sensor the team could find, at a reasonable price, has a $8.53 mm^2$ active area. 
 
-For the $8.53 mm^2$ active area photodiode operating at $635 nm = 4.72441 × 10^{14} Hz$ 
+For the $8.53 mm^2$ active area photodiode operating at $635 nm = 4.72441 × 10^{14} Hz$, the radius should be the following.
 \begin{center}
 	$r = 0.326998 m \approx 33 cm$
 \end{center}
@@ -446,13 +445,13 @@ This theoretical working spot radius for receiving a signal is large enough for 
 \subsubsection{System}
 
 \hspace{5mm}\textbf{R.F. Transmitter/Receiver} \label{section:rf-transmitter-design-procedure} \\
-The team purchased the R.F. receiver with the intentions of it being relatively easy to use out of the box and easily programmable with any MCU. However, in reality, the receiver proved to be much more difficult than the team imagined. 
+The team purchased the Linx KH3 R.F. transmitter/encoder and receiver/decoder with the intentions of it being relatively easy to use out of the box and easily programmable with any MCU. However, in reality, the receiver proved to be much more difficult than the team imagined. 
 
-SMD adapters were used to plug the R.F. receiver into a breadboard and soon thereafter, the team learned that breadboards act as a large capacitor and filter out lower frequencies, which made the team question the reliability of testing with 315MHz. For this reason, the team switched to using perf boards and soldering female connections to connect to the SMD adapter. 
+Surface mount device (SMD) adapters were used to plug the R.F. receiver into a breadboard and soon thereafter, the team learned that breadboards act as a large capacitor and filter out lower frequencies, which made the team question the reliability of testing with 315MHz. For this reason, the team switched to using perf boards and soldering female connections to connect to the SMD adapter. 
 
-This caused many problems with establishing a reliable connection and soldering this equipment to a board for the first time was especially difficult. As explained in section \ref{section-design-details}, the R.F. transmitter/receiver did not work in the end of the project due to equipment defectiveness.
+This caused many problems with establishing a reliable connection and soldering this equipment to a board for the first time was especially difficult. As explained in Section \ref{section-design-details}, the R.F. transmitter/receiver did not work in the end of the project due to equipment defectiveness.
 
-The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). The theoretical maximum distance was explored in the design review and thus will not be discussed here. On both the friendly interrogator PCB and the target PCB, the 3.23mm (50 $\Omega$) microstrip line was fabricated, but not used in the final implementation.
+The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). The theoretical maximum distance was explored in the design review and thus will not be discussed here. On both the friendly interrogator printed circuit board (PCB) and the target PCB, the 3.23mm (50 $\Omega$) microstrip line was fabricated (using the same equations as the design review \textsuperscript{\cite{Microstrip}}), but not used in the final implementation.
 
 
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
@@ -468,7 +467,7 @@ In the friendly target, this 3.3V output is fed to the MSP and R.F. modules, and
  
 \hspace{5mm}\textbf{Microcontroller} \label{section:system-design-procedure}
 
-The microcontroller must have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this design, as most come with several ports, fast processors, and a built in timer.
+The microcontroller needed to have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this, as most come with several ports, fast processors, and a built in timer.
 
 In the design review, the team was using a MSP430F2274IDA, which proved to be very difficult to program using the lab-supplied FET programmer. For this reason the team decided to switch to the MSP432P401R(Launchpad model MSPEXP432P401) which contained an onboard debugger. These were much easier to use due to the USB-to-microUSB debugger. The team used these microcontrollers for approximately two weeks until both boards were determined to be defective due to internal shorts (drawing approximately 0.5A standby -  should be drawing ~4mA \textsuperscript{\cite{MSPEXP432P401R}}).
 
@@ -486,7 +485,7 @@ Other microcontroller options, including PIC and arduino were considered. Arduin
 \hspace{5mm}\textbf{Adjustable Focus Laser}
 \label{section:interrogator-adjustable-focus-laser}
 
-The adjustable focus laser was built using two lenses, one convex and one concave. The laser can be seen in figure \ref{fig:laser-transmitter}.
+The adjustable focus laser was built using two lenses, one convex and one concave. The laser can be seen in Figure \ref{fig:laser-transmitter}.
 
 \begin{figure} [H]
 	\centering
@@ -496,7 +495,7 @@ The adjustable focus laser was built using two lenses, one convex and one concav
 
 The concave lens is mounted in a 1/2 inch PVC nipple with hot glue. Behind the lens, a cut acrylic cicle with a hole in the center holds the laser in place. This acrylic cutout is also hot glued in place.
 
-The acrylic cutout holding the laser in the PVC nipple can be seen in figure \ref{fig:acrylic}.
+The acrylic cutout holding the laser in the PVC nipple can be seen in Figure \ref{fig:acrylic}.
 
 	\begin{figure}%
 		\centering
@@ -507,7 +506,7 @@ The acrylic cutout holding the laser in the PVC nipple can be seen in figure \re
 		\label{fig:acrylic}%
 	\end{figure}
 	
-Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed-off shower curtain rod. At the very end of the rod, the concave lens is secured in place using hot glue and a PVC connector. This can be seen in figure \ref{fig:end}
+Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed-off shower curtain rod. At the very end of the rod, the concave lens is secured in place using hot glue and a PVC connector. This can be seen in Figure \ref{fig:end}
 
 \begin{figure} [H]
 	\centering
@@ -516,7 +515,7 @@ Using electrical tape to create a tight fit, the PVC nipple rests inside a sawed
 	\caption{Concave Lens Secured by PVC Connector}
 \end{figure}
 
-The shower curtain rod allows a user to twist counter-clockwise to free lateral motion, and then twist clockwise to secure the rod in place. This was ideal for the purpose of the interrogator's adjustable focus laser, as a user can adjust the focus and secure the rod in place. Below shows a picture with the rod fully extended, which shows a much larger length than the picture in figure \ref{fig:extended}
+The shower curtain rod allows a user to twist counter-clockwise to free lateral motion, and then twist clockwise to secure the rod in place. This was ideal for the purpose of the interrogator's adjustable focus laser, as a user can adjust the focus and secure the rod in place. Below shows a picture with the rod fully extended, which shows a much larger length than the picture in Figure \ref{fig:extended}
 
 \begin{figure} [H]
 	\centering
@@ -526,32 +525,27 @@ The shower curtain rod allows a user to twist counter-clockwise to free lateral 
 \end{figure}
 
 \hspace{5mm}\textbf{Circuit Schematics \& PCB} \label{section:interrogator-circuit-schematics-design-details}
-The circuit and PCB evolved a great deal from the design review to simplify the circuit. First, the MSP microcontroller was changed from a surface mount device to a breakout using pinheaders on the PCB. The crystal oscillator circuit was removed and some switches were removed due to their complexity.\\ 
+The circuit and PCB evolved a great deal from the design review to simplify the system. First, the MSP microcontroller was changed from a surface mount device to a breakout using pinheaders on the PCB. The crystal oscillator circuit was removed and some switches were removed due to their complexity.
 
-The PCB adhered to the guidelines set out by the ECE Service Shop \textsuperscript{\cite{ECE-Electronics-Shop}}
-Please refer to figure \ref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit and figure \ref{fig:interrogator-pcb} for the PCB layout of the friendly interrogator unit. 
+The PCB adhered to the guidelines set out by the ECE Service Shop \textsuperscript{\cite{ECE-Electronics-Shop}}.
+Please refer to Figure \ref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit and Figure \ref{fig:interrogator-pcb} for the PCB layout of the friendly interrogator unit. 
 
 
 
 \subsubsection{Friendly Target}
-\hspace{5mm}\textbf{Circuit Schematics} \label{section:target-circuit-schematics-design-details}
+\hspace{5mm}\textbf{Circuit Schematics \& PCB} \label{section:target-circuit-schematics-design-details}
 
-Please refer to Figure \ref{fig:target-schematic} for the circuit schematic of the friendly target unit. 
-
-\hspace{5mm}\textbf{PCB} \label{section:target-pcb-design-details}
-
-Please refer to Figure \ref{fig:target-pcb} for the pcb layout of the friendly target unit. 
+Please refer to Figure \ref{fig:target-schematic} for the circuit schematic of the friendly target unit.  Please refer to Figure \ref{fig:target-pcb} for the pcb layout of the friendly target unit. 
 
 \hspace{5mm} \textbf{Software} \label{section:target-software-design-details}\\
-Incoming transmissions are broken into two parts, where a $1$ corresponds to a high at the transmission source, and a $0$ a low: 
+Incoming transmissions are broken into two parts, where a $1$ corresponds to a high at the transmission source, and a $0$ a low. These two parts are shown below:
 \begin{enumerate}
 	\small
 	\item \textbf{Preamble} - $10101010$ 
 	\item \textbf{Packet} - An 8 digit long value representing a numerical id
 \end{enumerate}
 
-
-Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room can the photoreceiver to report $0-2V$ when receiving no light from the transmitter, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before. This is similar to Non-Return to Zero Inverted (NRZI) encoding scheme widely used in many applications. This is Algorithm \ref{algo-1} shown in the appendix.  Figure \ref{fig:threshold} elaborates on the threshold noise difference. The top two dotted lines represents the variations in the "high" signal, and the bottom two dotted lines represent the variations in a "low" signal. These must be accounted for in the software.
+Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room, the photoreceiver can report $0-2V$ when receiving no light from the transmitter. For this reason, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before. This is similar to Non-Return to Zero Inverted (NRZI) encoding scheme widely used in many applications. This is Algorithm \ref{algo-1} shown in the appendix.  Figure \ref{fig:threshold} elaborates on the threshold noise difference. The top two dotted lines represents the variations in the "high" signal, and the bottom two dotted lines represent the variations in a "low" signal. These must be accounted for in the software.
 
 \begin{figure} [H]
 	\centering
@@ -562,14 +556,10 @@ Values from the photoreceiver are analog values ranging from $0-3.3V$. Because t
 
 Binary values are stored in an array of length 8, since both packets and preambles are 8 bits. Because a preamble can come at any moment, an algorithm was designed both to store binary values in the array, and to always check for a preamble packet. This is Algorithm \ref{algo-2} in the appendix.
 
-Once a preamble has been received, a simple algorithm is used to capture a packet. This is Algorithm \ref{algo-3} in the appendix. After 100 queries of a packet has received 85\% success, an acknowledgement will be sent over R.F.
+Once a preamble has been received, a simple algorithm is used to capture a packet. This is Algorithm \ref{algo-3} in the appendix. After 100 queries of a packet has received 85\% success, an acknowledgment will be sent over R.F.
 
-\makeatletter
-\def\BState{\State\hskip-\ALG@thistlm}
-\makeatother
-
-\subsubsection{System}
-\hl{TODO}
+\subsubsection{R.F. Receiver/Transmitter}
+As stated previously, the R.F. equipment was determined to be defective after establishing the standby current was 15 times the value provided by the datasheet (standby was supposed to be 10 mA, received 150mA\textsuperscript{\cite{Linx-Transmitter}\cite{Linx-Receiver}}). This could have been the result of neglect by the team or improper soldering (i.e. soldering/desoldering multiple times). Either way, unfortunately the team was unable to carry forth with the design implementation of the R.F. receiver/transmitter and therefore did not perform verification.
 
 %SECTION - VERIFICATION
 \section{Verification}
@@ -605,10 +595,8 @@ Table \ref{tab:spot-size} displays the values received when measuring the spot s
 		\toprule	% top separator
 		Distance & Smallest Spot Size Radius & Largest Spot Size Radius \\
 		\midrule
-		2 m  & 1.3mm & 8mm\\
+		2 m  & 1.5mm & 16.2mm\\
 		5 m & 3.75mm & 36.5mm\\
-
-		
 		\bottomrule	% bottom separator
 	\end{tabular}%
 	\caption{Laser Transmitter Spot Size Test}
@@ -616,7 +604,7 @@ Table \ref{tab:spot-size} displays the values received when measuring the spot s
 \end{table}%
 
 \subsubsection{Packet Reception}
-The top half of figure \ref{fig:packet-verification} shows the signal that was sent through the MCU to the laser, and the bottom half of the same figure shows the received signal by the photoreceiver after amplification. Both signals are sent and received at a 5kHz rate and the voltage is sufficient enough to be detected by an ADC on board the MCU. 
+The top half of Figure \ref{fig:packet-verification} shows the signal that was sent through the MCU to the laser, and the bottom half of the same figure shows the received signal by the photoreceiver after amplification. Both signals are sent and received at a 5kHz rate and the voltage is sufficient enough to be detected by an ADC on board the MCU. 
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.45]{packet_verification.png}
@@ -625,7 +613,7 @@ The top half of figure \ref{fig:packet-verification} shows the signal that was s
 
 \subsubsection {Counting Packets}
 Algorithm \ref{algo-4} was used to count the number of missed packets from the photoreceiver.
-The results are shown in Figure \ref{fig:transmitted-received}. The algorithm verified at 5 meters, over 85\% packet reception.
+The results are shown in Figure \ref{fig:transmitted-received}. The algorithm verified at 5 meters, over 85\% packet reception. The requirement is the blue dotted line, and the last bar is the average of all 10 trials (which turned out to be 86\%).
 
 \begin{figure} [H]
 	\centering
@@ -634,13 +622,13 @@ The results are shown in Figure \ref{fig:transmitted-received}. The algorithm ve
 \end{figure}
 
 \subsection{R.F. Transmitter \& Receiver}
-\hl{TODO}
+As stated previously, the R.F. modules were determined to be defective before any verification could be performed. For this reason, this section will be omitted. 
 
 \subsection{Power Module}
-The requirements stated the power module needed to output a steady 3.3V for a period of 8 hours $\pm$ 5\%
+The requirements stated the power module needed to output a steady 3.3V for a period of 8 hours $\pm$ 5\%.
 
 \hspace{5mm}\textbf{Friendly Interrogator Consumption} \label{section:interrogator-consumption}
-\begin{table}[htbp]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{c|c}	% ccccccc indicates 7 center aligned columns
 		\toprule	% top separator
@@ -656,8 +644,10 @@ The requirements stated the power module needed to output a steady 3.3V for a pe
 	\caption{Current Consumption Values for Interrogator Unit}
 	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
 \end{table}%
-Assuming a standard alkaline battery has 1500mAh on a full charge, the total active time can be calculated as,
-\begin{equation}  \large
+
+Assuming a standard alkaline battery has 1500mAh on a full charge \textsuperscript{\cite{Battery}}, the total active time can be calculated as shown in Equation \ref{eq:active-time}.
+
+\begin{equation}  \large \label{eq:active-time}
 	\textrm{Total Active Time} = \frac{Total Charge On Battery}{Total Current Consumption} = \frac{1500mAh}{65.62mA} = 30.12 hours 
 \end{equation}
 
@@ -705,7 +695,13 @@ The labor cost was calculated as follows:
 
 %CONCLUSION
 \section{Conclusion}
-The team learned a considerable amount over the course of this project. In addition to designing, building, and testing PCBs using EAGLE, the team also learned how to bring a project from an idea to a concrete implementation. Throughout the semester, the team bettered their abilities in key ECE skills like soldering and circuit debugging. The team learned that even when you want things to work, \hl{SHIT WILL NEVER FUCKING WORK I MEAN JESUS CHRIST IT WAS SUPPOSED TO BE PLUG AND PLAY. LINX TOOK A SHIT ON OUR PROJECT}
+The team learned a considerable amount over the course of this project. In addition to designing, building, and testing PCBs using EAGLE, the team also learned how to bring a project from an idea to a concrete implementation. Throughout the semester, the team bettered their abilities in key ECE skills like soldering and circuit debugging. The team learned that even when you want things to work, things never work out as planned. 
+
+After the design review and during fabrication, the team realized that the project as a whole was a bit too complex for novice PCB designers and builders. In retrospect, the system would have been immensely simplified from the beginning. It is much easier to start from something small and build complexity a step at a time. 
+
+The R.F. proved to be the most difficult part of this project. During design review, the team did not allocate enough time in the schedule compared to how long it would have took. The planning could have been better, and if pursuing the project further, this, hopefully would have been avoided.
+
+The team overall did not harm anyone during this project, nor did not use any weapons, rather were simply demonstrating the effectiveness of a piece of identification equipment. An ethics section is included below to review relevant topics.
 
 \subsection{Ethics}
 The following ethical considerations refer to the IEEE Code of Ethics\cite{IEEE}.
@@ -713,7 +709,7 @@ The following ethical considerations refer to the IEEE Code of Ethics\cite{IEEE}
 \textit{"1. To accept responsibility in making decisions consistent with the safety, health, and welfare of the public, and to disclose promptly factors that might endanger the public or the environment"} \\
 \textit{"9. To avoid injuring others, their property, reputation, or employment by false or malicious action"}
 
-This project fully acknowledges the danger of lasers, and in the design review calculated an NOHD (Nominal Ocular Hazard Distance) of $1.25m$. Another aspect of the project that could endanger the public is the misuse of an IFF system. We want to be clear that just because a target doesn't acknowledge as "friendly" does NOT mean that the target is dangerous. As always, anyone wielding a firearm should consider both the target and the area behind the target before firing. This system is meant to supplement, not replace, good judgment.  
+This project fully acknowledged the danger of lasers, and in the design review calculated an NOHD of $1.25m$. Another aspect of the project that could have endangered the public is the misuse of an IFF system. We want to be clear that just because a target doesn't acknowledge as "friendly" does NOT mean that the target is dangerous. As always, anyone wielding a firearm should consider both the target and the area behind the target before firing. This system is meant to supplement, not replace, good judgment.  
 
 \textit{"2. To avoid real or perceived conflicts of interest whenever possible, and to disclose them to affected parties when they do exist"}
 
@@ -732,7 +728,6 @@ The entire purpose of senior design is to meet these requirements. As college st
 
 We are always willing to have a dialog with those interested in are work. We also seek to correct any errors so that the project meets all requirements. In building any project, one relies heavily on work already done by others; it is important to give credit where it is due. 
 
-\subsection{Accomplishments}
 
 \subsection{Future Work}
 
@@ -741,9 +736,6 @@ The system as a whole is currently not functioning due to the R.F. equipment bre
 Future work also includes building more condensed, specialized PCBs to hold the two main modules. 
 
 Further down the development line, mounting for both the target and interrogator unit would need to be built. On the target unit, this would mean wiring multiple photodiodes to a soldier's equipment and creating a waterproof storage pack on the soldier's person. For the interrogator unit, this would mean a weaver rail mount for the laser, and a waterproof storage pack for the circuitry (if it is not attached to the laser). Additionally, the adjustable focus laser would need to be more precise; that is, a 3D printed casing could be created to hold the laser and lenses. This casing could include screws, similar to those on a rifle scope, to fine tune the accuracy of the laser. 
-
-
-
 
 \clearpage
 %REFERENCES

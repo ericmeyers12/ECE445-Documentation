@@ -10,20 +10,19 @@
 \contentsline {subsection}{\numberline {2.2}Design Details}{10}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Friendly Interrogator}{10}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Friendly Target}{12}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}System}{13}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.3}R.F. Receiver/Transmitter}{13}{subsubsection.2.2.3}
 \contentsline {section}{\numberline {3}Verification}{13}{section.3}
 \contentsline {subsection}{\numberline {3.1}Laser Transmitter \& Photoreceiver}{13}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Distance Requirement}{13}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Spot Size Requirement}{13}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}Packet Reception}{13}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.3}Packet Reception}{14}{subsubsection.3.1.3}
 \contentsline {subsubsection}{\numberline {3.1.4}Counting Packets}{14}{subsubsection.3.1.4}
-\contentsline {subsection}{\numberline {3.2}R.F. Transmitter \& Receiver}{14}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Power Module}{14}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}System Speed}{15}{subsection.3.4}
-\contentsline {section}{\numberline {4}Costs}{15}{section.4}
+\contentsline {subsection}{\numberline {3.2}R.F. Transmitter \& Receiver}{15}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Power Module}{15}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}System Speed}{16}{subsection.3.4}
+\contentsline {section}{\numberline {4}Costs}{16}{section.4}
 \contentsline {section}{\numberline {5}Conclusion}{16}{section.5}
-\contentsline {subsection}{\numberline {5.1}Ethics}{16}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Accomplishments}{17}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Future Work}{17}{subsection.5.3}
-\contentsline {section}{Reference}{19}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.1}Ethics}{17}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Future Work}{18}{subsection.5.2}
+\contentsline {section}{Reference}{19}{subsection.5.2}
 \contentsfinish 
