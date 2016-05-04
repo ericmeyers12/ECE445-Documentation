@@ -187,7 +187,7 @@ This project serves as a method for infantry units to identify friendly vs enemy
 \section{Introduction}
 The purpose of this project is to create a system that quickly and accurately identifies friendly targets among military personnel on foot. Similar systems exist for aircraft, however not many exist for infantry.
 
-The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through an LED that the target is friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the ``friendly interrogator" and the target will  be referred to as the ``friendly target". 
+The idea is to develop a two-way communication system so that when a soldier aims their weapon in the direction of a friendly target, they will receive notification through a light emitting diode (LED) that the target is friendly and not an enemy. Throughout this document the infantry unit with the weapon will be referred to as the ``friendly interrogator" and the target will  be referred to as the ``friendly target". 
 
 \subsection{Objectives}
 \subsubsection{Goals and Benefits}
@@ -234,7 +234,7 @@ An important aspect of this project is encryption and ensuring an enemy cannot p
 
 \hspace{5mm}\textbf{Laser Transmitter} \label{section:laser-transmitter-design-procedure}
 
-For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team used a 5 mW red 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin DIP switch) to the friendly target. 
+For safety reasons, the maximum allowable power for the laser diode is $5mW$; which registers as a Class IIIa laser. The laser diode must also fall in the visible range, so that it will trigger a person's blinking reflex before eye damage occurs. Specifically, the team used a 5 mW red 635 nm laser diode to transmit the unique I.D. (as specified by the 8-pin switch) to the friendly target. 
 
 This laser was placed inside of a casing made out of hollow aluminum tube that was created to allow the user to adjust the spot size on the laser dot. The laser can be seen in Figure \ref{fig:interrogator-picture}. The laser diode, sourced by a transistor, allows for pulsing of a unique identification number at $5kHz$. The limiting factor for the $5kHz$ requirement was the processing speed of the MSP430 microcontroller; between every sampling of the photoreceiver, a significant amount of processing must occur. 
 
@@ -299,11 +299,11 @@ The hardware and construction of the adjustable focus laser is discussed in grea
  	\item Any single pulse in the train must not exceed the MPE for the pulse exposure time.
  	\item The exposure from any group of pulses delivered in time T must not exceed the MPE for
  	time T, where T is 0.25 seconds (from the blinking reflex), for a visible laser. 
- 	\item For thermal injury, the exposure for any single pulse within a group of pulses must not
+ 	\item for thermal injury, the exposure for any single pulse within a group of pulses must not
  	exceed the single-pulse MPE multiplied by a multiple-pulse correction factor
  \end{enumerate}
  
- The laser will pulse at a rate of $5 kHz$. Assuming at most a 50\% duty cycle, each pulse will be of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $30m$. Note that even though the requirements changed to $30m$, that the laser is still able to achieve the divergence necessary to reach $300m$. Thus, since the device can have a minimum divergence to reach $300m$, the safety limitations are calculated at this divergence. 
+ The laser pulses at a rate of $5 kHz$. Assuming at most a 50\% duty cycle, each pulse is of max length $1.25*10^{-5} s$. The divergence of the beam is smallest for the longest range; a lower divergence is more restrictive in terms of safety, so this calculation uses $30m$. Note that even though the requirements changed to $30m$, that the laser is still able to achieve the divergence necessary to reach $300m$. Thus, since the device can have a minimum divergence to reach $300m$, the safety limitations are calculated at this divergence. 
  
  At $5mW$ with a pulse width of $1.25*10^{-5}$, the power of the laser is $6.25*10^{-8} J$. 
  
@@ -404,7 +404,7 @@ With photodiodes, noise-equivalent power (NEP) is a measure of the incident powe
 	\caption{Specific Detectivity for Photodetector Materials \textsuperscript{\cite{Optical}} \label{fig:detectivity-table}}
 \end{figure}
 
-Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode was of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations will use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
+Figure \ref{fig:detectivity-table} illustrates the specific detectivity ranges of photodiodes. The interrogation laser is in the visible range; therefore, the matching photodiode was of type Si. Using this type of photodiode, the detectivity is between $10^{10}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$. The following calculations use a conservative value, $10^{12} \frac{Hz^{\frac{1}{2}}}{W}$, as the detectivity. In realty, because the wavelength is less than \SI{1}{\micro\meter}, the detectivity is somewhere between $10^{12}$ and $10^{13}$ $\frac{Hz^{\frac{1}{2}}}{W}$
 
 The equation for NEP from detectivity, $D^*$, and photodiode active area, $A$,  is Equation \ref{eq:nep}
 \begin{equation} \large  \label{eq:nep}
@@ -451,7 +451,7 @@ Surface mount device (SMD) adapters were used to plug the R.F. receiver into a b
 
 This caused many problems with establishing a reliable connection and soldering this equipment to a board for the first time was especially difficult. As explained in Section \ref{section-design-details}, the R.F. transmitter/receiver did not work in the end of the project due to equipment defectiveness.
 
-The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). The theoretical maximum distance was explored in the design review and thus will not be discussed here. On both the friendly interrogator printed circuit board (PCB) and the target PCB, the 3.23mm (50 $\Omega$) microstrip line was fabricated (using the same equations as the design review \textsuperscript{\cite{Microstrip}}), but not used in the final implementation.
+The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). The theoretical maximum distance was explored in the design review and thus are not be discussed here. On both the friendly interrogator printed circuit board (PCB) and the target PCB, the 3.23mm (50 $\Omega$) microstrip line was fabricated (using the same equations as the design review \textsuperscript{\cite{Microstrip}}), but not used in the final implementation.
 
 
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
