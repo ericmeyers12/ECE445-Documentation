@@ -318,7 +318,7 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  Using trigonometry, the divergence angle, $\theta$, for the laser is 
 
  \begin{equation}\label{eq:2} \large
- 	\theta = Tan^{-1}(\frac{r}{30})* 1000 [mrad]
+ 	\theta = Tan^{-1}(\frac{r}{300})* 1000 [mrad]
  \end{equation}
  
  Following the ANSI Standard \cite{ANSI}, the Rule 1 calculation is 
@@ -349,7 +349,7 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  {\large $min($}
  \begin{center}
  	\large
- 	 $5*10^{-3} * Tan^{-1}(\frac{.5}{30})* 1000$,\\
+ 	 $5*10^{-3} * Tan^{-1}(\frac{.5}{300})* 1000$,\\
  	$18 (.25)^{0.75}$,\\
  	$0.00833333 (0.25*5000)^{0.25}$
  \end{center}
@@ -369,10 +369,10 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
  Where P is the power of the beam ($6.25*10^{-8} J$) and $w$ is the waist of the beam, $0.5mm$. This gives an NOHD of 
  \begin{center}
  	\large
- 	$ \frac{\sqrt{\frac{4 * 6.25*10^{-8} }{\pi * 0.00833333}} - 2*0.0005}{Tan^{-1}(\frac{.5}{30})} = 1.25 m$
+ 	$ \frac{\sqrt{\frac{4 * 6.25*10^{-8} }{\pi * 0.00833333}} - 2*0.0005}{Tan^{-1}(\frac{.5}{300})} = 1.25 m$
  \end{center}
  
- The team will take precautions to avoid eye contact with the laser within $1.25m$ of the source. If it is absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person will be required to wear protective eye wear. 
+ These calculations show that the team was safe using a laser up to 1.25 meters.If absolutely necessary to work with the laser powered on and a person within $1.25m$ of the laser, the person was required to wear protective eye wear. 
  
  The risk of eye damage is mitigated by the fact that the laser is both visible, and not always powered on. 
 
@@ -382,7 +382,7 @@ The best lenses the team could find with matching diameters were $-51mm$ and $50
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.08]{target_picture.png}
-	\caption{Friendly Interrogator Unit\label{fig:threshold}}
+	\caption{Friendly Target Unit\label{fig:target-unit}}
 \end{figure}
 
 
@@ -453,8 +453,8 @@ SMD adapters were used to plug the R.F. receiver into a breadboard and soon ther
 
 This caused many problems with establishing a reliable connection and soldering this equipment to a board for the first time was especially difficult. As explained in section \ref{section-design-details}, the R.F. transmitter/receiver did not work in the end of the project due to equipment defectiveness.
 
-The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). 
-\hl{TODO: Describe some of the governing equations}
+The requirement driving both the R.F. transmitter and receiver was the ability to broadcast and receive packets (as a pair) at the maximum distance of the project ($30m$). The theoretical maximum distance was explored in the design review and thus will not be discussed here. On both the friendly interrogator PCB and the target PCB, the 3.23mm (50 $\Omega$) microstrip line was fabricated, but not used in the final implementation.
+
 
 \hspace{5mm}\textbf{Voltage/Power Regulation} \label{section:interrogator-voltage-regulation-design-procedure}
 
@@ -471,7 +471,7 @@ In the friendly target, this 3.3V output is fed to the MSP and R.F. modules, and
 
 The microcontroller must have enough ports to service both the R.F. boards and laser/photoreceiver inputs, have enough speed to sample and decide on a packet value received at $5kHz$, and have the ability to count seconds. A vast majority of microcontrollers fit the requirements for this design, as most come with several ports, fast processors, and a built in timer.
 
-In the design review, the team was using a MSP430F2274IDA, which proved to be very difficult to program using the lab-supplied FET programmer. For this reason the team decided to switch to the MSP432P401R(Launchpad model MSPEXP432P401) which contained an onboard debugger. These were much easier to use due to the USB-to-microUSB debugger. The team used these microcontrollers for approximately two weeks until both boards were determined to be defective due to internal shorts (drawing approximately 0.5A standby).
+In the design review, the team was using a MSP430F2274IDA, which proved to be very difficult to program using the lab-supplied FET programmer. For this reason the team decided to switch to the MSP432P401R(Launchpad model MSPEXP432P401) which contained an onboard debugger. These were much easier to use due to the USB-to-microUSB debugger. The team used these microcontrollers for approximately two weeks until both boards were determined to be defective due to internal shorts (drawing approximately 0.5A standby -  should be drawing ~4mA \textsuperscript{\cite{MSPEXP432P401R}}).
 
 The team then decided to switch back to the MSP430 line but instead decided to use the Launchpad series similar to the MSP432. The MSP430G2553 (Launchpad model MSP-EXP430G2) was ultimately the model the team used during final demonstration. These worked excellent and did not cause any problems during demo. 
 
@@ -483,19 +483,16 @@ Other microcontroller options, including PIC and arduino were considered. Arduin
 
 
 \subsubsection{Friendly Interrogator}
-The Circuit and PCB evolved a great deal from the design review to simplify the circuit. First, the MSP microcontroller was changed from a surface mount device to a breakout using pinheaders on the PCB. The crystal oscillator circuit was removed and some switches were removed due to their complexity.
 
 \hspace{5mm}\textbf{Adjustable Focus Laser}
 \label{section:interrogator-adjustable-focus-laser}
-\hl{I would minimize the amount you talk about this info - im not sure if they would like the mechanical aspect as much as the ECE aspect - but still include some of it}
 
-The adjustable focus laser was built using two lenses, one convex and one concave. The laser can be seen in figure \ref{fig:laser-transmitter}
+The adjustable focus laser was built using two lenses, one convex and one concave. The laser can be seen in figure \ref{fig:laser-transmitter}.
 
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.05]{laser-transmitter.png}
-	\label{fig:laser-transmitter}
-	\caption{Laser Transmitter}
+	\caption{Laser Transmitter \label{fig:laser-transmitter}} 
 \end{figure}
 
 The concave lens is mounted in a 1/2 inch PVC nipple with hot glue. Behind the lens, a cut acrylic cicle with a hole in the center holds the laser in place. This acrylic cutout is also hot glued in place.
@@ -529,13 +526,11 @@ The shower curtain rod allows a user to twist counter-clockwise to free lateral 
 	\caption{Extended Adjustable Focus Laser}
 \end{figure}
 
-\hspace{5mm}\textbf{Circuit Schematics} \label{section:interrogator-circuit-schematics-design-details}
+\hspace{5mm}\textbf{Circuit Schematics \& PCB} \label{section:interrogator-circuit-schematics-design-details}
+The circuit and PCB evolved a great deal from the design review to simplify the circuit. First, the MSP microcontroller was changed from a surface mount device to a breakout using pinheaders on the PCB. The crystal oscillator circuit was removed and some switches were removed due to their complexity.\\ 
 
-Please refer to Figure \ref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit. 
-
-\hspace{5mm}\textbf{PCB} \label{section:interrogator-pcb-design-details}
-
-Please refer to Figure \ref{fig:interrogator-pcb} for the pcb layout of the friendly interrogator unit. 
+The PCB adhered to the guidelines set out by the ECE Service Shop \textsuperscript{\cite{ECE-Electronics-Shop}}
+Please refer to figure \ref{fig:interrogator-schematic} for the circuit schematic of the friendly interrogator unit and figure \ref{fig:interrogator-pcb} for the PCB layout of the friendly interrogator unit. 
 
 
 
@@ -557,7 +552,7 @@ Incoming transmissions are broken into two parts, where a $1$ corresponds to a h
 \end{enumerate}
 
 
-Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room can the photoreceiver to report $0-2V$ when receiving no light from the transmitter, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before. This is similar to Non-Return to Zero Inverted (NRZI) encoding scheme widely used in many applications. This is Algorithm \ref{algo-1} shown in the appendix. 
+Values from the photoreceiver are analog values ranging from $0-3.3V$. Because the ambient light in the room can the photoreceiver to report $0-2V$ when receiving no light from the transmitter, an algorithm was created to decide binary values of a transmission based only on the \textit{difference} between the current analog value and the analog value $200 \mu s$ before. This is similar to Non-Return to Zero Inverted (NRZI) encoding scheme widely used in many applications. This is Algorithm \ref{algo-1} shown in the appendix.  Figure \ref{fig:threshold} elaborates on the threshold noise difference. The top two dotted lines represents the variations in the "high" signal, and the bottom two dotted lines represent the variations in a "low" signal. These must be accounted for in the software.
 
 \begin{figure} [H]
 	\centering
@@ -575,18 +570,17 @@ Once a preamble has been received, a simple algorithm is used to capture a packe
 \makeatother
 
 \subsubsection{System}
-
-FROM TEMPLATE: Present the detailed design, with diagrams and component values. Show how the design equations were applied. Give equations and diagrams with specific design values and data. Place large data tables in an appendix.  Circuit diagrams that are too large to be readable on a single page should be broken into pieces for presentation.  The full diagram may be included in an appendix.  Use photographs only as necessary and treat them, along with all other graphics except tables, as figures.
-
+\hl{TODO}
 
 %SECTION - VERIFICATION
 \section{Verification}
 
-The Requirements and Verification Table is shown in the appendix.
+The Requirements and Verification Table is shown in the back of the appendix.
 
 
 \subsection{Laser Transmitter \& Photoreceiver}
 \subsubsection{Distance Requirement}
+Table \ref{tab:distance-requirement} displays the values received on a digital multimeter when performing the verification for the distance requirement. 
 \begin{table}[htbp]
 	\centering
 	\begin{tabular}{c|c|c}	% ccccccc indicates 7 center aligned columns
@@ -605,23 +599,25 @@ The Requirements and Verification Table is shown in the appendix.
 \end{table}%
 
 \subsubsection{Spot Size Requirement}
+Table \ref{tab:spot-size} displays the values received when measuring the spot size of the laser transmitter during the verification of the spot size requirement. 
 \begin{table}[htbp]
 	\centering
 	\begin{tabular}{c|c|c}	% ccccccc indicates 7 center aligned columns
 		\toprule	% top separator
 		Distance & Smallest Spot Size Radius & Largest Spot Size Radius \\
 		\midrule
-		2 m  & 2.5mm & 16.25mm\\
+		2 m  & 1.3mm & 8mm\\
 		5 m & 3.75mm & 36.5mm\\
 
 		
 		\bottomrule	% bottom separator
 	\end{tabular}%
 	\caption{Laser Transmitter Spot Size Test}
-	\label{tab:distance-requirement}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
+	\label{tab:spot-size}
 \end{table}%
 
 \subsubsection{Packet Reception}
+The top half of figure \ref{fig:packet-verification} shows the signal that was sent through the MCU to the laser, and the bottom half of the same figure shows the received signal by the photoreceiver after amplification. Both signals are sent and received at a 5kHz rate and the voltage is sufficient enough to be detected by an ADC on board the MCU. 
 \begin{figure} [H]
 	\centering
 	\includegraphics[scale=0.45]{packet_verification.png}
@@ -639,7 +635,7 @@ The results are shown in Figure \ref{fig:transmitted-received}. The algorithm ve
 \end{figure}
 
 \subsection{R.F. Transmitter \& Receiver}
-No fuckin verification. I can, without a doubt, verify that we dun goofed.
+\hl{TODO}
 
 \subsection{Power Module}
 The requirements stated the power module needed to output a steady 3.3V for a period of 8 hours $\pm$ 5\%
@@ -654,14 +650,17 @@ The requirements stated the power module needed to output a steady 3.3V for a pe
 		MSP430 & 1.521 mA \\ 
 		Linx KH3 R.F. Receiver & 10.1 mA \\
 		5 mW Laser & 24.7 mA (max) \\
-		PCB Standby & 30.1 mA \\
+		PCB  & 30.1 mA \\
 		\bottomrule	% bottom separator
 		\textbf{Total} & 65.62 mA \\
 	\end{tabular}%
 	\caption{Current Consumption Values for Interrogator Unit}
 	\label{tab:table2}	% this is the label given to the table that can be referenced using \ref{tab:Exp1Part1_7}
 \end{table}%
-
+Assuming a standard alkaline battery has 1500mAh on a full charge, the total active time can be calculated as,
+\begin{equation}  \large
+	\textrm{Total Active Time} = \frac{Total Charge On Battery}{Total Current Consumption} = \frac{1500mAh}{65.62mA} = 30.12 hours 
+\end{equation}
 
 \hspace{5mm}\textbf{Friendly Target Consumption} \label{section:ttarget-consumption}
 \begin{table}[H]
@@ -768,25 +767,18 @@ Further down the development line, mounting for both the target and interrogator
 	\caption{Friendly Interrogator PCB\label{fig:interrogator-pcb}}
 \end{figure}
 
-%\begin{figure} [H]
-%	\centering
-%	\includegraphics[scale=0.70]{target-schematic.png}
-%	\caption{Friendly Target Circuit Schematic \label{fig:target-schematic}}
-%\end{figure}
-%
-%\begin{figure} [H]
-%	\centering
-%	\includegraphics[scale=1.20]{target-pcb.png}
-%	\caption{Friendly Target PCB\label{fig:target-pcb}}
-%\end{figure}
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=0.70]{target-schematic.png}
+	\caption{Friendly Target Circuit Schematic \label{fig:target-schematic}}
+\end{figure}
 
+\begin{figure} [H]
+	\centering
+	\includegraphics[scale=1.20]{target-pcb.png}
+	\caption{Friendly Target PCB\label{fig:target-pcb}}
+\end{figure}
 
-%\begin{figure} [H]
-%	\centering
-%	\includegraphics[scale=0.37]{friendly_interrogator_circuit.png}
-%	\caption{Friendly Interrogator Circuit Schematic \label{fig:threshold}}
-%\end{figure}
-\hl{PUT TARGET UNIT SCHEMATIC/PCB HERE}
 
 
 \makeatletter

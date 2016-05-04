@@ -30,9 +30,24 @@ G.~T. Taoka, ``Brake {R}eaction {T}imes of {U}nalerted {D}rivers,'' \emph{ITE
   Z136.1-2000.
 
 \bibitem{Microphotonics}
-O.~Bisi, ``Silicon-based microphotonics: From basics to applications,'' 1999.
+O.~Bisi, ``Silicon-based {M}icrophotonics: {F}rom {B}asics to {A}pplications,''
+  1999.
 
 \bibitem{Optical}
 R.~S. Quimby, ``Optical components and optics,'' 2006.
+
+\bibitem{MSPEXP432P401R}
+\BIBentryALTinterwordspacing
+``{MSP432P401R} {L}aunchpad {D}evelopment {K}it,'' Datasheet, {T}exas
+  {I}nstruments, accessed May 2016. [Online]. Available:
+  \url{http://www.ti.com/lit/ds/symlink/msp432p401r.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ECE-Electronics-Shop}
+\BIBentryALTinterwordspacing
+E.~C.~E. {E}lectronics {S}hop, ``{D}esign {R}equirements,'' Web page, accessed
+  February 2016. [Online]. Available:
+  \url{http://eshop.ece.illinois.edu/pcbdesign/designreq/designreq.php}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}
